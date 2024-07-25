@@ -300,7 +300,7 @@ header a {
     justify-content: center;
     overflow:unset;
     max-width: 150px;
-    font-size: 3.5vw;
+    font-size: min(3.5vw, 1.1em);
   }
 }
 
