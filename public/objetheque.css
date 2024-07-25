@@ -679,7 +679,7 @@ header a {
 }
 .raccourcisCatalogue a{
   color: var(--dark-text-color);
-  font-size: max(1.2vw, 1.2em);
+  font-size: clamp(1em, 1.2vw, 1.2em);
   font-family: Muli, system-ui;
   white-space:nowrap;
   display: block;
