@@ -1,0 +1,87 @@
+---
+import CatalogueFooter from "./catalogue-footer.astro"
+---
+<CatalogueFooter />
+<footer id="footer" role="contentinfo">
+  <div id="adresse">
+    <p>Objethèque de Cornouaille :</p>
+    <p><b>4 rue Jacques Cartier,</b></p>
+    <p class="sautDeLigne">
+      <b>29000 Quimper</b>
+    </p>
+    <p>Horaires :</p>
+    <p>
+      <strong>Mardi</strong> : 17h30-20h
+    </p>
+    <p>
+      <strong>Vendredi</strong> : 17h-19h
+    </p>
+    <p class="sautDeLigne">
+      <b>Samedi</b> : 10h-13h 15h-18h
+    </p>
+  </div>
+  <div class="iconesFooter">
+    <div class="logoFooter">
+      <img
+        alt="logo de l'objetheque de Cornouaille"
+        src="Assets/img/logo.png"
+      />
+    </div>
+    <div class="widgetFooter">
+      <a
+        href="https://www.facebook.com/Cornouaille/"
+        target="_blank"
+        class="scaleUpHover"
+        ><img
+          alt="icône/lien vers la page Facebook"
+          class="widgetReseau"
+          src="Assets/svg/Facebook_iconW.svg"
+        /></a
+      >
+      <a
+        href="https://www.instagram.com/cornouaille/"
+        target="_blank"
+        class="scaleUpHover"
+        ><img
+          alt="icône/lien vers la page Instagram"
+          class="widgetReseau"
+          src="Assets/svg/instagram-social-mediaW.svg"
+        /></a
+      >
+      <a
+        href="https://www.linkedin.com/cornouaille/"
+        target="_blank"
+        class="scaleUpHover"
+        ><img
+          alt="icône/lien vers la page Linkedin"
+          class="widgetReseau"
+          src="Assets/svg/linkedinW.svg"
+        /></a
+      >
+      <a
+        href="mailto:objethequecornouaille@gmail.com"
+        onclick="window.open(this.href); return false;"
+        target="_blank"
+        class="scaleUpHover"
+        ><img
+          alt="icône/lien pour envoyer un mail à l'objetheque de Cornouaille"
+          id="boiteMail"
+          class="widgetReseau"
+          src="Assets/svg/mail4.svg"
+        /></a
+      >
+    </div>
+    <p class="sautDeLigne">S'abonner à la newsletter</p>
+  </div>
+  <nav class="MenuFooter" role="navigation">
+    <ul>
+      <li><a href="Catalogue.html">FAQ</a></li>
+      <li><a href="Catalogue.html">Contact</a></li>
+      <li><a href="Catalogue.html">Presse</a></li>
+      <li><a href="Catalogue.html">Mentions légales</a></li>
+      <li><a href="Catalogue.html">Conditions générales</a></li>
+      <li><a href="Catalogue.html">Politique de confidentialité</a></li>
+      <li><a href="Catalogue.html">Cookies</a></li>
+    </ul>
+  </nav>
+</footer>

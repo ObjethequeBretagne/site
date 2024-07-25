@@ -1,0 +1,63 @@
+<div class="compteurs moon">
+  <div>
+    <div class="counter"></div>
+    <p class="valeurCounter">Membres actifs</p>
+  </div>
+  <div>
+    <img
+      class="etoilesCompteur star"
+      src="Assets/svg/etoiles.svg"
+      alt="étoiles près du compteur"
+      style="float: right;"
+    />
+    <div class="counter1"></div>
+    <p class="valeurCounter">Objets empruntés en 2024</p>
+  </div>
+  <div>
+    <div class="counter2"></div>
+    <p class="valeurCounter">Achats évités</p>
+  </div>
+  <script>
+    const counterElement = document.querySelector(".counter") as HTMLElement;
+    let counter = 0;
+
+    function updateCounter() {
+      counterElement.textContent = counter.toString();
+      counter++;
+
+      if (counter <= 57) {
+        setTimeout(updateCounter, 1);
+      }
+    }
+
+    updateCounter();
+
+    const counterElement1 = document.querySelector(".counter1") as HTMLElement;
+    let counter1 = 0;
+
+    function updateCounter1() {
+      counterElement1.textContent = counter1.toString();
+      counter1++;
+
+      if (counter1 <= 1000) {
+        setTimeout(updateCounter1, 1);
+      }
+    }
+
+    updateCounter1();
+
+    const counterElement2 = document.querySelector(".counter2") as HTMLElement;
+    let counter2 = 0;
+
+    function updateCounter2() {
+      counterElement2.textContent = counter2.toString();
+      counter2++;
+
+      if (counter2 <= 348) {
+        setTimeout(updateCounter2, 1);
+      }
+    }
+
+    updateCounter2();
+  </script>
+</div>

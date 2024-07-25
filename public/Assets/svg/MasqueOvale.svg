@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="866" height="815" viewBox="0 0 866 815">
+  <defs>
+    <filter id="Tracé_142" x="48.525" y="80.748" width="584.949" height="728.505" filterUnits="userSpaceOnUse">
+      <feOffset dy="28" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#ff7001" flood-opacity="0.588"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-Plan_de_travail_3">
+      <rect width="866" height="815"/>
+    </clipPath>
+  </defs>
+  <g id="Plan_de_travail_3" data-name="Plan de travail – 3" clip-path="url(#clip-Plan_de_travail_3)">
+    <rect width="866" height="815" fill="rgba(255,255,255,0)"/>
+    <path id="Tracé_140" data-name="Tracé 140" d="M-2356.22,5522.419c4.616-98.956-2.6-157.39-45.526-226.329s-106.661-175.6-256.246-140.48-136.578,176.9-150.886,277.058-29.8,188.608,36.538,265.352,183.288,87.15,283.445,49.428S-2360.837,5621.374-2356.22,5522.419Z" transform="matrix(0.985, 0.174, -0.174, 0.985, 3903.665, -4523.798)"/>
+  </g>
+</svg>

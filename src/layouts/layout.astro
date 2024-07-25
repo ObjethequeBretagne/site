@@ -1,0 +1,76 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Bibliothèque d'objets à Quimper" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="Assets/img/illuPresa2.png" />
+    <link type="text/css" rel="stylesheet" href="objetheque.css" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const checkbox = document.getElementById(
+          "hamburgerMenuToggle"
+        ) as HTMLInputElement;
+        const navWrapper = document.getElementById("navigationWrapper");
+
+        // Fermer automatiquement le menu après avoir cliqué sur un lien
+        document
+          .querySelectorAll("#navigationWrapper ul li")
+          .forEach((item) => {
+            item.addEventListener("click", () => {
+              checkbox.checked = false;
+              navWrapper?.classList.remove("active");
+            });
+          });
+
+        // ferme le menu en cas de rafraichissement de la page
+        window.addEventListener("beforeunload", (event) => {
+          checkbox.checked = false;
+          navWrapper?.classList.remove("active");
+        });
+
+        // Écouteur d'évènements attaché à "change" pour checkbox
+        checkbox.addEventListener("change", () => {
+          if (checkbox.checked) {
+            navWrapper?.classList.add("active");
+          } else {
+            navWrapper?.classList.remove("active");
+          }
+        });
+      });
+
+      const detailsElements = document.querySelectorAll("details");
+
+      detailsElements.forEach((detailsElement) => {
+        detailsElement.addEventListener("click", () => {
+          detailsElements.forEach((otherDetailsElement) => {
+            if (
+              otherDetailsElement !== detailsElement &&
+              otherDetailsElement.open
+            ) {
+              otherDetailsElement.removeAttribute("open");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
