@@ -257,7 +257,7 @@ header a {
   background-color: var(--primary-color);
   border-radius: 30px;
   color: var(--light-text-color);
-  font-size: large;
+  font-size: clamp(1em, 110%, 1.2em);
   padding: 10px;
 }
 #boutonCatalogue{
