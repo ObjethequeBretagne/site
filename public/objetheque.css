@@ -1,28 +1,28 @@
 @font-face {
   font-family: 'Muli';
-  src: url('Assets/polices/Muli-SemiBold.ttf') format('truetype');
+  src: url('assets/polices/Muli-SemiBold.ttf') format('truetype');
   font-style: normal;
 }
 @font-face {
   font-family: 'Muli';
-  src: url('Assets/polices/Muli-Italic/muli/Muli-SemiBoldItalic.ttf') format('truetype');
+  src: url('assets/polices/Muli-Italic/muli/Muli-SemiBoldItalic.ttf') format('truetype');
   font-style: italic;
 }
 
 @font-face {
   font-family: 'Muli';
-  src: url('Assets/polices/Muli-Bold/muli/Muli-ExtraBold.ttf') format('truetype');
+  src: url('assets/polices/Muli-Bold/muli/Muli-ExtraBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'Ebrima';
-  src: url('Assets/polices/Ebrima/ebrima.ttf');
+  src: url('assets/polices/Ebrima/ebrima.ttf');
   font-style: normal;
 }
 @font-face {
   font-family: 'EbrimaB';
-  src: url('Assets/polices/Ebrima/ebrima-bold.ttf');
+  src: url('assets/polices/Ebrima/ebrima-bold.ttf');
   font-style: bold;
 }
 
@@ -141,9 +141,6 @@ form{
 }
 
 /* "fonctions" */
-.sautDeLigne{
-  margin-bottom: 1em;
-}
 
 .textePlusClair{
   color: var(--secondary-color);
@@ -428,7 +425,7 @@ header a {
 
 /*DEBUT BANDEAU PRESENTATION*/
 .presentation {
-  background-image: url("Assets/webp/background/boisClairHorizontal.webp");
+  background-image: url("assets/img/tinywow_boisClairHorizontal_60978091.jpg");
   background-size: cover;
   display: flex;
   flex-wrap: wrap;
@@ -486,16 +483,6 @@ header a {
   animation: translateUp 0.32s ease-in-out;
 }
 /*FIN bandeau d'acceuil*/
-
-#tableauProg {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 4vw;
-}
-#tableauProg img {
-  width: 100%;
-  max-width:1000px;
-}
 
 #gmap {
   display: flex;
@@ -600,27 +587,6 @@ header a {
 .photoTexte p{
   width:60vw
 }
-
-.compteurs {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-block: 60px;
-  padding-inline: 10%;
-  font-size: max(8vw, 50px);
-  font-weight: 600;
-  text-align: center;
-  color: var(--dark-text-color);
-}
-.valeurCounter{
-  font-size: 0.24em;
-  color:var(--secondary-color)
-}
-.etoilesCompteur{
-  transform: translateY(-0.28em) translateX(0.8em);
-  height: max(0.8em, 3vw);
-}
-
 
 /* aperçu catalogue */
 .titreCatalogue{

@@ -6,9 +6,8 @@
   <div>
     <img
       class="etoilesCompteur star"
-      src="Assets/svg/etoiles.svg"
+      src="assets/svg/etoiles.svg"
       alt="étoiles près du compteur"
-      style="float: right;"
     />
     <div class="counter1"></div>
     <p class="valeurCounter">Objets empruntés en 2024</p>
@@ -17,6 +16,28 @@
     <div class="counter2"></div>
     <p class="valeurCounter">Achats évités</p>
   </div>
+  <style>
+    .compteurs {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-block: 60px;
+      padding-inline: 10%;
+      font-size: max(8vw, 50px);
+      font-weight: 600;
+      text-align: center;
+      color: var(--dark-text-color);
+    }
+    .valeurCounter {
+      font-size: 0.24em;
+      color: var(--secondary-color);
+    }
+    .etoilesCompteur {
+      transform: translateY(-0.28em) translateX(0.8em);
+      height: max(0.8em, 3vw);
+      float: right;
+    }
+  </style>
   <script>
     const counterElement = document.querySelector(".counter") as HTMLElement;
     let counter = 0;
