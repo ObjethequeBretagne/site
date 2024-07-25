@@ -685,6 +685,9 @@ header a {
   display: block;
   margin-block: 15px;
 }
+.raccourcisCatalogue a:hover{
+  color: var(--secondary-color);
+}
 @media screen and (max-width: 816px) {
   .raccourcisCatalogue {
     margin-inline: 10%;
