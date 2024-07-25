@@ -299,7 +299,8 @@ header a {
     padding-inline:0px;
     justify-content: center;
     overflow:unset;
-    max-width: 4vw;
+    max-width: 150px;
+    font-size: 4vw;
   }
 }
 
