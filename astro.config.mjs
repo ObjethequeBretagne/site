@@ -4,4 +4,10 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
     site : "https://objethequebretagne.github.io"
 });
+{
+  build: {
+    // Exemple : Générer `page.html` au lieu de `page/index.html` pendant la construction.
+    format: 'file'
+  }
+}
 
