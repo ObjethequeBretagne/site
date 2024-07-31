@@ -1,0 +1,88 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Comment ça marche ?">
+  <main>
+    <div class="headerFix"></div>
+    <h2 class="h2HautDePage">
+      <span class="ancre" id="H200">Devenir bénévole</span>
+      <p class="sousTexteH2">Les types de mission</p>
+    </h2>
+    <section class="missionsBenev">
+      <details class="missionBenev">
+        <summary>Accueil</summary>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
+          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
+          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
+          necessitatibus quod commodi assumenda. Totam?
+        </p>
+      </details>
+      <details class="missionBenev">
+        <summary>Réparation</summary>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
+          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
+          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
+          necessitatibus quod commodi assumenda. Totam?
+        </p>
+      </details>
+      <details class="missionBenev">
+        <summary>Comptabilité</summary>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
+          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
+          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
+          necessitatibus quod commodi assumenda. Totam?
+        </p>
+      </details>
+      <details class="missionBenev">
+        <summary>Communication</summary>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
+          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
+          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
+          necessitatibus quod commodi assumenda. Totam?
+        </p>
+      </details>
+      <div class="benev">
+        <img
+          alt="photo d'un bènèvole en pleine action"
+          id="illuBenevole"
+          src="assets/img/illuPresa2.png"
+        />
+        <div class="boutonTelecharger">
+          <a class="lienTelecharger" href="Compte.html">
+            <p>
+              Télécharger<img
+                class="imgTelecharger"
+                src="assets/img/icon_catalogue.png"
+              />
+            </p>
+          </a>
+        </div>
+      </div>
+      <h2 class="h2HautDePage">
+        <span class="ancre" id="H200">Devenir bénévole</span>
+        <p class="sousTexteH2">Les types de mission</p>
+      </h2>
+      <form action="/submit_form" method="post">
+        <div style="display: flex; gap: 4px; padding-block: 10px;">
+          <label for="lname">Nom</label><br />
+          <input type="text" id="lname" name="lname" /><br />
+          <label for="email">Email</label><br />
+          <input type="email" id="email" name="email" /><br />
+        </div>
+        <p>Avez-vous déjà utilisé notre service ?</p>
+        <input type="radio" id="yes" name="service_used" value="yes" />
+        <label for="yes">Oui</label><br />
+        <input type="radio" id="no" name="service_used" value="no" />
+        <label for="no">Non</label><br />
+        <label for="message">Message :</label><br />
+        <textarea id="message" name="message"></textarea><br />
+        <input type="submit" value="Envoyer" />
+      </form>
+    </section>
+  </main>
+</Layout>
