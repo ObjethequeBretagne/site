@@ -70,18 +70,18 @@
 :root {
   --primary-color: #ff9900;
   --secondary-color: #108a9d;
-  --accent-color: #1e90ff;
   --background-color: #FFFeFe;
-  --dark-text-color: #095c5c;
   --grey-background: rgba(231, 231, 231, 0.76);
+  --dark-text-color: #095c5c;
   --grey-text-color: rgb(97, 97, 97);
   --light-text-color: #FFFFFF;
   --dark-shadow-color:rgba(146, 146, 146, 0.5);
   --gold-shadow-color:#fff2b9e3;
   --wood-shadow-color:#FFB70352;
-  --tailleScroller: 600px;
   --marginLeft: 10%;
   --marginBlock: 60px;
+  --paddingTopH2Small: 60px;
+  --paddingTopH2Big: 300px;
 }
 
 *,*::before,*::after {
@@ -119,6 +119,7 @@ h2{
   margin-left: 6%;
   color: var(--dark-text-color);
 }
+
 h3{
   font-size: 20px;
   margin-inline: var(--marginLeft);
@@ -144,6 +145,14 @@ form{
 
 .textePlusClair{
   color: var(--secondary-color);
+}
+
+.h2PaddingTopSmall {
+  padding-top: var(--paddingTopH2Small);
+}
+
+.h2PaddingTopBig {
+  padding-top: var(--paddingTopH2Big);
 }
 
 .sousTexteH2{
@@ -739,10 +748,6 @@ header a {
 /*FIN FOOTER */
 
 /*DEBUT page "à propos"*/
-
-.h2HautDePage{
-  padding-top: 60px;
-}
 
 .nosValeurs{
   display: flex;
