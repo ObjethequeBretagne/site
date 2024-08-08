@@ -1,10 +1,10 @@
 ---
 import Layout from "../layouts/layout.astro";
+import InfiniteScroller from "../components/infinite-scroller.astro";
 ---
 
 <Layout title="À propos">
   <main>
-    <div class="headerFix"></div>
     <h2 class="h2PaddingTopSmall">
       <span class="ancre" id="H200">Nos valeurs</span>
       <p class="sousTexteH2">An deiziadoù da zont !</p>
@@ -87,84 +87,7 @@ import Layout from "../layouts/layout.astro";
       Nos partenaires
       <p class="sousTexteH2">Hor c'hevelerien</p>
     </h2>
-    <section class="infiniteScroller moon">
-      <div class="star partenaires" style="--n:1">
-        <a href="https://www.francebenevolat.org/" target="_blank"
-          ><img
-            alt="logo/lien vers France Bènèvolat"
-            src="assets/webp/partenaires/institutionelles/FranceB.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires" style="--n:2">
-        <a href="https://www.associations.gouv.fr/FDVA.html" target="_blank"
-          ><img
-            alt="logo/lien vers FDVA"
-            src="assets/webp/partenaires/institutionelles/fvda.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires" style="--n:3">
-        <a
-          href="https://www.quimper-bretagne-occidentale.bzh/1827-le-projet-gare-parc.htm"
-          target="_blank"
-          ><img
-            alt="logo/lien vers site de la ville de Quimper"
-            src="assets/webp/partenaires/institutionelles/quimper.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires" style="--n:4">
-        <a href="https://www.quimper-bretagne-occidentale.bzh/" target="_blank"
-          ><img
-            alt="logo/lien vers site de la ville de Quimper"
-            src="assets/webp/partenaires/institutionelles/quimperbretagne.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires" style="--n:5">
-        <a href="https://www.quimper.bzh/" target="_blank"
-          ><img
-            alt="logo/lien vers site de la ville de Quimper"
-            src="assets/webp/partenaires/institutionelles/quimperlogo.webp"
-          /></a
-        >
-      </div>
-    </section>
-    <section class="infiniteScroller moon">
-      <div class="star partenaires partenairesR" style="--n:1">
-        <a href="https://www.la29emedimension.fr/" target="_blank"
-          ><img
-            alt="logo/lien vers site de l'association '29ème dimension'"
-            src="assets/webp/partenaires/privé/29D.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires partenairesR" style="--n:2">
-        <a href="https://www.ecologic-france.com/" target="_blank"
-          ><img
-            alt="logo/lien vers site de l'association EcoLogic"
-            src="assets/webp/partenaires/privé/EcoLogic.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires partenairesR" style="--n:3">
-        <a href="https://tag.bzh/" target="_blank"
-          ><img
-            alt="logo/lien vers site de l'association tag29"
-            src="assets/webp/partenaires/privé/tag29.webp"
-          /></a
-        >
-      </div>
-      <div class="star partenaires partenairesR" style="--n:4">
-        <a href="https://treuzkemm.org/"
-          ><img
-            alt="logo/lien vers site de l'association Treuzkemm"
-            src="assets/webp/partenaires/privé/Treuzkemm.webp"
-          /></a
-        >
-      </div>
-    </section>
+    <InfiniteScroller />
     <h2 class="ancre" id="H203">
       Les médias en parlent
       <p class="sousTexteH2">Ar mediaoù a ra anv eus se</p>

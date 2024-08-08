@@ -1,0 +1,176 @@
+<section class="infiniteScroller moon">
+  <div class="star partenaires" style="--n:1">
+    <a href="https://www.francebenevolat.org/" target="_blank"
+      ><img
+        alt="logo/lien vers France Bènèvolat"
+        src="assets/webp/partenaires/institutionelles/franceb.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:2">
+    <a href="https://www.associations.gouv.fr/FDVA.html" target="_blank"
+      ><img
+        alt="logo/lien vers FDVA"
+        src="assets/webp/partenaires/institutionelles/fvda.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:3">
+    <a
+      href="https://www.quimper-bretagne-occidentale.bzh/1827-le-projet-gare-parc.htm"
+      target="_blank"
+      ><img
+        alt="logo/lien vers site de la ville de Quimper"
+        src="assets/webp/partenaires/institutionelles/quimper.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:4">
+    <a href="https://www.quimper-bretagne-occidentale.bzh/" target="_blank"
+      ><img
+        alt="logo/lien vers site de la ville de Quimper"
+        src="assets/webp/partenaires/institutionelles/quimperbretagne.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:5">
+    <a href="https://www.quimper.bzh/" target="_blank"
+      ><img
+        alt="logo/lien vers site de la ville de Quimper"
+        src="assets/webp/partenaires/institutionelles/quimperlogo.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:6">
+    <a href="https://entrepreneuriat-quartiers-2030.fr/" target=" _blank"
+      ><img
+        alt="logo/lien vers site de Quartiers 2030"
+        src="assets/webp/partenaires/institutionelles/quartiers2030.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:7">
+    <a href="https://quartiers2030.anct.gouv.fr/" target=" _blank"
+      ><img
+        alt="logo/lien vers site gouvernemental de Quartiers 2030"
+        src="assets/webp/partenaires/institutionelles/cmjn.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:8">
+    <a href="https://www.caf.fr/allocataires/caf-du-finistere" target=" _blank"
+      ><img
+        alt="logo/lien vers site de la CAF 29"
+        src="assets/webp/partenaires/institutionelles/caf.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires" style="--n:9">
+    <a href="https://www.finistere.fr/" target=" _blank"
+      ><img
+        alt="logo/lien vers site du finistère"
+        src="assets/webp/partenaires/institutionelles/finistere.webp"
+      /></a
+    >
+  </div>
+</section>
+<section class="infiniteScroller moon">
+  <div class="star partenaires partenairesR" style="--n:1">
+    <a href="https://www.la29emedimension.fr/" target="_blank"
+      ><img
+        alt="logo/lien vers site de l'association '29ème dimension'"
+        src="assets/webp/partenaires/privé/29D.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires partenairesR" style="--n:2">
+    <a href="https://www.ecologic-france.com/" target="_blank"
+      ><img
+        alt="logo/lien vers site de l'association EcoLogic"
+        src="assets/webp/partenaires/privé/EcoLogic.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires partenairesR" style="--n:3">
+    <a href="https://tag.bzh/" target="_blank"
+      ><img
+        alt="logo/lien vers site de l'association tag29"
+        src="assets/webp/partenaires/privé/tag29.webp"
+      /></a
+    >
+  </div>
+  <div class="star partenaires partenairesR" style="--n:4">
+    <a href="https://treuzkemm.org/"
+      ><img
+        alt="logo/lien vers site de l'association Treuzkemm"
+        src="assets/webp/partenaires/privé/Treuzkemm.webp"
+      /></a
+    >
+  </div>
+</section>
+<style>
+  .infiniteScroller {
+    --_nombrePartenaires: 9;
+    --_nombrePartenairesPrive: 4;
+    --_dureeAnimationPartenaires: 50s;
+    --_dimensionInfiniteScroller: 200px;
+    max-width: 1536px;
+    width: 100%;
+    overflow: hidden;
+    margin-inline: auto;
+    margin-block: var(--marginBlock);
+    height: var(--_dimensionInfiniteScroller);
+    mask-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 1) 20%,
+      rgba(0, 0, 0, 1) 80%,
+      rgba(0, 0, 0, 0)
+    );
+  }
+  .partenaires {
+    width: var(--_dimensionInfiniteScroller);
+    height: var(--_dimensionInfiniteScroller);
+    z-index: 1;
+    left: max(
+      calc(var(--_dimensionInfiniteScroller) * var(--_nombrePartenaires)),
+      100%
+    );
+    animation-name: scrollleft;
+    animation-duration: var(--_dureeAnimationPartenaires);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: calc(
+      var(--_dureeAnimationPartenaires) / var(--_nombrePartenaires) *
+        (var(--_nombrePartenaires) - var(--n)) * -1
+    );
+  }
+  .partenairesR {
+    right: max(
+      calc(var(--_dimensionInfiniteScroller) * var(--_nombrePartenairesPrive)),
+      100%
+    );
+    left: auto;
+    animation-name: scrollright;
+    animation-delay: calc(
+      var(--_dureeAnimationPartenaires) / var(--_nombrePartenairesPrive) *
+        (var(--_nombrePartenairesPrive) - var(--n)) * -1
+    );
+  }
+  .partenaires > a > img {
+    inline-size: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+
+  @keyframes scrollleft {
+    to {
+      left: calc(var(--_dimensionInfiniteScroller) * -1);
+    }
+  }
+  @keyframes scrollright {
+    to {
+      right: calc(var(--_dimensionInfiniteScroller) * -1);
+    }
+  }
+</style>

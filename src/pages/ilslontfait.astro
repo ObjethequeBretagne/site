@@ -15,6 +15,7 @@ import Layout from "../layouts/layout.astro";
       <ul>
         <li>
           <a
+            class="soulignementOrange"
             href="https://www.instagram.com/objetheque_cornouaille/"
             target="_blank">Instagram</a
           >
@@ -22,6 +23,7 @@ import Layout from "../layouts/layout.astro";
         <li>06 25 36 14 25</li>
         <li>
           <a
+            class="soulignementOrange"
             href="mailto:objethequecornouaille@gmail.com"
             onclick="window.open(this.href); return false;"
             target="_blank">objetheque@gmail.com</a
@@ -29,6 +31,7 @@ import Layout from "../layouts/layout.astro";
         </li>
         <li>
           <a
+            class="soulignementOrange"
             href="https://www.facebook.com/ObjethequeCornouaille/"
             target="_blank">Facebook</a
           >
@@ -55,20 +58,5 @@ import Layout from "../layouts/layout.astro";
   #montrez ul li {
     list-style: disc;
     margin-block: 5px;
-  }
-  #montrez ul li a {
-    color: var(--dark-text-color);
-    background: linear-gradient(
-        to top,
-        var(--primary-color) 0%,
-        var(--primary-color) 10%,
-        transparent 10.01%
-      )
-      no-repeat;
-    background-size: 0 100%;
-    transition: background-size 0.2s ease; /* Définissez la durée et la fonction d'interpolation de l'animation */
-  }
-  #montrez ul li a:hover {
-    background-size: 100% 100%;
   }
 </style>
