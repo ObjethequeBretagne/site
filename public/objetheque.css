@@ -903,7 +903,7 @@ header a {
   max-width: 95%;
   margin-inline: auto;
   justify-content: center;
-  margin-block: calc(var(--marginBlock) / 2);
+  margin-block: var(--marginBlock);
   border-radius: 20px;
 }
 
@@ -930,7 +930,7 @@ header a {
 .telecharger p{
   font-size: calc(max(14px, 1.4vw) * 0.7);
   color: var(--grey-text-color);
-  background: linear-gradient(to top, var(--secondary-color) 0%, var(--secondary-color) 10%, transparent 10.01%) no-repeat;
+  background: linear-gradient(to top, var(--secondary-color) 0%, var(--secondary-color) 4%, transparent 4.01%) no-repeat;
   background-size: 0% 100%;
   transition: background-size .2s ease;
   /* Définissez la durée et la fonction d'interpolation de l'animation */
