@@ -185,7 +185,7 @@ form{
 }
 
 .headerFix{
-  height: 125px;
+  height: 115px;
 }
 .ancre{
   scroll-margin-top: 175px;
@@ -913,33 +913,6 @@ header a {
 
 #introDocsUtiles p {
   margin-right: 35%;
-}
-.boutonTelecharger{
-  display: flex;
-  justify-content: center;
-}
-.boutonTelecharger a{
-  transition: scale .13s ease-out;/* Définissez la durée et la fonction d'interpolation de l'animation */
-}
-.boutonTelecharger a:hover {
-  scale: 1.1;
-}
-.boutonTelecharger p {
-  justify-content: space-between;
-  display: flex;
-  gap: 8%;
-  background-color: var(--primary-color);
-  border-radius: 30px;
-  color: var(--light-text-color);
-  font-size: large;
-  padding-block: 10px;
-  padding-inline: 20px;
-  margin-block: 15px;
-  place-content: center;
-}
-.imgTelecharger {
-  max-height: 20px;
-  transform: translateY(2px);
 }
 
 #DocsUtiles{
