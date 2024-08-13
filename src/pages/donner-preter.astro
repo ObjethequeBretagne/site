@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Comment ça marche ?">
+  <main>
+    <h2 class="h2PaddingTopSmall">Je donne je prête</h2>
+    <section class="donObjet">
+      <div>
+        <img style="height: 50px;" src="assets/img/illuPresa2.png" alt="" />
+        <p>Don d'objet</p>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+          nemo tenetur ipsa iure hic accusantium! Sed velit corrupti animi!
+          Iusto sit, ducimus iure minus quia officiis inventore earum
+          asperiores! Itaque?
+        </p>
+        <ul class="blocGrisListe">
+          <li>Des objets en état de marche</li>
+          <li>Des objets non-fonctionelle mais réparé</li>
+        </ul>
+      </div>
+    </section>
+    <section class="donObjet">
+      <div>
+        <img style="height: 50px;" src="assets/img/illuPresa2.png" alt="" />
+        <p>Je prête un objet</p>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+          nemo tenetur ipsa iure hic accusantium! Sed velit corrupti animi!
+          Iusto sit, ducimus iure minus quia officiis inventore earum
+          asperiores! Itaque?
+        </p>
+        <ul class="blocGrisListe">
+          <li>Des objets en état de marche</li>
+          <li>Des objets non-fonctionelle mais réparé</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</Layout>
+<style>
+  .donObjet {
+    display: flex;
+    margin-left: 2%;
+    margin-block: var(--marginBlock);
+    gap: 1%;
+  }
+  .blocGrisListe {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    margin-inline: var(--marginLeft);
+    margin-top: 2rem;
+    padding-inline: 2rem;
+    padding-block: 1rem;
+    width: clamp(220px, 50%, 23rem);
+    background: var(--grey-background);
+    border-radius: 5px;
+  }
+  .blocGrisListe li {
+    list-style: disc;
+  }
+</style>
