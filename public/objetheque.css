@@ -794,19 +794,29 @@ header a {
   gap: 0.4rem;
   padding: var(--_spacer);
   background: var(--wood-shadow-color);
-  border-radius: 5%;
+  border-radius: 20px;
   box-shadow: 2px 4px 5px var(--gold-shadow-color);
 }
 
-.media-element > img{
+.media-element div img{
   inline-size: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
-  border-radius: 5%;
+  border-radius: 20px;
   max-height: 400px;
+  border: 2px solid white;
 }
-.media-element > p{
+.media-element div{
+  border-radius: 20px;
+  background: var(--secondary-color);
+  padding: 6px;
+  border: 2px solid white;
+}
+.infos{
   margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  color: var(--light-text-color);
 }
 
 /* fin horizontal slider */
