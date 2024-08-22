@@ -1,21 +1,26 @@
-<section id="catalogueMyTurn" aria-label="catalogue des objets">
+<section id="inscriptionMyTurn" aria-label="catalogue des objets">
   <iframe
     src="https://objethequecornouaille.myturn.com/library/createUser/create?requestedFormat="
-    width="contain"
-    height="800px"></iframe>
+    width="90%"
+    height="800px"
+    >
+    </iframe>
   <script
     id="myturn-embed-script"
     src="https://objethequecornouaille.myturn.com/library/assets/ui/myturn-embed/myturn-embed.js"
   ></script>
 </section>
 <style>
-  #catalogueMyTurn {
+  #inscriptionMyTurn {
     display: flex;
     justify-content: center;
     margin-bottom: 4vw;
   }
+  #inscriptionMyTurn iframe {
+    max-width: 600px;
+  }
   @media screen and (max-width: 816px) {
-    #catalogueMyTurn {
+    #inscriptionMyTurn {
       justify-content: flex-start;
       margin-left: 1%;
     }
