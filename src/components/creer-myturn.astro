@@ -1,28 +1,45 @@
-<section id="inscriptionMyTurn" aria-label="catalogue des objets">
-  <iframe
+<section id="inscriptionMyTurn" aria-label="inscription myturn">
+    <details class="detailsAdhesion">
+        <summary>inscription via myturn.com</summary>
+        <iframe
     src="https://objethequecornouaille.myturn.com/library/createUser/create?requestedFormat="
-    width="90%"
+    width="100%"
     height="800px"
     >
     </iframe>
+    </details>
+  
   <script
     id="myturn-embed-script"
     src="https://objethequecornouaille.myturn.com/library/assets/ui/myturn-embed/myturn-embed.js"
   ></script>
 </section>
 <style>
-  #inscriptionMyTurn {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 4vw;
-  }
-  #inscriptionMyTurn iframe {
-    max-width: 600px;
-  }
-  @media screen and (max-width: 816px) {
     #inscriptionMyTurn {
-      justify-content: flex-start;
-      margin-left: 1%;
+        margin-bottom: 4vw;
     }
-  }
+    .detailsAdhesion{
+        background-color: white;
+        margin-left: calc(var(--marginBlock)*2);
+        padding-inline: 1%;
+        padding-block: 20px;
+        width: 90%;
+        max-width: 600px;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.1);
+    }
+    .detailsAdhesion summary {
+        color: var(--secondary-color);
+        font-size: 20px;
+        font-weight: 900;
+    }
+    .detailsAdhesion iframe{
+        margin-top: 1rem;
+    }
+  
+    @media screen and (max-width: 816px) {
+        .detailsAdhesion {
+        margin-left: 2%;
+    }
+    }
 </style>

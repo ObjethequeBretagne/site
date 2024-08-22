@@ -966,11 +966,9 @@ header a {
 /* FIN A PROPOS */
 
 /* DEBUT page DEVENIR BENEVOLE */
-.missionsBenev{
-  margin-block: var(--marginBlock);
-}
 .missionBenev{
   --_spaceLeft:50px;
+  margin-block: var(--marginBlock);
   background-color: white;
   width: 90%;
   max-width: 95%;
