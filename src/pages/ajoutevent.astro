@@ -1,0 +1,76 @@
+---
+import { databases } from "../lib/appwrite";
+import Layout from "../layouts/layout.astro";
+
+if (Astro.request.method === "POST") {
+  const formData = await Astro.request.formData();
+  const data = {
+    joursemaine: formData.get("joursemaine"),
+    journbr: formData.get("journbr"),
+    mois: formData.get("mois"),
+    content: formData.get("content"),
+  };
+}
+---
+
+<Layout title="Ajout événement">
+  <main>
+    <h2 class="h2PaddingTopSmall">Ajouter un événement</h2>
+    <form method="POST">
+      <label>
+        Jour de la semaine:<br />
+        <input
+          type="text"
+          id="joursemaine"
+          name="joursemaine"
+          required
+          minlength="5"
+          maxlength="8"
+        />
+      </label>
+      <label>
+        Numéro du jour :<br />
+        <input type="text" id="journbr" name="journbr" required maxlength="2" />
+      </label>
+      <label>
+        mois :<br />
+        <input type="text" id="mois" name="mois" required minlength="3" />
+      </label>
+      <label>
+        description événement (préciser heure de début et fin)<br />
+        <input type="text" id="content" name="content" required />
+      </label>
+      <button>Soumettre</button>
+    </form>
+    <form method="POST">
+      <label>
+        Jour de la semaine:<br />
+        <input
+          type="text"
+          id="joursemaine"
+          name="joursemaine"
+          required
+          minlength="3"
+          maxlength="9"
+        />
+      </label>
+      <label>
+        Date de l'événement:<br />
+        <input type="date" id="date" name="date" required />
+      </label>
+      <label>
+        Heure de début:<br />
+        <input type="time" id="heuredebut" name="heuredebut" required />
+      </label>
+      <label>
+        Heure de fin:<br />
+        <input type="time" id="heurefin" name="heurefin" required />
+      </label>
+      <label>
+        Description de l'événement:<br />
+        <textarea id="description" name="description" required></textarea>
+      </label>
+      <button>Soumettre</button>
+    </form>
+  </main>
+</Layout>

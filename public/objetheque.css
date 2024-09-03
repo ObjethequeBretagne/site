@@ -968,27 +968,34 @@ header a {
 /* DEBUT page DEVENIR BENEVOLE */
 .missionBenev{
   --_spaceLeft:50px;
-  margin-block: var(--marginBlock);
+  --_spaceBlock:20px;
   background-color: white;
-  width: 90%;
-  max-width: 95%;
-  margin-inline: auto;
-  margin-block: 20px;
-  padding-block: 20px;
+  width: clamp(400px, 90%, 900px);
+  margin-left: 8%;
+  margin-right: 1em;
+  margin-block: var(--_spaceBlock);
+  padding-block: var(--_spaceBlock);
   border-radius: 20px 20px 0 0;
   box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
 }
 .missionBenev summary {
+  text-transform: capitalize;
   font-size: 20px;
-  color: var(--secondary-color);
   font-weight: 900;
+  color: var(--secondary-color);
   padding-left: var(--_spaceLeft);
 }
 .missionBenev p{
   font-size: 14px;
   color: var(--dark-text-color);
   padding-left: var(--_spaceLeft);
-  margin-block: 20px;
+  margin-block: var(--_spaceBlock);
+}
+.missionBenev img {
+  padding-left: 8%;
+  margin-block: var(--_spaceBlock);
+  max-width: 878px;
 }
 
 .benev{

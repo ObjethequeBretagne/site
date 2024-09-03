@@ -5,4 +5,4 @@ export const databases = new Databases(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject('66cd9f37000126b2721f');
+    .setProject('66cda1fd003cb7d6269e');

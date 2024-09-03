@@ -3,6 +3,7 @@ import Layout from "../layouts/layout.astro";
 import { databases } from "../lib/appwrite";
 import Counter from "../components/counter.astro";
 import Catalogue from "../components/myturncatalog.astro";
+import Videomp4 from "../components/videomp4.astro";
 ---
 
 <Layout title="Objetheque de Cornouaille">
@@ -88,6 +89,7 @@ import Catalogue from "../components/myturncatalog.astro";
         >
       </div>
     </section>
+    <Videomp4 />
     <section class="photoTexte wrapReverse">
       <img
         alt="photo en forme de bulle de l'intérieur du local de l'objetheque"
@@ -128,7 +130,7 @@ import Catalogue from "../components/myturncatalog.astro";
           grenier ? Ne les jetez pas ! L'Objethèque de Cornouaille est là pour
           vous aider à leur donner une seconde vie.
         </p>
-        <br/>
+        <br />
         <p class="textePlusClair">
           Nous organisons régulièrement des ateliers pratiques de réparation et
           de fabrication zéro déchet. Ensemble, nous pouvons réparer vos
@@ -137,7 +139,7 @@ import Catalogue from "../components/myturncatalog.astro";
           propres produits écologiques tels que des lingettes et des sacs à
           vrac.
         </p>
-        <br/>
+        <br />
         <p>
           Rejoignez-nous lors de nos prochains ateliers et découvrez comment
           vous pouvez contribuer à un mode de vie plus durable. Suivez notre

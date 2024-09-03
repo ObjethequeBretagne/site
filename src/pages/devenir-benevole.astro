@@ -5,46 +5,33 @@ import Layout from "../layouts/layout.astro";
 <Layout title="Comment ça marche ?">
   <main>
     <h2 class="h2PaddingTopSmall">
-      <span class="ancre" id="H200">Devenir bénévole</span>
+      <span>Devenir bénévole</span>
       <p class="sousTexteH2">Les types de mission</p>
     </h2>
-    <section class="missionsBenev">
+    <section style="margin-block: calc(var(--marginBlock)/2);">
       <details class="missionBenev">
-        <summary>Accueil</summary>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
-          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
-          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
-          necessitatibus quod commodi assumenda. Totam?
-        </p>
+        <summary>Accueil & Matériel</summary>
+        <img
+          alt="image avec schéma de description des missions du bénévole"
+          src="/assets/webp/mission-benev/mission-accueil-materiel.webp"
+        />
       </details>
       <details class="missionBenev">
-        <summary>Réparation</summary>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
-          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
-          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
-          necessitatibus quod commodi assumenda. Totam?
-        </p>
+        <summary>Communication & événement</summary>
+        <img
+          alt="image avec schéma de description des missions du bénévole"
+          src="/assets/webp/mission-benev/mission-communication-event.webp"
+        />
       </details>
       <details class="missionBenev">
-        <summary>Comptabilité</summary>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
-          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
-          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
-          necessitatibus quod commodi assumenda. Totam?
-        </p>
+        <summary>Comptabilité & Administration</summary>
+        <img
+          alt="image avec schéma de description des missions du bénévole"
+          src="/assets/webp/mission-benev/mission-compta-administration.webp"
+        />
       </details>
-      <details class="missionBenev">
-        <summary>Communication</summary>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque,
-          minima? Minima, ipsa saepe voluptatibus officia dolorum blanditiis
-          repellat dolorem beatae itaque! Vel ipsum nemo repellendus
-          necessitatibus quod commodi assumenda. Totam?
-        </p>
-      </details>
+    </section>
+    <section>
       <div class="benev">
         <img
           alt="photo d'un bènèvole en pleine action"
@@ -53,23 +40,25 @@ import Layout from "../layouts/layout.astro";
         />
         <div class="boutonTelecharger">
           <a class="telecharger" href="Compte.html">
-            <p>
-              Télécharger
-            </p>
+            <p>Télécharger</p>
           </a>
         </div>
       </div>
+    </section>
+    <section>
       <h2>
         <span class="ancre" id="H200">Rejoignez-nous !</span>
       </h2>
       <form action="/submit_form" method="post">
-        <div style="display: flex; gap: 4px; padding-block: 10px;">
+        <div
+          style="display: flex; gap: 4px; padding-block: 10px; flex-wrap: wrap;"
+        >
           <label for="lname">Nom</label><br />
           <input type="text" id="lname" name="lname" /><br />
           <label for="email">Email</label><br />
           <input type="email" id="email" name="email" /><br />
         </div>
-        <p>Avez-vous déjà utilisé notre service ?</p>
+        <p>Avez-vous déjà un abonement à l'objetheque ?</p>
         <input type="radio" id="yes" name="service_used" value="yes" />
         <label for="yes">Oui</label><br />
         <input type="radio" id="no" name="service_used" value="no" />

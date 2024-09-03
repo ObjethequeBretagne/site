@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/layout.astro";
 import CreationCompte from "../components/creer-myturn.astro";
-
 ---
 
 <Layout title="Adhésion particulier">
@@ -9,12 +8,45 @@ import CreationCompte from "../components/creer-myturn.astro";
     <h2 class="h2PaddingTopSmall">Adhésion particulier</h2>
     <section id="particulier">
       <p>
-        Vous pouvez consulter le catalogue à tout moment en cliquant sur  le bouton orange "Catalogue" <br/>
-        Pour <strong>emprunter</strong> un objet, il faut s'inscrire sur myturn.com, qui héberge notre catalogue :
+        Vous pouvez consulter le catalogue à tout moment en cliquant sur le
+        bouton orange "Catalogue" <br />
+        Pour <strong>emprunter</strong> un objet, il faut s'inscrire sur <a
+          class="soulignementOrange"
+          target="_blank"
+          href="https://objethequecornouaille.myturn.com/library/createUser/create?requestedFormat="
+          ><strong>myturn.com</strong></a
+        >, qui héberge notre catalogue.
       </p>
-      <br /><br />
+      <br />
+      <p>
+        Si vous possédez déjà un compte, cliquer sur le bouton orange "Mon
+        compte" vous ménera à la page de connexion.
+      </p>
+      <br />
+      <p>
+        Une fois <strong>connecté.e</strong> avec votre compte myturn, si vous ne
+        trouvez pas la page des options d'adhésion, <a
+          href="https://objethequecornouaille.myturn.com/library/myAccount/selectMembershipType"
+          class="soulignementOrange"><strong>suivez ce lien</strong></a
+        >
+      </p>
+      <br />
+      <br />
+      <p style="font-size: 1.25em;">
+        <strong>Les différents types d'adhésion :</strong>
+      </p>
+      <div id="tableauAdhesion">
+        <p><strong>Adhésion mensuelle</strong> (30 jours)</p>
+        <p><strong>Adhésion annuelle</strong></p>
+        <p>Tarif réduit*: 10€</p>
+        <p>Tarif réduit*: 30€</p>
+        <p><strong>Tarif normal:</strong> 20€</p>
+        <p><strong>Tarif normal:</strong> 60€</p>
+        <p>Tarif soutien: 30€</p>
+        <p>Tarif soutien: 90€</p>
+      </div>
+      <p>*Le tarif réduit s’adresse aux étudiants, demandeurs d’emploi, RSA.</p>
     </section>
-    <CreationCompte />
   </main>
   <style type="text/css">
     #particulier {
@@ -22,6 +54,29 @@ import CreationCompte from "../components/creer-myturn.astro";
       padding-left: 1rem;
       color: var(--dark-text-color);
       margin-block: 30px;
+    }
+    #particulier p a {
+      color: var(--dark-text-color);
+    }
+    #tableauAdhesion {
+      display: grid;
+      grid-template-columns: auto auto;
+      border: 1px solid var(--dark-text-color); /* Single border around the grid */
+      margin-block: calc(var(--marginBlock) / 2);
+      margin-inline: 1rem;
+    }
+    #tableauAdhesion p {
+      border-top: 1px solid var(--dark-text-color); /* Top border for all cells */
+      border-left: 1px solid var(--dark-text-color); /* Left border for all cells */
+      padding: 1em;
+      margin: 0;
+    }
+    /* Remove border from the first row's top and first column's left */
+    #tableauAdhesion p:nth-child(-n + 2) {
+      border-top: none; /* Remove top border from first row */
+    }
+    #tableauAdhesion p:nth-child(2n + 1) {
+      border-left: none; /* Remove left border from first column */
     }
   </style>
 </Layout>
