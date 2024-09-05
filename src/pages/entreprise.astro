@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Adhésion association/entreprise">
+  <main>
+    <h2 class="h2PaddingTopSmall">Adhésion association/entreprise</h2>
+    <section id="entreprise">
+      <p>
+        L’environnement est <strong>l’affaire de tous</strong>, nous sommes tous
+        impliqués pour permettre à chacun d’avoir accès à des outils/objets, de
+        réduire notre impact carbone, d’utiliser sans pour autant
+        posséder/stocker, pour cela, nous devons impulser un élan vers une
+        économie <strong>sociale</strong> et
+        <strong>solidaire</strong>.
+      </p>
+      <br />
+      <p>
+        Nous recherchons tout type d’objets de préférence de bonne qualité
+        (bricolage, jardinage, sport, camping, vidéo, son…)
+      </p>
+      <br />
+      <p class="textePlusClair">
+        Nous recherchons également un <strong
+          >partage de compétences techniques</strong
+        > dans l’entretien de tout type d’objets (couture, électronique, bois…)
+      </p>
+      <br />
+      <p>
+        Nous recherchons des <strong>points de collecte</strong> de façon à stocker
+        momentanément les objets réservés sur le site dans vos locaux. Cela permettra
+        de créer un maillage sur tout le territoire , <strong>réduire</strong> les
+        distances et <strong>faciliter</strong> l’accès aux objets.
+      </p>
+      <br />
+      <p class="textePlusClair">
+        Engagez-vous ou offrez un abonnement à vos collaborateurs !
+      </p>
+      <br />
+      <br />
+      <p style="font-size: 1.25em;">
+        <strong
+          >Deux modèles d'adhésion pour les associations/entreprises:</strong
+        >
+      </p>
+      <div id="tableauAdhesionAsso">
+        <p><strong>V1 (Sans salariés)</strong></p>
+        <p>60€/an</p>
+        <p>10% de réduction sur les abonnements individuels de ses membres</p>
+        <p><strong>V2 (Avec salariés)</strong></p>
+        <p>120€/an</p>
+        <p>10% de réduction sur les abonnements individuels de ses membres</p>
+      </div>
+    </section>
+    <section id="imgadhtemp">
+      <img class="imgCentre" src="assets/webp/adhtemp1.webp" alt="" />
+      <img class="imgCentre" src="assets/webp/adhtemp2.webp" alt="" />
+    </section>
+  </main>
+  <style type="text/css">
+    #entreprise {
+      margin-inline: clamp(5%, 2rem, 60%);
+      padding-left: 1rem;
+      color: var(--dark-text-color);
+      margin-block: 30px;
+    }
+    #entreprise p a {
+      color: var(--dark-text-color);
+    }
+    #tableauAdhesionAsso {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      border: 1px solid var(--dark-text-color); /* Single border around the grid */
+      margin-block: calc(var(--marginBlock) / 2);
+      margin-inline: 1rem;
+    }
+    #tableauAdhesionAsso p {
+      border-top: 1px solid var(--dark-text-color); /* Top border for all cells */
+      border-left: 1px solid var(--dark-text-color); /* Left border for all cells */
+      padding: 1em;
+      margin: 0;
+    }
+    /* Remove border from the first row's top and first column's left */
+    #tableauAdhesionAsso p:nth-child(-n + 3) {
+      border-top: none; /* Remove top border from first row */
+    }
+    #tableauAdhesionAsso p:nth-child(3n + 1) {
+      border-left: none; /* Remove left border from first column */
+    }
+
+    #imgadhtemp {
+      overflow-x: auto;
+      margin-bottom: 5em;
+    }
+    #imgadhtemp img {
+      min-width: 800px;
+    }
+  </style>
+</Layout>
