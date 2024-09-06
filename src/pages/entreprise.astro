@@ -29,7 +29,7 @@ import Layout from "../layouts/layout.astro";
       <p>
         Nous recherchons des <strong>points de collecte</strong> de façon à stocker
         momentanément les objets réservés sur le site dans vos locaux. Cela permettra
-        de créer un maillage sur tout le territoire , <strong>réduire</strong> les
+        de créer un maillage sur tout le territoire, <strong>réduire</strong> les
         distances et <strong>faciliter</strong> l’accès aux objets.
       </p>
       <br />
@@ -39,19 +39,31 @@ import Layout from "../layouts/layout.astro";
       <br />
       <br />
       <p style="font-size: 1.25em;">
-        <strong
-          >Deux modèles d'adhésion pour les associations/entreprises:</strong
+        <strong>Modèles d'adhésion pour les associations/entreprises:</strong>
+      </p>
+    </section>
+    <section id="tableauAdhesionAsso">
+      <p>
+        <strong style="color: var(--secondary-color);">Association / Auto-entrepreneur</strong>
+      </p>
+      <p>sans salarié : 60€</p>
+      <p>avec salariés : 120€<span>*</span></p>
+      <p>
+        <strong style="color: var(--secondary-color);">Entreprise / Collectivité / Établissement d'enseignement</strong
         >
       </p>
-      <div id="tableauAdhesionAsso">
-        <p><strong>V1 (Sans salariés)</strong></p>
-        <p>60€/an</p>
-        <p>10% de réduction sur les abonnements individuels de ses membres</p>
-        <p><strong>V2 (Avec salariés)</strong></p>
-        <p>120€/an</p>
-        <p>10% de réduction sur les abonnements individuels de ses membres</p>
-      </div>
+      <p>
+        moins de 10 salariés :<br />Option 1 : 200€<br />Option 2 : 500€<span
+          >*</span>
+      </p>
+      <p>plus de 10 salariés : sur devis<span>*</span></p>
     </section>
+    <p
+      style="margin-inline: calc(6% + 1rem); margin-bottom: var(--marginBlock); margin-top: 0.5em; color:var(--secondary-color)"
+    >
+      *permet l'emprunt pour les besoins de la structure et pour tous les
+      salariés à titre privé
+    </p>
     <section id="imgadhtemp">
       <img class="imgCentre" src="assets/webp/adhtemp1.webp" alt="" />
       <img class="imgCentre" src="assets/webp/adhtemp2.webp" alt="" />
@@ -71,14 +83,26 @@ import Layout from "../layouts/layout.astro";
       display: grid;
       grid-template-columns: auto auto auto;
       border: 1px solid var(--dark-text-color); /* Single border around the grid */
-      margin-block: calc(var(--marginBlock) / 2);
-      margin-inline: 1rem;
+      margin-top: calc(var(--marginBlock) / 2);
+      max-width: 700px;
+      margin-inline: calc(6% + 1rem);
     }
+
+    @media screen and (max-width: 700px) {
+      #tableauAdhesionAsso {
+        margin-inline: 1%;
+      }
+    }
+
     #tableauAdhesionAsso p {
       border-top: 1px solid var(--dark-text-color); /* Top border for all cells */
       border-left: 1px solid var(--dark-text-color); /* Left border for all cells */
       padding: 1em;
       margin: 0;
+      text-align: center;
+    }
+    #tableauAdhesionAsso span {
+      color: var(--secondary-color);
     }
     /* Remove border from the first row's top and first column's left */
     #tableauAdhesionAsso p:nth-child(-n + 3) {
@@ -93,7 +117,7 @@ import Layout from "../layouts/layout.astro";
       margin-bottom: 5em;
     }
     #imgadhtemp img {
-      min-width: 800px;
+      min-width: 780px;
     }
   </style>
 </Layout>

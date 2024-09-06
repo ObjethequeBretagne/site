@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/layout.astro";
 import InfiniteScroller from "../components/infinite-scroller.astro";
+import DocsUtiles from "../components/docsutiles.astro";
 ---
 
 <Layout title="À propos">
@@ -11,30 +12,56 @@ import InfiniteScroller from "../components/infinite-scroller.astro";
     </h2>
     <section class="nosValeurs">
       <h3>
-        Durabilité
+        1 / Partage et don
         <p>
-          Les objets de la bibliothèque Cornouaille sont conservés dans un
-          endroit sûr et sécurisé. doklsndlslfblkqf ksndlksndnks ksjdlkjsd
-          nlknsdd skldnlksnlds lkndlksnd nlslndlksn jlsdls lnslkdkn lksndlkns
-          nlksnlknd nlnlkn lknsdlknslknd klnlknlknsd.
+          L'Objethèque est un lieu où les objets sont partagés et échangés entre
+          les utilisateurs, encourageant ainsi la convivialité et la
+          collaboration.
         </p>
       </h3>
       <h3>
-        Ecologie
+        2 / Accès équitable
         <p>
-          Les objets de la bibliothèque Cornouaille sont conservés dans un
-          endroit sûr et sécurisé. doklsndlslfblkqf ksndlksndnks ksjdlkjsd
-          nlknsdd skldnlksnlds lkndlksnd nlslndlksn jlsdls lnslkdkn lksndlkns
-          nlksnlknd nlnlkn lknsdlknslknd klnlknlknsd.
+          Elle est ouverte à toutes et tous, de manière accessible et juste,
+          pour permettre à chacun d'accéder aux objets et aux connaissances.
         </p>
       </h3>
       <h3>
-        Social
+        3 / Durabilité et réduction des déchets
         <p>
-          Les objets de la bibliothèque Cornouaille sont conservés dans un
-          endroit sûr et sécurisé. doklsndlslfblkqf ksndlksndnks ksjdlkjsd
-          nlknsdd skldnlksnlds lkndlksnd nlslndlksn jlsdls lnslkdkn lksndlkns
-          nlksnlknd nlnlkn lknsdlknslknd klnlknlknsd.
+          En favorisant le partage et la réutilisation des objets, l'Objethèque
+          de Cornouaille contribue à réduire les déchets ou à ne pas en créer
+          ainsi qu' à promouvoir une consommation plus durable.
+        </p>
+      </h3>
+      <h3>
+        Créativité et innovation
+        <p>
+          Nous encourageons la créativité et l'innovation en offrant un accès à
+          des objets et des ressources diverses qui peuvent inspirer de
+          nouvelles idées et projets.
+        </p>
+      </h3>
+      <h3>
+        Éducation et apprentissage
+        <p>
+          Un lieu d'apprentissage et d'éducation, où les utilisateurs peuvent
+          découvrir de nouveaux objets et développer de nouvelles compétences.
+        </p>
+      </h3>
+      <h3>
+        Harmonie et lien social
+        <p>
+          Nous favorisons la création de liens sociaux et la construction de
+          relations autour des objets et des intérêts partagés.
+        </p>
+      </h3>
+      <h3>
+        Responsabilité et respect
+        <p>
+          Nous encourageons les utilisateurs à prendre soin des objets et à les
+          utiliser de manière responsable, en respectant les règles et les
+          autres utilisateurs.
         </p>
       </h3>
     </section>
@@ -43,7 +70,12 @@ import InfiniteScroller from "../components/infinite-scroller.astro";
         <span class="ancre" id="H201">Notre équipe </span>
         <p class="sousTexteH2">Hor skipailh</p>
       </h2>
-      <div class="media-scroller">
+      <img
+        style="margin-block: var(--marginBlock); border-radius: 20px;"
+        class="imgCentre"
+        src="assets/img/equipe.jpg"
+      />
+      <div style="display: none;" class="media-scroller">
         <div class="media-element">
           <div>
             <img src="assets/img/MonaLisa.jpg" alt="" />
@@ -129,21 +161,25 @@ import InfiniteScroller from "../components/infinite-scroller.astro";
       </ul>
     </section>
     <section class="tabs__panels flow">
-      <div id="panel-1" aria-labelledby="tab-1" data-tag="presse">
-        <a href=""
-          ><img src="assets/webp/France_2.webp" /> Article1 - vote crucial pour le
-          vert vert</a
-        >
+      <div id="panel-1" aria-labelledby="tab-1" data-tag="TV">
+        <a
+          href="https://www.letelegramme.fr/bretagne/toutes-les-infos/objetheque-un-nouveau-concept-a-quimper-pour-louer-plutot-qu-acheter-video-243780.php"
+          ><img alt="logo télégramme" src="assets/img/telegramme.jpg" /> Objethèque
+          : un nouveau concept à Quimper pour louer plutôt qu’acheter [VIDÉO]
+        </a>
       </div>
-      <div id="panel-2" aria-labelledby="tab-2" data-tag="presse">
-        <a href=""
-          ><img src="assets/webp/partenaires/privé/29D.webp" /> Article2 - bah dit
-          donc ?</a
-        >
+      <div id="panel-2" aria-labelledby="tab-2" data-tag="TV">
+        <a
+          href="https://www.ouest-france.fr/bretagne/quimper-29000/video-il-explique-son-projet-d-objetheque-pour-emprunter-des-objets-a-quimper-plutot-que-de-les-acheter-f34e7ac8-efb8-3bdd-b1dd-2da9847c3fd2"
+          ><img src="assets/img/ouest-france.png" />VIDÉO. Il explique son
+          projet d'"objethèque", pour emprunter des objets à Quimper plutôt que
+          de les acheter
+        </a>
       </div>
-      <div id="panel-3" aria-labelledby="tab-3" data-tag="radio">
-        <a href=""
-          ><img src="assets/webp/partenaires/privé/29D.webp" /> Article3</a
+      <div id="panel-3" aria-labelledby="tab-3" data-tag="web">
+        <a href="https://www.symettre.bzh/4-questions/objetheque-cornouaille/"
+          ><img src="assets/img/symettre.png" /> Benjamin Sahun à l’initiative de
+          l’Objethèque de Cornouaille en 4 questions </a
         >
       </div>
       <div id="panel-4" aria-labelledby="tab-4" data-tag="TV">
@@ -162,63 +198,7 @@ import InfiniteScroller from "../components/infinite-scroller.astro";
       Documents utiles
       <p class="sousTexteH2">Teulioù talvoudus</p>
     </h2>
-    <section id="documentsUtiles">
-      <div class="cadreDocsUtiles">
-        <div id="DocsUtiles">
-          <div>
-            <h3 class="docUtile">
-              Règlement
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum obcaecati ducimus.
-              </p>
-            </h3>
-            <a class="telecharger" href="#"
-              ><p>
-                télécharger&nbsp;<img
-                  style="height: 40px;"
-                  src="assets/img/pdf-logo.png"
-                />
-              </p></a
-            >
-          </div>
-          <div>
-            <h3 class="docUtile">
-              Statuts
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum obcaecati ducimus.
-              </p>
-            </h3>
-            <a class="telecharger" href="#"
-              ><p>
-                télécharger&nbsp;<img
-                  style="height: 40px;"
-                  src="assets/img/pdf-logo.png"
-                />
-              </p></a
-            >
-          </div>
-          <div>
-            <h3 class="docUtile">
-              Rapport
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Nostrum obcaecati ducimus.
-              </p>
-            </h3>
-            <a class="telecharger" href="#"
-              ><p>
-                télécharger&nbsp;<img
-                  style="height: 40px;"
-                  src="assets/img/pdf-logo.png"
-                />
-              </p></a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
+    <DocsUtiles />
   </main>
 
   <script>
@@ -269,3 +249,15 @@ import InfiniteScroller from "../components/infinite-scroller.astro";
     }
   </script>
 </Layout>
+<style>
+  .nosValeurs {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--marginBlock) / 2);
+    margin-top: calc(var(--marginBlock) / 2);
+    margin-bottom: var(--marginBlock);
+  }
+  .nosValeurs p {
+    max-width: 65ch;
+  }
+</style>

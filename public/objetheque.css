@@ -106,6 +106,7 @@ a {
 }
 
 p {
+  text-wrap: pretty;
   color: var(--dark-text-color);
   margin-inline: 1rem;
 }
@@ -121,6 +122,7 @@ h2{
 }
 
 h3{
+  text-wrap: balance;
   font-size: 20px;
   margin-inline: var(--marginLeft);
   color: var(--dark-text-color);
@@ -165,7 +167,7 @@ form{
 .imgCentre {
   display: flex;
   margin-inline: auto;
-  max-width: 100%;
+  max-width: min(100%, 900px);
 }
 
 .h2PaddingTopSmall {
@@ -770,13 +772,7 @@ header a {
 
 /*DEBUT page "à propos"*/
 
-.nosValeurs{
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--marginBlock) / 2);
-  margin-top: calc(var(--marginBlock) / 2);
-  margin-bottom: var(--marginBlock);
-}
+
 
 /*__horizontal slider__*/
 .media-scroller{
@@ -906,69 +902,6 @@ header a {
 
 /* fin tab média */
 
-/* debut Documents Utiles */
-
-.cadreDocsUtiles{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background-color: var(--grey-background);
-  width: 900px;
-  max-width: 95%;
-  margin-inline: auto;
-  justify-content: center;
-  margin-block: var(--marginBlock);
-  border-radius: 20px;
-}
-
-#introDocsUtiles{
-  margin-block: var(--marginBlock);
-}
-
-#introDocsUtiles p {
-  margin-right: 35%;
-}
-
-#DocsUtiles{
-  display: flex;
-  gap: 15px;
-}
-
-.telecharger{
-  display: flex;
-  justify-content: flex-end;
-  margin-block: calc(var(--marginBlock) / 2);
-  margin-right: 8%;
-  
-}
-.telecharger p{
-  font-size: calc(max(14px, 1.4vw) * 0.7);
-  color: var(--grey-text-color);
-  background: linear-gradient(to top, var(--secondary-color) 0%, var(--secondary-color) 4%, transparent 4.01%) no-repeat;
-  background-size: 0% 100%;
-  transition: background-size .2s ease;
-  /* Définissez la durée et la fonction d'interpolation de l'animation */
-}
-.telecharger p:hover{
-  background-size: 99% 100%;
-}
-.docUtile{
-  font-size: max(17px, 1.35vw);
-  margin-block: calc(var(--marginBlock) / 4);
-}
-.docUtile p{
-  font-size: 0.8em;
-}
-
-@media screen and (max-width: 816px) {
-  #introDocsUtiles {
-    margin-block: calc(var(--marginBlock) / 2);
-  }
-  .docUtile{
-    font-size: max(14px, 2.2vw);
-  }
-}
-
 /* FIN A PROPOS */
 
 /* DEBUT page DEVENIR BENEVOLE */
@@ -976,9 +909,9 @@ header a {
   --_spaceLeft:50px;
   --_spaceBlock:20px;
   background-color: white;
-  width: clamp(400px, 90%, 900px);
+  width: clamp(100px, 90%, 900px);
   margin-left: 8%;
-  margin-right: 1em;
+  margin-right: 2%;
   margin-block: var(--_spaceBlock);
   padding-block: var(--_spaceBlock);
   border-radius: 20px 20px 0 0;

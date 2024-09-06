@@ -1,7 +1,7 @@
 <div class="compteurs moon">
   <div>
     <div class="counter"></div>
-    <p class="valeurCounter">Objets</p>
+    <p class="valeurCounter">Objets stockés</p>
   </div>
   <div>
     <img
@@ -10,11 +10,11 @@
       alt="étoiles près du compteur"
     />
     <div class="counter1"></div>
-    <p class="valeurCounter">Emprunts</p>
+    <p class="valeurCounter">Emprunts terminés</p>
   </div>
   <div>
     <div class="counter2"></div>
-    <p class="valeurCounter">Adhérents</p>
+    <p class="valeurCounter">Adhérents cumulés</p>
   </div>
   <style>
     .compteurs {
@@ -23,7 +23,6 @@
       justify-content: space-between;
       margin-block: 60px;
       padding-inline: 10%;
-      transform: translateX(-0.2em);
       font-size: max(8vw, 42px);
       font-weight: 600;
       text-align: center;
@@ -40,7 +39,7 @@
     }
     @media screen and (max-width: 400px) {
       .compteurs {
-        padding-inline: 3%;
+        padding-inline: 7%;
       }
     }
   </style>
@@ -49,10 +48,10 @@
     let counter = 0;
 
     function updateCounter() {
-      counterElement.textContent = "+" + counter.toString();
+      counterElement.textContent = counter.toString();
       counter++;
 
-      if (counter <= 500) {
+      if (counter <= 506) {
         setTimeout(updateCounter, 1);
       }
     }
@@ -63,10 +62,10 @@
     let counter1 = 0;
 
     function updateCounter1() {
-      counterElement1.textContent = "+" + counter1.toString();
+      counterElement1.textContent = counter1.toString();
       counter1++;
 
-      if (counter1 <= 1000) {
+      if (counter1 <= 1637) {
         setTimeout(updateCounter1, 1);
       }
     }
@@ -77,10 +76,10 @@
     let counter2 = 0;
 
     function updateCounter2() {
-      counterElement2.textContent = "+" + counter2.toString();
+      counterElement2.textContent = counter2.toString();
       counter2++;
 
-      if (counter2 <= 100) {
+      if (counter2 <= 437) {
         setTimeout(updateCounter2, 1);
       }
     }
