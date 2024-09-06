@@ -1,0 +1,203 @@
+<div class="carousel">
+  <div class="carousel-inner">
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-1"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+      checked
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel1.png" />
+    </div>
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-2"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel2.png" />
+    </div>
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-3"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel3.png" />
+    </div>
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-4"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel4.png" />
+    </div>
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-5"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel5.png" />
+    </div>
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-6"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel6.png" />
+    </div>
+    <input
+      class="carousel-open"
+      type="radio"
+      id="carousel-7"
+      name="carousel"
+      aria-hidden="true"
+      hidden=""
+    />
+    <div class="carousel-item">
+      <img src="assets/img/carousel7.png" />
+    </div>
+  </div>
+  <label id="prevBtn" class="carousel-control prev">‹</label>
+  <label id="nextBtn" class="carousel-control next">›</label>
+  <ol class="carousel-indicators">
+    <li>
+      <label for="carousel-1" class="carousel-bullet">•</label>
+    </li>
+    <li>
+      <label for="carousel-2" class="carousel-bullet">•</label>
+    </li>
+    <li>
+      <label for="carousel-3" class="carousel-bullet">•</label>
+    </li>
+    <li>
+      <label for="carousel-4" class="carousel-bullet">•</label>
+    </li>
+    <li>
+      <label for="carousel-5" class="carousel-bullet">•</label>
+    </li>
+    <li>
+      <label for="carousel-6" class="carousel-bullet">•</label>
+    </li>
+    <li>
+      <label for="carousel-7" class="carousel-bullet">•</label>
+    </li>
+  </ol>
+</div>
+<script>
+  const prevBtn = document.getElementById("prevBtn")!;
+  const nextBtn = document.getElementById("nextBtn")!;
+  const carouselItems = document.querySelectorAll(".carousel-open");
+
+  let currentIndex = 0;
+
+  function updateButtons() {
+    const prevIndex =
+      (currentIndex - 1 + carouselItems.length) % carouselItems.length;
+    const nextIndex = (currentIndex + 1) % carouselItems.length;
+
+    prevBtn.setAttribute("for", `carousel-${prevIndex + 1}`);
+    nextBtn.setAttribute("for", `carousel-${nextIndex + 1}`);
+  }
+
+  carouselItems.forEach((item, index) => {
+    item.addEventListener("change", () => {
+      currentIndex = index;
+      updateButtons();
+    });
+  });
+
+  updateButtons();
+</script>
+<style>
+  .carousel {
+    display: flex;
+    margin-inline: auto;
+    margin-bottom: var(--marginBlock);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  .carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-open:checked + .carousel-item {
+    position: static;
+    opacity: 100;
+  }
+
+  .carousel-item {
+    position: absolute;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  .carousel-control.prev {
+    left: 10px;
+  }
+
+  .carousel-control.next {
+    right: 10px;
+  }
+
+  .carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .carousel-bullet {
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5em;
+    margin: 0 5px;
+  }
+</style>

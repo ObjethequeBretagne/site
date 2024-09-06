@@ -1,68 +1,54 @@
 ---
 import Layout from "../layouts/layout.astro";
+import Carousel from "../components/carousel.astro"
 ---
 
 <Layout title="Comment ça marche ?">
   <main>
     <h2 class="h2PaddingTopSmall">Je donne je prête</h2>
     <section class="donObjet">
-      <div>
-        <img style="height: 50px;" src="assets/img/illuPresa2.png" alt="" />
-        <p>Don d'objet</p>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          nemo tenetur ipsa iure hic accusantium! Sed velit corrupti animi!
-          Iusto sit, ducimus iure minus quia officiis inventore earum
-          asperiores! Itaque?
-        </p>
-        <ul class="blocGrisListe">
-          <li>Des objets en état de marche</li>
-          <li>Des objets non-fonctionelle mais réparé</li>
-        </ul>
-      </div>
+      <p><strong>Redonnez une seconde vie à vos objets!</strong></p>
+      <br />
+      <p>
+        Nous sommes ravis de recevoir vos dons d'objets et de les intégrer à
+        notre catalogue. Grâce à votre générosité, notre collection est devenue
+        riche et variée. Merci de votre contribution!
+      </p>
+      <br />
+      <br />
+      <p>
+        <strong>Avant de nous apporter votre objet, une petite étape :</strong>
+      </p>
+      <br />
+      <p>
+        Nous avons constaté que certains objets sont plus demandés que d'autres
+        et que certains nécessitent une maintenance importante pour être prêtés
+        en toute sécurité.<br />Pour cela, nous vous demandons idéalement de
+        nous envoyer des photos de votre objet avant de nous le remettre en main
+        propre.<br />Vous pouvez aussi nous appeler en décrivant votre don et en
+        nous laissant vos coordonnées: 07 49 11 27 34<br /><strong
+          >Merci de votre contribution à notre bibliothèque d'objets!</strong
+        >
+      </p>
+      <br />
+      <p class="textePlusClair">
+        La plupart des objets disponibles à l'objethèque proviennent de dons!
+      </p>
+      <br/>
+      <p>
+        <strong
+          >NB: Vous pouvez aussi mettre à disposition votre matériel qui sera
+          ajouté à notre catalogue et que vous pourrez récupérer quand vous le
+          voulez (prévoir maximum 2 semaines à l'avance)</strong>
+      </p>
     </section>
-    <section class="donObjet">
-      <div>
-        <img style="height: 50px;" src="assets/img/illuPresa2.png" alt="" />
-        <p>Je prête un objet</p>
-      </div>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
-          nemo tenetur ipsa iure hic accusantium! Sed velit corrupti animi!
-          Iusto sit, ducimus iure minus quia officiis inventore earum
-          asperiores! Itaque?
-        </p>
-        <ul class="blocGrisListe">
-          <li>Des objets en état de marche</li>
-          <li>Des objets non-fonctionelle mais réparé</li>
-        </ul>
-      </div>
-    </section>
+    <Carousel />
   </main>
+  <style>
+    .donObjet {
+      margin-inline: 8%;
+      margin-bottom: var(--marginBlock);
+      margin-top: calc(var(--marginBlock) / 2);
+    }
+  </style>
 </Layout>
-<style>
-  .donObjet {
-    display: flex;
-    margin-left: 2%;
-    margin-block: var(--marginBlock);
-    gap: 1%;
-  }
-  .blocGrisListe {
-    display: flex;
-    gap: 0.5rem;
-    flex-direction: column;
-    margin-inline: var(--marginLeft);
-    margin-top: 2rem;
-    padding-inline: 2rem;
-    padding-block: 1rem;
-    width: clamp(220px, 50%, 23rem);
-    background: var(--grey-background);
-    border-radius: 5px;
-  }
-  .blocGrisListe li {
-    list-style: disc;
-  }
-</style>
