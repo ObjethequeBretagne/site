@@ -744,6 +744,9 @@ header a {
   height: 34px;
   transform: translateY(-9px);
 }
+#news {
+  height: 24px;
+}
 
 .MenuFooter{
   display: flex;
