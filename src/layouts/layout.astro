@@ -4,9 +4,9 @@ interface Props {
 }
 
 const { title } = Astro.props;
-
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -19,6 +19,7 @@ import Footer from "../components/footer.astro";
     <link type="text/css" rel="stylesheet" href="objetheque.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <Header />
