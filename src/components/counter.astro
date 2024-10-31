@@ -44,6 +44,7 @@
     }
   </style>
   <script>
+    document.addEventListener('astro:page-load', () => {
     const counterElement = document.querySelector(".counter") as HTMLElement;
     let counter = 0;
 
@@ -51,7 +52,7 @@
       counterElement.textContent = counter.toString();
       counter++;
 
-      if (counter <= 506) {
+      if (counter <= 524) {
         setTimeout(updateCounter, 1);
       }
     }
@@ -85,5 +86,6 @@
     }
 
     updateCounter2();
+  });
   </script>
 </div>

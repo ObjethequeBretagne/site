@@ -11,15 +11,27 @@ import Layout from "../layouts/layout.astro";
         src="activite.png"
         alt="programme octobre 2024"
       />
+      <a class="soulignementOrange" id="lienInscription" href="https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-2"> 📝 Inscriptions pour l'atelier "couture thème libre" du 9/11</a>
+      <a class="soulignementOrange" id="lienInscription" href="https://calendly.com/marylinebazin/atelier-ecologie-de-soi?back=1&month=2024-11"> 📝 Inscriptions pour l'atelier "écologie de soi" du 30/11</a>  
     </section>
-  </main>
+   </main>
 </Layout>
 <style>
+  #lienInscription {
+    color: var(--secondary-color);
+    justify-self: center;
+    display: flex;
+    font-size: clamp(99%, 1.5vw + 0.5rem, 1.5rem);
+    font-weight: 900;
+    max-width: 90%;
+    margin-bottom: 3rem;
+  }
   #agendaImage {
     overflow-x: auto;
-    margin-bottom: 5em;
+    margin-bottom: 3rem;
   }
   #agendaImage img {
     min-width: 1000px;
+    margin-bottom: 3rem;
   }
 </style>
