@@ -26,7 +26,7 @@ import { ViewTransitions } from "astro:transitions";
     <slot />
     <Footer />
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
+      document.addEventListener('astro:page-load', () => {
         const checkbox = document.getElementById(
           "hamburgerMenuToggle"
         ) as HTMLInputElement;

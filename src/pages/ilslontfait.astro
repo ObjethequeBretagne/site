@@ -38,6 +38,10 @@ import Layout from "../layouts/layout.astro";
         </li>
       </ul>
     </section>
+    <figure class="imgIlslontfait">
+      <img src="/assets/ilslontfait/valerie.jpg" alt="Valérie" width="400" height="200">
+      <figcaption>Merci à Valérie pour sa photo ! 😄</figcaption>
+  </figure>
   </main>
 </Layout>
 <style type="text/css">
@@ -58,5 +62,18 @@ import Layout from "../layouts/layout.astro";
   #montrez ul li {
     list-style: disc;
     margin-block: 5px;
+  }
+  .imgIlslontfait{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-block: calc(var(--marginBlock)/1.2);
+    color: var(--secondary-color);
+  }
+  .imgIlslontfait img{
+    display: flex;
+    height: 100%;
+    margin-inline: auto;
+    margin-bottom: 0.5rem;
   }
 </style>

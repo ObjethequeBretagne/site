@@ -128,53 +128,53 @@
         ><img src="assets/img/hitwest.png" />L'Objethèque de Cornouaille</a
       >
     </div>
-  </section>
-  <script>
+</section>
+<script>
     document.addEventListener('astro:page-load', () => {
-        /*script tab*/
-        const tabsContainer = document.querySelector(".tabs-container");
-        const tabsList = tabsContainer?.querySelector("ul");
-        const tabButtons = tabsList?.querySelectorAll("li a");
-        const tabPanels = document.querySelectorAll(".tabs__panels > div");
+      /*script tab*/
+      const tabsContainer = document.querySelector(".tabs-container");
+      const tabsList = tabsContainer?.querySelector("ul");
+      const tabButtons = tabsList?.querySelectorAll("li a");
+      const tabPanels = document.querySelectorAll(".tabs__panels > div");
 
-        // Show the panel with the "tout" tag
-        const defaultPanel = document.querySelector('[data-tag="tout"]');
-        if (defaultPanel) {
-            defaultPanel.removeAttribute("hidden");
-        }
+      // Show the panel with the "tout" tag
+      const defaultPanel = document.querySelector('[data-tag="tout"]');
+      if (defaultPanel) {
+        defaultPanel.removeAttribute("hidden");
+      }
 
-        // Highlight the "Tout" tab
-        const defaultTab = document.querySelector('[data-tag="tout"]');
-        if (defaultTab) {
-            defaultTab.classList.add("active");
-        }
+      // Highlight the "Tout" tab
+      const defaultTab = document.querySelector('[data-tag="tout"]');
+      if (defaultTab) {
+        defaultTab.classList.add("active");
+      }
 
-        tabsContainer?.addEventListener("click", (e) => {
-            const clickedTab = (e.target as HTMLElement).closest("a");
-            if (!clickedTab) return;
-            e.preventDefault();
+      tabsContainer?.addEventListener("click", (e) => {
+        const clickedTab = (e.target as HTMLElement).closest("a");
+        if (!clickedTab) return;
+        e.preventDefault();
 
-            // Remove the "active" class from all tabs
-            tabButtons?.forEach((tab) => {
-                tab.classList.remove("active");
-            });
-
-            // Add the "active" class to the clicked tab
-            clickedTab.classList.add("active");
-            switchTab(clickedTab);
+        // Remove the "active" class from all tabs
+        tabButtons?.forEach((tab) => {
+          tab.classList.remove("active");
         });
 
-        function switchTab(newTab: HTMLElement) {
-            const activeTag = newTab.getAttribute("data-tag");
+        // Add the "active" class to the clicked tab
+        clickedTab.classList.add("active");
+        switchTab(clickedTab);
+      });
 
-            tabPanels.forEach((panel) => {
-                const panelTag = panel.getAttribute("data-tag");
-                if (panelTag === activeTag || activeTag === "tout") {
-                    panel.removeAttribute("hidden");
-                } else {
-                    panel.setAttribute("hidden", "");
-                }
-            });
-        }
+      function switchTab(newTab: HTMLElement) {
+        const activeTag = newTab.getAttribute("data-tag");
+
+        tabPanels.forEach((panel) => {
+          const panelTag = panel.getAttribute("data-tag");
+          if (panelTag === activeTag || activeTag === "tout") {
+            panel.removeAttribute("hidden");
+          } else {
+            panel.setAttribute("hidden", "");
+          }
+        });
+      }
     });
-  </script>
+</script>
