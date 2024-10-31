@@ -45,47 +45,47 @@
   </style>
   <script>
     document.addEventListener('astro:page-load', () => {
-    const counterElement = document.querySelector(".counter") as HTMLElement;
-    let counter = 0;
+      const counterElement = document.querySelector(".counter") as HTMLElement;
+      let counter = 0;
 
-    function updateCounter() {
-      counterElement.textContent = counter.toString();
-      counter++;
+      function updateCounter() {
+        counterElement.textContent = counter.toString();
+        counter++;
 
-      if (counter <= 524) {
-        setTimeout(updateCounter, 1);
+        if (counter <= 524) {
+          setTimeout(updateCounter, 1);
+        }
       }
-    }
 
-    updateCounter();
+      updateCounter();
 
-    const counterElement1 = document.querySelector(".counter1") as HTMLElement;
-    let counter1 = 0;
+      const counterElement1 = document.querySelector(".counter1") as HTMLElement;
+      let counter1 = 0;
 
-    function updateCounter1() {
-      counterElement1.textContent = counter1.toString();
-      counter1++;
+      function updateCounter1() {
+        counterElement1.textContent = counter1.toString();
+        counter1++;
 
-      if (counter1 <= 1637) {
-        setTimeout(updateCounter1, 1);
+        if (counter1 <= 1637) {
+          setTimeout(updateCounter1, 1);
+        }
       }
-    }
 
-    updateCounter1();
+      updateCounter1();
 
-    const counterElement2 = document.querySelector(".counter2") as HTMLElement;
-    let counter2 = 0;
+      const counterElement2 = document.querySelector(".counter2") as HTMLElement;
+      let counter2 = 0;
 
-    function updateCounter2() {
-      counterElement2.textContent = counter2.toString();
-      counter2++;
+      function updateCounter2() {
+        counterElement2.textContent = counter2.toString();
+        counter2++;
 
-      if (counter2 <= 437) {
-        setTimeout(updateCounter2, 1);
+        if (counter2 <= 437) {
+          setTimeout(updateCounter2, 1);
+        }
       }
-    }
 
-    updateCounter2();
-  });
+      updateCounter2();
+    });
   </script>
 </div>
