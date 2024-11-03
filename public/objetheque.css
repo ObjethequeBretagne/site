@@ -884,45 +884,7 @@ header a {
 /* fin scrollbar */
 
 /* Début tab média */
-.tabs-container{
-  margin-left: var(--marginLeft);
-}
-.tabs-container ul{
-  display: flex;
-  margin-top: var(--marginBlock);
-  gap: 2em;
-}
-.tabs-container ul li a{
-  font-size: 12px;
-  padding-bottom: 5px;
-  color: var(--dark-text-color);
-}
-.tabs-container ul li a:visited {
-  color: var(--dark-text-color);
-  /* Set the color for visited links to the same value as unvisited links */
-}
-.tabs-container ul li a.active {
-  border-bottom: 2px solid var(--dark-text-color);
-}
 
-.tabs__panels{
-  display: flex;
-  margin-left: var(--marginLeft);
-  margin-block: var(--marginBlock);
-  gap: calc(var(--marginBlock) / 2);
-  overflow-x: auto;
-}
-.tabs__panels div a{
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 200px;
-}
-
-.tabs__panels img{
-  height: 100px;
-  object-fit: contain;
-}
 
 /* fin tab média */
 
