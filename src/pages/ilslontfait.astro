@@ -38,10 +38,17 @@ import Layout from "../layouts/layout.astro";
         </li>
       </ul>
     </section>
-    <figure class="imgIlslontfait">
-      <img src="/assets/ilslontfait/valerie.jpg" alt="Valérie" width="400" height="200">
-      <figcaption>Merci à Valérie pour sa photo ! 😄</figcaption>
-  </figure>
+    <section id="galerieIlslontfait">
+      <figure class="imgIlslontfait">
+        <img src="/assets/ilslontfait/valerie.jpg" alt="Valérie" width="400" height="200">
+        <figcaption>Merci à Valérie pour sa photo ! 😄</figcaption>
+      </figure>
+      <figure class="imgIlslontfait">
+        <img src="/assets/ilslontfait/chatog.jpg" alt="Valérie" width="400" height="200">
+        <figcaption>🏰👶</figcaption>
+      </figure>
+    </section>
+    
   </main>
 </Layout>
 <style type="text/css">
@@ -63,17 +70,25 @@ import Layout from "../layouts/layout.astro";
     list-style: disc;
     margin-block: 5px;
   }
+
+  #galerieIlslontfait{
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-block: calc(var(--marginBlock)/1.2);
+  }
+
   .imgIlslontfait{
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-block: calc(var(--marginBlock)/1.2);
     color: var(--secondary-color);
+    gap: 0.5rem;
   }
   .imgIlslontfait img{
     display: flex;
     height: 100%;
-    margin-inline: auto;
-    margin-bottom: 0.5rem;
+    
   }
 </style>
