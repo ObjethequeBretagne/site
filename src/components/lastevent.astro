@@ -1,0 +1,39 @@
+<!-- déclaration d'un tableau d'événements-->
+<section
+  x-data="{ 
+    events: [
+        { jourLEvent: 'Samedi', jourNEvent: '30', moiEvent: 'Novembre', titreEvent: 'Atelier écologie de soi - (53 impasse de l\\\'odet à Quimper)', horaires: '10h-12h30', prix: 'sur réservation 10€' },
+        { jourLEvent: 'Samedi', jourNEvent: '30', moiEvent: 'Novembre', titreEvent: 'Atelier co-réparation électro et couture - (l\\\'Embarcadère 4 rue Jacques Cartier)', horaires: '14h-17h', prix: 'prix libre' },
+        { jourLEvent: 'Samedi', jourNEvent: '7', moiEvent: 'Décembre', titreEvent: 'La pause bien-être - (l\\\'Embarcadère 4 rue Jacques Cartier)', horaires: '14h-17h', prix: '25€' },
+        { jourLEvent: 'Mercredi', jourNEvent: '11', moiEvent: 'Décembre', titreEvent: 'Portes ouvertes au \\\'53\\\' - (53 impasse de l\\\'odet)', horaires: '14h-17h', prix: 'gratuit' },
+        { jourLEvent: 'Samedi', jourNEvent: '14', moiEvent: 'Décembre', titreEvent: 'Atelier coutures spécial Noêl ! - (l\\\'Embarcadère 4 rue Jacques Cartier)', horaires: '14h-17h', prix: '10€ adhérent(e). 20€ non-adhérent(e)' },
+    ],
+  }"
+>
+  <!-- Galerie : dispose autant d'images que dans le tableau, charge les données du modale au mouse:hover puis l'ouvre au click -->
+  <div class="derniersEvenementsGridAll">
+    <template x-for="(event, index) in events" :key="index">
+      <div class="derniersEvenementsGrid1">
+        <div class="dateEventFlex">
+          <p class="jourLEvent" x-text="event.jourLEvent"></p>
+          <p class="jourNEvent" x-text="event.jourNEvent"></p>
+          <p class="moiEvent" x-text="event.moiEvent"></p>
+        </div>
+        <div class="traitEvent">
+          <div class="flexible-line"></div>
+        </div>
+        <div class="titreEvent">
+          <p>
+            <span x-text="event.titreEvent"></span> <br/> <span
+              style="white-space: nowrap;"
+              x-text="event.horaires"></span> - <span x-text="event.prix"
+            ></span>
+          </p>
+        </div>
+        <a class="plusInfos" href="agenda.html"
+          ><span class="plusplus">+</span>d'infos</a
+        >
+      </div>
+    </template>
+  </div>
+</section>

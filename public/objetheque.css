@@ -70,6 +70,7 @@
 :root {
   --primary-color: #ff9900;
   --secondary-color: #108a9d;
+  --footer-color: #108a9d;
   --background-color: #FFFeFe;
   --grey-background: rgba(231, 231, 231, 0.76);
   --dark-text-color: #095c5c;
@@ -78,10 +79,24 @@
   --dark-shadow-color:rgba(146, 146, 146, 0.5);
   --gold-shadow-color:#fff2b9e3;
   --wood-shadow-color:#FFB70352;
+  --borderColor: #FFFeFe;
   --marginLeft: 10%;
   --marginBlock: 3.75em;
   --paddingTopH2Small: 60px;
   --paddingTopH2Big: 150px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  /* Mode sombre */
+  --secondary-color: #ff9900;
+  --grey-background: #2a1f44;
+  --dark-text-color: #00b8b8;
+  --background-color: #1C1227;
+  --grey-text-color: rgb(175, 175, 175);
+  --footer-color: #15616D;
+  --borderColor: white;
+  }
 }
 
 *,*::before,*::after {
@@ -98,7 +113,7 @@ html {
 
 body {
   overflow-x: hidden;
-  background: #fffffe;
+  background: var(--background-color);
 }
 
 a {
@@ -220,6 +235,10 @@ form{
   scroll-margin-top: 175px;
 }
 
+details{
+  background-color: var(--background-color);
+}
+
 /* comportement des sous-menus en mode mobile */
 details[open] > summary ~ * {
   animation: fade-inX 0.2s ease-in-out;
@@ -253,6 +272,13 @@ header a {
   max-height: 117px;
   margin-left: 1vw;
   margin-top: 3px;
+  border: 3 px solid #FFFeFe;
+}
+@media (prefers-color-scheme: dark) {
+  #logo-site {
+  /* Mode sombre */
+  margin-top: 5px;
+  }
 }
 
 #menuWeb {
@@ -313,6 +339,7 @@ header a {
   font-size: 1.1em;
   text-wrap: nowrap;
   padding: 10px;
+  border: 3px solid #FFFeFe;
 }
 #boutonCatalogue{
   padding-top: 10px;
@@ -356,7 +383,11 @@ header a {
     font-size: min(3.5vw, 1.1em);
   }
 }
-
+@media (prefers-color-scheme: dark) {
+  #widgetReseaux {
+    display: none;
+  }
+}
 /* Menu "hamburger" */
 .navMobile {
   display: none;
@@ -514,6 +545,11 @@ header a {
   box-shadow: 3px 4px 7px var(--wood-shadow-color);
   animation: translateLeft 0.32s ease-in-out;
 }
+@media (prefers-color-scheme: dark) {
+  .cadreBlancArrondi {
+    background-color: var(--grey-background);
+  }
+}
 .presaTitre span {
   font-family: EbrimaB, system-ui, sans-serif;
   color: var(--secondary-color);
@@ -521,6 +557,7 @@ header a {
 }
 
 .presaSousTitre {
+  color: #095c5c;
   text-align: right;
   margin-right: 5%;
   font: italic normal normal max(2vw, 19px)/50px Muli;
@@ -566,7 +603,7 @@ header a {
   margin-block: 60px;
   text-align: center;
   font-size: 1.1rem;
-  gap: 60px;
+  gap: 30px;
   display: grid;
 }
 @media screen and (max-width: 816px) {
@@ -580,6 +617,10 @@ header a {
   display: grid;
   grid-template-columns: 0.5fr 1fr 5fr 0.2fr;
   align-items: center;
+  border: 2px solid var(--borderColor);
+  padding-right: 10px;
+  padding-block: 10px;
+  border-radius: 20px;
 }
 
 .dateEventFlex{
@@ -606,9 +647,6 @@ header a {
 .titreEvent{
   text-align: left;
 }
-.titreEvent span{
-  white-space: nowrap;
-}
 
 .plusInfos{
   font: bold normal normal 1.1em/20px Muli;
@@ -617,8 +655,18 @@ header a {
   white-space: nowrap;
   transform: translateY(32px);
 }
+.plusInfos:hover{
+  border-bottom: 3px solid #e6c535e3;
+  .plusplus{
+    color: #e6c535e3;
+  }
+}
 .plusplus{
   font-size: 1.5em;
+  transition: color 0.3s ease;
+}
+.plusplus:hover{
+  color: #f1d13fe3;
 }
 /* fin calendrier */
 
@@ -724,7 +772,7 @@ header a {
 
 /*DEBUT FOOTER*/
 #footer{
-  background-color: var(--secondary-color);
+  background-color: var(--footer-color);
   color: var(--light-text-color);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

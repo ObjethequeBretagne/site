@@ -21,11 +21,13 @@ import { ViewTransitions } from "astro:transitions";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="/menuscript.js"></script>
   </head>
   <body>
     <Header />
     <slot />
     <Footer />
-    <script defer src="/menuscript.js"></script>
+    
   </body>
 </html>
