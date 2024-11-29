@@ -89,13 +89,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
   /* Mode sombre */
-  --secondary-color: #ff9900;
-  --grey-background: #2a1f44;
-  --dark-text-color: #00b8b8;
-  --background-color: #1C1227;
-  --grey-text-color: rgb(175, 175, 175);
-  --footer-color: #15616D;
-  --borderColor: white;
+  --secondary-color: #ff9900 !important;
+  --grey-background: #2a1f44 !important;
+  --dark-text-color: #00b8b8 !important;
+  --background-color: #1C1227 !important;
+  --grey-text-color: rgb(175, 175, 175) !important;
+  --footer-color: #15616D !important;
+  --borderColor: white !important;
   }
 }
 
