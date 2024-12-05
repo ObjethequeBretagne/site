@@ -1,0 +1,25 @@
+{
+    "events": [
+      {
+        "date": "2024-12-05",
+        "title": "Atelier peinture",
+        "description": "Un atelier créatif pour les membres"
+      },
+      {
+        "date": "2024-12-15",
+        "title": "Réunion mensuelle",
+        "description": "Réunion des membres pour discuter des projets en cours"
+      },
+      {
+        "date": "2024-12-20",
+        "title": "Permanence bénévole",
+        "description": "Bénévolat pour aider à l\\'organisation"
+      },
+      {
+        "date": "2024-12-21",
+        "title": "Permanence bénévole",
+        "description": "Bénévolat pour aider à la révolte anarchique"
+      }
+    ]
+  }
+  

@@ -1,0 +1,249 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Calendrier">
+  <div x-data="{ modalOpen: false, modalTitle: '', modalDescription: '' }">
+    <div class="calendar">
+      <div class="calendar-header">
+        <button class="nav-btn prev-btn" onclick="navigateMonth(-1)">&lt;</button>
+        <h1 class="month-title" id="month-title"></h1>
+        <button class="nav-btn next-btn" onclick="navigateMonth(1)">&gt;</button>
+      </div>
+      <div class="calendar-grid" id="calendar-grid">
+        <!-- Jours de la semaine -->
+        <div class="day-name">Lun</div>
+        <div class="day-name">Mar</div>
+        <div class="day-name">Mer</div>
+        <div class="day-name">Jeu</div>
+        <div class="day-name">Ven</div>
+        <div class="day-name">Sam</div>
+        <div class="day-name">Dim</div>
+      </div>
+    </div>
+
+    <!-- Modal pour afficher les détails d'un événement -->
+    <div 
+      x-show="modalOpen" 
+      x-transition:opacity
+      @click.self="modalOpen = false"
+      class="modal"
+    >
+      <div class="modal-content">
+        <span class="close-btn" @click="modalOpen = false">&times;</span>
+        <h2 x-text="modalTitle"></h2>
+        <p x-text="modalDescription"></p>
+      </div>
+    </div>
+  </div>
+
+</Layout>
+
+<!-- Inclusion du script pour récupérer les événements et afficher le calendrier -->
+<script type="module">
+  const monthTitle = document.getElementById("month-title");
+  const calendarGrid = document.getElementById("calendar-grid");
+  let currentMonth = new Date().getMonth(); // Mois actuel
+  let currentYear = new Date().getFullYear();
+
+  // Fonction pour naviguer entre les mois
+  function navigateMonth(direction) {
+    currentMonth += direction;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    updateCalendar();
+  }
+
+  // Charger les événements depuis le fichier JSON
+  async function loadEvents() {
+    const response = await fetch('../src/scripts/cal.json'); // Remplace par l'URL de ton fichier JSON
+    const data = await response.json();
+    return data.events;
+  }
+
+  // Fonction pour afficher le calendrier
+  function updateCalendar() {
+  const firstDayOfMonth = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7; // Ajuste pour commencer la semaine le lundi
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // Nombre de jours dans le mois
+
+  loadEvents().then(events => {
+    // Ajouter des cases vides pour les jours avant le début du mois
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      calendarGrid.innerHTML += `<div></div>`;
+    }
+
+    // Remplir les jours du mois
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const event = events.find(event => event.date === dateStr);
+
+      if (event) {
+        calendarGrid.innerHTML += `
+          <div 
+            style="background:yellow; font-weight:bold; cursor:pointer; text-align: center;
+            padding: 0.4rem; margin:0.1rem; border-radius:90px"
+            @click="modalOpen = true; modalTitle = '${event.title}'; modalDescription = '${event.description}'"
+          >
+            ${day}
+          </div>`;
+      } else {
+        calendarGrid.innerHTML += `<div style="padding: 0.5rem;">${day}</div>`;
+      }
+    }
+  });
+
+  const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+  monthTitle.innerHTML = `${months[currentMonth]} ${currentYear}`;
+}
+
+
+  // Initialiser le calendrier
+  updateCalendar();
+</script>
+
+<style>
+
+  .calendar {
+    width: 90%;
+    background: #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-block: var(--marginBlock);
+    margin-inline: auto;
+    text-align: center;
+    max-width: 600px;
+    padding-bottom: 0.3rem;
+  }
+
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--grey-background);
+    color: var(--dark-text-color);
+    padding: 10px 20px;
+  }
+
+  .month-title {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+  .nav-btn {
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+    color: #0077cc;
+    cursor: pointer;
+  }
+
+  .nav-btn:hover {
+    background: #0077cc;
+    color: white;
+  }
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.1rem;
+    background: #ddd;
+    margin-inline: auto;
+  }
+
+  
+
+  .calendar-grid.day {
+    background: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1em;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .day-name{
+    font-weight: bold;
+    margin-top: 0.3rem;
+  }
+
+  .day:hover {
+    background: #f0f8ff;
+  }
+
+  @media (max-width: 480px) {
+    .month-title {
+      font-size: 1.2em;
+    }
+    .nav-btn {
+      width: 25px;
+      height: 25px;
+      font-size: 0.8em;
+    }
+    .day {
+      padding: 10px 0;
+    }
+  }
+
+  .modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Assurez-vous que la modal est au-dessus de tout le reste */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin: 0 0 10px;
+  font-size: 1.5em;
+  color: #333;
+}
+
+.modal-content p {
+  margin: 0;
+  font-size: 1em;
+  color: #555;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #aaa;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+</style>
