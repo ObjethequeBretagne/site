@@ -1,5 +1,5 @@
-const fs = require('fs');
-const fetch = require('node-fetch'); // Assurez-vous d'avoir installé node-fetch
+import fs from 'fs';
+import fetch from 'node-fetch';
 
 
 // Fonction principale
