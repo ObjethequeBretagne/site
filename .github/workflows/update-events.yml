@@ -38,5 +38,6 @@ jobs:
             echo "Aucun changement détecté, aucune action requise."
           else
             git commit -m "Mise à jour des événements depuis HelloAsso"
-            git push origin astro-version
+            git push https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/ObjethequeBretagne/site.git astro-version
           fi
+
