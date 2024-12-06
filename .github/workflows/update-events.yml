@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22' # Version de Node.js à utiliser
+          node-version: '18' # Version LTS de Node.js
 
       - name: Install dependencies
         run: npm install
@@ -24,12 +24,19 @@ jobs:
       - name: Fetch events from HelloAsso
         run: node fetch-events.js
         env:
-          HELLOASSO_API_KEY: ${{ secrets.HELLOASSO_API_KEY }}
-    
+          HELLOASSO_ACCESS_TOKEN: ${{ secrets.HELLOASSO_ACCESS_TOKEN }}
+          HELLOASSO_REFRESH_TOKEN: ${{ secrets.HELLOASSO_REFRESH_TOKEN }}
+          HELLOASSO_CLIENT_ID: ${{ secrets.HELLOASSO_CLIENT_ID }}
+          HELLOASSO_CLIENT_SECRET: ${{ secrets.HELLOASSO_CLIENT_SECRET }}
+
       - name: Commit and push changes
         run: |
           git config user.name "ObjethequeBretagne"
           git config user.email "cornouailleobjethequedev@gmail.com"
-          git add src/scripts/events.json
-          git commit -m "Mise à jour des événements depuis HelloAsso"
-          git push origin astro-version
+          git add public/events.json
+          if git diff --cached --quiet; then
+            echo "Aucun changement détecté, aucune action requise."
+          else
+            git commit -m "Mise à jour des événements depuis HelloAsso"
+            git push origin astro-version
+          fi
