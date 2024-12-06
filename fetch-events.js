@@ -1,53 +1,105 @@
 import fs from 'fs';
 import fetch from 'node-fetch';
 
+// Fonction pour rafraîchir le token
+async function refreshToken(refreshToken) {
+  const apiUrl = 'https://api.helloasso.com/oauth2/token';
 
-// Fonction principale
-async function fetchEvents() {
+  const body = new URLSearchParams({
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken,
+    client_id: process.env.HELLOASSO_CLIENT_ID,
+    client_secret: process.env.HELLOASSO_CLIENT_SECRET,
+  });
+
   try {
-    // URL de l'API HelloAsso pour récupérer les événements (exemple, ajustez selon vos besoins)
-    const apiUrl = 'https://api.helloasso.com/v5/organizations/589413bd13da4d1bb512160e83b7178d/forms?states=Public&formTypes=Event&pageIndex=1&pageSize=20';
-    const apiKey = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxMDI1YzUxM2U3ODA0MjczM2QzZDA4ZGQxNWJiNmRiZCIsInVycyI6Ik9yZ2FuaXphdGlvbkFkbWluIiwiY3BzIjpbIkFjY2Vzc1B1YmxpY0RhdGEiLCJBY2Nlc3NUcmFuc2FjdGlvbnMiLCJDaGVja291dCJdLCJuYmYiOjE3MzM1MDkxOTYsImV4cCI6MTczMzUxMDk5NiwiaXNzIjoiaHR0cHM6Ly9hcGkuaGVsbG9hc3NvLmNvbSIsImF1ZCI6IjU4OTQxM2JkMTNkYTRkMWJiNTEyMTYwZTgzYjcxNzhkIn0.LMY67fwU-UroRkLE09KCWkWQo0fXWKXUcfNFOJompxzuWGKyp-kadMBU4rfrVQVuNoePhcowi17zqrMErza2qbkD0hRPQ7uIokT7f8Q8OIbA41Ge3WQ9nIXLWSQzdWS1V6WPeg-wZ1bNB3u9tdAxprN3xJuTl579tc1Gz1LAAfovf0C8WH6DwtVFtDXO0FyIqMnHqWgsAFct8A5r0gIr_UmPkWnbnjJ-wBWBHJnn5daxFtLHQLXTFp0u7hCqnIicdOXh9Eba2mmce2AfdJoGOR2zF5ECXzEYl_3q5yNx_KKXEnAoNeAK6gYDyiw8QcJC1cHOfzn0tqIK0AbYKWlfSg;
-    console.log(`Clé API utilisée : "${apiKey}"`);
-
-    if (!apiKey) {
-      throw new Error('La clé API n’est pas définie. Assurez-vous que HELLOASSO_API_KEY est configurée.');
-    }
-
-    // Requête API (ajustez les headers si nécessaire)
     const response = await fetch(apiUrl, {
-      method: 'GET',
+      method: 'POST',
       headers: {
-        'Authorization': `Bearer ${apiKey}`, // Remplacez par votre clé API
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
+      body: body.toString(),
     });
 
     if (!response.ok) {
-      throw new Error(`Erreur API: ${response.statusText}`);
+      throw new Error(`Erreur lors du rafraîchissement du token: ${response.statusText}`);
     }
 
-    // Récupération des données
     const data = await response.json();
-
-    // Formatage des données (extrait uniquement ce qui est nécessaire)
-    const events = data.data.map(event => ({
-      id: event.id,
-      name: event.name,
-      date: event.startDate,
-      location: event.location,
-      description: event.description,
-      url: event.url,
-    }));
-
-    // Sauvegarde des données dans un fichier JSON
-    fs.writeFileSync('public/events.json', JSON.stringify(events, null, 2));
-    console.log('Les événements ont été mis à jour avec succès.');
-
+    console.log('Nouveau token reçu:', data.access_token);
+    return data;
   } catch (error) {
-    console.error('Erreur lors de la récupération des événements:', error);
-    process.exit(1); // Code d'erreur pour signaler l'échec
+    console.error('Erreur lors du rafraîchissement du token:', error);
+    process.exit(1);
   }
 }
 
-// Exécute la fonction
+// Fonction principale
+async function fetchEvents() {
+  const apiUrl = 'https://api.helloasso.com/v5/organizations/589413bd13da4d1bb512160e83b7178d/forms?states=Public&formTypes=Event&pageIndex=1&pageSize=20';
+  let accessToken = process.env.HELLOASSO_ACCESS_TOKEN;
+  const refreshTokenEnv = process.env.HELLOASSO_REFRESH_TOKEN;
+
+  if (!accessToken || !refreshTokenEnv) {
+    console.error('Les variables HELLOASSO_ACCESS_TOKEN et HELLOASSO_REFRESH_TOKEN doivent être définies.');
+    process.exit(1);
+  }
+
+  try {
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+      },
+    });
+
+    // Si le token est expiré
+    if (response.status === 401) {
+      console.log('Token expiré, tentative de rafraîchissement...');
+      const newTokens = await refreshToken(refreshTokenEnv);
+      accessToken = newTokens.access_token;
+
+      // Relancer la requête avec le nouveau token
+      const retryResponse = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+        },
+      });
+
+      if (!retryResponse.ok) {
+        throw new Error(`Erreur API après rafraîchissement: ${retryResponse.statusText}`);
+      }
+
+      const data = await retryResponse.json();
+      processEvents(data);
+    } else if (!response.ok) {
+      throw new Error(`Erreur API: ${response.statusText}`);
+    } else {
+      const data = await response.json();
+      processEvents(data);
+    }
+  } catch (error) {
+    console.error('Erreur lors de la récupération des événements:', error);
+    process.exit(1);
+  }
+}
+
+// Fonction pour traiter et sauvegarder les événements
+function processEvents(data) {
+  const events = data.data.map(event => ({
+    id: event.id,
+    name: event.name,
+    date: event.startDate,
+    location: event.location,
+    description: event.description,
+    url: event.url,
+  }));
+
+  // Sauvegarde des données dans un fichier JSON
+  fs.writeFileSync('public/events.json', JSON.stringify(events, null, 2));
+  console.log('Les événements ont été mis à jour avec succès.');
+}
+
+// Exécute la fonction principale
 fetchEvents();
