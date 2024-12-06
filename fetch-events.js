@@ -6,8 +6,14 @@ import fetch from 'node-fetch';
 async function fetchEvents() {
   try {
     // URL de l'API HelloAsso pour récupérer les événements (exemple, ajustez selon vos besoins)
-    const apiUrl = 'https://api.helloasso.com/v5/organizations/823ac57c1dc344e29771f917cd374065/forms?states=Public&formTypes=Event&pageIndex=1&pageSize=20';
+    const apiUrl = 'https://api.helloasso.com/v5/organizations/589413bd13da4d1bb512160e83b7178d/forms?states=Public&formTypes=Event&pageIndex=1&pageSize=20';
     const apiKey = process.env.HELLOASSO_API_KEY;
+    console.log(`Clé API utilisée : "${apiKey}"`);
+
+    if (!apiKey) {
+      throw new Error('La clé API n’est pas définie. Assurez-vous que HELLOASSO_API_KEY est configurée.');
+    }
+
     // Requête API (ajustez les headers si nécessaire)
     const response = await fetch(apiUrl, {
       method: 'GET',
