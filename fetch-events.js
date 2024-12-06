@@ -34,9 +34,9 @@ async function refreshToken(refreshToken) {
   }
 }
 
-// Fonction principale
+// Fonction principale pour récupérer les événements
 async function fetchEvents() {
-  const apiUrl = 'https://api.helloasso.com/v5/organizations/589413bd13da4d1bb512160e83b7178d/forms?states=Public&formTypes=Event&pageIndex=1&pageSize=20';
+  const apiUrl = 'https://api.helloasso.com/v5/organizations/l-objetheque-de-cornouaille/forms?states=Public&formTypes=Event&pageIndex=1&pageSize=20';
   let accessToken = process.env.HELLOASSO_ACCESS_TOKEN;
   const refreshTokenEnv = process.env.HELLOASSO_REFRESH_TOKEN;
 
@@ -49,7 +49,8 @@ async function fetchEvents() {
     const response = await fetch(apiUrl, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
+        accept: 'application/json',
+        authorization: `Bearer ${accessToken}`,
       },
     });
 
@@ -63,7 +64,8 @@ async function fetchEvents() {
       const retryResponse = await fetch(apiUrl, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
+          accept: 'application/json',
+          authorization: `Bearer ${accessToken}`,
         },
       });
 
