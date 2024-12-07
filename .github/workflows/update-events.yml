@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Test SSH connection
+        run: ssh -T git@github.com
+
       - name: Checkout repository
         uses: actions/checkout@v3
 
