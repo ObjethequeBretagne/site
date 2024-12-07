@@ -53,7 +53,7 @@ jobs:
 
       # 7. Test SSH Connection
       - name: Test SSH connection with debug
-        run: ssh -vvv -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no git@github.com
+        run: ssh -vvv -T -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no git@github.com
 
       # 8. Commit et push des changements si nécessaire
       - name: Commit and push changes
