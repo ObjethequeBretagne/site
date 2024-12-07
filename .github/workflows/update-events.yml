@@ -52,8 +52,8 @@ jobs:
           head -n 2 ~/.ssh/id_rsa
 
       # 7. Test SSH Connection
-      - name: Test SSH connection
-        run: ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no git@github.com
+      - name: Test SSH connection with debug
+        run: ssh -vvv -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no git@github.com
 
       # 8. Commit et push des changements si nécessaire
       - name: Commit and push changes
