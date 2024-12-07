@@ -39,6 +39,7 @@ jobs:
         run: |
           git config user.name "ObjethequeBretagne"
           git config user.email "cornouailleobjethequedev@gmail.com"
+          git remote set-url origin git@github.com:ObjethequeBretagne/site.git
           git add public/events.json
           if git diff --cached --quiet; then
             echo "Aucun changement détecté, aucune action requise."
