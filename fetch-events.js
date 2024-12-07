@@ -89,14 +89,25 @@ async function fetchEvents() {
 
 // Fonction pour traiter et sauvegarder les événements
 function processEvents(data) {
-  const events = data.data.map(event => ({
-    id: event.id,
-    name: event.name,
-    date: event.startDate,
-    location: event.location,
-    description: event.description,
-    url: event.url,
-  }));
+  // Vérifier si la réponse contient des événements
+  if (!data.data || !Array.isArray(data.data)) {
+    console.error('Aucun événement trouvé dans les données.');
+    return;
+  }
+
+  const events = data.data.map(event => {
+    return {
+      id: event.id,
+      name: event.title,  // Titre de l'événement
+      description: event.description,  // Description
+      startDate: event.startDate,  // Date de début
+      endDate: event.endDate,  // Date de fin
+      location: event.location,  // Localisation (si disponible)
+      url: event.url,  // URL de l'événement
+      bannerUrl: event.banner?.publicUrl,  // URL de la bannière
+      logoUrl: event.logo?.publicUrl,  // URL du logo
+    };
+  });
 
   // Sauvegarde des données dans un fichier JSON
   fs.writeFileSync('public/events.json', JSON.stringify(events, null, 2));
