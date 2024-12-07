@@ -1,42 +1,74 @@
 [
   {
-    "date": "2024-12-14T14:00:00+01:00",
+    "name": "Atelier couture 14/12 ",
     "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l'Objethèque de Cornouaille ! \nQue vous soyez débutant(e) ou en perfectionnement, cet atelier est ouvert à tous-tes.\nLaissez libre cours à votre imagination ! Machines et tissus fournis.",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-14-12"
+    "startDate": "2024-12-14T14:00:00+01:00",
+    "endDate": "2024-12-14T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-14-12",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
   },
   {
-    "date": "2024-12-07T14:00:00+01:00",
+    "name": "La pause bien-être",
     "description": "🌱🧘‍♀️ La pause bien-être 🌿\n\nVous cherchez à vous ressourcer et à vous détendre? Nous vous proposons...\n\n✨ Massage Shiatsu pour vous relaxer et vous décontracter\n💡Accompagnement personnel avec une coach : une opportunité d’aller à la rencontre de vous même\n🧵 Création d'une bouillotte avec des graines de lin : détente et couture au rendez-vous! 🌸\n🍵 Partie zen avec thé, musique et fauteuils pour vous faire voyager dans un monde de sérénité\n",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-pause-bien-etre"
+    "startDate": "2024-12-07T14:00:00+01:00",
+    "endDate": "2024-12-07T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-pause-bien-etre",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-b9e1d516edad4cca8f5733ddbc20ccde.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-bf4671496df64e3aa0ee592e8edeb275.png"
   },
   {
-    "date": "2024-11-09T14:00:00+01:00",
+    "name": "Atelier couture 09/11",
     "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l'Objethèque de Cornouaille ! \nQue vous soyez débutant(e) ou en perfectionnement, cet atelier est ouvert à tous-tes.\nLaissez libre cours à votre imagination ! Dans une ambiance chaleureuse, vous pourrez travailler sur le projet de votre choix, que ce soit un accessoire, un vêtement ou une pièce décorative. \nApportez vos tissus, fils et outils, ou utilisez ceux disponibles sur place.",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-2"
+    "startDate": "2024-11-09T14:00:00+01:00",
+    "endDate": "2024-11-09T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-2",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
   },
   {
-    "date": "2023-03-04T15:00:00+01:00",
+    "name": "Atelier Découverte des outils de bricolage",
     "description": "Vous avez toujours rêvé de bricoler mais vous ne savez pas comment fonctionnent les outils?  Super Alain et Eric sont là pour vous prouver que vous avez du talent !",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-decouverte-des-outils-de-bricolage"
+    "startDate": "2023-03-04T15:00:00+01:00",
+    "endDate": "2023-03-04T16:30:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-decouverte-des-outils-de-bricolage",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-10bb1e172a254cf68e7f151dece9bab3.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-bdade47d8e0b46188b348d4e92efc089.png"
   },
   {
-    "date": "2023-03-18T14:00:00+01:00",
+    "name": "Atelier Fresque du climat",
     "description": "L'atelier collaboratif «permet de comprendre l’essentiel des enjeux climatiques pour passer à l’action. C'est scientifique, accessible & efficace! Animé par Fabien Casanave, accessible à partir de 14 ans.",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-climat"
+    "startDate": "2023-03-18T14:00:00+01:00",
+    "endDate": "2023-03-18T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-climat",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
   },
   {
-    "date": "2023-02-11T14:00:00+01:00",
+    "name": "Atelier couture",
     "description": "Accompagné(e)s par Françoise et Juliane, apprenez les rudiments de la couture ou passez seulement faire vos petites réparations! Places limitées",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture"
+    "startDate": "2023-02-11T14:00:00+01:00",
+    "endDate": "2023-02-11T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
   },
   {
-    "date": "2022-12-17T14:00:00+01:00",
+    "name": "Atelier couture: Fabrique ta déco de Noël ! 17/12",
     "description": "Venez apprendre ou vous perfectionner à la couture avec Françoise en réalisant des décorations de Noël!\nGratuit pour les adhérents: Adhésion possible sur place ou sur helloasso.\nVous pouvez venir avec vos enfants (une seule inscription/adhésion pour vous et vos enfants)",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-fabrique-ta-deco-de-noel-1"
+    "startDate": "2022-12-17T14:00:00+01:00",
+    "endDate": "2022-12-17T17:00:00+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-fabrique-ta-deco-de-noel-1",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-b1ee9e9c09994eed99c21c2f4128b612.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a95354840c844feba18b99caf3ba6679.png"
   },
   {
-    "date": "2022-12-03T14:00:00+01:00",
+    "name": "Atelier couture: Fabrique ta déco de Noël ! 03/12",
     "description": "Venez apprendre ou vous perfectionner à la couture avec Françoise en réalisant des décorations de Noël!\nGratuit pour les adhérents: Adhésion possible sur place ou sur helloasso.\nVous pouvez venir avec vos enfants (une seule inscription/adhésion pour vous et vos enfants)",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-fabrique-ta-deco-de-noel"
+    "startDate": "2022-12-03T14:00:00+01:00",
+    "endDate": "2022-12-03T17:00:00+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-fabrique-ta-deco-de-noel",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-b1ee9e9c09994eed99c21c2f4128b612.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a95354840c844feba18b99caf3ba6679.png"
   }
 ]
