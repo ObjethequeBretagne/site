@@ -41,20 +41,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      # 6. Debug SSH Configuration
-      - name: Debug SSH Configuration
-        run: |
-          echo "Afficher les permissions et fichiers SSH :"
-          ls -la ~/.ssh
-          echo "Afficher known_hosts :"
-          cat ~/.ssh/known_hosts
-          echo "Afficher un aperçu de la clé privée :"
-          head -n 2 ~/.ssh/id_rsa
-
-      # 7. Test SSH Connection
-      - name: Test SSH connection with debug
-        run: ssh -vvv -T -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no git@github.com
-
       # 8. Commit et push des changements si nécessaire
       - name: Commit and push changes
         run: |
