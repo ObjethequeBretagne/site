@@ -29,19 +29,19 @@ jobs:
           HELLOASSO_CLIENT_ID: ${{ secrets.HELLOASSO_CLIENT_ID }}
           HELLOASSO_CLIENT_SECRET: ${{ secrets.HELLOASSO_CLIENT_SECRET }}
 
-      - name: Debug SSH
-        run: |
-          ls -la ~/.ssh
-          cat ~/.ssh/known_hosts
-          ssh -T git@github.com
-
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          
+
+      - name: Debug SSH Configuration
+        run: |
+          ls -la ~/.ssh
+          cat ~/.ssh/known_hosts
+          cat ~/.ssh/id_rsa | head -n 2
+
       - name: Test SSH connection
         run: ssh -T git@github.com
         
