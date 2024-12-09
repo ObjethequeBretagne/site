@@ -96,10 +96,16 @@ function processEvents(data) {
   }
 
   const events = data.data.map(event => {
+    // Transformer la description en paragraphes
+    const sanitizedDescription = event.description
+      .replace(/'/g, "\\'")
+      .split('\n')
+      .map(line => `<p>${line.trim()}</p>`)
+      .join('') || '';
     return {
       id: event.id,
       name: event.title,  // Titre de l'événement
-      description: event.description,  // Description
+      description: sanitizedDescription,  // Description
       startDate: event.startDate,  // Date de début
       endDate: event.endDate,  // Date de fin
       location: event.location,  // Localisation (si disponible)
