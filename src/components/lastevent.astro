@@ -1,39 +1,187 @@
 <!-- déclaration d'un tableau d'événements-->
 <section
-  x-data="{ 
-    events: [
-        { jourLEvent: 'Samedi', jourNEvent: '30', moiEvent: 'Novembre', titreEvent: 'Atelier écologie de soi - (53 impasse de l\\\'odet à Quimper)', horaires: '10h-12h30', prix: 'sur réservation 10€' },
-        { jourLEvent: 'Samedi', jourNEvent: '30', moiEvent: 'Novembre', titreEvent: 'Atelier co-réparation électro et couture - (l\\\'Embarcadère 4 rue Jacques Cartier)', horaires: '14h-17h', prix: 'prix libre' },
-        { jourLEvent: 'Samedi', jourNEvent: '7', moiEvent: 'Décembre', titreEvent: 'La pause bien-être - (l\\\'Embarcadère 4 rue Jacques Cartier)', horaires: '14h-17h', prix: '25€' },
-        { jourLEvent: 'Mercredi', jourNEvent: '11', moiEvent: 'Décembre', titreEvent: 'Portes ouvertes au \\\'53\\\' - (53 impasse de l\\\'odet)', horaires: '14h-17h', prix: 'gratuit' },
-        { jourLEvent: 'Samedi', jourNEvent: '14', moiEvent: 'Décembre', titreEvent: 'Atelier coutures spécial Noêl ! - (l\\\'Embarcadère 4 rue Jacques Cartier)', horaires: '14h-17h', prix: '10€ adhérent(e). 20€ non-adhérent(e)' },
-    ],
-  }"
+  x-data="{ events: [] }"
+  x-init="
+    fetch('../events.json')
+      .then(response => response.json())
+      .then(data => {
+        const today = new Date();
+        // Filtrer et trier les événements dans Alpine.js
+        events = data
+          .filter(event => new Date(event.startDate) > today)
+          .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
+          .slice(0, 4);
+      })
+"
 >
-  <!-- Galerie : dispose autant d'images que dans le tableau, charge les données du modale au mouse:hover puis l'ouvre au click -->
   <div class="derniersEvenementsGridAll">
-    <template x-for="(event, index) in events" :key="index">
+    <template x-for="event in events" :key="event.title">
       <div class="derniersEvenementsGrid1">
-        <div class="dateEventFlex">
-          <p class="jourLEvent" x-text="event.jourLEvent"></p>
-          <p class="jourNEvent" x-text="event.jourNEvent"></p>
-          <p class="moiEvent" x-text="event.moiEvent"></p>
+        <!-- Bannière de l'événement -->
+        <a :href="event.url" target="_blank">
+          <img class="imgEvent" :src="event.logoUrl" :alt="event.title"/>
+        </a>
+        <!-- Détails de la date -->
+        <div class="dateEvent">
+          <p
+            class="jourLEvent"
+            x-text="new Date(event.startDate).toLocaleDateString('fr-FR', { weekday: 'long' })"
+          >
+          </p>
+          <p class="jourNEvent" x-text="new Date(event.startDate).getDate()">
+          </p>
+          <p
+            class="moiEvent"
+            x-text="new Date(event.startDate).toLocaleDateString('fr-FR', { month: 'long' })"
+          >
+          </p>
         </div>
+
         <div class="traitEvent">
           <div class="flexible-line"></div>
         </div>
-        <div class="titreEvent">
-          <p>
-            <span x-text="event.titreEvent"></span> <br/> <span
-              style="white-space: nowrap;"
-              x-text="event.horaires"></span> - <span x-text="event.prix"
+
+        <!-- Titre et horaires -->
+        <div>
+          <p id="infosEvent">
+            <span class="titreEvent" x-text="event.title"></span>
+            <br />
+            <span
+              class="horaireEvent"
+              x-text="`${new Date(event.startDate).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })} ${new Date(event.endDate).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`"
             ></span>
           </p>
         </div>
-        <a class="plusInfos" href="agenda.html"
-          ><span class="plusplus">+</span>d'infos</a
-        >
+        <div id="traiFin" class="traitEvent">
+          <div class="flexible-line"></div>
+        </div>
+
+        <!-- Lien vers plus d'infos -->
+        <div>
+          <a class="plusInfos" :href="event.url" target="_blank">
+            <span class="plusplus">+</span> d'infos
+          </a>
+        </div>
       </div>
     </template>
   </div>
 </section>
+
+<style>
+  .derniersEvenementsGridAll {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-block: 60px;
+    max-width: 60rem;
+    margin-inline: 2%;
+    justify-self: center;
+    font-size: 1.1rem;
+  }
+  @media screen and (max-width: 600px) {
+    .derniersEvenementsGridAll {
+      font-size: 1rem;
+    }
+  }
+
+  .derniersEvenementsGrid1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 3fr 2fr 1fr;
+    align-items: center;
+    border: 2px solid var(--borderColor);
+    padding-inline: 1rem;
+    padding-block: 1.3rem;
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.1);
+  }
+  @media screen and (max-width: 600px) {
+    .derniersEvenementsGrid1 {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      padding-inline: 0.5rem;
+    }
+  }
+
+  .cadreImgEvent {
+    
+  }
+  .imgEvent {
+    width: 7rem;
+    height: 7rem;
+    overflow: hidden;
+    border: 3px solid var(--background-color);
+    border-radius: 8px;
+    object-fit: cover;
+    transition: border-color 0.4s ease;
+  }
+  .imgEvent:hover {
+    border: 3px solid var(--primary-color);
+  }
+
+  .dateEvent {
+    text-align: center;
+  }
+  .jourLEvent {
+    font-size: 0.9em;
+  }
+  .jourNEvent {
+    font-size: 60px;
+    color: var(--secondary-color);
+    font-weight: 600;
+  }
+  .moiEvent {
+    font-size: 1.2em;
+  }
+
+  .flexible-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--gold-shadow-color);
+    
+  }
+
+  #infosEvent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .titreEvent {
+    font-weight: bold;
+  }
+  @media screen and (max-width: 600px) {
+    .titreEvent {
+      white-space: wrap;
+    }
+    #traiFin {
+      display: none;
+    }
+  }
+
+  .horaireEvent {
+    text-align: center;
+  }
+
+  .plusInfos {
+    font: bold normal normal 1.1em/20px Muli;
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    white-space: nowrap;
+    margin-left: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .plusInfos:hover {
+    border-bottom: 2px solid #e6c535e3;
+    .plusplus {
+      color: #e6c535e3;
+    }
+  }
+  .plusplus {
+    font-size: 1.5em;
+    transition: color 0.3s ease;
+  }
+  .plusplus:hover {
+    color: #f1d13fe3;
+  }
+</style>

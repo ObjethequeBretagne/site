@@ -95,7 +95,6 @@
   --background-color: #1C1227;
   --grey-text-color: rgb(175, 175, 175);
   --footer-color: #0f4750;
-  --borderColor: white;
   --FAQcolor: #231a38;
   }
 }
@@ -597,79 +596,6 @@ header a {
     border-radius: 0px;
   }
 }
-
-/* Calendrier */
-.derniersEvenementsGridAll{
-  margin-inline: 15%;
-  margin-block: 60px;
-  text-align: center;
-  font-size: 1.1rem;
-  gap: 30px;
-  display: grid;
-}
-@media screen and (max-width: 816px) {
-  .derniersEvenementsGridAll{
-     margin-inline: 2%;
-     font-size: 1rem;
-     display: grid;
-   }
-}
-.derniersEvenementsGrid1{
-  display: grid;
-  grid-template-columns: 0.5fr 1fr 5fr 0.2fr;
-  align-items: center;
-  border: 2px solid var(--borderColor);
-  padding-right: 10px;
-  padding-block: 10px;
-  border-radius: 20px;
-}
-
-.dateEventFlex{
-  text-align: center;
-}
-.jourLEvent{
-  font-size: 0.9em;
-}
-.jourNEvent{
-  font-size: 60px;
-  color: var(--secondary-color);
-  font-weight: 600;
-}
-.moiEvent{
-  font-size: 1.2em;
-}
-.flexible-line {
-  width: 100%;
-  height: 2px ;
-  background-color: var(--gold-shadow-color) ;
-  flex-grow:1;
-}
-
-.titreEvent{
-  text-align: left;
-}
-
-.plusInfos{
-  font: bold normal normal 1.1em/20px Muli;
-  color: var(--secondary-color);
-  border-bottom: 2px solid var(--secondary-color);
-  white-space: nowrap;
-  transform: translateY(32px);
-}
-.plusInfos:hover{
-  border-bottom: 3px solid #e6c535e3;
-  .plusplus{
-    color: #e6c535e3;
-  }
-}
-.plusplus{
-  font-size: 1.5em;
-  transition: color 0.3s ease;
-}
-.plusplus:hover{
-  color: #f1d13fe3;
-}
-/* fin calendrier */
 
 .photoTexte {
   display: flex;
