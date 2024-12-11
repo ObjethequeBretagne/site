@@ -1,4 +1,4 @@
-<section id="cadreDocsUtiles">
+<section>
   <div id="DocsUtiles">
     <div class="docUtile">
       <h3>
@@ -8,7 +8,7 @@
       <a class="telecharger" href="protection-donnees.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -22,7 +22,7 @@
       <a class="telecharger" href="conditions-generales.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -36,7 +36,7 @@
       <a class="telecharger" href="ag2024.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -50,7 +50,7 @@
       <a class="telecharger" href="ag2023.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -64,7 +64,7 @@
       <a class="telecharger" href="statuts.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -78,7 +78,7 @@
       <a class="telecharger" href="contrat-objet.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -92,7 +92,7 @@
       <a class="telecharger" href="recu-fiscal-particulier.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -106,7 +106,7 @@
       <a class="telecharger" href="recu-fiscal-entreprise.pdf"
         ><p>
           télécharger&nbsp;<img
-            style="height: 40px;"
+            class="pdfImg"
             src="assets/img/pdf-logo.png"
           />
         </p></a
@@ -115,33 +115,27 @@
   </div>
 </section>
 <style>
-  #cadreDocsUtiles {
-    display: flex;
-    justify-content: center;
-    margin-inline: auto;
-    margin-block: var(--marginBlock);
-    max-width: 1000px;
-  }
   #DocsUtiles {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
+    margin-inline: auto;
+    margin-block: var(--marginBlock);
+    max-width: 80rem;
   }
   .docUtile {
     position: relative;
     background-color: var(--grey-background);
     width: 18rem;
-    padding-bottom: 6rem;
+    height: 7.7rem;
     border-radius: 20px;
   }
   .docUtile h3 {
-    font-size: max(17px, 1.35vw);
+    font-size: 1.1rem;
     margin-block: calc(var(--marginBlock) / 4);
   }
-  .docUtile p {
-    font-size: 0.9em;
-  }
+  
   .telecharger {
     transform: translate(1.5em, 1em);
     position: absolute;
@@ -154,24 +148,27 @@
   }
 
   .telecharger p {
-    font-size: calc(max(14px, 1.4vw) * 0.7);
+    font-size: 0.8rem;
     color: var(--grey-text-color);
     position: relative;
   }
   .telecharger p:after {
     content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: var(--secondary-color); /* Couleur du soulignement */
-  left: 0;
-  bottom: -2px;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.2s ease;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color); /* Couleur du soulignement */
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.2s ease;
   }
   .telecharger p:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  .pdfImg {
+    height: 2.3rem;
+  }
 </style>

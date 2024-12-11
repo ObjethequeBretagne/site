@@ -310,7 +310,7 @@ header a {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 20px;
-  box-shadow: 5px 7px 9px var(--dark-shadow-color);
+  box-shadow: 3px 3px 7px var(--dark-shadow-color);
   text-transform: none;
 }
 
