@@ -44,48 +44,41 @@
     }
   </style>
   <script>
-    document.addEventListener('astro:page-load', () => {
-      const counterElement = document.querySelector(".counter") as HTMLElement;
-      let counter = 0;
+    document.addEventListener("astro:page-load", () => {
+      function animateCounter(
+        element: HTMLElement, // Déclare que 'element' est un élément HTML
+        endValue: number, // 'endValue' est un nombre
+        duration: number // 'duration' est un nombre
+      ) {
+        let startValue = 0;
+        const startTime = performance.now();
 
-      function updateCounter() {
-        counterElement.textContent = counter.toString();
-        counter++;
+        function updateCounter(currentTime: number) { // 'currentTime' est un nombre
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          const currentValue = Math.floor(progress * endValue);
+          element.textContent = currentValue.toString();
 
-        if (counter <= 529) {
-          setTimeout(updateCounter, 1);
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          }
         }
+
+        requestAnimationFrame(updateCounter);
       }
 
-      updateCounter();
+      const counters = [
+        { selector: ".counter", endValue: 535 },
+        { selector: ".counter1", endValue: 1677 },
+        { selector: ".counter2", endValue: 443 },
+      ];
 
-      const counterElement1 = document.querySelector(".counter1") as HTMLElement;
-      let counter1 = 0;
-
-      function updateCounter1() {
-        counterElement1.textContent = counter1.toString();
-        counter1++;
-
-        if (counter1 <= 1656) {
-          setTimeout(updateCounter1, 1);
+      counters.forEach(({ selector, endValue }) => {
+        const element = document.querySelector(selector) as HTMLElement; // Assure que c'est un HTMLElement
+        if (element) {
+          animateCounter(element, endValue, 2000); // Durée de 2000 ms
         }
-      }
-
-      updateCounter1();
-
-      const counterElement2 = document.querySelector(".counter2") as HTMLElement;
-      let counter2 = 0;
-
-      function updateCounter2() {
-        counterElement2.textContent = counter2.toString();
-        counter2++;
-
-        if (counter2 <= 443) {
-          setTimeout(updateCounter2, 1);
-        }
-      }
-
-      updateCounter2();
+      });
     });
   </script>
 </div>
