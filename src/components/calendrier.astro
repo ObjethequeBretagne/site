@@ -1,5 +1,26 @@
 <div
-  x-data="{ modalOpen: false, modalTitle: '', modalDescription: '', modalUrl: '', modalImage: ''}"
+  x-data="{ 
+    modalOpen: false, 
+    modalTitle: '', 
+    modalDescription: '', 
+    modalUrl: '', 
+    modalImage: '',
+    handleKeydown(event) {
+      if (this.modalOpen) {
+        if (event.key === 'Escape') {
+          this.modalOpen = false;
+        }
+      }
+    },
+  }"
+  x-init="$watch('modalOpen', value => { 
+    document.body.classList.toggle('no-scroll', value); 
+  })"
+  
+  role="dialog"
+  aria-labelledby="modal-title"
+  aria-hidden="true"
+  @keydown.window="handleKeydown($event)"
 >
   <div class="calendar">
     <div class="calendar-header">
@@ -23,12 +44,14 @@
   <!-- Modal pour afficher les détails d'un événement -->
   <div
     x-show="modalOpen"
-    x-transition:opacity
+    x-bind:class="{'modal-open': modalOpen}"
     @click.self="modalOpen = false"
     class="modal"
   >
     <div class="modal-content">
-      <span class="close-btn" @click="modalOpen = false">&times;</span>
+      <span class="close-btn" @click="modalOpen = false" tabindex="0"
+        >&times;</span
+      >
       <h2 x-text="modalTitle"></h2>
       <img :src="modalImage" alt="Image événement" class="modal-image" />
       <p x-html="modalDescription"></p>
@@ -54,7 +77,7 @@
     margin-block: var(--marginBlock);
     margin-inline: auto;
     text-align: center;
-    max-width: 1000px;
+    max-width: 46.5rem;
     padding-bottom: 0.3rem;
     min-height: 17rem;
   }
@@ -148,7 +171,7 @@
     justify-content: center;
     z-index: 1000; /* Assurez-vous que la modal est au-dessus de tout le reste */
   }
-
+  
   .modal-content {
     background: var(--background-color);
     padding: 20px 30px;
@@ -156,6 +179,8 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 90%;
     max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
     position: relative;
   }
 
@@ -197,5 +222,9 @@
 
   .close-btn:hover {
     color: #414040;
+  }
+
+  body.no-scroll {
+    overflow: hidden;
   }
 </style>
