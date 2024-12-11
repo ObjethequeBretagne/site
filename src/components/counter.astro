@@ -1,6 +1,6 @@
 <div class="compteurs moon">
   <div>
-    <div class="counter"></div>
+    <div class="counter" data-end-value="535">535</div>
     <p class="valeurCounter">Objets stockés</p>
   </div>
   <div>
@@ -9,11 +9,11 @@
       src="assets/svg/etoiles.svg"
       alt="étoiles près du compteur"
     />
-    <div class="counter1"></div>
+    <div class="counter" data-end-value="1677">1677</div>
     <p class="valeurCounter">Emprunts terminés</p>
   </div>
   <div>
-    <div class="counter2"></div>
+    <div class="counter" data-end-value="443">443</div>
     <p class="valeurCounter">Adhérents cumulés</p>
   </div>
   <style>
@@ -45,17 +45,20 @@
   </style>
   <script>
     document.addEventListener("astro:page-load", () => {
+      // Constantes
+      const ANIMATION_DURATION = 2000;
+
+      // Fonction d'animation (progression linéaire)
       function animateCounter(
-        element: HTMLElement, // Déclare que 'element' est un élément HTML
-        endValue: number, // 'endValue' est un nombre
-        duration: number // 'duration' est un nombre
+        element: HTMLElement,
+        endValue: number,
+        duration: number
       ) {
-        let startValue = 0;
         const startTime = performance.now();
 
-        function updateCounter(currentTime: number) { // 'currentTime' est un nombre
+        function updateCounter(currentTime: number) {
           const elapsedTime = currentTime - startTime;
-          const progress = Math.min(elapsedTime / duration, 1);
+          const progress = Math.min(elapsedTime / duration, 1); // Progression linéaire
           const currentValue = Math.floor(progress * endValue);
           element.textContent = currentValue.toString();
 
@@ -67,17 +70,26 @@
         requestAnimationFrame(updateCounter);
       }
 
-      const counters = [
-        { selector: ".counter", endValue: 535 },
-        { selector: ".counter1", endValue: 1677 },
-        { selector: ".counter2", endValue: 443 },
-      ];
+      // Intersection Observer pour démarrer l'animation quand visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            const endValue = parseInt(element.dataset.endValue || "0", 10); // Récupère la valeur de l'attribut data-end-value
 
-      counters.forEach(({ selector, endValue }) => {
-        const element = document.querySelector(selector) as HTMLElement; // Assure que c'est un HTMLElement
-        if (element) {
-          animateCounter(element, endValue, 2000); // Durée de 2000 ms
-        }
+            if (!element.classList.contains("animated")) {
+              element.classList.add("animated");
+              animateCounter(element, endValue, ANIMATION_DURATION);
+            }
+
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+
+      // Sélectionne tous les compteurs
+      document.querySelectorAll(".counter").forEach((counter) => {
+        observer.observe(counter);
       });
     });
   </script>
