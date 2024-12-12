@@ -564,6 +564,7 @@ header a {
   text-align: right;
   margin-right: 5%;
   font: italic normal normal max(2vw, 19px)/50px Muli;
+  font-weight: bold;
   animation: translateRight 0.4s ease-in-out;
 }
 
