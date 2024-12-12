@@ -2,7 +2,7 @@ name: Update Events JSON
 
 on:
   schedule:
-    - cron: '0 0 * * 1' # Tous les lundis à minuit
+    - cron: '0 0 * * *' # Tous les jours à 3h
   workflow_dispatch: # Déclenchement manuel
 
 jobs:
