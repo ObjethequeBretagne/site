@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/layout.astro";
+---
+
+<Layout title="Mentions Légales">
+  <main>
+    <h2 class="h2PaddingTopSmall">
+      <span>Mentions Légales</span>
+      <p class="sousTexteH2">Menegoù Lezennel</p>
+    </h2>
+    <section class="mentionsLegales">
+      <h3>
+        Éditeur du site
+        <p>
+            Association : Objethèque de Cornouaille<br/>
+            Statut : Association loi 1901 à but non lucratif<br/>
+            Adresse : 4 Rue Jacques Cartier, 29000 Quimper, France<br/>
+            E-mail : objethequecornouaille@gmail.com<br/>
+            Téléphone : 07 49 11 27 34
+        </p>
+      </h3>
+      <h3>
+        Responsable de la publication
+        <p>
+            Nom du responsable : Thomas Guichaoua (Président de l'association)
+        </p>
+      </h3>
+      <h3>
+        Conception et développement
+        <p>
+            Site créé par : Josselin Hanel
+        </p>
+      </h3>
+      <h3>
+        Hébergeur du site
+        <p>
+            Nom : GitHub Pages<br/>
+            Adresse : 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA
+        </p>
+      </h3>
+      <h3>
+        Propriété intellectuelle
+        <p>
+            L’ensemble des contenus présents sur le site "Objethèque de Cornouaille" (textes, images, graphismes, logos, icônes, etc.) 
+            est la propriété exclusive de l’association, sauf mention contraire.<br/><br/>
+            Les logos, ressources graphiques ainsi que la vidéo de présentation ont été créés par <strong>Jade Ounaphom.</strong><br/><br/>
+            Certaines icônes sont issues de LottieFiles. Toute reproduction, distribution, modification, adaptation, retransmission ou publication, 
+            même partielle, de ces différents éléments est strictement interdite sans l'accord écrit préalable de l'association.
+        </p>
+      </h3>
+      <h3>
+        Données personnelles
+        <p>
+            Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, 
+            l’association Objethèque de Cornouaille s’engage à protéger les données personnelles des utilisateurs. 
+            Les informations collectées via les formulaires du site sont destinées à des fins strictement associatives. 
+            Vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles. 
+            Pour exercer ce droit, veuillez contacter : objethequecornouaille@gmail.com.
+        </p>
+      </h3>
+      <h3>
+        Cookies
+        <p>
+            Le site "Objethèque de Cornouaille" n’utilise pas de cookies propres pour son fonctionnement. 
+            Cependant, des cookies peuvent être gérés par des services tiers, tels que myTurn.com, 
+            pour les fonctionnalités liées à la gestion des comptes utilisateurs et du catalogue. 
+            Nous vous invitons à consulter leur politique de confidentialité pour plus d'informations.
+        </p>
+      </h3>
+      <h3>
+        Liens hypertextes
+        <p>
+            Le site peut contenir des liens vers d'autres sites Internet. 
+            L’association Objethèque de Cornouaille ne peut être tenue pour responsable du contenu de ces sites externes.
+        </p>
+      </h3>
+      <h3>
+        Contact
+        <p>
+            Pour toute question ou demande relative aux mentions légales, veuillez nous contacter à : objethequecornouaille@gmail.com.
+        </p>
+      </h3>
+    </section>
+  </main>
+</Layout>
+<style>
+  .mentionsLegales {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--marginBlock) / 2);
+    margin-top: calc(var(--marginBlock) / 2);
+    margin-bottom: var(--marginBlock);
+  }
+  .mentionsLegales p {
+    max-width: 65ch;
+  }
+</style>
