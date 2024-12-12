@@ -560,8 +560,8 @@ header a {
 }
 
 .presaSousTitre {
-  color: #FFFFFF;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  color: #FFFeFe;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   text-align: right;
   margin-right: 5%;
   font: italic normal normal max(2vw, 19px)/50px Muli;
