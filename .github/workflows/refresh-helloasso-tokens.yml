@@ -30,13 +30,23 @@ jobs:
           echo "access_token=$ACCESS_TOKEN" >> $GITHUB_ENV
           echo "refresh_token=$REFRESH_TOKEN" >> $GITHUB_ENV
 
-      # 2. Mettre à jour les secrets dans GitHub
+      # 2. Configuration de GH_TOKEN pour GitHub CLI
+      - name: Configure GitHub CLI Token
+        run: |
+          echo "Configuration de GH_TOKEN..."
+          echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
+
+      # 3. Mettre à jour les secrets dans GitHub
       - name: Update HELLOASSO_ACCESS_TOKEN Secret
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           echo "Mise à jour du secret HELLOASSO_ACCESS_TOKEN..."
           gh secret set HELLOASSO_ACCESS_TOKEN --body "$ACCESS_TOKEN"
 
       - name: Update HELLOASSO_REFRESH_TOKEN Secret
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           echo "Mise à jour du secret HELLOASSO_REFRESH_TOKEN..."
           gh secret set HELLOASSO_REFRESH_TOKEN --body "$REFRESH_TOKEN"
