@@ -9,7 +9,7 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     permissions:
-      secrets: write  # Donne la permission pour écrire les secrets
+      contents: write  # Permission pour écrire les secrets
       actions: write
 
     steps:
@@ -24,8 +24,8 @@ jobs:
           -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
           -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}" > token_response.json
 
-          ACCESS_TOKEN=$(cat token_response.json | jq -r .access_token)
-          REFRESH_TOKEN=$(cat token_response.json | jq -r .refresh_token)
+          ACCESS_TOKEN=$(jq -r '.access_token' token_response.json)
+          REFRESH_TOKEN=$(jq -r '.refresh_token' token_response.json)
 
           if [ -z "$ACCESS_TOKEN" ] || [ -z "$REFRESH_TOKEN" ]; then
             echo "Erreur : Impossible d'obtenir de nouveaux tokens."
@@ -35,56 +35,14 @@ jobs:
           echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
           echo "REFRESH_TOKEN=$REFRESH_TOKEN" >> $GITHUB_ENV
 
-      # 2. Mettre à jour les secrets via GitHub API
+      # 2. Mettre à jour les secrets via une action GitHub officielle
       - name: Update Repository Secrets
-        uses: actions/github-script@v6
+        uses: peter-evans/create-or-update-secret@v2
         with:
-          script: |
-            const { createOrUpdateRepoSecret } = require("@actions/github").context;
-            const crypto = require("crypto");
-            const sodium = require("libsodium-wrappers");
-
-            // Charger les secrets
-            const accessToken = process.env.ACCESS_TOKEN;
-            const refreshToken = process.env.REFRESH_TOKEN;
-
-            if (!accessToken || !refreshToken) {
-              throw new Error("Les tokens ACCESS_TOKEN ou REFRESH_TOKEN sont manquants.");
-            }
-
-            // Fonction pour chiffrer une valeur avec la clé publique
-            async function encrypt(secret, publicKey) {
-              await sodium.ready;
-              const keyBytes = sodium.from_base64(publicKey, sodium.base64_variants.ORIGINAL);
-              const messageBytes = sodium.from_string(secret);
-              const encryptedBytes = sodium.crypto_box_seal(messageBytes, keyBytes);
-              return sodium.to_base64(encryptedBytes, sodium.base64_variants.ORIGINAL);
-            }
-
-            // Obtenir la clé publique du dépôt
-            const { data: publicKey } = await github.rest.actions.getRepoPublicKey({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-            });
-
-            // Chiffrer et sauvegarder les secrets
-            const encryptedAccessToken = await encrypt(accessToken, publicKey.key);
-            const encryptedRefreshToken = await encrypt(refreshToken, publicKey.key);
-
-            await github.rest.actions.createOrUpdateRepoSecret({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              secret_name: "HELLOASSO_ACCESS_TOKEN",
-              encrypted_value: encryptedAccessToken,
-              key_id: publicKey.key_id,
-            });
-
-            await github.rest.actions.createOrUpdateRepoSecret({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              secret_name: "HELLOASSO_REFRESH_TOKEN",
-              encrypted_value: encryptedRefreshToken,
-              key_id: publicKey.key_id,
-            });
-
-            console.log("Les secrets ont été mis à jour avec succès.");
+          secret: HELLOASSO_ACCESS_TOKEN
+          value: ${{ env.ACCESS_TOKEN }}
+      - name: Update Repository Secrets (Refresh Token)
+        uses: peter-evans/create-or-update-secret@v2
+        with:
+          secret: HELLOASSO_REFRESH_TOKEN
+          value: ${{ env.REFRESH_TOKEN }}
