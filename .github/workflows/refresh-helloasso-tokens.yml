@@ -9,40 +9,41 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Permission pour écrire les secrets
-      actions: write
+      actions: write  # Permet de mettre à jour les secrets
+      contents: write  # Permission nécessaire pour manipuler les secrets du dépôt
 
     steps:
-      # 1. Rafraîchir les tokens via HelloAsso
+      # 1. Rafraîchir les tokens via l'API HelloAsso
       - name: Refresh HelloAsso Tokens
         id: refresh-tokens
         run: |
-          curl -X POST https://api.helloasso.com/oauth2/token \
-          -H "Content-Type: application/x-www-form-urlencoded" \
-          -d "grant_type=refresh_token" \
-          -d "refresh_token=${{ secrets.HELLOASSO_REFRESH_TOKEN }}" \
-          -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
-          -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}" > token_response.json
+          echo "Rafraîchissement des tokens..."
+          RESPONSE=$(curl -s -X POST https://api.helloasso.com/oauth2/token \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=refresh_token" \
+            -d "refresh_token=${{ secrets.HELLOASSO_REFRESH_TOKEN }}" \
+            -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}")
 
-          ACCESS_TOKEN=$(jq -r '.access_token' token_response.json)
-          REFRESH_TOKEN=$(jq -r '.refresh_token' token_response.json)
+          ACCESS_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+          REFRESH_TOKEN=$(echo "$RESPONSE" | jq -r '.refresh_token')
 
-          if [ -z "$ACCESS_TOKEN" ] || [ -z "$REFRESH_TOKEN" ]; then
-            echo "Erreur : Impossible d'obtenir de nouveaux tokens."
+          if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" == "null" ]; then
+            echo "Erreur : Impossible de récupérer un nouveau token d'accès."
+            echo "Réponse API : $RESPONSE"
             exit 1
           fi
 
           echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
           echo "REFRESH_TOKEN=$REFRESH_TOKEN" >> $GITHUB_ENV
 
-      # 2. Mettre à jour les secrets via une action GitHub officielle
-      - name: Update Repository Secrets
-        uses: peter-evans/create-or-update-secret@v2
-        with:
-          secret: HELLOASSO_ACCESS_TOKEN
-          value: ${{ env.ACCESS_TOKEN }}
-      - name: Update Repository Secrets (Refresh Token)
-        uses: peter-evans/create-or-update-secret@v2
-        with:
-          secret: HELLOASSO_REFRESH_TOKEN
-          value: ${{ env.REFRESH_TOKEN }}
+      # 2. Mettre à jour les secrets dans GitHub
+      - name: Update HELLOASSO_ACCESS_TOKEN Secret
+        run: |
+          echo "Mise à jour du secret HELLOASSO_ACCESS_TOKEN..."
+          gh secret set HELLOASSO_ACCESS_TOKEN --body "$ACCESS_TOKEN"
+
+      - name: Update HELLOASSO_REFRESH_TOKEN Secret
+        run: |
+          echo "Mise à jour du secret HELLOASSO_REFRESH_TOKEN..."
+          gh secret set HELLOASSO_REFRESH_TOKEN --body "$REFRESH_TOKEN"
