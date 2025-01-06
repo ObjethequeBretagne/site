@@ -38,15 +38,16 @@ jobs:
             exit 1
           fi
 
-          echo "::set-output name=access_token::$ACCESS_TOKEN"
-          echo "::set-output name=refresh_token::$REFRESH_TOKEN"
+          # Enregistrer dans les variables d'environnement
+          echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
+          echo "REFRESH_TOKEN=$REFRESH_TOKEN" >> $GITHUB_ENV
 
       # 3. Mettre à jour les secrets GitHub
       - name: Update Repository Secrets
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ACCESS_TOKEN: ${{ steps.refresh-tokens.outputs.access_token }}
-          REFRESH_TOKEN: ${{ steps.refresh-tokens.outputs.refresh_token }}
+          ACCESS_TOKEN: ${{ env.ACCESS_TOKEN }}
+          REFRESH_TOKEN: ${{ env.REFRESH_TOKEN }}
         run: |
           echo "Mise à jour des secrets dans GitHub..."
           gh secret set HELLOASSO_ACCESS_TOKEN --body "$ACCESS_TOKEN"
