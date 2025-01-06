@@ -1,7 +1,8 @@
 name: Refresh HelloAsso Tokens
+
 on:
   schedule:
-    - cron: '0 0 */25 * *'
+    - cron: '0 0 */25 * *' # Tous les 25 jours
   workflow_dispatch:
 
 jobs:
@@ -12,45 +13,41 @@ jobs:
       actions: write
 
     steps:
-      - name: Get New Tokens
-        id: get-tokens
+      # 1. Installer GitHub CLI
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install -y gh
+
+      # 2. Rafraîchir les tokens via HelloAsso
+      - name: Refresh HelloAsso Tokens
+        id: refresh-tokens
         run: |
           curl -X POST https://api.helloasso.com/oauth2/token \
           -H "Content-Type: application/x-www-form-urlencoded" \
-          -d "grant_type=client_credentials" \
+          -d "grant_type=refresh_token" \
+          -d "refresh_token=${{ secrets.HELLOASSO_REFRESH_TOKEN }}" \
           -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
           -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}" > token_response.json
 
           ACCESS_TOKEN=$(cat token_response.json | jq -r .access_token)
           REFRESH_TOKEN=$(cat token_response.json | jq -r .refresh_token)
-          echo "::add-mask::$ACCESS_TOKEN"
-          echo "::add-mask::$REFRESH_TOKEN"
-          echo "access_token=$ACCESS_TOKEN" >> $GITHUB_ENV
-          echo "refresh_token=$REFRESH_TOKEN" >> $GITHUB_ENV
 
+          if [ -z "$ACCESS_TOKEN" ] || [ -z "$REFRESH_TOKEN" ]; then
+            echo "Erreur : Impossible d'obtenir de nouveaux tokens."
+            exit 1
+          fi
+
+          echo "::set-output name=access_token::$ACCESS_TOKEN"
+          echo "::set-output name=refresh_token::$REFRESH_TOKEN"
+
+      # 3. Mettre à jour les secrets GitHub
       - name: Update Repository Secrets
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const fs = require('fs');
-            const tokenData = JSON.parse(fs.readFileSync('token_response.json', 'utf8'));
-            
-            await core.setSecret(tokenData.access_token);
-            await core.setSecret(tokenData.refresh_token);
-            
-            const repoToken = process.env.access_token;
-            const refreshToken = process.env.refresh_token;
-            
-            await github.rest.actions.updateRepoSecret({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              secret_name: 'HELLOASSO_ACCESS_TOKEN',
-              encrypted_value: repoToken
-            });
-            
-            await github.rest.actions.updateRepoSecret({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              secret_name: 'HELLOASSO_REFRESH_TOKEN',
-              encrypted_value: refreshToken
-            });
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACCESS_TOKEN: ${{ steps.refresh-tokens.outputs.access_token }}
+          REFRESH_TOKEN: ${{ steps.refresh-tokens.outputs.refresh_token }}
+        run: |
+          echo "Mise à jour des secrets dans GitHub..."
+          gh secret set HELLOASSO_ACCESS_TOKEN --body "$ACCESS_TOKEN"
+          gh secret set HELLOASSO_REFRESH_TOKEN --body "$REFRESH_TOKEN"
