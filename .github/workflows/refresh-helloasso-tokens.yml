@@ -14,28 +14,21 @@ jobs:
 
     steps:
       # 1. Rafraîchir les tokens via l'API HelloAsso
-      - name: Refresh HelloAsso Tokens
-        id: refresh-tokens
+      - name: Get New Tokens
+        id: get-tokens
         run: |
-          echo "Rafraîchissement des tokens..."
-          RESPONSE=$(curl -s -X POST https://api.helloasso.com/oauth2/token \
-            -H "Content-Type: application/x-www-form-urlencoded" \
-            -d "grant_type=refresh_token" \
-            -d "refresh_token=${{ secrets.HELLOASSO_REFRESH_TOKEN }}" \
-            -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
-            -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}")
+          curl -X POST https://api.helloasso.com/oauth2/token \
+          -H "Content-Type: application/x-www-form-urlencoded" \
+          -d "grant_type=client_credentials" \
+          -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
+          -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}" > token_response.json
 
-          ACCESS_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
-          REFRESH_TOKEN=$(echo "$RESPONSE" | jq -r '.refresh_token')
-
-          if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" == "null" ]; then
-            echo "Erreur : Impossible de récupérer un nouveau token d'accès."
-            echo "Réponse API : $RESPONSE"
-            exit 1
-          fi
-
-          echo "ACCESS_TOKEN=$ACCESS_TOKEN" >> $GITHUB_ENV
-          echo "REFRESH_TOKEN=$REFRESH_TOKEN" >> $GITHUB_ENV
+          ACCESS_TOKEN=$(cat token_response.json | jq -r .access_token)
+          REFRESH_TOKEN=$(cat token_response.json | jq -r .refresh_token)
+          echo "::add-mask::$ACCESS_TOKEN"
+          echo "::add-mask::$REFRESH_TOKEN"
+          echo "access_token=$ACCESS_TOKEN" >> $GITHUB_ENV
+          echo "refresh_token=$REFRESH_TOKEN" >> $GITHUB_ENV
 
       # 2. Mettre à jour les secrets dans GitHub
       - name: Update HELLOASSO_ACCESS_TOKEN Secret
