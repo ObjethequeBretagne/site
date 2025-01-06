@@ -13,7 +13,11 @@ jobs:
       contents: write  # Permission nécessaire pour manipuler les secrets du dépôt
 
     steps:
-      # 1. Rafraîchir les tokens via l'API HelloAsso
+      # 1. Cloner le dépôt (résout l'erreur Git)
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Rafraîchir les tokens via l'API HelloAsso
       - name: Get New Tokens
         id: get-tokens
         run: |
@@ -30,13 +34,13 @@ jobs:
           echo "access_token=$ACCESS_TOKEN" >> $GITHUB_ENV
           echo "refresh_token=$REFRESH_TOKEN" >> $GITHUB_ENV
 
-      # 2. Configuration de GH_TOKEN pour GitHub CLI
+      # 3. Configuration de GH_TOKEN pour GitHub CLI
       - name: Configure GitHub CLI Token
         run: |
           echo "Configuration de GH_TOKEN..."
           echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
 
-      # 3. Mettre à jour les secrets dans GitHub
+      # 4. Mettre à jour les secrets dans GitHub
       - name: Update HELLOASSO_ACCESS_TOKEN Secret
         env:
           GH_TOKEN: ${{ github.token }}
