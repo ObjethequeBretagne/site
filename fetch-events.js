@@ -97,9 +97,12 @@ function processEvents(data) {
 
   const events = data.data.map(event => {
     const sanitizedTitle = event.title
+      .replace(/'/g, "\\'") // Échapper les apostrophes
     const sanitizedDescription = event.description
       .replace(/'/g, "\\'") // Échapper les apostrophes
       .replace(/\n/g, '<br>'); // Remplacer les sauts de ligne par <br>
+    // Définir des URLs par défaut si elles ne sont pas fournies
+    const defaultLogoUrl = 'assets/img/logo.png';
     return {
       id: event.id,
       title: sanitizedTitle,  // Titre de l'événement
@@ -108,8 +111,8 @@ function processEvents(data) {
       endDate: event.endDate,  // Date de fin
       location: event.location,  // Localisation (si disponible)
       url: event.url,  // URL de l'événement
-      bannerUrl: event.banner?.publicUrl,  // URL de la bannière
-      logoUrl: event.logo?.publicUrl,  // URL du logo
+      bannerUrl: event.banner?.publicUrl || defaultLogoUrl,  // URL de la bannière
+      logoUrl: event.logo?.publicUrl || defaultLogoUrl,  // URL du logo
     };
   });
 
