@@ -55,11 +55,13 @@ document.addEventListener("astro:page-load", () => {
         });
 
         if (event) {
+          const sanitizedTitle = event.title
+            .replace(/'/g, "\\'");
           calendarGrid.innerHTML += `
         <div 
           style="background:yellow; font-weight:bold; cursor:pointer; text-align: center;
           padding: 0.4rem; margin:0.1rem; border-radius:90px"
-          @click="modalOpen = true; modalTitle = '${event.title}'; modalDescription = '${event.description}'; modalUrl = '${event.url}'; modalImage = '${event.logoUrl}'"
+          @click="modalOpen = true; modalTitle = '${sanitizedTitle}'; modalDescription = '${event.description}'; modalUrl = '${event.url}'; modalImage = '${event.logoUrl}'"
         >
           ${day}
         </div>`;
