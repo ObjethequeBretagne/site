@@ -43,6 +43,7 @@
 
   <!-- Modal pour afficher les détails d'un événement -->
   <div
+    style="display: none;"
     x-show="modalOpen"
     x-bind:class="{'modal-open': modalOpen}"
     @click.self="modalOpen = false"

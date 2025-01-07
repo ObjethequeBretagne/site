@@ -1,12 +1,14 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Calendrier from "../components/calendrier.astro";
+import Lastevent from "../components/lastevent.astro";
 ---
 
 <Layout title="Agenda">
   <main>
     <Calendrier />
-    <section id="agendaImage">
+    <Lastevent />
+    <section style="display: none;" id="agendaImage">
       <img
         class="imgCentre"
         src="activite.jpg"
