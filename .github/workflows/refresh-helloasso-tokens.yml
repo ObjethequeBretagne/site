@@ -7,12 +7,13 @@ on:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
     steps:
-      # 1. Cloner le dépôt
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Rafraîchir les tokens via l'API HelloAsso
       - name: Get New Tokens
         id: get-tokens
         run: |
@@ -22,19 +23,33 @@ jobs:
           -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
           -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}")
           
-          echo "access_token=$(echo $response | jq -r .access_token)" >> $GITHUB_OUTPUT
-          echo "refresh_token=$(echo $response | jq -r .refresh_token)" >> $GITHUB_OUTPUT
+          # Sauvegarde des nouveaux tokens dans des fichiers temporaires
+          echo $response | jq -r .access_token > access_token.txt
+          echo $response | jq -r .refresh_token > refresh_token.txt
 
-      # 3. Mettre à jour les secrets
-      - name: Update Access Token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.APP_ID }}
-          private-key: ${{ secrets.PRIVATE_KEY }}
-          
-      - name: Update Secrets Using GitHub CLI
-        env:
-          GH_TOKEN: ${{ steps.create-github-app-token.outputs.token }}
+      - name: Configure Git
         run: |
-          gh secret set HELLOASSO_ACCESS_TOKEN --body "${{ steps.get-tokens.outputs.access_token }}"
-          gh secret set HELLOASSO_REFRESH_TOKEN --body "${{ steps.get-tokens.outputs.refresh_token }}"
+          git config user.name "ObjethequeBretagne"
+          git config user.email "cornouailleobjethequedev@gmail.com"
+          
+      - name: Configure SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Update Secrets in Repository Settings
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Lecture des tokens depuis les fichiers
+          ACCESS_TOKEN=$(cat access_token.txt)
+          REFRESH_TOKEN=$(cat refresh_token.txt)
+          
+          # Mise à jour des secrets via l'API GitHub
+          gh secret set HELLOASSO_ACCESS_TOKEN --body "$ACCESS_TOKEN"
+          gh secret set HELLOASSO_REFRESH_TOKEN --body "$REFRESH_TOKEN"
+
+          # Nettoyage des fichiers temporaires
+          rm access_token.txt refresh_token.txt
