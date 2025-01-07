@@ -96,13 +96,13 @@ function processEvents(data) {
   }
 
   const events = data.data.map(event => {
-    // Transformer la description en paragraphes
+    const sanitizedTitle = event.title
     const sanitizedDescription = event.description
       .replace(/'/g, "\\'") // Échapper les apostrophes
       .replace(/\n/g, '<br>'); // Remplacer les sauts de ligne par <br>
     return {
       id: event.id,
-      title: event.title,  // Titre de l'événement
+      title: sanitizedTitle,  // Titre de l'événement
       description: sanitizedDescription,  // Description
       startDate: event.startDate,  // Date de début
       endDate: event.endDate,  // Date de fin
