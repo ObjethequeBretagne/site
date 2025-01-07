@@ -1,5 +1,4 @@
 name: Refresh HelloAsso Tokens
-
 on:
   schedule:
     - cron: '0 0 */25 * *' # Tous les 25 jours
@@ -8,12 +7,8 @@ on:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    permissions:
-      actions: write  # Permet de mettre à jour les secrets
-      contents: write  # Permission nécessaire pour manipuler les secrets du dépôt
-
     steps:
-      # 1. Cloner le dépôt (résout l'erreur Git)
+      # 1. Cloner le dépôt
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -21,36 +16,25 @@ jobs:
       - name: Get New Tokens
         id: get-tokens
         run: |
-          curl -X POST https://api.helloasso.com/oauth2/token \
+          response=$(curl -X POST https://api.helloasso.com/oauth2/token \
           -H "Content-Type: application/x-www-form-urlencoded" \
           -d "grant_type=client_credentials" \
           -d "client_id=${{ secrets.HELLOASSO_CLIENT_ID }}" \
-          -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}" > token_response.json
+          -d "client_secret=${{ secrets.HELLOASSO_CLIENT_SECRET }}")
+          
+          echo "access_token=$(echo $response | jq -r .access_token)" >> $GITHUB_OUTPUT
+          echo "refresh_token=$(echo $response | jq -r .refresh_token)" >> $GITHUB_OUTPUT
 
-          ACCESS_TOKEN=$(cat token_response.json | jq -r .access_token)
-          REFRESH_TOKEN=$(cat token_response.json | jq -r .refresh_token)
-          echo "::add-mask::$ACCESS_TOKEN"
-          echo "::add-mask::$REFRESH_TOKEN"
-          echo "access_token=$ACCESS_TOKEN" >> $GITHUB_ENV
-          echo "refresh_token=$REFRESH_TOKEN" >> $GITHUB_ENV
-
-      # 3. Configuration de GH_TOKEN pour GitHub CLI
-      - name: Configure GitHub CLI Token
-        run: |
-          echo "Configuration de GH_TOKEN..."
-          echo "GH_TOKEN=${{ github.token }}" >> $GITHUB_ENV
-
-      # 4. Mettre à jour les secrets dans GitHub
-      - name: Update HELLOASSO_ACCESS_TOKEN Secret
+      # 3. Mettre à jour les secrets
+      - name: Update Access Token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          
+      - name: Update Secrets Using GitHub CLI
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.create-github-app-token.outputs.token }}
         run: |
-          echo "Mise à jour du secret HELLOASSO_ACCESS_TOKEN..."
-          gh secret set HELLOASSO_ACCESS_TOKEN --body "$ACCESS_TOKEN"
-
-      - name: Update HELLOASSO_REFRESH_TOKEN Secret
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          echo "Mise à jour du secret HELLOASSO_REFRESH_TOKEN..."
-          gh secret set HELLOASSO_REFRESH_TOKEN --body "$REFRESH_TOKEN"
+          gh secret set HELLOASSO_ACCESS_TOKEN --body "${{ steps.get-tokens.outputs.access_token }}"
+          gh secret set HELLOASSO_REFRESH_TOKEN --body "${{ steps.get-tokens.outputs.refresh_token }}"
