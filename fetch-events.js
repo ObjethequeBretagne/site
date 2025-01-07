@@ -96,8 +96,6 @@ function processEvents(data) {
   }
 
   const events = data.data.map(event => {
-    const sanitizedTitle = event.title
-      .replace(/'/g, "\\'") // Échapper les apostrophes
     const sanitizedDescription = event.description
       .replace(/'/g, "\\'") // Échapper les apostrophes
       .replace(/\n/g, '<br>'); // Remplacer les sauts de ligne par <br>
@@ -105,7 +103,7 @@ function processEvents(data) {
     const defaultLogoUrl = 'assets/img/logo.png';
     return {
       id: event.id,
-      title: sanitizedTitle,  // Titre de l'événement
+      title: event.title,  // Titre de l'événement
       description: sanitizedDescription,  // Description
       startDate: event.startDate,  // Date de début
       endDate: event.endDate,  // Date de fin
