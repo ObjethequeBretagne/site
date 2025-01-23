@@ -1,12 +1,21 @@
 [
   {
+    "title": "Atelier Co-réparation marché Penhars",
+    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
+    "startDate": "2025-01-29T15:00:00+01:00",
+    "endDate": "2025-01-29T18:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-691814850ea44a23853acf637da6014a.png"
+  },
+  {
     "title": "Atelier Co-réparation",
     "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
     "startDate": "2025-01-25T14:00:00+01:00",
     "endDate": "2025-01-25T17:00:00+01:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "assets/img/logo.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
   },
   {
     "title": "Galette des rois de l'Objetheque de Cornouaille",
