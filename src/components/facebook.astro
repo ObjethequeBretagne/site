@@ -1,0 +1,79 @@
+---
+const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/"; // Remplace par ton URL
+---
+
+<details class="missionBenev" id="fb-details" data-url={pageUrl}>
+  <summary>📢 Voir les derniers posts Facebook</summary>
+  <div id="fb-container"></div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const detailsElement = document.getElementById("fb-details");
+
+      if (!detailsElement) return; // ✅ Vérification de l'existence
+
+      detailsElement.addEventListener("toggle", function (event) {
+        if (!(event.target instanceof HTMLDetailsElement)) return; // ✅ Vérifier que c'est bien un <details>
+        if (!event.target.open) return; // ✅ Ne fait rien si <details> est fermé
+
+        const container = document.getElementById("fb-container");
+        if (!container || document.getElementById("fb-placeholder")) return; // ✅ Vérifie si déjà chargé
+
+        const pageUrl = event.target.getAttribute("data-url") || ""; // ✅ Évite une erreur si l'attribut manque
+
+        // Ajouter une seule fois l'iframe
+        container.innerHTML = `
+          <div id="fb-placeholder" class="fb-page" 
+               data-href="${pageUrl}"
+               data-tabs="timeline"
+               data-width="600"
+               data-height="600"
+               data-small-header="false"
+               data-hide-cover="false"
+               data-show-facepile="true">
+          </div>
+        `;
+
+        // Charger le script Facebook seulement si ce n'est pas déjà fait
+        if (!document.getElementById("fb-script")) {
+          const script = document.createElement("script");
+          script.id = "fb-script";
+          script.src =
+            "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0";
+          script.async = true;
+          script.defer = true;
+          script.crossOrigin = "anonymous";
+          document.body.appendChild(script);
+        }
+      });
+    });
+  </script>
+</details>
+<style>
+  #fb-details {
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    margin: 1em 0;
+    border-radius: 5px;
+    padding: 0.5em;
+    width: 500px;
+  }
+  @media screen and (max-width: 500px) {
+    #fb-details {
+        width: 400px;
+    }
+
+  }
+  summary {
+    margin-inline: 0.5rem;
+    padding: 0.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+  }
+
+  #fb-container {
+    margin-top: 10px;
+  }
+</style>

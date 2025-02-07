@@ -6,7 +6,6 @@ interface Props {
 const { title } = Astro.props;
 import Header from "../layouts/header.astro";
 import Footer from "../layouts/footer.astro";
-import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -20,14 +19,21 @@ import { ViewTransitions } from "astro:transitions";
     <link type="text/css" rel="stylesheet" href="objetheque.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
     <script defer src="/menuscript.js"></script>
+    <style>
+      /* API view transition CSS */
+      @view-transition {
+        navigation: auto; /* enabled! */
+      }
+    </style>
   </head>
   <body>
     <Header />
     <slot />
     <Footer />
-    
   </body>
 </html>
