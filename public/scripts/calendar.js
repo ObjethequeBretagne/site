@@ -24,7 +24,7 @@ window.navigateMonth = navigateMonth;
 // Charger les événements depuis le fichier JSON
 async function loadEvents() {
   try {
-    const response = await fetch("/public/events.json");
+    const response = await fetch("/events.json");
     const data = await response.json();
     console.log("Événements chargés :", data); // Vérifie dans la console
     return data;
