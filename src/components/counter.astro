@@ -44,53 +44,51 @@
     }
   </style>
   <script>
-    document.addEventListener("astro:page-load", () => {
-      // Constantes
-      const ANIMATION_DURATION = 2000;
+    // Constantes
+    const ANIMATION_DURATION = 2000;
 
-      // Fonction d'animation (progression linéaire)
-      function animateCounter(
-        element: HTMLElement,
-        endValue: number,
-        duration: number
-      ) {
-        const startTime = performance.now();
+    // Fonction d'animation (progression linéaire)
+    function animateCounter(
+      element: HTMLElement,
+      endValue: number,
+      duration: number
+    ) {
+      const startTime = performance.now();
 
-        function updateCounter(currentTime: number) {
-          const elapsedTime = currentTime - startTime;
-          const progress = Math.min(elapsedTime / duration, 1); // Progression linéaire
-          const currentValue = Math.floor(progress * endValue);
-          element.textContent = currentValue.toString();
+      function updateCounter(currentTime: number) {
+        const elapsedTime = currentTime - startTime;
+        const progress = Math.min(elapsedTime / duration, 1); // Progression linéaire
+        const currentValue = Math.floor(progress * endValue);
+        element.textContent = currentValue.toString();
 
-          if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-          }
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
         }
-
-        requestAnimationFrame(updateCounter);
       }
 
-      // Intersection Observer pour démarrer l'animation quand visible
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const element = entry.target as HTMLElement;
-            const endValue = parseInt(element.dataset.endValue || "0", 10); // Récupère la valeur de l'attribut data-end-value
+      requestAnimationFrame(updateCounter);
+    }
 
-            if (!element.classList.contains("animated")) {
-              element.classList.add("animated");
-              animateCounter(element, endValue, ANIMATION_DURATION);
-            }
+    // Intersection Observer pour démarrer l'animation quand visible
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const endValue = parseInt(element.dataset.endValue || "0", 10); // Récupère la valeur de l'attribut data-end-value
 
-            observer.unobserve(entry.target);
+          if (!element.classList.contains("animated")) {
+            element.classList.add("animated");
+            animateCounter(element, endValue, ANIMATION_DURATION);
           }
-        });
-      });
 
-      // Sélectionne tous les compteurs
-      document.querySelectorAll(".counter").forEach((counter) => {
-        observer.observe(counter);
+          observer.unobserve(entry.target);
+        }
       });
+    });
+
+    // Sélectionne tous les compteurs
+    document.querySelectorAll(".counter").forEach((counter) => {
+      observer.observe(counter);
     });
   </script>
 </div>
