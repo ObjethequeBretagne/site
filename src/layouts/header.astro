@@ -1,10 +1,11 @@
-<header transition:persist>
+<header>
   <div class="logo">
     <a href="index.html"
       ><img
         id="logo-site"
         alt="logo de l'objetheque de Cornouaille"
         src="assets/img/logo.png"
+        transition:persist
       /></a
     >
   </div>
@@ -79,7 +80,7 @@
   </nav>
   <!--FIN Menu pour le format écran ordinateur-->
   <nav class="navMobile" aria-label="menu déroulant">
-    <input type="checkbox" id="hamburgerMenuToggle" disabled/>
+    <input type="checkbox" id="hamburgerMenuToggle" disabled />
     <label
       for="hamburgerMenuToggle"
       class="hamburgerMenuContainer"
@@ -143,7 +144,8 @@
               <a
                 target="_blank"
                 href="https://objethequecornouaille.myturn.com/library/giftCertificate/index"
-                >Bons cadeaux</a>
+                >Bons cadeaux</a
+              >
             </li>
           </ul>
         </details>
@@ -217,3 +219,4 @@
   </div>
 </header>
 <div class="headerFix"></div>
+<script defer src="/menuscript.js"></script>

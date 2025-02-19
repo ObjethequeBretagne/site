@@ -1,56 +1,98 @@
 ---
-const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/"; // Remplace par ton URL
+const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
 ---
 
 <section style="display: flex; justify-content: center;">
   <details class="missionBenev" id="fb-details" data-url={pageUrl}>
     <summary>📢 Voir les derniers posts Facebook</summary>
-    <div id="fb-container"></div>
+    <div id="fb-container">
+      <!-- 🔥 Loader visible au début -->
+      <div id="fb-loader" class="loader"></div>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const detailsElement = document.getElementById("fb-details");
-
-        if (!detailsElement) return; // ✅ Vérification de l'existence
-
-        detailsElement.addEventListener("toggle", function (event) {
-          if (!(event.target instanceof HTMLDetailsElement)) return; // ✅ Vérifier que c'est bien un <details>
-          if (!event.target.open) return; // ✅ Ne fait rien si <details> est fermé
-
-          const container = document.getElementById("fb-container");
-          if (!container || document.getElementById("fb-placeholder")) return; // ✅ Vérifie si déjà chargé
-
-          const pageUrl = event.target.getAttribute("data-url") || ""; // ✅ Évite une erreur si l'attribut manque
-
-          // Ajouter une seule fois l'iframe
-          container.innerHTML = `
-          <div id="fb-placeholder" class="fb-page" 
-               data-href="${pageUrl}"
-               data-tabs="timeline"
-               data-width="600"
-               data-height="600"
-               data-small-header="false"
-               data-hide-cover="false"
-               data-show-facepile="true">
-          </div>
-        `;
-
-          // Charger le script Facebook seulement si ce n'est pas déjà fait
-          if (!document.getElementById("fb-script")) {
-            const script = document.createElement("script");
-            script.id = "fb-script";
-            script.src =
-              "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0";
-            script.async = true;
-            script.defer = true;
-            script.crossOrigin = "anonymous";
-            document.body.appendChild(script);
-          }
-        });
-      });
-    </script>
+      <!-- L'iframe sera ajouté ici -->
+      <div id="fb-placeholder"></div>
+    </div>
   </details>
 </section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const detailsElement = document.getElementById("fb-details");
+    if (!detailsElement) return;
+
+    detailsElement.addEventListener("toggle", (event) => {
+      const target = event.target as HTMLDetailsElement | null;
+      if (!target || !target.open) return;
+
+      const container = document.getElementById("fb-container");
+      const loader = document.getElementById("fb-loader");
+      const placeholder = document.getElementById("fb-placeholder");
+
+      if (!container || !placeholder || placeholder.innerHTML.trim() !== "") return;
+
+      const pageUrl = target.getAttribute("data-url") || "";
+
+      // 🔥 Affiche le loader
+      if (loader) loader.style.display = "block";
+
+      // Ajouter l'iframe dans le placeholder
+      placeholder.innerHTML = `
+        <div class="fb-page" 
+             data-href="${pageUrl}"
+             data-tabs="timeline"
+             data-width="600"
+             data-height="600"
+             data-small-header="false"
+             data-hide-cover="false"
+             data-show-facepile="true">
+        </div>
+      `;
+
+      // Charger le script Facebook si nécessaire
+      const initFacebook = () => {
+        if ((window as any).FB) {
+          (window as any).FB.XFBML.parse();
+
+          // 🔥 Cache le loader une fois l'iframe chargé
+          setTimeout(() => {
+            if (loader) loader.style.display = "none";
+          }, 500); // Ajuste le délai si besoin
+        }
+      };
+
+      if (!document.getElementById("fb-script")) {
+        const script = document.createElement("script");
+        script.id = "fb-script";
+        script.src = "https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0";
+        script.async = true;
+        script.defer = true;
+        script.crossOrigin = "anonymous";
+        script.onload = initFacebook;
+        document.body.appendChild(script);
+      } else {
+        initFacebook();
+      }
+    });
+  });
+</script>
+
+<style>
+  /* 🔥 Loader stylé */
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--dark-text-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
 <style>
   #fb-details {
     display: flex;
