@@ -1,4 +1,5 @@
 document.addEventListener("astro:page-load", () => {
+  /// Menu Mobile
   const checkbox = document.getElementById("hamburgerMenuToggle");
   const navWrapper = document.getElementById("navigationWrapper");
 
@@ -40,15 +41,43 @@ document.addEventListener("astro:page-load", () => {
       });
     });
   });
+
+  /// Menu Web
+  document.querySelectorAll("#menuWeb > li").forEach((menuItem) => {
+    let timeout;
+
+    menuItem.addEventListener("mouseenter", () => {
+      clearTimeout(timeout); // On annule la fermeture si la souris revient vite
+      const submenu = menuItem.querySelector(".submenu");
+      if (submenu) {
+        submenu.style.opacity = "1";
+        submenu.style.visibility = "visible";
+        submenu.style.pointerEvents = "auto";
+      }
+    });
+
+    menuItem.addEventListener("mouseleave", () => {
+      timeout = setTimeout(() => {
+        const submenu = menuItem.querySelector(".submenu");
+        if (submenu) {
+          submenu.style.opacity = "0";
+          submenu.style.visibility = "hidden";
+          submenu.style.pointerEvents = "none";
+        }
+      }, 100); // 🔥 Délai de 100ms avant fermeture
+    });
+  });
 });
 
 document.addEventListener("astro:after-swap", () => {
-  setTimeout(() => {
-    if (window.location.hash) {
-      const anchor = document.querySelector(window.location.hash);
-      if (anchor) {
-        anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      if (window.location.hash) {
+        const anchor = document.querySelector(window.location.hash);
+        if (anchor) {
+          anchor.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
-    }
-  }, 100); // Temps d’attente avant d’exécuter le scroll
+    });
+  });
 });

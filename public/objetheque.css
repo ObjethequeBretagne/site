@@ -299,12 +299,15 @@ header a {
   background-size: 100% 100%;
 
 }
-#menuWeb li:hover .submenu {
-  display: block;
-  
+/* 🔥 Afficher le sous-menu uniquement si on survole le LI parent */
+#menuWeb li:hover > .submenu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* 🔹 Active les événements seulement quand visible */
 }
 .submenu {
-  display: none;
+  pointer-events: none;
+  opacity: 0; /* Caché par défaut */
   position: absolute;
   background-color: var(--background-color);
   padding-left: 10px;
@@ -312,6 +315,7 @@ header a {
   border-radius: 20px;
   box-shadow: 3px 3px 7px var(--dark-shadow-color);
   text-transform: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
 }
 
 #boutonsOranges{
