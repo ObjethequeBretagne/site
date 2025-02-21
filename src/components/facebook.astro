@@ -17,17 +17,16 @@ const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
 
 <script>
   document.addEventListener("astro:page-load", () => {
-  const initScript = () => {
-    const detailsElement = document.getElementById("fb-details") as HTMLDetailsElement | null;
+    const detailsElement = document.getElementById("fb-details");
     if (!detailsElement) return;
 
     detailsElement.addEventListener("toggle", (event) => {
-      const target = event.target as HTMLDetailsElement;
+      const target = event.target as HTMLDetailsElement | null;
       if (!target || !target.open) return;
 
-      const container = document.getElementById("fb-container") as HTMLDivElement | null;
-      const loader = document.getElementById("fb-loader") as HTMLDivElement | null;
-      const placeholder = document.getElementById("fb-placeholder") as HTMLDivElement | null;
+      const container = document.getElementById("fb-container");
+      const loader = document.getElementById("fb-loader");
+      const placeholder = document.getElementById("fb-placeholder");
 
       if (!container || !placeholder || placeholder.innerHTML.trim() !== "") return;
 
@@ -53,9 +52,11 @@ const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
       const initFacebook = () => {
         if ((window as any).FB) {
           (window as any).FB.XFBML.parse();
+
+          // 🔥 Cache le loader une fois l'iframe chargé
           setTimeout(() => {
             if (loader) loader.style.display = "none";
-          }, 500);
+          }, 500); // Ajuste le délai si besoin
         }
       };
 
@@ -72,15 +73,7 @@ const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
         initFacebook();
       }
     });
-  };
-
-  if (document.readyState === "complete" || document.readyState === "interactive") {
-    initScript();
-  } else {
-    document.addEventListener("DOMContentLoaded", initScript);
-  }
-});
-
+  });
 </script>
 
 <style>
