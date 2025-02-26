@@ -1,19 +1,22 @@
 <!-- déclaration d'un tableau d'événements-->
 <section
-  x-data="{ events: [] }"
+  x-data="{ events: [], showAll: window.location.pathname.includes('agenda') }"
   x-init="
     fetch('../events.json')
       .then(response => response.json())
       .then(data => {
         const today = new Date();
-        // Filtrer et trier les événements dans Alpine.js
         events = data
           .filter(event => new Date(event.startDate) > today)
-          .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
-          .slice(0, 4);
+          .sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+        if (!showAll) {
+          events = events.slice(0, 3);
+        }
       })
-"
+  "
 >
+
   <div class="derniersEvenementsGridAll">
     <template x-for="event in events" :key="event.title">
       <div class="derniersEvenementsGrid1">

@@ -3,7 +3,7 @@ import Layout from "../layouts/layout.astro";
 import Counter from "../components/counter.astro";
 import Catalogue from "../components/myturncatalog.astro";
 // import Videomp4 from "../components/videomp4.astro";
-import Events from "../components/lastevent.astro";
+import NextEvents from "../components/nextevents.astro";
 import Facebook from "../components/facebook.astro";
 ---
 
@@ -40,13 +40,37 @@ import Facebook from "../components/facebook.astro";
         src="assets/img/illuPresa.png"
       />
     </section>
-    <a href="https://www.kengo.bzh/cmb/tombola/4273/l-objetheque-de-cornouaille" target="_blank"><img style="margin-bottom: 2rem; max-height: 25rem;" alt="lien pour la tombola des associations" src="tombola.png" class="imgCentre"></a>
+    <a
+      href="https://www.kengo.bzh/cmb/tombola/4273/l-objetheque-de-cornouaille"
+      target="_blank"
+      ><img
+        style="margin-bottom: 2rem; max-height: 25rem;"
+        alt="lien pour la tombola des associations"
+        src="tombola.png"
+        class="imgCentre"
+      /></a
+    >
     <Facebook />
     <h2>
-      <span>Les prochaines dates !</span>
+      <span class="moon">Nos dates à venir !</span>
+      <a class="plusplus star" href="agenda">
+        +
+      </a>
       <p class="sousTexteH2">An deiziadoù da zont !</p>
     </h2>
-    <Events />
+    <style>
+      .plusplus {
+        font: bold normal normal 1.5em/20px Muli;
+        color: var(--secondary-color);
+        margin-left: 0.2em;
+        margin-top: 0.1em;
+        transition: color 0.3s ease;
+      }
+      .plusplus:hover {
+        color: #f1d13fe3;
+      }
+    </style>
+    <NextEvents />
     <iframe
       style="border-radius: 20px;"
       class="imgCentre"
@@ -131,13 +155,14 @@ import Facebook from "../components/facebook.astro";
     </h2>
     <iframe
       id="gmap"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2670.295213241934!2d-4.0644972!3d47.9886817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4810d773657f2745%3A0x40ba5da19d1940bd!2sL&#39;Objeth%C3%A8que%20de%20Cornouaille!5e0!3m2!1sfr!2sfr!4v1739277917549!5m2!1sfr!2sfr"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2670.295213241934!2d-4.0644972!3d47.9886817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4810d773657f2745%3A0x40ba5da19d1940bd!2sL'Objeth%C3%A8que%20de%20Cornouaille!5e0!3m2!1sfr!2sfr!4v1739277917549!5m2!1sfr!2sfr"
       width="600"
       height="450"
       style="border:0;"
       allowfullscreen=""
       loading="eager"
-      referrerpolicy="no-referrer-when-downgrade">
+      referrerpolicy="no-referrer-when-downgrade"
+    >
     </iframe>
   </main>
 </Layout>
