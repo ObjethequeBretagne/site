@@ -1,5 +1,14 @@
 [
   {
+    "title": "Atelier Fresque du sol",
+    "description": "Découvrez un outil ludique et collaboratif qui vise à diffuser un langage commun sur le fonctionnement des sols et sur les enjeux liés à leur préservation.<br>Au travers de 50 cartes et en 3h, la fresque du sol permet de comprendre ce qu’est un sol, comment celui-ci se forme et quelles fonctions écologiques découlent de ses propriétés pour ensuite découvrir l’ensemble des services que l’on en retire, les menaces qui rendent ces services limités dans le temps et l’espace 🌿🌍",
+    "startDate": "2025-03-15T14:00:00+01:00",
+    "endDate": "2025-03-15T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-sol",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
+  },
+  {
     "title": "La pause bien-être 2nde édition",
     "description": "Vous cherchez à vous ressourcer et à vous détendre? Nous vous proposons...<br><br>✨ Massage Shiatsu pour vous relaxer et vous décontracter<br>💡 Life coachIng, une opportunité d’aller à la rencontre de vous-même<br>🧵 Création d\\'un masque de détente pour les yeux : couture et bien-être réunis ! 🌸<br>🍵 Partie zen avec thé, musique et fauteuils pour vous faire voyager dans un monde de sérénité<br><br>🌿 Avec la participation des professionnelles Maryline Bazin et Lucie Baccon<br>📌 Infos pratiques : Massage habillé ",
     "startDate": "2025-04-05T14:00:00+02:00",
@@ -33,7 +42,7 @@
     "endDate": "2025-04-11T21:00:59+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-de-la-biodiversite",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-1bf7e3c3af3c4bf1959983ce3de0132c.png"
   },
   {
     "title": "Atelier Co-réparation marché Penhars  26/03",
@@ -169,14 +178,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-climat",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
-  },
-  {
-    "title": "Atelier couture",
-    "description": "Accompagné(e)s par Françoise et Juliane, apprenez les rudiments de la couture ou passez seulement faire vos petites réparations! Places limitées",
-    "startDate": "2023-02-11T14:00:00+01:00",
-    "endDate": "2023-02-11T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
   }
 ]
