@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/layout.astro";
+import { Picture } from "astro:assets";
+import recapempruntImage from "../assets/img/recapemprunt.png";
+
 ---
 
 <Layout title="Adhésion particulier">
@@ -103,11 +106,13 @@ import Layout from "../layouts/layout.astro";
         lors du retour de l’objet
       </p>
     </section>
-    <img
-      class="imgCentre"
-      src="assets/webp/recapemprunt.webp"
-      alt="récapitulatif de la procédure d'emprunt"
-    />
+    <div class="imgCentre">
+      <Picture
+        src={recapempruntImage}
+        formats={["avif", "webp", "png"]}
+        alt="récapitulatif de la procédure d'emprunt"
+      />
+    </div>
   </main>
   <style type="text/css">
     #particulier {

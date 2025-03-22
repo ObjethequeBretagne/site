@@ -5,12 +5,18 @@ import Catalogue from "../components/myturncatalog.astro";
 // import Videomp4 from "../components/videomp4.astro";
 import NextEvents from "../components/nextevents.astro";
 import Facebook from "../components/facebook.astro";
+import { Image, Picture } from "astro:assets";
+
+// Import des images
+import illuPresa from "../assets/img/illuPresa.png";
+import bullePanneau from "../assets/img/BullePanneau.png";
+import bulleBenjamin from "../assets/img/BulleBenjamin.png";
+import iconGps from "../assets/img/icon gps orange.png";
+import tombolaImage from "../assets/tombola.png";
 ---
 
 <Layout title="Objetheque de Cornouaille">
   <head>
-    <link rel="preload" as="image" href="/assets/img/boisClairHorizontal.jpg" />
-    <link rel="preload" as="image" href="/assets/img/illuPresa.png" />
     <link
       rel="preload"
       href="assets/polices/Ebrima/ebrima-bold.ttf"
@@ -35,27 +41,34 @@ import Facebook from "../components/facebook.astro";
         </div>
         <p class="presaSousTitre">Prêt d'objets, Réparation, Création.</p>
       </h1>
-      <img
-        alt="dessin d'une planète entourée d'objets et de personnes pour les réparer/entretenir"
-        src="assets/img/illuPresa.png"
-      />
+      <div class="presentation-image-container">
+        <Picture 
+          src={illuPresa}
+          formats={["avif", "webp", "png"]}
+          widths={[400, 800, 1200]}
+          sizes="(max-width: 767px) 100vw, 50vw"
+          alt="dessin d'une planète entourée d'objets et de personnes pour les réparer/entretenir"
+          class="presentation-image"
+        />
+      </div>
     </section>
-    <a
-      href="https://www.kengo.bzh/cmb/tombola/4273/l-objetheque-de-cornouaille"
-      target="_blank"
-      ><img
-        style="margin-bottom: 2rem; max-height: 25rem;"
-        alt="lien pour la tombola des associations"
-        src="tombola.png"
-        class="imgCentre"
-      /></a
-    >
+    <div class="imgCentre">
+      <a href="https://www.kengo.bzh/cmb/tombola/4273/l-objetheque-de-cornouaille" target="_blank">
+        <Picture
+          src={tombolaImage}
+          formats={["avif", "webp", "png"]}
+          widths={[400, 600, 800]}
+          sizes="(max-width: 767px) 90vw, 600px"
+          alt="lien pour la tombola des associations"
+          style={{ marginBottom: "2rem", maxHeight: "25rem" }}
+        />
+      </a>
+    </div>
+    
     <Facebook />
     <h2>
       <span class="moon">Nos dates à venir !</span>
-      <a class="plusplus star" href="agenda">
-        +
-      </a>
+      <a class="plusplus star" href="agenda"> + </a>
       <p class="sousTexteH2">An deiziadoù da zont !</p>
     </h2>
     <style>
@@ -83,10 +96,13 @@ import Facebook from "../components/facebook.astro";
       referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
     <section class="photoTexte wrapReverse">
-      <img
-        alt="photo en forme de bulle de l'intérieur du local de l'objetheque"
-        src="assets/img/BullePanneau.png"
-      />
+      <Picture
+    src={bullePanneau}
+    formats={["avif", "webp", "png"]}
+    widths={[300, 500, 700]}
+    sizes="(max-width: 767px) 80vw, 40vw"
+    alt="photo en forme de bulle de l'intérieur du local de l'objetheque"
+  />
       <div>
         <p>
           Vous en avez assez d'acheter des objets que vous n'utilisez qu'une
@@ -139,17 +155,21 @@ import Facebook from "../components/facebook.astro";
           Ensemble, nous pouvons faire la différence.
         </p>
       </div>
-      <img
-        alt="photo en forme de bulle de Benjamin qui pose avec des objets de l'objetheque"
-        src="assets/img/BulleBenjamin.png"
-      />
+      <Picture
+    src={bulleBenjamin}
+    formats={["avif", "webp", "png"]}
+    widths={[300, 500, 700]}
+    sizes="(max-width: 767px) 80vw, 40vw"
+    alt="photo en forme de bulle de Benjamin qui pose avec des objets de l'objetheque"
+  />
     </section>
     <Catalogue />
     <h2>
-      Retrouvez-nous <img
+      Retrouvez-nous 
+      <img
         alt="icône de localisation orange"
         class="iconeGPSOrange"
-        src="assets/img/icon gps orange.png"
+        src="assets/img/icon_gps_orange.png"
       />
       <p class="sousTexteH2">Adkavit ac'hanomp</p>
     </h2>

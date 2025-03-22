@@ -200,12 +200,6 @@ form{
   transform-origin: left;
 }
 
-.imgCentre {
-  display: flex;
-  margin-inline: auto;
-  max-width: min(100%, 900px);
-}
-
 .h2PaddingTopSmall {
   padding-top: var(--paddingTopH2Small);
 }
@@ -238,6 +232,41 @@ form{
 details{
   background-color: var(--background-color);
 }
+
+/* Styles pour assurer que les images dans les composants Picture s'affichent correctement */
+picture {
+  display: inline-block;
+  max-width: 100%;
+}
+
+picture img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Pour les images centrées */
+.imgCentre {
+  display: flex;
+  justify-content: center; /* Centre le contenu horizontalement */
+  max-width: min(100%, 900px);
+  margin: 0 auto;
+}
+
+.imgCentre picture {
+  width: 100%; /* Prend toute la largeur du conteneur */
+  display: flex;
+  margin: 0 auto;
+}
+
+.imgCentre picture img {
+  max-width: 100%; /* Empêche de dépasser la taille originale */
+  height: auto; /* Maintient les proportions */
+  display: flex;
+  object-fit: contain;
+  margin-inline: auto;
+}
+
+
 
 /* comportement des sous-menus en mode mobile */
 details[open] > summary ~ * {
@@ -573,7 +602,14 @@ header a {
   animation: translateRight 0.4s ease-in-out;
 }
 
-.presentation img {
+.presentation-image {
+  /* Ces styles s'appliquent à l'img à l'intérieur du picture */
+  width: 100%;
+  height: auto;
+}
+
+/* Créez un conteneur pour le Picture */
+.presentation-image-container {
   width: 34%;
   min-width: 300px;
   display: flex;
@@ -581,7 +617,6 @@ header a {
   margin-left: auto;
   padding-right: 5%;
   margin-top: 1rem;
-  height: auto;
   animation: translateUp 0.32s ease-in-out;
 }
 /*FIN bandeau d'acceuil*/

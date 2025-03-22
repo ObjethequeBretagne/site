@@ -3,6 +3,8 @@ import Layout from "../layouts/layout.astro";
 import InfiniteScroller from "../components/infinite-scroller.astro";
 import DocsUtiles from "../components/docsutiles.astro";
 import TabPresse from "../components/tabpresse.astro"
+import { Picture } from "astro:assets";
+import equipeImage from "../assets/img/equipe.jpg";
 ---
 
 <Layout title="À propos">
@@ -71,11 +73,22 @@ import TabPresse from "../components/tabpresse.astro"
         <span class="ancre" id="H201">Notre équipe </span>
         <p class="sousTexteH2">Hor skipailh</p>
       </h2>
-      <img
-        style="margin-block: var(--marginBlock); border-radius: 20px;"
-        class="imgCentre"
-        src="assets/img/equipe.jpg"
-      />
+      <div class="imgCentre">
+        <Picture
+          src={equipeImage}
+          formats={["avif", "webp", "png"]}
+          widths={[900]}  
+          sizes="(max-width: 900px) 90vw, 900px"
+          alt="Photo de l'équipe"
+        />
+        <style>
+          .imgCentre picture img {
+            border-radius: 20px;
+            margin-block: var(--marginBlock);
+          }
+        </style>
+      </div>
+      
       <div style="display: none;" class="media-scroller">
         <div class="media-element">
           <div>
