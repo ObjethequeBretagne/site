@@ -687,9 +687,21 @@ header a {
 /* fin aperçu catalogue */
 
 /*Nous retrouver*/
-.iconeGPSOrange{
-  height: max(2.4vw, 22px); 
+.iconeGPSOrange-container {
+  display: inline-block;
   transform: translate(10px, 5px);
+}
+
+.iconeGPSOrange-container picture,
+.iconeGPSOrange {
+  display: inline-block;
+  height: max(2.4vw, 22px);
+  width: auto;
+}
+
+.iconeGPSOrange-container img {
+  height: 100%;
+  width: auto;
 }
 
 #planAdresse {
@@ -918,30 +930,55 @@ header a {
   padding-block: var(--_spaceBlock);
   border-radius: 20px 20px 0 0;
   box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.1);
-  overflow-x: auto;
+  overflow-x: hidden; /* Changé de auto à hidden pour empêcher le défilement du details entier */
 }
+
 @media (prefers-color-scheme: dark) {
   .missionBenev {
   /* Mode sombre */
   background: var(--FAQcolor);
   }
 }
+
 .missionBenev summary {
   font-size: 20px;
   font-weight: 900;
   color: var(--secondary-color);
   padding-left: var(--_spaceLeft);
 }
+
 .missionBenev p{
   font-size: 14px;
   color: var(--dark-text-color);
   padding-left: var(--_spaceLeft);
   margin-block: var(--_spaceBlock);
 }
-.missionBenev img {
+
+/* Nouveau conteneur pour l'image avec défilement horizontal */
+.image-container {
+  overflow-x: auto;
+  padding-left: 0; /* Retiré car le padding sera sur l'image */
+  margin-block: 0; /* Retiré car la marge sera sur l'image */
+}
+
+/* Styles pour les balises picture */
+.missionBenev picture {
+  display: inline-block;
   padding-left: 8%;
   margin-block: var(--_spaceBlock);
+}
+
+/* Styles pour les images à l'intérieur des picture */
+.missionBenev picture img {
   max-width: 878px;
+  width: auto;
+}
+
+/* Pour les grands écrans, assurons-nous que l'image s'adapte */
+@media (min-width: 900px) {
+  .missionBenev picture img {
+    max-width: 100%;
+  }
 }
 /* FIN page DEVENIR BENEVOLE */
 

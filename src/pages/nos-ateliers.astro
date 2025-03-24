@@ -1,56 +1,50 @@
 ---
 import Layout from "../layouts/layout.astro";
+import { Picture } from "astro:assets";
+
+// Import des images
+import repa1 from "../assets/img/repa1.png";
+import repa2 from "../assets/img/repa2.png";
+import repa3 from "../assets/img/repa3.png";
+import repalast from "../assets/img/repalast.png";
+import couture1 from "../assets/img/couture1.png";
+import couture2 from "../assets/img/couture2.png";
+import couture3 from "../assets/img/couture3.png";
+import manga1 from "../assets/img/manga1.png";
+import manga2 from "../assets/img/manga2.png";
+import oiseau1 from "../assets/img/oiseau1.png";
+import oiseau2 from "../assets/img/oiseau2.png";
+
+// Définition d'un tableau pour faciliter le rendu
+const workshopImages = [
+  { src: repa1, alt: "atelier réparation" },
+  { src: repa3, alt: "atelier réparation" },
+  { src: repa2, alt: "atelier réparation" },
+  { src: repalast, alt: "atelier réparation" },
+  { src: couture1, alt: "atelier couture" },
+  { src: couture2, alt: "atelier couture" },
+  { src: couture3, alt: "atelier couture" },
+  { src: manga1, alt: "atelier manga" },
+  { src: manga2, alt: "atelier manga" },
+  { src: oiseau1, alt: "atelier nichoir à oiseaux" },
+  { src: oiseau2, alt: "atelier nichoir à oiseaux" },
+];
 ---
 
-<Layout title="Ils l'ont fait !">
+<Layout title="Nos ateliers">
   <main>
     <h2 class="h2PaddingTopSmall">Nos ateliers</h2>
-    <img
-      class="imgCentre"
-      src="assets/img/repa1.png"
-      alt="atelier réparation"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/repa3.png"
-      alt="atelier réparation"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/repa2.png"
-      alt="atelier réparation"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/repalast.png"
-      alt="atelier réparation"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/couture1.png"
-      alt="atelier couture"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/couture2.png"
-      alt="atelier couture"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/couture3.png"
-      alt="atelier couture"
-    />
-    <img class="imgCentre" src="assets/img/manga1.png" alt="atelier manga" />
-    <img class="imgCentre" src="assets/img/manga2.png" alt="atelier manga" />
-    <img
-      class="imgCentre"
-      src="assets/img/oiseau1.png"
-      alt="atelier nichoir à oiseaux"
-    />
-    <img
-      class="imgCentre"
-      src="assets/img/oiseau2.png"
-      alt="atelier nichoir à oiseaux"
-    />
+
+    {workshopImages.map((image) => (
+      <div class="imgCentre">
+        <Picture
+          src={image.src}
+          formats={["avif", "webp", "png"]}
+          widths={[400, 800, 1200]}
+          sizes="(max-width: 767px) 95vw, (max-width: 1200px) 80vw, 900px"
+          alt={image.alt}
+        />
+      </div>
+    ))}
   </main>
 </Layout>

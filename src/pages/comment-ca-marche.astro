@@ -1,13 +1,19 @@
 ---
 import Layout from "../layouts/layout.astro";
+import { Picture } from "astro:assets";
+import imgcommentcamarche from "../assets/img/imgcommentcamarche.png";
 ---
 
 <Layout title="Comment ça marche ?">
   <main style="margin-top: 0.5em;">
-    <img
-      class="imgCentre"
-      src="assets/img/imgcommentcamarche.png"
-      alt="récapitulatif de la procédure d'emprunt"
-    />
+    <div class="imgCentre">
+      <Picture
+        src={imgcommentcamarche}
+        formats={["avif", "webp", "png"]}
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 767px) 95vw, (max-width: 1200px) 80vw, 900px"
+        alt="récapitulatif de la procédure d'emprunt"
+      />
+    </div>
   </main>
 </Layout>

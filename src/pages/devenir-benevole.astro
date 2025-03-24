@@ -1,70 +1,105 @@
 ---
 import Layout from "../layouts/layout.astro";
+import { getImage } from "astro:assets";
+
+// Import des images
+import missionAccueilMateriel from "../assets/webp/mission-benev/mission-accueil-materiel.webp";
+import missionCommunicationEvent from "../assets/webp/mission-benev/mission-communication-event.webp";
+import missionComptaAdmin from "../assets/webp/mission-benev/mission-compta-administration.webp";
+import pdfLogo from "../assets/img/pdf-logo.png";
+
+// Prétraitement des images en différents formats
+// Mission Accueil
+const accueilAvif = await getImage({ src: missionAccueilMateriel, format: "avif" });
+const accueilWebp = await getImage({ src: missionAccueilMateriel, format: "webp" });
+const accueilPng = await getImage({ src: missionAccueilMateriel, format: "png" });
+
+// Mission Communication
+const communicationAvif = await getImage({ src: missionCommunicationEvent, format: "avif" });
+const communicationWebp = await getImage({ src: missionCommunicationEvent, format: "webp" });
+const communicationPng = await getImage({ src: missionCommunicationEvent, format: "png" });
+
+// Mission Compta
+const comptaAvif = await getImage({ src: missionComptaAdmin, format: "avif" });
+const comptaWebp = await getImage({ src: missionComptaAdmin, format: "webp" });
+const comptaPng = await getImage({ src: missionComptaAdmin, format: "png" });
+
+// PDF Logo
+const pdfLogoAvif = await getImage({ src: pdfLogo, format: "avif", width: 40 });
+const pdfLogoWebp = await getImage({ src: pdfLogo, format: "webp", width: 40 });
+const pdfLogoPng = await getImage({ src: pdfLogo, format: "png", width: 40 });
 ---
 
-<Layout title="Comment ça marche ?">
+<Layout title="Devenir bénévole">
   <main>
     <h2 class="h2PaddingTopSmall">
       <span>Devenir bénévole</span>
       <p class="sousTexteH2">Les types de mission</p>
     </h2>
-    <section class="missionsBenev" style="">
+    <section class="missionsBenev">
       <details class="missionBenev">
         <summary>Accueil & Matériel</summary>
-        <img
-          alt="schéma de description des missions du bénévole"
-          src="assets/webp/mission-benev/mission-accueil-materiel.webp"
-        />
+        <div class="image-container">
+          <picture>
+            <source srcset={accueilAvif.src} type="image/avif">
+            <source srcset={accueilWebp.src} type="image/webp">
+            <img
+              alt="schéma de description des missions du bénévole"
+              src={accueilPng.src}
+              width={missionAccueilMateriel.width}
+              height={missionAccueilMateriel.height}
+            />
+          </picture>
+        </div>
       </details>
       <details class="missionBenev">
         <summary>Communication & Événement</summary>
-        <img
-          alt="schéma de description des missions du bénévole"
-          src="assets/webp/mission-benev/mission-communication-event.webp"
-        />
+        <div class="image-container">
+          <picture>
+            <source srcset={communicationAvif.src} type="image/avif">
+            <source srcset={communicationWebp.src} type="image/webp">
+            <img
+              alt="schéma de description des missions du bénévole"
+              src={communicationPng.src}
+              width={missionCommunicationEvent.width}
+              height={missionCommunicationEvent.height}
+            />
+          </picture>
+        </div>
       </details>
       <details class="missionBenev">
         <summary>Comptabilité & Administration</summary>
-        <img
-          alt="schéma de description des missions du bénévole"
-          src="assets/webp/mission-benev/mission-compta-administration.webp"
-        />
+        <div class="image-container">
+          <picture>
+            <source srcset={comptaAvif.src} type="image/avif">
+            <source srcset={comptaWebp.src} type="image/webp">
+            <img
+              alt="schéma de description des missions du bénévole"
+              src={comptaPng.src}
+              width={missionComptaAdmin.width}
+              height={missionComptaAdmin.height}
+            />
+          </picture>
+        </div>
       </details>
     </section>
     <section style="margin-left: 8%; margin-block: var(--marginBlock);">
       <p>
         <a class="soulignementOrange2" href="fiches-benevole.pdf">
           télécharger ici les fiches missions bénévole&nbsp;
-          <img
-            style="height: 40px;"
-            src="assets/img/pdf-logo.png"
-            alt="logo pdf"
-          />
+          <picture>
+            <source srcset={pdfLogoAvif.src} type="image/avif">
+            <source srcset={pdfLogoWebp.src} type="image/webp">
+            <img
+              style="height: 40px;"
+              src={pdfLogoPng.src}
+              alt="logo pdf"
+              width={40}
+              height={40}
+            />
+          </picture>
         </a>
       </p>
-    </section>
-    <section style="display: none;">
-      <h2>
-        <span class="ancre" id="H200">Rejoignez-nous !</span>
-      </h2>
-      <form action="/submit_form" method="post">
-        <div
-          style="display: flex; gap: 4px; padding-block: 10px; flex-wrap: wrap;"
-        >
-          <label for="lname">Nom</label><br />
-          <input type="text" id="lname" name="lname" /><br />
-          <label for="email">Email</label><br />
-          <input type="email" id="email" name="email" /><br />
-        </div>
-        <p>Avez-vous déjà un abonement à l'objetheque ?</p>
-        <input type="radio" id="yes" name="service_used" value="yes" />
-        <label for="yes">Oui</label><br />
-        <input type="radio" id="no" name="service_used" value="no" />
-        <label for="no">Non</label><br />
-        <label for="message">Message :</label><br />
-        <textarea id="message" name="message"></textarea><br />
-        <input type="submit" value="Envoyer" />
-      </form>
     </section>
   </main>
 </Layout>

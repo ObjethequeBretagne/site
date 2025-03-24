@@ -1,5 +1,19 @@
 ---
 import Layout from "../layouts/layout.astro";
+import { getImage } from "astro:assets";
+
+// Import des images
+import adhTemp1 from "../assets/webp/adhtemp1.webp";
+import adhTemp2 from "../assets/webp/adhtemp2.webp";
+
+// Prétraitement des images en différents formats
+const adhTemp1Avif = await getImage({ src: adhTemp1, format: "avif" });
+const adhTemp1Webp = await getImage({ src: adhTemp1, format: "webp" });
+const adhTemp1Png = await getImage({ src: adhTemp1, format: "png" });
+
+const adhTemp2Avif = await getImage({ src: adhTemp2, format: "avif" });
+const adhTemp2Webp = await getImage({ src: adhTemp2, format: "webp" });
+const adhTemp2Png = await getImage({ src: adhTemp2, format: "png" });
 ---
 
 <Layout title="Adhésion association/structure">
@@ -7,30 +21,30 @@ import Layout from "../layouts/layout.astro";
     <h2 class="h2PaddingTopSmall">Adhésion association/structure</h2>
     <section id="entreprise">
       <p>
-        L’environnement est <strong>l’affaire de tous</strong>, nous sommes tous
-        impliqués pour permettre à chacun d’avoir accès à des outils/objets, de
-        réduire notre impact carbone, d’utiliser sans pour autant
+        L'environnement est <strong>l'affaire de tous</strong>, nous sommes tous
+        impliqués pour permettre à chacun d'avoir accès à des outils/objets, de
+        réduire notre impact carbone, d'utiliser sans pour autant
         posséder/stocker, pour cela, nous devons impulser un élan vers une
         économie <strong>sociale</strong> et
         <strong>solidaire</strong>.
       </p>
       <br />
       <p>
-        Nous recherchons tout type d’objets de préférence de bonne qualité
+        Nous recherchons tout type d'objets de préférence de bonne qualité
         (bricolage, jardinage, sport, camping, vidéo, son…)
       </p>
       <br />
       <p class="textePlusClair">
         Nous recherchons également un <strong
           >partage de compétences techniques</strong
-        > dans l’entretien de tout type d’objets (couture, électronique, bois…)
+        > dans l'entretien de tout type d'objets (couture, électronique, bois…)
       </p>
       <br />
       <p>
         Nous recherchons des <strong>points de collecte</strong> de façon à stocker
         momentanément les objets réservés sur le site dans vos locaux. Cela permettra
         de créer un maillage sur tout le territoire, <strong>réduire</strong> les
-        distances et <strong>faciliter</strong> l’accès aux objets.
+        distances et <strong>faciliter</strong> l'accès aux objets.
       </p>
       <br />
       <p class="textePlusClair">
@@ -65,8 +79,18 @@ import Layout from "../layouts/layout.astro";
       salariés à titre privé
     </p>
     <section id="imgadhtemp">
-      <img class="imgCentre" src="assets/webp/adhtemp1.webp" alt="" />
-      <img class="imgCentre" src="assets/webp/adhtemp2.webp" alt="" />
+      <div class="image-scroll-container">
+        <picture>
+          <source srcset={adhTemp1Avif.src} type="image/avif">
+          <source srcset={adhTemp1Webp.src} type="image/webp">
+          <img class="imgCentre" src={adhTemp1Png.src} alt="" width={adhTemp1.width} height={adhTemp1.height} />
+        </picture>
+        <picture>
+          <source srcset={adhTemp2Avif.src} type="image/avif">
+          <source srcset={adhTemp2Webp.src} type="image/webp">
+          <img class="imgCentre" src={adhTemp2Png.src} alt="" width={adhTemp2.width} height={adhTemp2.height} />
+        </picture>
+      </div>
     </section>
   </main>
   <style type="text/css">
@@ -111,13 +135,21 @@ import Layout from "../layouts/layout.astro";
     #tableauAdhesionAsso p:nth-child(3n + 1) {
       border-left: none; /* Remove left border from first column */
     }
-
-    #imgadhtemp {
+    
+    /* Container for scrollable images */
+    .image-scroll-container {
       overflow-x: auto;
-      margin-bottom: 5em;
+      margin-bottom: 1rem;
     }
-    #imgadhtemp img {
+    
+    /* Ensure images maintain their minimum width for scrollability */
+    .image-scroll-container img {
       min-width: 780px;
+    }
+    
+    /* Make sure pictures don't add unwanted margin/padding */
+    .image-scroll-container picture {
+      display: block;
     }
   </style>
 </Layout>

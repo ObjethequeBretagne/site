@@ -5,7 +5,7 @@ import Catalogue from "../components/myturncatalog.astro";
 // import Videomp4 from "../components/videomp4.astro";
 import NextEvents from "../components/nextevents.astro";
 import Facebook from "../components/facebook.astro";
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 
 // Import des images
 import illuPresa from "../assets/img/illuPresa.png";
@@ -28,7 +28,7 @@ import tombolaImage from "../assets/tombola.png";
   <main>
     <section
       class="presentation"
-      style="background-image: url('assets/img/boisClairHorizontal.jpg');"
+      style="background-image: url('assets/webp/background/boisClairHorizontal.webp');"
     >
       <h1>
         <div class="cadreBlancArrondi">
@@ -42,7 +42,7 @@ import tombolaImage from "../assets/tombola.png";
         <p class="presaSousTitre">Prêt d'objets, Réparation, Création.</p>
       </h1>
       <div class="presentation-image-container">
-        <Picture 
+        <Picture
           src={illuPresa}
           formats={["avif", "webp", "png"]}
           widths={[400, 800, 1200]}
@@ -53,7 +53,10 @@ import tombolaImage from "../assets/tombola.png";
       </div>
     </section>
     <div class="imgCentre">
-      <a href="https://www.kengo.bzh/cmb/tombola/4273/l-objetheque-de-cornouaille" target="_blank">
+      <a
+        href="https://www.kengo.bzh/cmb/tombola/4273/l-objetheque-de-cornouaille"
+        target="_blank"
+      >
         <Picture
           src={tombolaImage}
           formats={["avif", "webp", "png"]}
@@ -64,7 +67,7 @@ import tombolaImage from "../assets/tombola.png";
         />
       </a>
     </div>
-    
+
     <Facebook />
     <h2>
       <span class="moon">Nos dates à venir !</span>
@@ -97,12 +100,12 @@ import tombolaImage from "../assets/tombola.png";
       allowfullscreen></iframe>
     <section class="photoTexte wrapReverse">
       <Picture
-    src={bullePanneau}
-    formats={["avif", "webp", "png"]}
-    widths={[300, 500, 700]}
-    sizes="(max-width: 767px) 80vw, 40vw"
-    alt="photo en forme de bulle de l'intérieur du local de l'objetheque"
-  />
+        src={bullePanneau}
+        formats={["avif", "webp", "png"]}
+        widths={[300, 500, 700]}
+        sizes="(max-width: 767px) 80vw, 40vw"
+        alt="photo en forme de bulle de l'intérieur du local de l'objetheque"
+      />
       <div>
         <p>
           Vous en avez assez d'acheter des objets que vous n'utilisez qu'une
@@ -156,21 +159,25 @@ import tombolaImage from "../assets/tombola.png";
         </p>
       </div>
       <Picture
-    src={bulleBenjamin}
-    formats={["avif", "webp", "png"]}
-    widths={[300, 500, 700]}
-    sizes="(max-width: 767px) 80vw, 40vw"
-    alt="photo en forme de bulle de Benjamin qui pose avec des objets de l'objetheque"
-  />
+        src={bulleBenjamin}
+        formats={["avif", "webp", "png"]}
+        widths={[300, 500, 700]}
+        sizes="(max-width: 767px) 80vw, 40vw"
+        alt="photo en forme de bulle de Benjamin qui pose avec des objets de l'objetheque"
+      />
     </section>
     <Catalogue />
     <h2>
-      Retrouvez-nous 
-      <img
-        alt="icône de localisation orange"
-        class="iconeGPSOrange"
-        src="assets/img/icon_gps_orange.png"
-      />
+      Retrouvez-nous
+      <span class="iconeGPSOrange-container">
+        <Picture
+          src={iconGps}
+          formats={["avif", "webp", "png"]}
+          widths={[24, 48]}
+          alt="icône de localisation orange"
+          class="iconeGPSOrange"
+        />
+      </span>
       <p class="sousTexteH2">Adkavit ac'hanomp</p>
     </h2>
     <iframe

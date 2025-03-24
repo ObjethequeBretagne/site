@@ -1,111 +1,61 @@
+---
+// Si ce code fait partie d'un composant Astro
+import { Picture } from "astro:assets";
+
+// Import des images du carrousel
+import carousel1 from "../assets/img/carousel1.png";
+import carousel2 from "../assets/img/carousel2.png";
+import carousel3 from "../assets/img/carousel3.png";
+import carousel4 from "../assets/img/carousel4.png";
+import carousel5 from "../assets/img/carousel5.png";
+import carousel6 from "../assets/img/carousel6.png";
+import carousel7 from "../assets/img/carousel7.png";
+
+// Tableau des images du carrousel
+const carouselImages = [
+  carousel1, carousel2, carousel3, carousel4, carousel5, carousel6, carousel7
+];
+---
+
 <div class="carousel">
   <div class="carousel-inner">
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-1"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-      checked
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel1.png" />
-    </div>
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-2"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel2.png" />
-    </div>
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-3"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel3.png" />
-    </div>
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-4"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel4.png" />
-    </div>
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-5"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel5.png" />
-    </div>
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-6"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel6.png" />
-    </div>
-    <input
-      class="carousel-open"
-      type="radio"
-      id="carousel-7"
-      name="carousel"
-      aria-hidden="true"
-      hidden=""
-    />
-    <div class="carousel-item">
-      <img src="assets/img/carousel7.png" />
-    </div>
+    {carouselImages.map((image, index) => (
+      <>
+        <input
+          class="carousel-open"
+          type="radio"
+          id={`carousel-${index + 1}`}
+          name="carousel"
+          aria-hidden="true"
+          hidden=""
+          checked={index === 0}
+        />
+        <div class="carousel-item">
+          <Picture
+            src={image}
+            formats={["avif", "webp", "png"]}
+            alt={`Slide ${index + 1}`}
+            widths={[600]}
+            sizes="100vw"
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+        </div>
+      </>
+    ))}
   </div>
   <label id="prevBtn" class="carousel-control prev">‹</label>
   <label id="nextBtn" class="carousel-control next">›</label>
   <ol class="carousel-indicators">
-    <li>
-      <label for="carousel-1" class="carousel-bullet">•</label>
-    </li>
-    <li>
-      <label for="carousel-2" class="carousel-bullet">•</label>
-    </li>
-    <li>
-      <label for="carousel-3" class="carousel-bullet">•</label>
-    </li>
-    <li>
-      <label for="carousel-4" class="carousel-bullet">•</label>
-    </li>
-    <li>
-      <label for="carousel-5" class="carousel-bullet">•</label>
-    </li>
-    <li>
-      <label for="carousel-6" class="carousel-bullet">•</label>
-    </li>
-    <li>
-      <label for="carousel-7" class="carousel-bullet">•</label>
-    </li>
+    {carouselImages.map((_, index) => (
+      <li>
+        <label for={`carousel-${index + 1}`} class="carousel-bullet">•</label>
+      </li>
+    ))}
   </ol>
 </div>
+
 <script>
+  // Script inchangé
   const prevBtn = document.getElementById("prevBtn")!;
   const nextBtn = document.getElementById("nextBtn")!;
   const carouselItems = document.querySelectorAll(".carousel-open");
@@ -130,6 +80,7 @@
 
   updateButtons();
 </script>
+
 <style>
   .carousel {
     display: flex;
@@ -158,13 +109,8 @@
     opacity: 0;
     -webkit-transition: opacity 0.4s ease-in-out;
     transition: opacity 0.4s ease-in-out;
-  }
-
-  .carousel-item img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  }  
 
   .carousel-control {
     position: absolute;
