@@ -1,0 +1,320 @@
+---
+// src/components/contact.astro
+---
+
+<!-- Composant de formulaire de contact pour le footer avec Alpine.js -->
+<details
+  class="contact-details"
+  x-data="{
+    formStatus: null,
+    loading: false,
+    submitForm(event) {
+      this.loading = true;
+      this.formStatus = null;
+      
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(event.target)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          this.formStatus = 'success';
+          event.target.reset();
+        } else {
+          this.formStatus = 'error';
+          console.error(data);
+        }
+        this.loading = false;
+      })
+      .catch(err => {
+        this.formStatus = 'error';
+        this.loading = false;
+        console.error(err);
+      });
+    }
+  }"
+>
+  <summary>Contactez-nous</summary>
+
+  <form @submit.prevent="submitForm($event)" class="contact-form">
+    <!-- Votre clé d'accès Web3Forms -->
+    <input
+      type="hidden"
+      name="access_key"
+      value="e212e2c0-2d87-42c5-8636-57e3f811376b"
+    />
+
+    <!-- Protection anti-spam -->
+    <input type="hidden" name="botcheck" />
+
+    <!-- Informations de base sur votre formulaire -->
+    <input type="hidden" name="from_name" value="Objethèque Cornouaille" />
+    <input
+      type="hidden"
+      name="subject"
+      value="Nouveau message de contact - Objethèque"
+    />
+
+    <!-- Catégorie de demande -->
+    <div class="form-item">
+      <label for="category">Catégorie</label>
+      <select id="category" name="category" required>
+        <option value="">Choisir une catégorie</option>
+        <option value="Emprunt">Question sur un emprunt</option>
+        <option value="Don">Proposition de don</option>
+        <option value="Bénévolat">Devenir bénévole</option>
+        <option value="Partenariat">Proposer un partenariat</option>
+        <option value="Autre">Autre demande</option>
+      </select>
+    </div>
+
+    <!-- Champs du formulaire -->
+    <div class="form-item">
+      <label for="name">Nom</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+
+    <div class="form-item">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+    </div>
+
+    <div class="form-item">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" required></textarea>
+    </div>
+
+    <!-- Notification RGPD -->
+    <div class="form-item rgpd-container">
+      <label class="rgpd-label">
+        <input type="checkbox" name="gdpr" required />
+        <span
+          >En soumettant ce formulaire, j'accepte que mes données soient
+          utilisées uniquement pour me recontacter.</span
+        >
+      </label>
+    </div>
+
+    <!-- Bouton d'envoi -->
+    <div class="submit-container">
+      <div class="boutonOrange" x-bind:class="{ 'disabled': loading }">
+        <button type="submit" x-bind:disabled="loading">
+          <p
+            style="display: flex; justify-content: center;"
+            x-text="loading ? 'Envoi...' : 'Envoyer'"
+          >
+          </p>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messages de statut -->
+    <div
+      x-show="formStatus === 'success'"
+      class="form-status success"
+      x-transition
+    >
+      <p>
+        Merci pour votre message ! Nous vous répondrons dans les plus brefs
+        délais.
+      </p>
+    </div>
+
+    <div x-show="formStatus === 'error'" class="form-status error" x-transition>
+      <p>
+        Une erreur s'est produite. Veuillez réessayer ou nous contacter
+        directement.
+      </p>
+    </div>
+  </form>
+</details>
+
+<style>
+  .contact-details {
+    color: var(--dark-text-color);
+    margin-top: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-inline: 1%;
+    transition: all 0.3s ease;
+  }
+
+  .contact-details summary {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: larger;
+    background-color: var(--grey-background);
+  }
+
+  .contact-details summary:hover {
+    color: var(--primary-color);
+  }
+
+  .contact-details[open] summary {
+    margin-bottom: 1rem;
+  }
+
+  .contact-details[open] > summary ~ * {
+    animation: fade-inX 0.2s ease-in-out;
+  }
+
+  .contact-form {
+    display: grid;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
+    padding-inline: 2%;
+  }
+
+  .form-item {
+    margin-bottom: 1rem;
+    width: 100%;
+    color: var(--dark-text-color);
+  }
+
+  .form-item label {
+    display: block;
+    font-size: small;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: var(--dark-text-color);
+  }
+
+  .form-item input,
+  .form-item textarea,
+  .form-item select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--dark-text-color);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--dark-text-color);
+    font-family: Muli, system-ui, sans-serif;
+  }
+
+  /* Style pour le select et les options */
+  .form-item select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+    color: var(--dark-text-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--dark-text-color);
+  }
+
+  /* Styles pour les options du menu déroulant */
+  .form-item select option {
+    background-color: var(
+      --grey-background
+    ); /* Utilise la couleur du footer en mode sombre */
+  }
+
+  /* Pour Firefox */
+  .form-item select::-moz-selection {
+    background-color: var(--grey-background);
+  }
+
+  /* Pour Webkit (Chrome, Safari) */
+  .form-item select::selection {
+    background-color: var(--grey-background);
+  }
+
+  /* Astuce pour Firefox qui gère différemment les options */
+  @-moz-document url-prefix() {
+    .form-item select {
+      color: var(--dark-text-color);
+      background-color: var(--grey-background);
+    }
+
+    .form-item select option {
+      color: var(--dark-text-color);
+      background-color: var(--grey-background);
+    }
+  }
+
+  .form-item input:focus,
+  .form-item textarea:focus,
+  .form-item select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .rgpd-container {
+    margin-bottom: 1rem;
+  }
+
+  .rgpd-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: var(--dark-text-color);
+    font-size: 0.8em;
+  }
+
+  .rgpd-label input {
+    width: auto !important;
+    margin-top: 0.2rem;
+  }
+
+  .submit-container {
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+    margin-bottom: 1rem;
+  }
+
+  /* Adaptation du bouton pour le footer */
+  .contact-form .boutonOrange button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .contact-form .boutonOrange p {
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 0.9em;
+  }
+
+  .contact-form .boutonOrange.disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  /* Messages de statut */
+  .form-status {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .form-status.success {
+    background-color: var(--footer-color);
+    border: 1px solid var(--secondary-color);
+    margin-block: 0.5rem;
+  }
+
+  .form-status.error {
+    background-color: rgba(255, 153, 0, 0.2);
+    border: 1px solid var(--primary-color);
+  }
+
+  .form-status p {
+    margin: 0;
+    color: var(--dark-text-color);
+    font-size: 0.9em;
+  }
+</style>
