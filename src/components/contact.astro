@@ -1,10 +1,7 @@
----
-// src/components/contact.astro
----
-
 <!-- Composant de formulaire de contact pour le footer avec Alpine.js -->
 <details
   class="contact-details"
+  id="contact-form-details"
   x-data="{
     formStatus: null,
     loading: false,
@@ -38,7 +35,7 @@
   <summary>Contactez-nous</summary>
 
   <form @submit.prevent="submitForm($event)" class="contact-form">
-    <!-- Votre clé d'accès Web3Forms -->
+    <!-- Clé d'accès Web3Forms -->
     <input
       type="hidden"
       name="access_key"
@@ -48,7 +45,7 @@
     <!-- Protection anti-spam -->
     <input type="hidden" name="botcheck" />
 
-    <!-- Informations de base sur votre formulaire -->
+    <!-- Informations de base du formulaire -->
     <input type="hidden" name="from_name" value="Objethèque Cornouaille" />
     <input
       type="hidden"
@@ -58,9 +55,9 @@
 
     <!-- Catégorie de demande -->
     <div class="form-item">
-      <label for="category">Catégorie</label>
+      <label for="category">Objet :</label>
       <select id="category" name="category" required>
-        <option value="">Choisir une catégorie</option>
+        <option value="">Choisir un sujet</option>
         <option value="Emprunt">Question sur un emprunt</option>
         <option value="Don">Proposition de don</option>
         <option value="Bénévolat">Devenir bénévole</option>
@@ -146,9 +143,14 @@
     margin-bottom: 1rem;
   }
 
-  /* Pour l'animation de transition uniquement */
+  /* Pour l'animation d'ouverture */
   .contact-details summary ~ * {
     animation: slideDown 0.3s ease-out;
+  }
+
+  /* Animation de fermeture */
+  .contact-details.closing > form {
+    animation: slideUp 0.3s ease-in forwards;
   }
 
   @keyframes slideDown {
@@ -159,6 +161,17 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
     }
   }
 
@@ -299,3 +312,66 @@
     font-size: 0.9em;
   }
 </style>
+
+<script>
+  // Ce script sera exécuté côté client
+  document.addEventListener('astro:page-load', () => {
+    // Sélectionne l'élément details et son summary
+    const contactDetails = document.getElementById('contact-form-details');
+    
+    if (contactDetails) {
+      const summary = contactDetails.querySelector('summary');
+      
+      // Vérification de nullité pour summary
+      if (summary) {
+        let isAnimating = false;
+
+        // Fonction pour le défilement si nécessaire
+        const scrollIfNeeded = () => {
+          if (contactDetails.hasAttribute('open')) {
+            const rect = contactDetails.getBoundingClientRect();
+            const isVisible = rect.bottom <= window.innerHeight;
+            
+            if (!isVisible) {
+              window.scrollTo({
+                top: window.scrollY + rect.top - 50,
+                behavior: 'smooth'
+              });
+            }
+          }
+        };
+
+        // Intercepte le clic sur le summary
+        summary.addEventListener('click', (event) => {
+          // Si déjà en cours d'animation, ne rien faire
+          if (isAnimating) {
+            event.preventDefault();
+            return;
+          }
+          
+          // Si le details est ouvert, empêcher la fermeture native
+          if (contactDetails.hasAttribute('open')) {
+            event.preventDefault();
+            isAnimating = true;
+            
+            // Ajouter la classe pour l'animation de fermeture
+            contactDetails.classList.add('closing');
+            
+            // Attendre que l'animation se termine
+            setTimeout(() => {
+              // Fermer réellement le details après l'animation
+              contactDetails.removeAttribute('open');
+              contactDetails.classList.remove('closing');
+              isAnimating = false;
+            }, 300); // Durée de l'animation
+          } else {
+            // Pour l'ouverture, laisse le comportement natif puis scroll
+            setTimeout(scrollIfNeeded, 50);
+          }
+        });
+      } else {
+        console.error('Élément summary non trouvé dans le formulaire de contact');
+      }
+    }
+  });
+</script>
