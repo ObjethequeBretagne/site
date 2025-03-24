@@ -270,10 +270,6 @@ picture img {
 
 
 /* comportement des sous-menus en mode mobile */
-details[open] > summary ~ * {
-  animation: fade-inX 0.2s ease-in-out;
-}
-
 details summary{
   padding-left: 0.5rem;
   cursor: pointer;

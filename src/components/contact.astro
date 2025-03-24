@@ -82,17 +82,15 @@
 
     <div class="form-item">
       <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
+      <textarea id="message" name="message" rows="6" required></textarea>
     </div>
 
     <!-- Notification RGPD -->
     <div class="form-item rgpd-container">
       <label class="rgpd-label">
         <input type="checkbox" name="gdpr" required />
-        <span
-          >En soumettant ce formulaire, j'accepte que mes données soient
-          utilisées uniquement pour me recontacter.</span
-        >
+        <span>En soumettant ce formulaire, j'accepte que mes données soient
+          utilisées uniquement pour me recontacter.</span>
       </label>
     </div>
 
@@ -100,32 +98,20 @@
     <div class="submit-container">
       <div class="boutonOrange" x-bind:class="{ 'disabled': loading }">
         <button type="submit" x-bind:disabled="loading">
-          <p
-            style="display: flex; justify-content: center;"
-            x-text="loading ? 'Envoi...' : 'Envoyer'"
-          >
+          <p style="display: flex; justify-content: center;"
+             x-text="loading ? 'Envoi...' : 'Envoyer'">
           </p>
         </button>
       </div>
     </div>
 
-    <!-- Messages de statut -->
-    <div
-      x-show="formStatus === 'success'"
-      class="form-status success"
-      x-transition
-    >
-      <p>
-        Merci pour votre message ! Nous vous répondrons dans les plus brefs
-        délais.
-      </p>
+    <!-- Messages de statut avec x-show standard -->
+    <div x-show="formStatus === 'success'" class="form-status success" x-transition>
+      <p>Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.</p>
     </div>
 
     <div x-show="formStatus === 'error'" class="form-status error" x-transition>
-      <p>
-        Une erreur s'est produite. Veuillez réessayer ou nous contacter
-        directement.
-      </p>
+      <p>Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.</p>
     </div>
   </form>
 </details>
@@ -160,8 +146,20 @@
     margin-bottom: 1rem;
   }
 
-  .contact-details[open] > summary ~ * {
-    animation: fade-inX 0.2s ease-in-out;
+  /* Pour l'animation de transition uniquement */
+  .contact-details summary ~ * {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .contact-form {
@@ -200,26 +198,12 @@
 
   /* Style pour le select et les options */
   .form-item select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.7rem center;
-    background-size: 1em;
-    padding-right: 2.5rem;
     color: var(--dark-text-color);
-    background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--dark-text-color);
   }
 
   /* Styles pour les options du menu déroulant */
   .form-item select option {
-    background-color: var(
-      --grey-background
-    ); /* Utilise la couleur du footer en mode sombre */
-  }
-
-  /* Pour Firefox */
-  .form-item select::-moz-selection {
     background-color: var(--grey-background);
   }
 
@@ -228,17 +212,14 @@
     background-color: var(--grey-background);
   }
 
-  /* Astuce pour Firefox qui gère différemment les options */
-  @-moz-document url-prefix() {
-    .form-item select {
-      color: var(--dark-text-color);
-      background-color: var(--grey-background);
-    }
-
-    .form-item select option {
-      color: var(--dark-text-color);
-      background-color: var(--grey-background);
-    }
+  /* Fix pour autofill sur Chrome/Safari */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: var(--dark-text-color) !important;
+    background-clip: content-box !important;
   }
 
   .form-item input:focus,
