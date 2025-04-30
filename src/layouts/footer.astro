@@ -5,94 +5,132 @@ import Contact from "../components/contact.astro";
 
 <CatalogueFooter />
 <footer id="footer" role="contentinfo">
-  <div id="adresse">
+  <div class="footer-section adresse">
     <p><b>Objethèque de Cornouaille :</b></p>
     <p>69, Vieille Route de Rosporden,</p>
     <p>29000 Quimper</p>
     <p>objethequecornouaille@gmail.com</p>
     <br />
-    <p>
-      <strong>Mardi</strong> : 17h30-20h
-    </p>
-    <p>
-      <strong>Vendredi</strong> : 17h-19h
-    </p>
-    <p>
-      <strong>Samedi</strong> : 10h-13h 15h-18h
-    </p>
-    <br />
+    <p><strong>Mardi</strong> : 17h30-20h</p>
+    <p><strong>Vendredi</strong> : 17h-19h</p>
+    <p><strong>Samedi</strong> : 10h-13h 15h-18h</p>
   </div>
-  <div class="iconesFooter">
+
+  <div class="footer-section centre">
     <div class="logoFooter">
-      <img
-        alt="logo de l'objetheque de Cornouaille"
-        src="assets/img/logo.png"
-      />
+      <img alt="logo de l'objetheque de Cornouaille" src="assets/img/logo.png" />
     </div>
+
     <div class="widgetFooter">
-      <a
-        href="https://www.facebook.com/ObjethequeCornouaille"
-        target="_blank"
-        ><img
-          alt="icône/lien vers la page Facebook"
-          class="widgetReseau"
-          src="assets/svg/Facebook_iconW.svg"
-        /></a
-      >
-      <a
-        href="https://www.instagram.com/objetheque_cornouaille/"
-        target="_blank"
-        ><img
-          alt="icône/lien vers la page Instagram"
-          class="widgetReseau"
-          src="assets/svg/instagram-social-mediaW.svg"
-        /></a
-      >
-      <a
-        href="https://fr.linkedin.com/company/l-objeth%C3%A8que-de-cornouaille"
-        target="_blank"
-        ><img
-          alt="icône/lien vers la page Linkedin"
-          class="widgetReseau"
-          src="assets/svg/linkedinW.svg"
-        /></a
-      >
+      <a href="https://www.facebook.com/ObjethequeCornouaille" target="_blank">
+        <img alt="Facebook" class="widgetReseau" src="assets/svg/Facebook_iconW.svg" />
+      </a>
+      <a href="https://www.instagram.com/objetheque_cornouaille/" target="_blank">
+        <img alt="Instagram" class="widgetReseau" src="assets/svg/instagram-social-mediaW.svg" />
+      </a>
+      <a href="https://fr.linkedin.com/company/l-objeth%C3%A8que-de-cornouaille" target="_blank">
+        <img alt="Linkedin" class="widgetReseau" src="assets/svg/linkedinW.svg" />
+      </a>
     </div>
-    <a style="display: flex; justify-content: center; gap:0.4rem;" class="soulignementOrange" href="https://a1734d22.sibforms.com/serve/MUIFAGw9BLFvayj7D4_XZASrrproPe8bm89rcmByCgZk79ZJFF5ryAf7eO3tZp2e-WDHa3kow18xBnydXtbh4NglgJvNHCI7pciP0jtoQrQrZtzsv6qBULZxF8fa4EeN9CSVIrfeYGUvVO86zwDwrNiKMcAPqMiahDPQQP38oHh7mE3RVjG0Hh0WmjP3Dz8vvRvEHGHErIZ_9ws6">
+
+    <a class="soulignementOrange newsletter-link" href="https://a1734d22.sibforms.com/serve/MUIFAGw9BLFvayj7D4_XZASrrproPe8bm89rcmByCgZk79ZJFF5ryAf7eO3tZp2e-WDHa3kow18xBnydXtbh4NglgJvNHCI7pciP0jtoQrQrZtzsv6qBULZxF8fa4EeN9CSVIrfeYGUvVO86zwDwrNiKMcAPqMiahDPQQP38oHh7mE3RVjG0Hh0WmjP3Dz8vvRvEHGHErIZ_9ws6">
       S'abonner à la newsletter
-      <img
-      alt="newsletter"
-      id="news"
-      src="assets/svg/mail4.svg"
-    />
+      <img alt="newsletter" id="news" src="assets/svg/mail4.svg" />
     </a>
+
     <Contact />
-    <br/>
   </div>
-  <nav class="MenuFooter" role="navigation">
-    <ul
-      style="display:flex; gap:1rem; flex-direction: column; transform:translateY(-1em)"
-    >
-      <li style="display: none;"><a class="soulignementOrange" href="faq.html">FAQ</a></li>
-      <li>
-        <a class="soulignementOrange" href="mentions-legales.html">Mentions légales</a>
-      </li>
-      <li>
-        <a class="soulignementOrange" href="mentions-legales.html"
-          >Crédits</a
-        >
-      </li>
-      <li><a class="soulignementOrange" href="mentions-legales.html">Cookies</a></li>
-      <li>
-        <a class="soulignementOrange" href="apropos.html#H205"
-          >Conditions générales</a
-        >
-      </li>
-      <li>
-        <a class="soulignementOrange" href="apropos.html#H205"
-          >Politique de confidentialité</a
-        >
-      </li>
+
+  <nav class="footer-section MenuFooter" role="navigation">
+    <ul>
+      <li><a class="soulignementOrange" href="mentions-legales.html">Mentions légales</a></li>
+      <li><a class="soulignementOrange" href="apropos.html#H205">Conditions générales</a></li>
+      <li><a class="soulignementOrange" href="apropos.html#H205">Politique de confidentialité</a></li>
     </ul>
   </nav>
 </footer>
+
+<style>
+  #footer {
+  background-color: var(--footer-color);
+  color: var(--light-text-color);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+#footer p,
+#footer a {
+  color: var(--light-text-color);
+  font-size: max(16px, 1.2vw);
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.adresse {
+  align-items: flex-start;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.logoFooter img {
+  height: max(100px, 8vw);
+  margin-bottom: 0.5rem;
+}
+
+.widgetFooter {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.newsletter-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+#news {
+  height: 24px;
+}
+
+.MenuFooter ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.MenuFooter a {
+  text-align: center;
+}
+
+@media screen and (max-width: 816px) {
+  #footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .adresse {
+    text-align: center;
+    align-items: center;
+  }
+
+  .MenuFooter {
+    margin-top: 1rem;
+  }
+}
+
+</style>
