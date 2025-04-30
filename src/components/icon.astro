@@ -1,0 +1,50 @@
+---
+// src/components/icon.astro
+// Composant d'icône optimisé pour l'Objethèque de Cornouaille
+import { Picture } from 'astro:assets';
+
+interface Props {
+  src: string;
+  alt: string;
+  size?: number;
+  class?: string;
+}
+
+const { 
+  src, 
+  alt, 
+  size = 48, // Taille par défaut plus grande pour les icônes de catégorie
+  class: className = "" 
+} = Astro.props;
+
+// Détermine automatiquement le format d'origine
+const isSvg = src.endsWith('.svg');
+// Ordre des formats du plus efficace au moins efficace
+const formats = isSvg ? ['svg'] : ['avif', 'webp', 'png'];
+
+// Pour les SVG, on ne génère pas de versions en différentes tailles
+const widths = isSvg ? [size] : [size, size * 2];
+---
+
+<Picture 
+  src={src}
+  alt={alt}
+  widths={widths}
+  sizes={`${size}px`}
+  formats={formats}
+  width={size}
+  height={size}
+  class={className}
+/>
+
+<style>
+  :global(img.icone-categorie) {
+    object-fit: contain;
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.2));
+  }
+  
+  :global(a:hover .icone-categorie) {
+    transform: scale(1.1);
+  }
+</style>

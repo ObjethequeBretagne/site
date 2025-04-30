@@ -1,212 +1,190 @@
+---
+// src/components/catalogue-footer.astro
+import { Picture } from 'astro:assets';
+import Icon from "./icon.astro";
+---
+
 <section id="cadreRaccourcisCatalogue" transition:persist>
   <h2>
     Catégories d'objets :
     <p class="sousTexteH2">Rummadoù traezoù :</p>
   </h2>
-  <nav class="raccourcisCatalogue" role="navigation">
-    <ul>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/trousse-de-reparation"
-          title="trousse de réparation icônes"
-          >Trousse de réparation icônes créées par Freepik - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/boite-a-outils.png"
-        />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FBricolage%2FOutillage%7C13484"
-          >Bricolage</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/smart-tv"
-          title="smart tv icônes"
-          >Smart tv icônes créées par Freepik - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/smart-tv.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FMultim%C3%A9dia%7C13492"
-          >Multimedia</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/agriculture-et-jardinage"
-          title="agriculture et jardinage icônes"
-          >Agriculture et jardinage icônes créées par IconMarketPK - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/jardinage.png"
-        />
-        <a
-          class="moon"
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FJardinage%7C13489"
-          >Jardinage</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/fouet"
-          title="fouet icônes">Fouet icônes créées par Freepik - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/fouet.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?type_hierarchy=0%2FKitchen+%26+Dining%7C180"
-          >Cuisine</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/bicyclette"
-          title="bicyclette icônes"
-          >Bicyclette icônes créées par Flat Icons - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/velo-de-montagne.png"
-        />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FMobilit%C3%A9%7C13491"
-          >Mobilité</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/produits-de-nettoyage"
-          title="produits de nettoyage icônes"
-          >Produits de nettoyage icônes créées par smalllikeart - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/produits-de-nettoyage.png"
-        />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FEntretien+%26+Nettoyage%7C13488"
-          >Nettoyage</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/jouet"
-          title="jouet icônes">Jouet icônes créées par Freepik - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/balle.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FLoisirs+%26+Jeux%7C13490"
-          >Loisirs et Jeux</a
-        >
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/ballons"
-          title="ballons icônes"
-          >Ballons icônes créées par vectorsmarket15 - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/ballons.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FF%C3%AAte%7C13798"
-          >Evénement</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/domicile"
-          title="domicile icônes"
-          >Domicile icônes créées par Vectors Market - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/maison.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FMaison%7C14602"
-          >Maison</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/foret"
-          title="forêt icônes">Forêt icônes créées par monkik - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/tente-de-camping.png"
-        />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=1%2FSports+%26+Plein+air%7C13487%2FCamping%7C13507"
-          >Camping</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/reparation"
-          title="réparation icônes"
-          >Réparation icônes créées par Smashicons - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/tour-pc.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FElectronique%7C13706"
-          >Électronique</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/sante"
-          title="santé icônes">Santé icônes créées par Freepik - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/soins-de-sante.png"
-        />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?type_hierarchy=0%2FMedical+Equipment%7C518"
-          >Santé</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/outils-de-couture"
-          title="outils de couture icônes"
-          >Outils de couture icônes créées par Freepik - Flaticon</a
-        >
-        <img
-          class="star iconeCategorie"
-          src="assets/img/outils-de-couture.png"
-        />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FArts+cr%C3%A9atifs%7C13477"
-          >Arts créatifs</a
-        >
-      </li>
-      <li>
-        <a
-          style="display: none;"
-          href="https://www.flaticon.com/fr/icones-gratuites/activite-physique"
-          title="activité physique icônes"
-          >Activité physique icônes créées par Amethyst prime - Flaticon</a
-        >
-        <img class="star iconeCategorie" src="assets/img/physique.png" />
-        <a
-          href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FSports+%26+Plein+air%7C13487"
-          >Sport et Plein air</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <div class="grille-categories">
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FBricolage%2FOutillage%7C13484" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/boite-a-outils.png"
+        alt="Icône d'outils de bricolage"
+        class="icone-categorie"
+      />
+      <span>Bricolage</span>
+    </a>
+
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FMultim%C3%A9dia%7C13492" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/smart-tv.png"
+        alt="Icône de télévision connectée"
+        class="icone-categorie"
+      />
+      <span>Multimedia</span>
+    </a>
+
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FJardinage%7C13489" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/jardinage.png"
+        alt="Icône d'outils de jardinage"
+        class="icone-categorie"
+      />
+      <span>Jardinage</span>
+    </a>
+
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?type_hierarchy=0%2FKitchen+%26+Dining%7C180" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/fouet.png"
+        alt="Icône d'ustensile de cuisine"
+        class="icone-categorie"
+      />
+      <span>Cuisine</span>
+    </a>
+
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FMobilit%C3%A9%7C13491" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/velo-de-montagne.png"
+        alt="Icône de vélo de montagne"
+        class="icone-categorie"
+      />
+      <span>Mobilité</span>
+    </a>
+
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FEntretien+%26+Nettoyage%7C13488" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/produits-de-nettoyage.png"
+        alt="Icône de produits de nettoyage"
+        class="icone-categorie"
+      />
+      <span>Nettoyage</span>
+    </a>
+
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FLoisirs+%26+Jeux%7C13490" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/balle.png"
+        alt="Icône de jouet"
+        class="icone-categorie"
+      />
+      <span>Loisirs et Jeux</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FF%C3%AAte%7C13798" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/ballons.png"
+        alt="Icône de ballons de fête"
+        class="icone-categorie"
+      />
+      <span>Evénement</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FMaison%7C14602" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/maison.png"
+        alt="Icône de maison"
+        class="icone-categorie"
+      />
+      <span>Maison</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=1%2FSports+%26+Plein+air%7C13487%2FCamping%7C13507" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/tente-de-camping.png"
+        alt="Icône de tente de camping"
+        class="icone-categorie"
+      />
+      <span>Camping</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FElectronique%7C13706" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/tour-pc.png"
+        alt="Icône d'ordinateur"
+        class="icone-categorie"
+      />
+      <span>Électronique</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?type_hierarchy=0%2FMedical+Equipment%7C518" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/soins-de-sante.png"
+        alt="Icône de santé"
+        class="icone-categorie"
+      />
+      <span>Santé</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FArts+cr%C3%A9atifs%7C13477" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/outils-de-couture.png"
+        alt="Icône de matériel de couture"
+        class="icone-categorie"
+      />
+      <span>Arts créatifs</span>
+    </a>
+    
+    <a href="https://objethequecornouaille.myturn.com/library/inventory/browse?category_hierarchy=0%2FSports+%26+Plein+air%7C13487" class="categorie-item">
+      <Icon 
+        src="/src/assets/img/physique.png"
+        alt="Icône de sport"
+        class="icone-categorie"
+      />
+      <span>Sport et Plein air</span>
+    </a>
+  </div>
 </section>
+
+<style>
+  #cadreRaccourcisCatalogue {
+    padding-block: 2rem;
+    background-color: var(--grey-background);
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .sousTexteH2 {
+    font-size: 1.2rem;
+    margin-top: 0.25rem;
+  }
+
+  .grille-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    max-width: 80rem;
+    margin-inline: auto;
+  }
+
+  .categorie-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    width: 150px; /* Largeur fixe correspondant au minmax de votre grid */
+  }
+
+  .categorie-item:hover {
+    background-color: var(--FAQcolor);
+  }
+
+  .icone-categorie {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.75rem;
+  }
+
+  .categorie-item span {
+    color: var(--dark-text-color);
+    font-weight: 500;
+    text-align: center;
+  }
+</style>

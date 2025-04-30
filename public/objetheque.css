@@ -84,6 +84,7 @@
   --marginBlock: 3.75em;
   --paddingTopH2Small: 60px;
   --paddingTopH2Big: 150px;
+  --FAQcolor: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -708,48 +709,6 @@ header a {
   gap: 10px;
 }
 /*fin Nous retrouver*/
-
-/*raccourcis catalogue*/
-#cadreRaccourcisCatalogue{
-  background-color: var(--grey-background);
-  padding-block: 30px;
-  justify-content: center;
-}
-
-.iconeCategorie{
-  height: 1.7em;
-  transform: translateX(-35px);
-}
-
-.raccourcisCatalogue{
-  display: flex;
-  margin-block: 10px;
-  gap: 150px;
-  justify-content: center;
-}
-.raccourcisCatalogue a{
-  color: var(--dark-text-color);
-  font-size: clamp(1em, 1.2vw, 1.2em);
-  font-family: Muli, system-ui;
-  white-space:nowrap;
-  display: block;
-  margin-block: 15px;
-}
-.raccourcisCatalogue a:hover{
-  color: var(--secondary-color);
-}
-@media screen and (max-width: 816px) {
-  .raccourcisCatalogue {
-    margin-inline: 10%;
-    line-height: 40px;
-    gap: 50px;
-  }
-  #cadreRaccourcisCatalogue{
-    padding-top: 25px;
-    padding-bottom: 12px;
-  }
-}
-/*fin raccourcis catalogue*/
 
 /*DEBUT FOOTER*/
 #footer{
