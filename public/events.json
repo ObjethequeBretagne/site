@@ -1,5 +1,23 @@
 [
   {
+    "title": "Atelier plantation de semi",
+    "description": "Envie de mettre les mains dans la terre et de démarrer votre propre jardin ? Rejoignez notre atelier de plantation de semis, où vous apprendrez les bases de la culture des plantes, de la préparation des semis à leur transplantation en pleine terre.<br>Cet atelier est parfait pour les débutants ou pour ceux qui souhaitent perfectionner leurs compétences en jardinage. Vous repartirez avec vos semis prêts à pousser et les connaissances nécessaires pour les voir grandir en toute santé !",
+    "startDate": "2025-05-17T14:00:00+02:00",
+    "endDate": "2025-05-17T17:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-plantation-de-semi",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a1dfe471ba6a45f2b38e7c74ac8474dd.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f8f8544411c64f45b94e9054242035e9.png"
+  },
+  {
+    "title": "Atelier Co-réparation 26/07",
+    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
+    "startDate": "2025-04-26T10:00:00+02:00",
+    "endDate": "2025-04-26T17:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-26-07",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
+  },
+  {
     "title": "Atelier Co-réparation 28/06",
     "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
     "startDate": "2025-06-28T10:00:00+02:00",
@@ -18,8 +36,8 @@
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
   },
   {
-    "title": "Atelier couture 10/05",
-    "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l\\'Objethèque de Cornouaille ! <br>Le thème:  Crée ton débardeur ou ton tee-shirt sur-mesure !<br>Lors de cet atelier, vous apprendrez à couper, assembler et coudre un haut léger et personnalisable. Tout le matériel est fourni, il ne te reste qu’à apporter votre motivation !<br>À la fin de l’atelier, tu repartiras avec un débardeur fait main (et plein de fierté !), prêt à être porté. 🧵✨<br><br>",
+    "title": "Atelier couture débardeur 10/05",
+    "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l\\'Objethèque de Cornouaille ! <br>Le thème:  Créez votre débardeur ou votre tee-shirt sur-mesure !<br>Lors de cet atelier, vous apprendrez à couper, assembler et coudre très facilement un haut léger. Tout le matériel est fourni<br>À la fin de l’atelier, votre repartirez avec un débardeur fait main (et plein de fierté !), prêt à être porté. 🧵✨<br><br>",
     "startDate": "2025-05-10T14:00:00+02:00",
     "endDate": "2025-05-10T17:00:59+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-10-05",
@@ -160,23 +178,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-bob-personnalise",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9a6d1597617340e389981667aa2e9d41.png"
-  },
-  {
-    "title": "Atelier Fresque de la biodiversité",
-    "description": "La Fresque de la Biodiversité est un atelier collaboratif et ludique qui permet de comprendre les enjeux liés à l’érosion de la biodiversité. À travers un jeu de cartes basé sur des données scientifiques, les participants explorent les causes et conséquences de cette crise et réfléchissent aux solutions pour agir. 🌿🌍",
-    "startDate": "2025-05-16T18:00:00+02:00",
-    "endDate": "2025-05-16T21:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-de-la-biodiversite",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-1bf7e3c3af3c4bf1959983ce3de0132c.png"
-  },
-  {
-    "title": "Atelier Co-réparation marché Penhars  26/03",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien (et leurs tissus,  vêtements...) avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-03-26T15:00:00+01:00",
-    "endDate": "2025-03-26T18:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-26-03",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-691814850ea44a23853acf637da6014a.png"
   }
 ]
