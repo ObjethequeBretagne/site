@@ -1,6 +1,5 @@
 ---
 import Layout from "../layouts/layout.astro";
-import AG from "../components/answergarden.astro";
 import Catalogue from "../components/myturncatalog.astro";
 ---
 
@@ -27,9 +26,6 @@ import Catalogue from "../components/myturncatalog.astro";
       <br /><br />
     </section>
     <Catalogue />
-    <section id="nuageMots">
-      <AG />
-    </section>
   </main>
   <style type="text/css">
     #lesObjets {
@@ -37,10 +33,6 @@ import Catalogue from "../components/myturncatalog.astro";
       padding-left: 1rem;
       color: var(--dark-text-color);
       margin-block: 30px;
-    }
-    #nuageMots {
-      margin-inline: clamp(5%, 2rem, 60%);
-      margin-block: 50px;
     }
   </style>
 </Layout>
