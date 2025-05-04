@@ -84,7 +84,7 @@ Le site utilise GitHub Actions pour:
 
 ## 📄 Licence
 
-Ce projet est sous licence Hippocrate.
+Ce projet est sous licence Hippocrate - une prise de position éthique claire pour les développeurs. Contrairement aux licences open source traditionnelles, elle ne se contente pas de permettre l'utilisation du code, mais interdit activement toute utilisation qui violerait les droits humains fondamentaux. Avec cette licence, nous affirmons que notre code ne peut pas être utilisé pour des activités qui menacent le bien-être physique, mental ou économique des personnes. C'est notre façon de dire que la technologie n'est pas neutre et que nous refusons de participer, même indirectement, à des projets contraires à nos valeurs humanistes.
 
 ## 📞 Contact
 
