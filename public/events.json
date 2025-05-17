@@ -1,5 +1,14 @@
 [
   {
+    "title": "Animation broderie - Festival REVA",
+    "description": "Envie de personnaliser un vêtement ? C\\'est le moment ! Choisissez parmi notre très large sélection de modèles déjà existants et notre brodeuse numérique se chargera du reste : Disney, mangas, super-héros, ou broderie plus épurées, il y en a pour tous les goûts ! <br>Ouvert aux petits comme aux grands",
+    "startDate": "2025-06-04T15:00:00+02:00",
+    "endDate": "2025-06-04T18:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-broderie-festival-reva",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c654a94ee5a84ff4bd9f0e71496d55f1.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a931fb5e380a46a6b81683d9d396680f.png"
+  },
+  {
     "title": "Atelier Co-réparation 26/07",
     "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
     "startDate": "2025-07-26T10:00:00+02:00",
@@ -169,14 +178,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-30-04",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-22610679e35f4f789f0e875d0a0daa8f.png"
-  },
-  {
-    "title": "Atelier Fresque du sol",
-    "description": "Découvrez un outil ludique et collaboratif qui vise à diffuser un langage commun sur le fonctionnement des sols et sur les enjeux liés à leur préservation.<br>Au travers de 50 cartes et en 3h, la fresque du sol permet de comprendre ce qu’est un sol, comment celui-ci se forme et quelles fonctions écologiques découlent de ses propriétés pour ensuite découvrir l’ensemble des services que l’on en retire, les menaces qui rendent ces services limités dans le temps et l’espace 🌿🌍",
-    "startDate": "2025-03-15T14:00:00+01:00",
-    "endDate": "2025-03-15T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-sol",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
   }
 ]
