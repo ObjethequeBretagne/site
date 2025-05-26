@@ -1,0 +1,136 @@
+---
+// src/components/bandeau-annonce.astro
+// Bandeau d'annonce pour l'offre d'emploi réparateur
+---
+
+<section class="bandeau-annonce">
+  <div class="bandeau-content">
+    <div class="bandeau-icon">
+      🔧
+    </div>
+    <div class="bandeau-text">
+      <h3>Nous recrutons !</h3>
+      <p>CDD réparateur/trice du 1er au 26 juillet 2025</p>
+    </div>
+    <div class="bandeau-action">
+      <a href="reparateur_1_26_juillet_2025.pdf" class="bouton-annonce" target="_blank">
+        <span>Voir l'annonce</span>
+        <img src="assets/img/pdf-logo.png" alt="PDF" class="pdf-icon" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bandeau-annonce {
+    margin-inline: auto;
+    margin-block: 2rem;
+  }
+
+  .bandeau-content {
+    border-radius: 15px;
+    padding: 1rem;
+    background-color: var(--grey-background);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+
+  .bandeau-icon {
+    font-size: 3rem;
+    min-width: 60px;
+  }
+
+  .bandeau-text {
+    flex: 1;
+  }
+
+  .bandeau-text h3 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .bandeau-text p {
+    margin: 0.25rem 0 0 0;
+    font-size: 1rem;
+  }
+
+  .bouton-annonce {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+  }
+
+  .bouton-annonce:hover {
+    scale: 1.1;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .pdf-icon {
+    height: 2.3rem;
+    width: auto;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .bandeau-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .bandeau-icon {
+      font-size: 2.5rem;
+    }
+
+    .bandeau-text h3 {
+      font-size: 1.2rem;
+    }
+
+    .bandeau-text p {
+      font-size: 0.9rem;
+    }
+
+    .bouton-annonce {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .bandeau-annonce {
+      margin-inline: 1rem;
+      padding: 0.8rem;
+    }
+
+    .bandeau-content {
+      gap: 0.8rem;
+    }
+
+    .bandeau-icon {
+      font-size: 2rem;
+    }
+
+    .bandeau-text h3 {
+      font-size: 1.1rem;
+    }
+
+    .bouton-annonce {
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+    }
+  }
+</style>
