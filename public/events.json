@@ -1,5 +1,14 @@
 [
   {
+    "title": "Troc et puces geek",
+    "description": "Vous avez des figurines, jeux vidéo, consoles, mangas, BD, DVD ou autres objets liés à la culture geek qui dorment chez vous ? Profitez de ce troc et puces pour leur offrir une seconde vie ! Réservez votre emplacement et venez vendre vos trésors à d\\'autres passionnés dans une ambiance conviviale.<br>N\\'oubliez pas d\\'envoyer votre bulletin d\\'inscription par mail : la29dimension@gmail.com ou par courrier à L\\'Objethèque de Cornouaille, 69 Vieille route de Rosporden 29000 Quimper AVANT le 6 septembre",
+    "startDate": "2025-09-21T09:00:00+02:00",
+    "endDate": "2025-09-21T18:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/troc-et-puces-geek",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a203d269def42188677afcb80c0b7f0.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-dc014f52e2444131858bd9fc199b7ab2.png"
+  },
+  {
     "title": "Animation broderie - Festival REVA",
     "description": "Envie de personnaliser un vêtement ? C\\'est le moment ! Choisissez parmi notre très large sélection de modèles déjà existants et notre brodeuse numérique se chargera du reste : Disney, mangas, super-héros, ou broderie plus épurées, il y en a pour tous les goûts ! <br>Ouvert aux petits comme aux grands",
     "startDate": "2025-06-04T15:00:00+02:00",
@@ -169,14 +178,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-26-04",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
-  },
-  {
-    "title": "Atelier Co-réparation marché Penhars  30/04 ",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien (et leurs tissus,  vêtements...) avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-04-30T15:00:00+02:00",
-    "endDate": "2025-04-30T18:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-30-04",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-22610679e35f4f789f0e875d0a0daa8f.png"
   }
 ]
