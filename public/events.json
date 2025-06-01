@@ -63,6 +63,15 @@
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-5f7289e5ed2646fd99f5efb05dd75b01.png"
   },
   {
+    "title": "Atelier crochet  21/06 ",
+    "description": "Rejoignez notre tout premier atelier crochet pour les débutants ! vous ne savez pas par où commencer ? Cet atelier est fait pour vous !<br>Au programme : apprentissage des points de bases ((chaînette, maille serrée, bride)) et confection d’un projet simple adapté aux débutants (bandeau ou dessous de verre)<br>Pas besoin de matériel ni d’expérience, juste l’envie de passer un bon moment et de découvrir une nouvelle passion<br>Ouvert aux débutant-es à partir de 10 ans, matériel fourni<br><br>",
+    "startDate": "2025-06-21T14:00:00+02:00",
+    "endDate": "2025-06-21T16:30:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-crochet-18-06",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-42246af5f9844d6398827be840428745.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-fe76cd7e9dca44ac9524033d74089132.png"
+  },
+  {
     "title": "Atelier Co-réparation 26/07",
     "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
     "startDate": "2025-07-26T10:00:00+02:00",
@@ -169,14 +178,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-27-08",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-69612ba9c1174af488eb024722c29b50.png"
-  },
-  {
-    "title": "Atelier Co-réparation marché Penhars  25/06",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien (et leurs tissus,  vêtements...) avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-06-25T15:00:00+02:00",
-    "endDate": "2025-06-25T18:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-25-06",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a72429c542bf4d2aba69c05eb7d71f6e.png"
   }
 ]
