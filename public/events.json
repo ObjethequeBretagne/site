@@ -1,5 +1,14 @@
 [
   {
+    "title": "Atelier fabrication d'un jeu en bois - Jardin partagé Kermoysan",
+    "description": "Envie de bricoler et de repartir avec un objet unique ? Cet atelier est fait pour toi !<br>Accompagné pas à pas, tu fabriqueras ton propre jeu en bois : morpion, dominos, jeu de lancer, ou petit jeu d’adresse.<br>Au programme : découpe, ponçage, assemblage, décoration… Tu découvriras les outils de base et les gestes simples du travail du bois.<br>Un atelier 100 % fait main, pour créer, apprendre et s’amuser !",
+    "startDate": "2025-08-28T10:00:00+02:00",
+    "endDate": "2025-08-28T13:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fabrication-d-un-jeu-en-bois",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ba9fabb5bb694f87ac655866543f24a4.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7d4545db2b8f4cc68de2a06ec9fc7102.png"
+  },
+  {
     "title": "Mini Maker Faire",
     "description": "Participez à la Mini Maker Faire le 14 juin chez Leroy Merlin avec l’Objethèque de Cornouaille. Au programme : un espace de co-réparation, apportez vos objets en panne et redonnez leur une seconde vie, un atelier \"Trouve la panne, jeune Padawan\" pour les enfants, et un espace pour explorer l’intérieur des objets du quotidien. Un événement gratuit, ludique et pédagogique pour tous les âges.",
     "startDate": "2025-06-14T10:00:00+02:00",
@@ -7,6 +16,15 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mini-maker-faire-1",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-68ea00bd47584dddaa8ee9e011c4e13c.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-92b4ffec80a34e08afe38d8dd910c218.png"
+  },
+  {
+    "title": "Atelier couture de fanion et custom de bob - Jardin partagé Kermoysan",
+    "description": "Apprends à réaliser une guirlande de fanions en tissu coloré : parfait pour décorer une chambre, une fête ou un stand. Choix des tissus, découpe, couture et assemblage… chacun repart avec sa mini guirlande faite main ! Donne du style à ton bob avec la brodeuse numérique. On sort les accessoires et la créativité pour des chapeaux uniques et pleins de peps ! Le matériel est fourni !",
+    "startDate": "2025-07-10T10:00:00+02:00",
+    "endDate": "2025-07-10T13:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-de-fanion-et-custom-de-bob-kermoysan",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9852127f67b6458582b273048a117546.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-cde9787be84343f19fa303a7b2475531.png"
   },
   {
     "title": "Atelier couture Création d'une pochette en jean - Kerlagatu Aire de jeux",
@@ -340,23 +358,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-15-02",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
-  },
-  {
-    "title": "Atelier Co-réparation marché Penhars",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-01-29T15:00:00+01:00",
-    "endDate": "2025-01-29T18:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-691814850ea44a23853acf637da6014a.png"
-  },
-  {
-    "title": "Atelier Co-réparation",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-01-25T14:00:00+01:00",
-    "endDate": "2025-01-25T17:00:00+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
   }
 ]
