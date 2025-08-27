@@ -1,5 +1,14 @@
 [
   {
+    "title": "Forum des assos ",
+    "description": "Nous serons présents au Forum des Associations de Quimper le samedi 6 septembre au Parc des expositions<br>C’est l’occasion idéale pour :<br>✅ Découvrir notre association et nos activités<br>✅ Échanger directement avec nos bénévoles<br>✅ Poser vos questions et obtenir toutes les infos pratiques<br>✅ Rejoindre l’aventure en tant qu’adhérent ou bénévole <br><br>Nous serons ravis de vous accueillir et de partager un moment convivial avec vous !",
+    "startDate": "2025-09-06T09:00:00+02:00",
+    "endDate": "2025-09-06T18:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/forum-des-assos",
+    "bannerUrl": "assets/img/logo.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e55bbaee294d415f900cbf294e541db1.png"
+  },
+  {
     "title": "Mercredi co-réparation ",
     "description": "Tout au long de l’été, l’Objethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
     "startDate": "2025-09-24T14:00:00+02:00",
@@ -145,7 +154,7 @@
   },
   {
     "title": "Atelier fabrication d'un jeu en bois - Jardin partagé Kermoysan",
-    "description": "Envie de bricoler et de repartir avec un objet unique ? Cet atelier est fait pour toi !<br>Accompagné pas à pas, tu fabriqueras ton propre jeu en bois : morpion, dominos, jeu de lancer, ou petit jeu d’adresse.<br>Au programme : découpe, ponçage, assemblage, décoration… Tu découvriras les outils de base et les gestes simples du travail du bois.<br>Un atelier 100 % fait main, pour créer, apprendre et s’amuser !",
+    "description": "Envie de bricoler et de repartir avec un objet unique ? Cet atelier est fait pour toi !<br>Accompagné pas à pas, tu fabriqueras ton propre bonhomme en bois<br>Au programme : découpe, ponçage, assemblage, décoration… Tu découvriras les outils de base et les gestes simples du travail du bois.<br>Un atelier 100 % fait main, pour créer, apprendre et s’amuser !",
     "startDate": "2025-08-28T10:00:00+02:00",
     "endDate": "2025-08-28T13:00:59+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fabrication-d-un-jeu-en-bois",
@@ -333,10 +342,10 @@
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-da8e22c73d7646aeaa03dd411ba14298.png"
   },
   {
-    "title": "Atelier Co-réparation marché Penhars  27/08",
+    "title": "Atelier Co-réparation marché Penhars  10/09",
     "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien (et leurs tissus,  vêtements...) avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-08-27T15:00:00+02:00",
-    "endDate": "2025-08-27T18:00:59+02:00",
+    "startDate": "2025-09-10T15:00:00+02:00",
+    "endDate": "2025-09-10T18:00:59+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-27-08",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-69612ba9c1174af488eb024722c29b50.png"
