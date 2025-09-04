@@ -1,5 +1,41 @@
 [
   {
+    "title": "Animation électro - Base de niveau 2",
+    "description": "Cet atelier est consacré au diagnostic d’une carte d’alimentation. L’objectif est d’apprendre à approfondir la méthodologie pour identifier les pannes et comprendre le fonctionnement global de ce type de carte.<br>⚠️ Prérequis : cet atelier s’adresse aux personnes ayant déjà des connaissances de base en électronique (savoir reconnaître les composants et comprendre leur rôle).",
+    "startDate": "2025-10-28T17:00:00+01:00",
+    "endDate": "2025-10-28T19:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-electro-base-de-niveau-2",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7f1519cd966149ed81bace8ee4cdccab.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-63dd2611f21e4fc8b58df58893eff941.png"
+  },
+  {
+    "title": "Animation électro - Micro soudure",
+    "description": "Initiez-vous à la micro-soudure électronique et découvrez comment manipuler les tout petits composants !<br>Cet atelier pratique vous apprend à utiliser les outils adaptés (fer à souder de précision, loupe, pinces fines, étain, flux…) pour souder et dessouder en toute sécurité des micro-composants montés en surface.",
+    "startDate": "2025-10-21T17:00:00+02:00",
+    "endDate": "2025-10-21T19:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-electro-micro-soudure",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7f1519cd966149ed81bace8ee4cdccab.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-63dd2611f21e4fc8b58df58893eff941.png"
+  },
+  {
+    "title": "Animation électro - Soudure",
+    "description": "Découvrez les bases de la soudure et du dessoudage de composants traversants !<br>Cet atelier d’initiation vous permet de manipuler les outils essentiels (fer à souder, pompe à dessouder, tresse, étain…) et d’apprendre les bons gestes pour assembler ou réparer simplement des circuits électroniques.<br>Aucun prérequis nécessaire : l’atelier est accessible à toutes et tous, que vous soyez curieux·se, bricoleur·se débutant·e ou simplement intéressé·e par l’électronique pratique. ",
+    "startDate": "2025-10-14T17:00:00+02:00",
+    "endDate": "2025-10-14T19:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-electro-soudure",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7f1519cd966149ed81bace8ee4cdccab.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-63dd2611f21e4fc8b58df58893eff941.png"
+  },
+  {
+    "title": "Animation électro - Base niveau 1",
+    "description": "Envie de comprendre ce qui ne va pas avec vos appareils électriques du quotidien ? Cet atelier d’initiation vous apprend à réaliser un prédiagnostic simple : reconnaître les pannes de base sur un objet (problème d\\'alimentation venant du cordon ou de l\\'appareil en lui-même par exemple)<br>Pas besoin de connaissances préalables en électro : l’atelier est accessible à toutes et tous, que vous soyez curieux·se, débutant·e ou simplement désireux·se de devenir plus autonome face aux petites pannes.",
+    "startDate": "2025-10-07T17:00:00+02:00",
+    "endDate": "2025-10-07T19:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-electro-base-niveau-1",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7f1519cd966149ed81bace8ee4cdccab.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-63dd2611f21e4fc8b58df58893eff941.png"
+  },
+  {
     "title": "Atelier couture 11/10 - Prise en main des machines",
     "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l\\'Objethèque de Cornouaille ! <br>Le thème:  Prise en main des machines de couture (machine à coudre, surjeteuse,<br>brodeuse)<br>Lors de cet atelier, vous apprendrez à prendre en main trois types de machines : la machine à coudre, la surjeteuse et la brodeuse. Au programme : enfilage, réglages, essais pratiques et découverte des différentes techniques pour gagner en autonomie dans vos projets couture ! ✂️😊",
     "startDate": "2025-10-11T14:00:00+02:00",
@@ -682,23 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
-  },
-  {
-    "title": "Atelier couture: Fabrique ta déco de Noël ! 17/12",
-    "description": "Venez apprendre ou vous perfectionner à la couture avec Françoise en réalisant des décorations de Noël!<br>Gratuit pour les adhérents: Adhésion possible sur place ou sur helloasso.<br>Vous pouvez venir avec vos enfants (une seule inscription/adhésion pour vous et vos enfants)",
-    "startDate": "2022-12-17T14:00:00+01:00",
-    "endDate": "2022-12-17T17:00:00+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-fabrique-ta-deco-de-noel-1",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-b1ee9e9c09994eed99c21c2f4128b612.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a95354840c844feba18b99caf3ba6679.png"
-  },
-  {
-    "title": "Atelier couture: Fabrique ta déco de Noël ! 03/12",
-    "description": "Venez apprendre ou vous perfectionner à la couture avec Françoise en réalisant des décorations de Noël!<br>Gratuit pour les adhérents: Adhésion possible sur place ou sur helloasso.<br>Vous pouvez venir avec vos enfants (une seule inscription/adhésion pour vous et vos enfants)",
-    "startDate": "2022-12-03T14:00:00+01:00",
-    "endDate": "2022-12-03T17:00:00+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-fabrique-ta-deco-de-noel",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-b1ee9e9c09994eed99c21c2f4128b612.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-a95354840c844feba18b99caf3ba6679.png"
   }
 ]
