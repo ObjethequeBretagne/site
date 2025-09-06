@@ -1,5 +1,14 @@
 [
   {
+    "title": "Atelier crochet pour débutants  04/10",
+    "description": "Rejoignez notre atelier crochet destinés pour les débutants ! Vous ne savez pas par où commencer ? Cet atelier est fait pour vous !<br>Ici vous apprendrez les points de bases (chaînette, maille serrée, bride) afin de commencer vos projets créatifs<br>Pas besoin de matériel ni d’expérience, juste l’envie de passer un bon moment et de découvrir une nouvelle passion<br>Ouvert aux débutant-es à partir de 10 ans, matériel fourni<br><br>",
+    "startDate": "2025-10-04T14:00:00+02:00",
+    "endDate": "2025-10-04T16:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-crochet-pour-debutants-04-10",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-42246af5f9844d6398827be840428745.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8f4adf6f7d3e40c2bf400bec155cb710.png"
+  },
+  {
     "title": "Animation électro - Base de niveau 2",
     "description": "Cet atelier est consacré au diagnostic d’une carte d’alimentation. L’objectif est d’apprendre à approfondir la méthodologie pour identifier les pannes et comprendre le fonctionnement global de ce type de carte.<br>⚠️ Prérequis : cet atelier s’adresse aux personnes ayant déjà des connaissances de base en électronique (savoir reconnaître les composants et comprendre leur rôle).",
     "startDate": "2025-10-28T17:00:00+01:00",
@@ -709,14 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-climat",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
-  },
-  {
-    "title": "Atelier couture",
-    "description": "Accompagné(e)s par Françoise et Juliane, apprenez les rudiments de la couture ou passez seulement faire vos petites réparations! Places limitées",
-    "startDate": "2023-02-11T14:00:00+01:00",
-    "endDate": "2023-02-11T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7ab30a71315448b9bf799a33218c5dc4.png"
   }
 ]
