@@ -72,15 +72,6 @@
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-fcdfc1c5aa7948be83a2246470ccd468.png"
   },
   {
-    "title": "Atelier Co-réparation électro et couture",
-    "description": "Un grille-pain qui ne chauffe plus ? Une chemise à recoudre ? Ne les jetez pas !<br>Rejoignez notre atelier de co-réparation, un moment convivial où l’on apprend à réparer ensemble petits appareils et vêtements plutôt que de les remplacer.<br>Des bénévoles seront là pour vous guider, partager leurs astuces et vous aider à redonner vie à vos objets du quotidien.<br>♻️ Objectif : réduire les déchets, apprendre en s’entraidant, et repartir fier·ère d’avoir réparé soi-même !",
-    "startDate": "2025-11-08T09:30:00+01:00",
-    "endDate": "2025-11-08T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-electro-et-couture",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e7e9539ee92f452bafc179d7378caa84.png"
-  },
-  {
     "title": "Répar' Tour à Plomelin",
     "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
     "startDate": "2025-11-05T09:30:00+01:00",
@@ -718,5 +709,14 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-sol",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
+  },
+  {
+    "title": "La pause bien-être 2nde édition",
+    "description": "Vous cherchez à vous ressourcer et à vous détendre? Nous vous proposons...<br><br>✨ Massage Shiatsu pour vous relaxer et vous décontracter<br>💡 Life coachIng, une opportunité d’aller à la rencontre de vous-même<br>🧵 Création d\\'un masque de détente pour les yeux : couture et bien-être réunis ! 🌸<br>🍵 Partie zen avec thé, musique et fauteuils pour vous faire voyager dans un monde de sérénité<br><br>🌿 Avec la participation des professionnelles Maryline Bazin et Lucie Baccon<br>📌 Infos pratiques : Massage habillé ",
+    "startDate": "2025-04-05T14:00:00+02:00",
+    "endDate": "2025-04-05T17:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-pause-bien-etre-2nde-edition",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-40eb5d7eaa0c46fb8e66838a779b00f7.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-be57026ba6304cca8a061aa81080ce0d.png"
   }
 ]
