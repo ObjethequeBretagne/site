@@ -2,38 +2,33 @@ name: Update Events JSON
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Tous les jours à 3h
-  workflow_dispatch: # Déclenchement manuel
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   update-events:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout du dépôt
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # 2. Configuration de Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: '20' # Version LTS de Node.js
+          bun-version: latest
 
-      # 3. Installation des dépendances
       - name: Install dependencies
-        run: npm install
+        run: bun install
 
-      # 4. Récupération des événements via le script Node.js
       - name: Fetch events from HelloAsso
-        run: node fetch-events.js
+        run: bun run fetch-events.js
         env:
           HELLOASSO_ACCESS_TOKEN: ${{ secrets.HELLOASSO_ACCESS_TOKEN }}
           HELLOASSO_REFRESH_TOKEN: ${{ secrets.HELLOASSO_REFRESH_TOKEN }}
           HELLOASSO_CLIENT_ID: ${{ secrets.HELLOASSO_CLIENT_ID }}
           HELLOASSO_CLIENT_SECRET: ${{ secrets.HELLOASSO_CLIENT_SECRET }}
 
-      # 5. Configuration de la clé SSH
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh
@@ -41,7 +36,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      # 8. Commit et push des changements si nécessaire
       - name: Commit and push changes
         run: |
           git config user.name "ObjethequeBretagne"
