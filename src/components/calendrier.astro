@@ -1,35 +1,26 @@
-<div
-  x-data="{ 
-    modalOpen: false, 
-    modalTitle: '', 
-    modalDescription: '', 
-    modalUrl: '', 
-    modalImage: '',
-    handleKeydown(event) {
-      if (this.modalOpen) {
-        if (event.key === 'Escape') {
-          this.modalOpen = false;
-        }
-      }
-    },
-  }"
-  x-init="$watch('modalOpen', value => { 
-    document.body.classList.toggle('no-scroll', value); 
-  })"
-  
-  role="dialog"
-  aria-labelledby="modal-title"
-  aria-hidden="true"
-  @keydown.window="handleKeydown($event)"
->
+---
+// src/components/calendrier.astro
+interface Event {
+  id: string;
+  title: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  url: string;
+  logoUrl: string;
+  bannerUrl?: string;
+  location?: string;
+}
+---
+
+<div class="calendar-wrapper">
   <div class="calendar">
     <div class="calendar-header">
-      <button class="nav-btn prev-btn" onclick="navigateMonth(-1)">&lt;</button>
+      <button class="nav-btn prev-btn" id="prev-month">&lt;</button>
       <h1 class="month-title" id="month-title"></h1>
-      <button class="nav-btn next-btn" onclick="navigateMonth(1)">&gt;</button>
+      <button class="nav-btn next-btn" id="next-month">&gt;</button>
     </div>
-    <div class="calendar-grid-header" id="calendar-grid-header">
-      <!-- Jours de la semaine -->
+    <div class="calendar-grid-header">
       <div class="day-name">Lun</div>
       <div class="day-name">Mar</div>
       <div class="day-name">Mer</div>
@@ -41,32 +32,269 @@
     <div class="calendar-grid" id="calendar-grid"></div>
   </div>
 
-  <!-- Modal pour afficher les détails d'un événement -->
-  <div
-    style="display: none;"
-    x-show="modalOpen"
-    x-bind:class="{'modal-open': modalOpen}"
-    @click.self="modalOpen = false"
-    class="modal"
-  >
+  <!-- Modal natif HTML5 -->
+  <dialog id="event-modal" class="event-dialog">
     <div class="modal-content">
-      <span class="close-btn" @click="modalOpen = false" tabindex="0"
-        >&times;</span
-      >
-      <h2 x-text="modalTitle"></h2>
-      <img :src="modalImage" alt="Image évént" class="modal-image" />
-      <p x-html="modalDescription"></p>
+      <button class="close-btn" id="close-modal" aria-label="Fermer">&times;</button>
+      <h2 id="modal-title"></h2>
+      <img id="modal-image" class="modal-image" alt="Image de l'événement" />
+      <div id="modal-description"></div>
       <div class="modal-footer">
-        <a :href="modalUrl" target="_blank" class="soulignementOrange">
+        <a id="modal-link" target="_blank" class="soulignementOrange">
           <span style="font-size: 1.5rem;">+</span> d'infos
         </a>
       </div>
     </div>
-  </div>
+  </dialog>
 </div>
 
-<!-- Inclusion du script pour récupérer les événements et afficher le calendrier -->
-<script type="module" src="../scripts/calendar.js"></script>
+<script>
+  // Type definitions
+  interface Event {
+    id: string;
+    title: string;
+    description: string;
+    startDate: string;
+    endDate: string;
+    url: string;
+    logoUrl: string;
+    bannerUrl?: string;
+    location?: string;
+  }
+
+  class Calendar {
+    private currentMonth: number;
+    private currentYear: number;
+    private events: Event[] = [];
+    private monthTitle: HTMLElement;
+    private calendarGrid: HTMLElement;
+    private modal: HTMLDialogElement;
+    private modalTitle: HTMLElement;
+    private modalDescription: HTMLElement;
+    private modalImage: HTMLImageElement;
+    private modalLink: HTMLAnchorElement;
+
+    private readonly months = [
+      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+      "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ];
+
+    constructor() {
+      const today = new Date();
+      this.currentMonth = today.getMonth();
+      this.currentYear = today.getFullYear();
+
+      // Get DOM elements with type assertion
+      this.monthTitle = document.getElementById("month-title")!;
+      this.calendarGrid = document.getElementById("calendar-grid")!;
+      this.modal = document.getElementById("event-modal") as HTMLDialogElement;
+      this.modalTitle = document.getElementById("modal-title")!;
+      this.modalDescription = document.getElementById("modal-description")!;
+      this.modalImage = document.getElementById("modal-image") as HTMLImageElement;
+      this.modalLink = document.getElementById("modal-link") as HTMLAnchorElement;
+
+      this.init();
+    }
+
+    private async init(): Promise<void> {
+      await this.loadEvents();
+      this.setupEventListeners();
+      this.updateCalendar();
+    }
+
+    private setupEventListeners(): void {
+      // Navigation buttons
+      document.getElementById("prev-month")?.addEventListener("click", () => {
+        this.navigateMonth(-1);
+      });
+
+      document.getElementById("next-month")?.addEventListener("click", () => {
+        this.navigateMonth(1);
+      });
+
+      // Modal close button
+      document.getElementById("close-modal")?.addEventListener("click", () => {
+        this.closeModal();
+      });
+
+      // Close modal on backdrop click
+      this.modal?.addEventListener("click", (e: MouseEvent) => {
+        if (e.target === this.modal) {
+          this.closeModal();
+        }
+      });
+
+      // Close modal on Escape key
+      document.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.key === "Escape" && this.modal?.open) {
+          this.closeModal();
+        }
+      });
+    }
+
+    private navigateMonth(direction: number): void {
+      this.currentMonth += direction;
+      
+      if (this.currentMonth < 0) {
+        this.currentMonth = 11;
+        this.currentYear--;
+      } else if (this.currentMonth > 11) {
+        this.currentMonth = 0;
+        this.currentYear++;
+      }
+
+      this.updateCalendar();
+    }
+
+    private async loadEvents(): Promise<void> {
+      try {
+        const response = await fetch("/events.json");
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        
+        const data: Event[] = await response.json();
+        this.events = data;
+        console.log("Événements chargés :", this.events.length);
+      } catch (error) {
+        console.error("Erreur de chargement des événements :", error);
+        this.events = [];
+      }
+    }
+
+    private updateCalendar(): void {
+      if (!this.calendarGrid) return;
+
+      // Clear the calendar
+      this.calendarGrid.innerHTML = "";
+
+      // Update month title
+      if (this.monthTitle) {
+        this.monthTitle.textContent = `${this.months[this.currentMonth]} ${this.currentYear}`;
+      }
+
+      // Calculate first day and days in month
+      const firstDay = new Date(this.currentYear, this.currentMonth, 1);
+      const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
+      const daysInMonth = lastDay.getDate();
+      
+      // Adjust for Monday as first day (0 = Monday, 6 = Sunday)
+      const firstDayOfWeek = (firstDay.getDay() + 6) % 7;
+
+      // Add empty cells for days before month starts
+      for (let i = 0; i < firstDayOfWeek; i++) {
+        const emptyCell = document.createElement("div");
+        this.calendarGrid.appendChild(emptyCell);
+      }
+
+      // Add days of the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dateStr = this.formatDate(this.currentYear, this.currentMonth, day);
+        const dayCell = this.createDayCell(day, dateStr);
+        this.calendarGrid.appendChild(dayCell);
+      }
+    }
+
+    private formatDate(year: number, month: number, day: number): string {
+      const monthStr = String(month + 1).padStart(2, "0");
+      const dayStr = String(day).padStart(2, "0");
+      return `${year}-${monthStr}-${dayStr}`;
+    }
+
+    private createDayCell(day: number, dateStr: string): HTMLElement {
+      const dayCell = document.createElement("div");
+      dayCell.textContent = String(day);
+
+      // Check if there's an event on this day
+      const event = this.findEventForDate(dateStr);
+      
+      if (event) {
+        // Apply inline styles for event days (matching original)
+        dayCell.style.cssText = `
+          background: var(--primary-color);
+          font-weight: bold;
+          cursor: pointer;
+          text-align: center;
+          padding: 0.6rem;
+          font-size: 1.3em;
+          margin: 0.1rem;
+          border-radius: 12px;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          color: var(--light-text-color);
+        `;
+        
+        dayCell.setAttribute("data-event-id", event.id);
+        dayCell.addEventListener("click", () => this.showEventModal(event));
+        
+        // Add hover effects
+        dayCell.addEventListener("mouseenter", () => {
+          dayCell.style.transform = "scale(1.05)";
+          dayCell.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.2)";
+        });
+        
+        dayCell.addEventListener("mouseleave", () => {
+          dayCell.style.transform = "scale(1)";
+          dayCell.style.boxShadow = "none";
+        });
+        
+        // Add title as tooltip
+        dayCell.title = event.title;
+      } else {
+        // Apply inline styles for normal days (matching original)
+        dayCell.style.cssText = `
+          padding: 0.6rem;
+          margin: 0.1rem;
+          font-size: 1.3em;
+        `;
+      }
+
+      return dayCell;
+    }
+
+    private findEventForDate(dateStr: string): Event | undefined {
+      return this.events.find(event => {
+        // Extract date from startDate using substring to avoid timezone issues
+        const eventDate = event.startDate.substring(0, 10);
+        return eventDate === dateStr;
+      });
+    }
+
+    private showEventModal(event: Event): void {
+      if (!this.modal) return;
+
+      // Set modal content
+      if (this.modalTitle) this.modalTitle.textContent = event.title;
+      
+      if (this.modalDescription) {
+        // Convert line breaks to HTML
+        this.modalDescription.innerHTML = event.description.replace(/\n/g, '<br>');
+      }
+      
+      if (this.modalImage) {
+        this.modalImage.src = event.logoUrl || 'assets/img/logo.png';
+        this.modalImage.alt = event.title;
+      }
+      
+      if (this.modalLink) {
+        this.modalLink.href = event.url;
+      }
+
+      // Show modal using native dialog API
+      this.modal.showModal();
+      document.body.classList.add("modal-open");
+    }
+
+    private closeModal(): void {
+      if (!this.modal) return;
+      
+      this.modal.close();
+      document.body.classList.remove("modal-open");
+    }
+  }
+
+  // Initialize calendar when page loads
+  document.addEventListener("astro:page-load", () => {
+    new Calendar();
+  });
+</script>
 
 <style>
   .calendar {
@@ -81,7 +309,6 @@
     max-width: 60rem;
     padding-bottom: 0.3rem;    
     color: var(--dark-text-color);
-
     min-height: 17rem;
   }
 
@@ -116,14 +343,7 @@
     color: white;
   }
 
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.1rem;
-    background: var(--background-color);
-    margin-inline: auto;
-    font-size: 1em;
-  }
+  .calendar-grid,
   .calendar-grid-header {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -132,13 +352,8 @@
     margin-inline: auto;
   }
 
-  .calendar-grid.day {
-    background: white;
-    text-align: center;
-    padding: 15px 0;
+  .calendar-grid {
     font-size: 1em;
-    position: relative;
-    cursor: pointer;
   }
 
   .day-name {
@@ -147,9 +362,31 @@
     font-size: 1.4em;
   }
 
-  .day:hover {
-    background: #f0f8ff;
+  /* Simplifier le CSS car on utilise des styles inline maintenant */
+  .calendar-day {
+    /* Styles de base, les styles spécifiques sont en inline */
+    display: inline-block;
   }
+
+  .calendar-day.empty {
+    background: transparent;
+  }
+
+  /* On peut retirer ces styles car ils sont maintenant en inline
+  .calendar-day.has-event {
+    background: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 90px;
+    margin: 0.1rem;
+    transition: all 0.3s ease;
+  }
+
+  .calendar-day.has-event:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+  } */
 
   @media (max-width: 480px) {
     .month-title {
@@ -165,26 +402,31 @@
     }
   }
 
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; /* Assurez-vous que la modal est au-dessus de tout le reste */
+  /* Native dialog styles */
+  .event-dialog {
+    margin: auto;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: visible;
+    background: var(--background-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
-  
+
+  .event-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+
   .modal-content {
     background: var(--background-color);
     padding: 20px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 500px;
+    width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     position: relative;
@@ -196,7 +438,7 @@
     color: var(--secondary-color);
   }
 
-  .modal-content p {
+  #modal-description {
     margin: 0;
     font-size: 1.1em;
     color: var(--dark-text-color);
@@ -230,6 +472,7 @@
     color: var(--dark-text-color);
   }
 
+  :global(body.modal-open),
   body.no-scroll {
     overflow: hidden;
   }
