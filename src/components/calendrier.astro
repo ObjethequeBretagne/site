@@ -35,7 +35,9 @@ interface Event {
   <!-- Modal natif HTML5 -->
   <dialog id="event-modal" class="event-dialog">
     <div class="modal-content">
-      <button class="close-btn" id="close-modal" aria-label="Fermer">&times;</button>
+      <button class="close-btn" id="close-modal" aria-label="Fermer"
+        >&times;</button
+      >
       <h2 id="modal-title"></h2>
       <img id="modal-image" class="modal-image" alt="Image de l'événement" />
       <div id="modal-description"></div>
@@ -75,8 +77,18 @@ interface Event {
     private modalLink: HTMLAnchorElement;
 
     private readonly months = [
-      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-      "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+      "Janvier",
+      "Février",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Août",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Décembre",
     ];
 
     constructor() {
@@ -90,8 +102,12 @@ interface Event {
       this.modal = document.getElementById("event-modal") as HTMLDialogElement;
       this.modalTitle = document.getElementById("modal-title")!;
       this.modalDescription = document.getElementById("modal-description")!;
-      this.modalImage = document.getElementById("modal-image") as HTMLImageElement;
-      this.modalLink = document.getElementById("modal-link") as HTMLAnchorElement;
+      this.modalImage = document.getElementById(
+        "modal-image"
+      ) as HTMLImageElement;
+      this.modalLink = document.getElementById(
+        "modal-link"
+      ) as HTMLAnchorElement;
 
       this.init();
     }
@@ -134,7 +150,7 @@ interface Event {
 
     private navigateMonth(direction: number): void {
       this.currentMonth += direction;
-      
+
       if (this.currentMonth < 0) {
         this.currentMonth = 11;
         this.currentYear--;
@@ -149,8 +165,9 @@ interface Event {
     private async loadEvents(): Promise<void> {
       try {
         const response = await fetch("/events.json");
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+
         const data: Event[] = await response.json();
         this.events = data;
         console.log("Événements chargés :", this.events.length);
@@ -175,7 +192,7 @@ interface Event {
       const firstDay = new Date(this.currentYear, this.currentMonth, 1);
       const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
       const daysInMonth = lastDay.getDate();
-      
+
       // Adjust for Monday as first day (0 = Monday, 6 = Sunday)
       const firstDayOfWeek = (firstDay.getDay() + 6) % 7;
 
@@ -187,7 +204,11 @@ interface Event {
 
       // Add days of the month
       for (let day = 1; day <= daysInMonth; day++) {
-        const dateStr = this.formatDate(this.currentYear, this.currentMonth, day);
+        const dateStr = this.formatDate(
+          this.currentYear,
+          this.currentMonth,
+          day
+        );
         const dayCell = this.createDayCell(day, dateStr);
         this.calendarGrid.appendChild(dayCell);
       }
@@ -205,7 +226,7 @@ interface Event {
 
       // Check if there's an event on this day
       const event = this.findEventForDate(dateStr);
-      
+
       if (event) {
         // Apply inline styles for event days (matching original)
         dayCell.style.cssText = `
@@ -220,21 +241,21 @@ interface Event {
           transition: transform 0.2s ease, box-shadow 0.2s ease;
           color: var(--light-text-color);
         `;
-        
+
         dayCell.setAttribute("data-event-id", event.id);
         dayCell.addEventListener("click", () => this.showEventModal(event));
-        
+
         // Add hover effects
         dayCell.addEventListener("mouseenter", () => {
           dayCell.style.transform = "scale(1.05)";
           dayCell.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.2)";
         });
-        
+
         dayCell.addEventListener("mouseleave", () => {
           dayCell.style.transform = "scale(1)";
           dayCell.style.boxShadow = "none";
         });
-        
+
         // Add title as tooltip
         dayCell.title = event.title;
       } else {
@@ -250,7 +271,7 @@ interface Event {
     }
 
     private findEventForDate(dateStr: string): Event | undefined {
-      return this.events.find(event => {
+      return this.events.find((event) => {
         // Extract date from startDate using substring to avoid timezone issues
         const eventDate = event.startDate.substring(0, 10);
         return eventDate === dateStr;
@@ -262,17 +283,19 @@ interface Event {
 
       // Set modal content
       if (this.modalTitle) this.modalTitle.textContent = event.title;
-      
+
       if (this.modalDescription) {
-        // Convert line breaks to HTML
-        this.modalDescription.innerHTML = event.description.replace(/\n/g, '<br>');
+        // Convert line breaks et \ to HTML
+        this.modalDescription.innerHTML = event.description
+          .replace(/\\'/g, "'")
+          .replace(/\n/g, "<br>");
       }
-      
+
       if (this.modalImage) {
-        this.modalImage.src = event.logoUrl || 'assets/img/logo.png';
+        this.modalImage.src = event.logoUrl || "assets/img/logo.png";
         this.modalImage.alt = event.title;
       }
-      
+
       if (this.modalLink) {
         this.modalLink.href = event.url;
       }
@@ -284,7 +307,7 @@ interface Event {
 
     private closeModal(): void {
       if (!this.modal) return;
-      
+
       this.modal.close();
       document.body.classList.remove("modal-open");
     }
@@ -307,7 +330,7 @@ interface Event {
     margin-inline: auto;
     text-align: center;
     max-width: 60rem;
-    padding-bottom: 0.3rem;    
+    padding-bottom: 0.3rem;
     color: var(--dark-text-color);
     min-height: 17rem;
   }
@@ -336,6 +359,9 @@ interface Event {
     font-size: 1em;
     color: var(--primary-color);
     cursor: pointer;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
   }
 
   .nav-btn:hover {
@@ -352,41 +378,11 @@ interface Event {
     margin-inline: auto;
   }
 
-  .calendar-grid {
-    font-size: 1em;
-  }
-
   .day-name {
     font-weight: bold;
     margin-block: 0.4rem;
     font-size: 1.4em;
   }
-
-  /* Simplifier le CSS car on utilise des styles inline maintenant */
-  .calendar-day {
-    /* Styles de base, les styles spécifiques sont en inline */
-    display: inline-block;
-  }
-
-  .calendar-day.empty {
-    background: transparent;
-  }
-
-  /* On peut retirer ces styles car ils sont maintenant en inline
-  .calendar-day.has-event {
-    background: var(--primary-color);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 90px;
-    margin: 0.1rem;
-    transition: all 0.3s ease;
-  }
-
-  .calendar-day.has-event:hover {
-    background: var(--secondary-color);
-    transform: scale(1.05);
-  } */
 
   @media (max-width: 480px) {
     .month-title {
@@ -414,11 +410,6 @@ interface Event {
     overflow: visible;
     background: var(--background-color);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .event-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(2px);
   }
 
   .modal-content {
@@ -458,6 +449,8 @@ interface Event {
 
   .close-btn {
     position: absolute;
+    padding: 0.5rem;
+    border-radius: 100%;
     top: 10px;
     right: 10px;
     background: none;
@@ -470,10 +463,5 @@ interface Event {
 
   .close-btn:hover {
     color: var(--dark-text-color);
-  }
-
-  :global(body.modal-open),
-  body.no-scroll {
-    overflow: hidden;
   }
 </style>
