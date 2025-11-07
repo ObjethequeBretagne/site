@@ -67,14 +67,14 @@ document.addEventListener("astro:page-load", () => {
           const sanitizedTitle = event.title.replace(/'/g, "\\'");
           calendarGrid.innerHTML += `
         <div 
-          style="background:yellow; font-weight:bold; cursor:pointer; text-align: center;
-          padding: 0.4rem; margin:0.1rem; border-radius:90px"
+          style="background:var(--primary-color); font-weight:bold; cursor:pointer; text-align: center;
+          padding: 0.6rem; font-size: 1.3em; margin:0.1rem; border-radius:12px; transition: transform 0.2s ease, box-shadow 0.2s ease; color: var(--light-text-color);"
           @click="modalOpen = true; modalTitle = '${sanitizedTitle}'; modalDescription = '${event.description}'; modalUrl = '${event.url}'; modalImage = '${event.logoUrl}'"
         >
           ${day}
         </div>`;
         } else {
-          calendarGrid.innerHTML += `<div style="padding: 0.5rem;">${day}</div>`;
+          calendarGrid.innerHTML += `<div style="padding: 0.6rem; margin:0.1rem; font-size: 1.3em;">${day}</div>`;
         }
       }
     });
