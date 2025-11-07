@@ -133,8 +133,14 @@
     transition: all 0.2s ease;
     font-size: larger;
     background-color: var(--grey-background);
+    &::before {
+      content: '';
+      display: none;
+      margin-inline-end: 0ch;
+      transition: none;
+    }
   }
-
+  
   .contact-details summary:hover {
     color: var(--primary-color);
   }
