@@ -1,5 +1,23 @@
 [
   {
+    "title": "Carterie et goûter de Noël",
+    "description": "Viens créer ta carte illustrée pour le Père Noël ou réaliser une jolie carte de vœux ! L’atelier sera suivi d’un goûter chaleureux : jus de pommes et pain d’épices.<br>Les enfants doivent être accompagnés d’un adulte.",
+    "startDate": "2025-12-10T15:00:00+01:00",
+    "endDate": "2025-12-10T16:30:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/carterie-et-gouter-de-noel",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e9ea06b6ae4b456db0910ac67055d79a.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-28f1e80e5ebc4d568536fb96134f28f7.png"
+  },
+  {
+    "title": "Journée spéciale 29 novembre",
+    "description": "Journée spéciale à l’Objethèque : <br>Participez à une journée dédiée au partage de savoir-faire et à la réparation. Au programme : rempaillage de chaise (10h–13h, sur inscription), initiation au crochet (10h–12h30, sur inscription), co-réparation couture et petites créations (14h–17h), création de protège-selle en tissu (14h–17h), réparation de vélo (14h–17h) et co-réparation d’appareils électro toute la journée (10h–17h).",
+    "startDate": "2025-11-29T10:00:00+01:00",
+    "endDate": "2025-11-29T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/journee-speciale-29-novembre",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8ea14fe9d6614b34829826151a8ee66a.png"
+  },
+  {
     "title": "Initiation au crochet 29/11",
     "description": "Envie de découvrir un loisir créatif accessible à tous ? Rejoignez notre atelier d’initiation au crochet !<br>Dans une ambiance conviviale, vous apprendrez les bases essentielles : comment tenir le crochet, réaliser les points fondamentaux (maille en l’air, maille serrée, bride…), et commencer votre tout premier petit projet.<br>Pas besoin de matériel ni d’expérience, juste l’envie de passer un bon moment et de découvrir une nouvelle passion<br>",
     "startDate": "2025-11-29T10:30:00+01:00",
@@ -7,6 +25,15 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/initiation-au-crochet-29-11",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-42246af5f9844d6398827be840428745.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8f4adf6f7d3e40c2bf400bec155cb710.png"
+  },
+  {
+    "title": "Laisser son empreinte, un geste vers soi",
+    "description": "Au programme, 2 ateliers de 1h30 pour vivre un moment de découverte de soi, entre jeu et exploration intérieure<br>Le premier atelier, ludique et interactif, invite à réfléchir à l’empreinte que nous laissons, à questionner ce qui nous anime et à mieux comprendre notre manière de communiquer.<br>Le second atelier, propose d’utiliser un simple objet comme miroir de vos forces. Une exploration sensible pour reconnaître vos atouts, besoins et élans, et repartir avec plus de clarté et et de confiance.",
+    "startDate": "2025-12-06T10:00:00+01:00",
+    "endDate": "2025-12-06T17:30:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/laissez-votre-empreinte-un-geste-vers-soi",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-5559897c3f9c48878eb175f06514a7b3.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-1308b02052ab4c2893ca6041a597405e.png"
   },
   {
     "title": "Atelier co-réparation couture et électro",
@@ -691,32 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-et-collecte-de-materiel-a-brico-depot",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-602bb3e8a5874a0d977feb8ff19da62f.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e7de7fc344aa48d5a88fc1ea9232038e.png"
-  },
-  {
-    "title": "Atelier Co-réparation 26/04",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
-    "startDate": "2025-04-26T10:00:00+02:00",
-    "endDate": "2025-04-26T17:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-26-04",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
-  },
-  {
-    "title": "Atelier Co-réparation marché Penhars  30/04 ",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien (et leurs tissus,  vêtements...) avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-04-30T15:00:00+02:00",
-    "endDate": "2025-04-30T18:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-30-04",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-22610679e35f4f789f0e875d0a0daa8f.png"
-  },
-  {
-    "title": "Atelier Fresque du sol",
-    "description": "Découvrez un outil ludique et collaboratif qui vise à diffuser un langage commun sur le fonctionnement des sols et sur les enjeux liés à leur préservation.<br>Au travers de 50 cartes et en 3h, la fresque du sol permet de comprendre ce qu’est un sol, comment celui-ci se forme et quelles fonctions écologiques découlent de ses propriétés pour ensuite découvrir l’ensemble des services que l’on en retire, les menaces qui rendent ces services limités dans le temps et l’espace 🌿🌍",
-    "startDate": "2025-03-15T14:00:00+01:00",
-    "endDate": "2025-03-15T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fresque-du-sol",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-45a323264d4240d2a4906706ddc1c69b.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8d73f3d114ed4fee872d633a3cec1a0b.png"
   }
 ]
