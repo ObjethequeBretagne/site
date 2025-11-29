@@ -1,5 +1,14 @@
 [
   {
+    "title": "Atelier cuisine - Petit biscuits de Noël",
+    "description": "Plongez dans la magie de Noël en découvrant les véritables Bredele, ces biscuits traditionnels alsaciens qui embaument les maisons pendant les fêtes de fin d\\'année. 🎄🍪<br>Rejoignez-nous pour un moment gourmand et chaleureux, parfait pour préparer les fêtes en famille ou entre amis ! ✨",
+    "startDate": "2025-12-20T14:00:00+01:00",
+    "endDate": "2025-12-20T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-cuisine-petit-biscuits-de-noel",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-3f9e6d8e85d14e10897340a3c2b99c5c.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c563e0992aa94f0aa53b663f641fc366.png"
+  },
+  {
     "title": "Carterie et goûter de Noël",
     "description": "Viens créer ta carte illustrée pour le Père Noël ou réaliser une jolie carte de vœux ! L’atelier sera suivi d’un goûter chaleureux : jus de pommes et pain d’épices.<br>Les enfants doivent être accompagnés d’un adulte.",
     "startDate": "2025-12-10T15:00:00+01:00",
@@ -709,14 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-affutage",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-64f7bdcc0f7f4fcaa48960bec42d9257.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-4c51846e33ab4da28ae7344b4166fed6.png"
-  },
-  {
-    "title": "Animation et collecte de matériel à Brico Dépôt",
-    "description": "🔧🌱⛺ Grande Collecte  chez Brico Dépôt ! ⛺🌱🔧<br><br>📅 Date : 25 avril<br>🕙 Horaire : 10h - 17h<br>📍 Lieu : Brico Dépôt, 39 Route du Loc\\'h, 29000 Quimper<br><br>Venez participer à notre collecte  de matériel de jardinage, bricolage et camping ! 🌿🛠️🎒 <br>Apportez vos outils et équipements dont vous ne vous servez plus et donnez-leur une seconde vie. Une belle occasion d’échanger, partager et de faire un geste pour l\\'environnement ! 🤝💚<br><br>On vous attend nombreux ! 😃🎈",
-    "startDate": "2025-04-25T10:00:00+02:00",
-    "endDate": "2025-04-25T17:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/animation-et-collecte-de-materiel-a-brico-depot",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-602bb3e8a5874a0d977feb8ff19da62f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e7de7fc344aa48d5a88fc1ea9232038e.png"
   }
 ]
