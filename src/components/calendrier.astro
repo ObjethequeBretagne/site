@@ -35,23 +35,31 @@ interface Event {
   <!-- Modal natif HTML5 -->
   <dialog id="event-modal" class="event-dialog">
     <div class="modal-content">
-      <button class="close-btn" id="close-modal" aria-label="Fermer"
-        >&times;</button
-      >
-      <h2 id="modal-title"></h2>
-      <img id="modal-image" class="modal-image" alt="Image de l'événement" />
-      <div id="modal-description"></div>
-      <div class="modal-footer">
-        <a id="modal-link" target="_blank" class="soulignementOrange">
-          <span style="font-size: 1.5rem;">+</span> d'infos
-        </a>
+      <button class="close-btn" id="close-modal" aria-label="Fermer">&times;</button>
+      
+      <!-- Liste des événements (visible quand plusieurs événements) -->
+      <div id="events-list" class="events-list" hidden>
+        <h2 id="events-list-title"></h2>
+        <ul id="events-list-items"></ul>
+      </div>
+      
+      <!-- Détails d'un événement (visible quand un seul ou après sélection) -->
+      <div id="event-detail">
+        <button id="back-to-list" class="back-btn" hidden>&larr; Retour</button>
+        <h2 id="modal-title"></h2>
+        <img id="modal-image" class="modal-image" alt="Image de l'événement" />
+        <div id="modal-description"></div>
+        <div class="modal-footer">
+          <a id="modal-link" target="_blank" class="soulignementOrange">
+            <span style="font-size: 1.5rem;">+</span> d'infos
+          </a>
+        </div>
       </div>
     </div>
   </dialog>
 </div>
 
 <script>
-  // Type definitions
   interface Event {
     id: string;
     title: string;
@@ -75,20 +83,15 @@ interface Event {
     private modalDescription: HTMLElement;
     private modalImage: HTMLImageElement;
     private modalLink: HTMLAnchorElement;
+    private eventsList: HTMLElement;
+    private eventsListTitle: HTMLElement;
+    private eventsListItems: HTMLElement;
+    private eventDetail: HTMLElement;
+    private backToListBtn: HTMLElement;
 
     private readonly months = [
-      "Janvier",
-      "Février",
-      "Mars",
-      "Avril",
-      "Mai",
-      "Juin",
-      "Juillet",
-      "Août",
-      "Septembre",
-      "Octobre",
-      "Novembre",
-      "Décembre",
+      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+      "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre",
     ];
 
     constructor() {
@@ -96,18 +99,18 @@ interface Event {
       this.currentMonth = today.getMonth();
       this.currentYear = today.getFullYear();
 
-      // Get DOM elements with type assertion
       this.monthTitle = document.getElementById("month-title")!;
       this.calendarGrid = document.getElementById("calendar-grid")!;
       this.modal = document.getElementById("event-modal") as HTMLDialogElement;
       this.modalTitle = document.getElementById("modal-title")!;
       this.modalDescription = document.getElementById("modal-description")!;
-      this.modalImage = document.getElementById(
-        "modal-image"
-      ) as HTMLImageElement;
-      this.modalLink = document.getElementById(
-        "modal-link"
-      ) as HTMLAnchorElement;
+      this.modalImage = document.getElementById("modal-image") as HTMLImageElement;
+      this.modalLink = document.getElementById("modal-link") as HTMLAnchorElement;
+      this.eventsList = document.getElementById("events-list")!;
+      this.eventsListTitle = document.getElementById("events-list-title")!;
+      this.eventsListItems = document.getElementById("events-list-items")!;
+      this.eventDetail = document.getElementById("event-detail")!;
+      this.backToListBtn = document.getElementById("back-to-list")!;
 
       this.init();
     }
@@ -119,7 +122,6 @@ interface Event {
     }
 
     private setupEventListeners(): void {
-      // Navigation buttons
       document.getElementById("prev-month")?.addEventListener("click", () => {
         this.navigateMonth(-1);
       });
@@ -128,23 +130,24 @@ interface Event {
         this.navigateMonth(1);
       });
 
-      // Modal close button
       document.getElementById("close-modal")?.addEventListener("click", () => {
         this.closeModal();
       });
 
-      // Close modal on backdrop click
       this.modal?.addEventListener("click", (e: MouseEvent) => {
         if (e.target === this.modal) {
           this.closeModal();
         }
       });
 
-      // Close modal on Escape key
       document.addEventListener("keydown", (e: KeyboardEvent) => {
         if (e.key === "Escape" && this.modal?.open) {
           this.closeModal();
         }
+      });
+
+      this.backToListBtn?.addEventListener("click", () => {
+        this.showEventsList();
       });
     }
 
@@ -165,8 +168,7 @@ interface Event {
     private async loadEvents(): Promise<void> {
       try {
         const response = await fetch("/events.json");
-        if (!response.ok)
-          throw new Error(`HTTP error! status: ${response.status}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data: Event[] = await response.json();
         this.events = data;
@@ -180,35 +182,24 @@ interface Event {
     private updateCalendar(): void {
       if (!this.calendarGrid) return;
 
-      // Clear the calendar
       this.calendarGrid.innerHTML = "";
 
-      // Update month title
       if (this.monthTitle) {
         this.monthTitle.textContent = `${this.months[this.currentMonth]} ${this.currentYear}`;
       }
 
-      // Calculate first day and days in month
       const firstDay = new Date(this.currentYear, this.currentMonth, 1);
       const lastDay = new Date(this.currentYear, this.currentMonth + 1, 0);
       const daysInMonth = lastDay.getDate();
-
-      // Adjust for Monday as first day (0 = Monday, 6 = Sunday)
       const firstDayOfWeek = (firstDay.getDay() + 6) % 7;
 
-      // Add empty cells for days before month starts
       for (let i = 0; i < firstDayOfWeek; i++) {
         const emptyCell = document.createElement("div");
         this.calendarGrid.appendChild(emptyCell);
       }
 
-      // Add days of the month
       for (let day = 1; day <= daysInMonth; day++) {
-        const dateStr = this.formatDate(
-          this.currentYear,
-          this.currentMonth,
-          day
-        );
+        const dateStr = this.formatDate(this.currentYear, this.currentMonth, day);
         const dayCell = this.createDayCell(day, dateStr);
         this.calendarGrid.appendChild(dayCell);
       }
@@ -224,11 +215,9 @@ interface Event {
       const dayCell = document.createElement("div");
       dayCell.textContent = String(day);
 
-      // Check if there's an event on this day
-      const event = this.findEventForDate(dateStr);
+      const dayEvents = this.findEventsForDate(dateStr);
 
-      if (event) {
-        // Apply inline styles for event days (matching original)
+      if (dayEvents.length > 0) {
         dayCell.style.cssText = `
           background: var(--primary-color);
           font-weight: bold;
@@ -240,12 +229,19 @@ interface Event {
           border-radius: 12px;
           transition: transform 0.2s ease, box-shadow 0.2s ease;
           color: var(--light-text-color);
+          position: relative;
         `;
 
-        dayCell.setAttribute("data-event-id", event.id);
-        dayCell.addEventListener("click", () => this.showEventModal(event));
+        // Indicateur visuel pour plusieurs événements
+        if (dayEvents.length > 1) {
+          const badge = document.createElement("span");
+          badge.className = "event-count";
+          badge.textContent = String(dayEvents.length);
+          dayCell.appendChild(badge);
+        }
 
-        // Add hover effects
+        dayCell.addEventListener("click", () => this.openModal(dayEvents, dateStr));
+
         dayCell.addEventListener("mouseenter", () => {
           dayCell.style.transform = "scale(1.05)";
           dayCell.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.2)";
@@ -256,10 +252,9 @@ interface Event {
           dayCell.style.boxShadow = "none";
         });
 
-        // Add title as tooltip
-        dayCell.title = event.title;
+        // Tooltip avec tous les titres
+        dayCell.title = dayEvents.map(e => e.title).join("\n");
       } else {
-        // Apply inline styles for normal days (matching original)
         dayCell.style.cssText = `
           padding: 0.6rem;
           margin: 0.1rem;
@@ -270,22 +265,76 @@ interface Event {
       return dayCell;
     }
 
-    private findEventForDate(dateStr: string): Event | undefined {
-      return this.events.find((event) => {
-        // Extract date from startDate using substring to avoid timezone issues
+    private findEventsForDate(dateStr: string): Event[] {
+      return this.events.filter((event) => {
         const eventDate = event.startDate.substring(0, 10);
         return eventDate === dateStr;
       });
     }
 
-    private showEventModal(event: Event): void {
+    private formatDateFr(dateStr: string): string {
+      const [year, month, day] = dateStr.split("-");
+      return `${parseInt(day)} ${this.months[parseInt(month) - 1]} ${year}`;
+    }
+
+    private openModal(events: Event[], dateStr: string): void {
       if (!this.modal) return;
 
-      // Set modal content
+      if (events.length === 1) {
+        // Un seul événement : affichage direct
+        this.showEventDetail(events[0], false);
+      } else {
+        // Plusieurs événements : afficher la liste
+        this.showEventsListView(events, dateStr);
+      }
+
+      this.modal.showModal();
+      document.body.classList.add("modal-open");
+    }
+
+    private showEventsListView(events: Event[], dateStr: string): void {
+      this.eventsList.hidden = false;
+      this.eventDetail.hidden = true;
+      this.eventsListTitle.textContent = this.formatDateFr(dateStr);
+      
+      this.eventsListItems.innerHTML = "";
+      
+      events.forEach((event) => {
+        const li = document.createElement("li");
+        li.className = "event-list-item";
+        
+        const time = this.extractTime(event.startDate);
+        li.innerHTML = `
+          <span class="event-time">${time}</span>
+          <span class="event-title">${event.title}</span>
+        `;
+        
+        li.addEventListener("click", () => this.showEventDetail(event, true));
+        this.eventsListItems.appendChild(li);
+      });
+    }
+
+    private extractTime(dateStr: string): string {
+      const match = dateStr.match(/T(\d{2}):(\d{2})/);
+      if (match) {
+        return `${match[1]}h${match[2]}`;
+      }
+      return "";
+    }
+
+    private showEventsList(): void {
+      this.eventsList.hidden = false;
+      this.eventDetail.hidden = true;
+    }
+
+    private showEventDetail(event: Event, showBackButton: boolean): void {
+      this.eventsList.hidden = true;
+      this.eventDetail.hidden = false;
+      this.backToListBtn.hidden = !showBackButton;
+
       if (this.modalTitle) this.modalTitle.textContent = event.title;
 
       if (this.modalDescription) {
-        // Convert line breaks et \ to HTML
         this.modalDescription.innerHTML = event.description
           .replace(/\\'/g, "'")
           .replace(/\n/g, "<br>");
@@ -299,21 +348,15 @@ interface Event {
       if (this.modalLink) {
         this.modalLink.href = event.url;
       }
-
-      // Show modal using native dialog API
-      this.modal.showModal();
-      document.body.classList.add("modal-open");
     }
 
     private closeModal(): void {
       if (!this.modal) return;
-
       this.modal.close();
       document.body.classList.remove("modal-open");
     }
   }
 
-  // Initialize calendar when page loads
   document.addEventListener("astro:page-load", () => {
     new Calendar();
   });
@@ -359,9 +402,7 @@ interface Event {
     font-size: 1em;
     color: var(--primary-color);
     cursor: pointer;
-    transition:
-      color 0.3s ease,
-      background-color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
   }
 
   .nav-btn:hover {
@@ -382,6 +423,24 @@ interface Event {
     font-weight: bold;
     margin-block: 0.4rem;
     font-size: 1.4em;
+  }
+
+  /* Badge pour indiquer plusieurs événements */
+  :global(.event-count) {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: var(--secondary-color);
+    color: white;
+    font-size: 0.65em;
+    font-weight: bold;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
 
   @media (max-width: 480px) {
@@ -463,5 +522,65 @@ interface Event {
 
   .close-btn:hover {
     color: var(--dark-text-color);
+  }
+
+  /* Styles pour la liste d'événements */
+  .events-list h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--grey-background);
+  }
+
+  #events-list-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  :global(.event-list-item) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--grey-background);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  :global(.event-list-item:hover) {
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.event-time) {
+    font-weight: bold;
+    color: var(--primary-color);
+    white-space: nowrap;
+    min-width: 4rem;
+  }
+
+  :global(.event-title) {
+    flex: 1;
+    color: var(--dark-text-color);
+  }
+
+  .back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .back-btn:hover {
+    text-decoration: underline;
   }
 </style>
