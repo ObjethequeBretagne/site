@@ -1,12 +1,21 @@
 [
   {
-    "title": "Atelier Co-réparation journée 31/01 (2) test",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
-    "startDate": "2026-01-31T10:00:00+01:00",
-    "endDate": "2026-01-31T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-journee-31-01-2-test",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-25ac955b6d374ae9a130010d72c62ac4.png"
+    "title": "Atelier Marmite Norvégienne 14/02 ",
+    "description": "🧵 Atelier de création – Marmite norvégienne en tissu<br><br>Venez découvrir et fabriquer votre propre marmite norvégienne en tissu lors d’un atelier pratique et convivial ✨<br>Accessible à tous·tes, des bases en couture sont néanmoins nécessaires 🪡<br>🧶 Matériel, tissus et consommables inclus<br>🔄 Possibilité d’apporter votre propre tissu et/ou votre machine à coudre<br>Repartez avec votre marmite et l’envie de cuisiner autrement 🌱🍲",
+    "startDate": "2026-02-14T13:00:00+01:00",
+    "endDate": "2026-02-14T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-marmite-norvegienne-14-02",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-5ca5b1111c2f4b76bfc56364c12da4a1.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
+  },
+  {
+    "title": "Atelier couture 17/01 - Libre",
+    "description": "🧵 Atelier couture – thème libre<br>Que vous soyez grand·e débutant·e ou déjà à l’aise derrière la machine, cet atelier est ouvert à toutes et tous !<br>Venez apprendre les bases, vous perfectionner ou avancer sur vos projets personnels, dans un esprit convivial et d’entraide.<br>✂️ Tissus et machines sont fournis, mais vous pouvez bien sûr venir avec votre propre machine si vous le souhaitez.<br>À vos aiguilles ! 😊",
+    "startDate": "2025-12-13T14:00:00+01:00",
+    "endDate": "2025-12-13T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-17-01-libre",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
   },
   {
     "title": "Atelier Co-réparation journée 31/01",
@@ -709,14 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-15-10",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e7e9539ee92f452bafc179d7378caa84.png"
-  },
-  {
-    "title": "Atelier Co-réparation marché Penhars  24/09",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien (et leurs tissus,  vêtements...) avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.",
-    "startDate": "2025-09-24T15:00:00+02:00",
-    "endDate": "2025-09-24T18:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-marche-penhars-24-09",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-4c6f9ec077764e3ba284e1b1e6409736.png"
   }
 ]
