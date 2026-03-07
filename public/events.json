@@ -1,5 +1,14 @@
 [
   {
+    "title": "Atelier couture- Création Petite blouse",
+    "description": "Rejoignez-nous pour un moment créatif et convivial ! Lors de cet atelier, vous réaliserez une blouse simple et élégante, à partir d’un ou plusieurs tissus. Le modèle est accessible à tous-tes et pourra être cousu à la surjeteuse ou à la machine à coudre.<br><br>Vous pouvez apporter votre propre tissu ou utiliser ceux disponibles sur place.<br>Un atelier pour apprendre, partager des astuces et repartir avec une création faite de vos mains ! ✂️👚",
+    "startDate": "2026-03-14T14:00:00+01:00",
+    "endDate": "2026-03-14T17:00:59+01:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-creation-petite-blouse",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-87f666326276498ca8b1713243650127.png"
+  },
+  {
     "title": "Atelier Co-réparation journée  ",
     "description": "Vous avez un objet cassé ? Un vêtement à réparer ? Plutôt que de jeter, venez apprendre à réparer avec nous dans une ambiance conviviale et solidaire !<br><br>🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble !",
     "startDate": "2026-03-28T10:00:00+01:00",
@@ -709,14 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-sac-isotherme-pour-la-plage-12-07-1",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d0688796db5e44209389a51f52969281.png"
-  },
-  {
-    "title": "Atelier fabrication d'un jeu en bois - Jardin partagé Kermoysan",
-    "description": "Envie de bricoler et de repartir avec un objet unique ? Cet atelier est fait pour toi !<br>Accompagné pas à pas, tu fabriqueras ton propre bonhomme en bois<br>Au programme : découpe, ponçage, assemblage, décoration… Tu découvriras les outils de base et les gestes simples du travail du bois.<br>Un atelier 100 % fait main, pour créer, apprendre et s’amuser !",
-    "startDate": "2025-08-28T10:00:00+02:00",
-    "endDate": "2025-08-28T13:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-fabrication-d-un-jeu-en-bois",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ba9fabb5bb694f87ac655866543f24a4.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7d4545db2b8f4cc68de2a06ec9fc7102.png"
   }
 ]
