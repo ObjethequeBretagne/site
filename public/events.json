@@ -1,5 +1,23 @@
 [
   {
+    "title": "Le Koeur - Atelier Co-réparation couture, électro et collecte",
+    "description": "Pour les 40 ans de l\\'épicerie bio Le Koeur, venez réparer vos textiles ou vos petits appareils électrique avec l\\'aide des bénévoles passionné.es !<br><br>🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble !",
+    "startDate": "2026-04-04T09:30:00+02:00",
+    "endDate": "2026-04-04T12:30:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-couture-electro-collecte",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-25ac955b6d374ae9a130010d72c62ac4.png"
+  },
+  {
+    "title": "Atelier couture 11/04 - Libre ",
+    "description": "🧵 Atelier couture – thème libre<br>Que vous soyez grand·e débutant·e ou déjà à l’aise derrière la machine, cet atelier est ouvert à toutes et tous !<br>Venez apprendre les bases, vous perfectionner ou avancer sur vos projets personnels, dans un esprit convivial et d’entraide.<br>✂️ Tissus et machines sont fournis, mais vous pouvez bien sûr venir avec votre propre machine si vous le souhaitez.<br>À vos aiguilles ! 😊",
+    "startDate": "2026-04-11T14:00:00+02:00",
+    "endDate": "2026-04-11T17:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-11-04-libre",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
+  },
+  {
     "title": "Atelier couture- Création Petite blouse",
     "description": "Rejoignez-nous pour un moment créatif et convivial ! Lors de cet atelier, vous réaliserez une blouse simple et élégante, à partir d’un ou plusieurs tissus. Le modèle est accessible à tous-tes et pourra être cousu à la surjeteuse ou à la machine à coudre.<br><br>Vous pouvez apporter votre propre tissu ou utiliser ceux disponibles sur place.<br>Un atelier pour apprendre, partager des astuces et repartir avec une création faite de vos mains ! ✂️👚",
     "startDate": "2026-03-14T14:00:00+01:00",
@@ -700,23 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ced178ffcf4b4fecb19306f71d7a6552.png"
-  },
-  {
-    "title": "Atelier couture étui à lunettes - Kermoysan Jardin des cultures",
-    "description": "L’Objethèque de Cornouaille vous invite à un atelier couture accessible à toutes et tous, même aux débutant·es. L’objectif : apprendre à confectionner deux petits accessoires utiles et créatifs, tout en passant un moment convivial et guidé.  Au programme : réalisation d\\'une broche en tissu et/ou d\\'un étui à lunettes. <br>Le matériel est fourni",
-    "startDate": "2025-07-31T10:00:00+02:00",
-    "endDate": "2025-07-31T13:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-broche-en-tissu-et-etui-a-lunettes-kermoysan-jardin-partage",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-4064a7f6737f4718a6bbdad6cb64dfb4.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-cc76b86daf5f466c9ae07bdb1c8a1911.png"
-  },
-  {
-    "title": "Atelier couture sac isotherme pour la plage 12/07",
-    "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l\\'Objethèque de Cornouaille ! <br>Le thème:  Créez votre sac isotherme pour cet été 🏖️<br>Lors de cet atelier, vous apprendrez à couper, assembler et coudre très facilement un sac isotherme. Vous pouvez amener votre propre tissu ou bien choisir sur place parmi notre sélection. Le reste du matériel est fourni.<br>À la fin de l’atelier, votre repartirez avec un sac fait main, fin prêt à garder votre pique-nique au frais. <br><br>",
-    "startDate": "2025-07-12T14:00:00+02:00",
-    "endDate": "2025-07-12T17:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-sac-isotherme-pour-la-plage-12-07-1",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d0688796db5e44209389a51f52969281.png"
   }
 ]
