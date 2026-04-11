@@ -1,9 +1,18 @@
 [
   {
-    "title": "Inauguration!!  Électronique - Soudure d'un kit (et assemblage sur voiture PVC)",
-    "description": "À l\\'occasion de l\\'inauguration de l\\'Objethèque, venez assister à un atelier parent-enfant afin de monter un kit électronique composé de jeux de sons et lumières ainsi qu\\'un assemblage sur voiture PVC si souhaité !<br>",
+    "title": "Inauguration!! Bidouille Électronique atelier Parent-Enfant",
+    "description": "À l\\'occasion de l\\'inauguration de l\\'Objethèque, venez assister à un atelier parent-enfant afin de monter un kit électronique assemblé sur une voiture PVC !<br>",
+    "startDate": "2026-04-25T11:30:00+02:00",
+    "endDate": "2026-04-25T13:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/inauguration-electronique-soudure-d-un-kit-et-assemblage-sur-voiture-pvc",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7f1519cd966149ed81bace8ee4cdccab.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-63dd2611f21e4fc8b58df58893eff941.png"
+  },
+  {
+    "title": "Inauguration!! Bidouille Électronique atelier Parent-Enfant",
+    "description": "À l\\'occasion de l\\'inauguration de l\\'Objethèque, venez assister à un atelier parent-enfant afin de monter un kit électronique assemblé sur une voiture PVC !",
     "startDate": "2026-04-25T10:00:00+02:00",
-    "endDate": "2026-04-25T12:00:59+02:00",
+    "endDate": "2026-04-25T11:30:59+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/inauguration-electronique-soudure-d-un-kit-assemblage-sur-voiture-pvc",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7f1519cd966149ed81bace8ee4cdccab.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-63dd2611f21e4fc8b58df58893eff941.png"
@@ -709,14 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/forum-des-assos",
     "bannerUrl": "assets/img/logo.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e55bbaee294d415f900cbf294e541db1.png"
-  },
-  {
-    "title": "Mercredi co-réparation ",
-    "description": "L\\'Objethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2025-09-24T14:00:00+02:00",
-    "endDate": "2025-09-24T17:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-10",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ced178ffcf4b4fecb19306f71d7a6552.png"
   }
 ]
