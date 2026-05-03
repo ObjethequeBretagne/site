@@ -1,5 +1,23 @@
 [
   {
+    "title": "Atelier lessive de lierre! 23/05 cueillette et préparation",
+    "description": "Atelier confection de lessive au lierre !🌿<br><br>Au cour de cet atelier venez apprendre à confectionner votre propre lessive 100% végétal aux feuilles de lierre.<br>Connaître ses atouts, sa méthode d\\'usage, comment procéder à la cueillette, à la préparation mais aussi à la conservation de celle-ci.<br><br>Venez partager un moment d\\'apprentissage convivial, qui est représente aussi peut-être vos premiers pas vers l\\'autonomie! ⭐",
+    "startDate": "2026-05-23T14:00:00+02:00",
+    "endDate": "2026-05-23T16:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-lessive-de-lierre-ceuilette-et-preparation",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d236444a88c84701ba3f3c82f4243ab7.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2da601fd80834e6fa7d01f4aa7dc28f5.png"
+  },
+  {
+    "title": "Troc aux plantes à l'Objethèque !! 16/05",
+    "description": "Troc aux plantes à l\\'Objethèque !!🌱⭐<br>Le samedi 16 mai venez nous retrouver afin d\\'échanger plants, semis, graines et sourires :)<br><br>À cette occasion nous avons le plaisir d’accueillir et relayer les actions de la coopérative Graines de liberté, qui participe à la circulation de graines libres de droit, reproductibles, biologiques et adaptées à leur environnement.<br><br>Vous aurez donc l\\'embarras du choix pour échanger puis semer à travers vents et marées (humour)<br>Au plaisir de vous y voir ! 🌷<br>",
+    "startDate": "2026-05-16T10:00:00+02:00",
+    "endDate": "2026-05-16T18:00:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/troc-aux-plantes-a-l-objetheque",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7a3e18a688dd47edb995cfe461d45a1f.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-98c1237876a946089599071d4339a150.png"
+  },
+  {
     "title": "Atelier couture 09/05 - Cape de plage ",
     "description": "🧵 Atelier couture – Cape de plage<br>Que vous soyez grand·e débutant·e ou déjà à l’aise derrière la machine, cet atelier est ouvert à toutes et tous !<br>Venez créer votre propre cape de plage en jersey éponge, avis aux adeptes de la plage !<br>✂️ Tissus et machines sont fournis, mais vous pouvez bien sûr venir avec votre propre machine si vous le souhaitez.<br>À vos aiguilles ! 😊<br>",
     "startDate": "2026-05-09T14:00:00+02:00",
@@ -700,23 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-12",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ced178ffcf4b4fecb19306f71d7a6552.png"
-  },
-  {
-    "title": "Mercredi co-réparation  ",
-    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2025-10-01T14:00:00+02:00",
-    "endDate": "2025-10-01T17:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ced178ffcf4b4fecb19306f71d7a6552.png"
-  },
-  {
-    "title": "Atelier Co-réparation 25/10 ",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
-    "startDate": "2025-10-25T10:00:00+02:00",
-    "endDate": "2025-10-25T17:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-25-10",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-6b5af23589c944ea96397d613f352470.png"
   }
 ]
