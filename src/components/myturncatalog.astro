@@ -1,24 +1,139 @@
+---
+const catalogUrl = "https://objethequecornouaille.myturn.com/library/inventory/browse?embed=true";
+const scriptUrl = "https://objethequecornouaille.myturn.com/library/assets/ui/myturn-embed/myturn-embed.js";
+const browseUrl = "https://objethequecornouaille.myturn.com/library/inventory/browse";
+---
+
 <section id="catalogueMyTurn" aria-label="catalogue des objets">
-  <iframe
-    src="https://objethequecornouaille.myturn.com/library/inventory/browse?embed=true"
-    width="90%"
-    height="800px"></iframe>
-  <script
-    id="myturn-embed-script"
-    src="https://objethequecornouaille.myturn.com/library/assets/ui/myturn-embed/myturn-embed.js"
-  >
-  </script>
+  <div class="myturn-facade" data-catalog-url={catalogUrl} data-script-url={scriptUrl}>
+    <div class="myturn-placeholder">
+      <svg class="myturn-icon" viewBox="0 0 24 24" width="48" height="48" aria-hidden="true">
+        <path fill="var(--secondary-color)" d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+      </svg>
+      <p class="myturn-title">Catalogue des objets</p>
+      <p class="myturn-desc">Le catalogue est hébergé sur myturn.com (service tiers).</p>
+      <div class="myturn-actions">
+        <a href={browseUrl} target="_blank" rel="noopener noreferrer" class="myturn-link">
+          Ouvrir dans un nouvel onglet
+        </a>
+        <button class="myturn-btn-load" aria-label="Charger le catalogue interactif">
+          Charger le catalogue
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLElement>(".myturn-facade").forEach(facade => {
+      const btn = facade.querySelector(".myturn-btn-load");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        const catalogUrl = facade.dataset.catalogUrl ?? "";
+        const scriptUrl = facade.dataset.scriptUrl ?? "";
+
+        const iframe = document.createElement("iframe");
+        iframe.src = catalogUrl;
+        iframe.width = "90%";
+        iframe.height = "800";
+        iframe.style.cssText = "border:0;display:block;margin-inline:auto;";
+        iframe.title = "Catalogue des objets - MyTurn";
+
+        const script = document.createElement("script");
+        script.src = scriptUrl;
+        script.setAttribute("is:inline", "");
+
+        facade.replaceWith(iframe);
+        document.body.appendChild(script);
+      }, { once: true });
+    });
+  });
+</script>
+
 <style>
   #catalogueMyTurn {
     display: flex;
     justify-content: center;
     margin-bottom: 4vw;
   }
+
+  .myturn-facade {
+    width: 90%;
+    max-width: 900px;
+  }
+
+  .myturn-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 3rem 1.5rem;
+    background: color-mix(in srgb, var(--grey-background) 60%, transparent);
+    border-radius: 20px;
+    text-align: center;
+  }
+
+  .myturn-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--dark-text-color);
+    margin: 0;
+  }
+
+  .myturn-desc {
+    font-size: 0.95rem;
+    color: var(--grey-text-color);
+    margin: 0;
+  }
+
+  .myturn-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .myturn-link,
+  .myturn-btn-load {
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: Muli, system-ui, sans-serif;
+    white-space: nowrap;
+    transition: scale 0.13s ease-out;
+    cursor: pointer;
+  }
+
+  .myturn-link {
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
+    border: 3px solid #fffefe;
+  }
+
+  .myturn-btn-load {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: 3px solid #fffefe;
+  }
+
+  .myturn-link:hover,
+  .myturn-btn-load:hover {
+    scale: 1.05;
+    color: var(--light-text-color);
+  }
+
   @media screen and (max-width: 816px) {
     #catalogueMyTurn {
       justify-content: flex-start;
       margin-left: 1%;
+    }
+
+    .myturn-facade {
+      width: 98%;
     }
   }
 </style>
