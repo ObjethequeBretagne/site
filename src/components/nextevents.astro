@@ -2,104 +2,97 @@
 const { showAll = false } = Astro.props;
 ---
 
-<!-- Composant NextEvents avec gestion du nombre d'événements -->
-<section
-  data-show-all={showAll}
-  x-data="{ 
-    events: [], 
-    showAll: false,
-    loading: true 
-  }"
-  x-init="
-    showAll = $el.dataset.showAll === 'true';
-    fetch('../events.json')
-      .then(response => response.json())
-      .then(data => {
-        const today = new Date();
-        events = data
-          .filter(event => new Date(event.startDate) > today)
-          .sort((a, b) => new Date(a.startDate) - new Date(b.startDate))
-          .map((event, index) => ({
-            ...event,
-            uniqueId: event.id || `${event.title}-${index}-${event.startDate}`
-          }));
-
-        if (!showAll) {
-          events = events.slice(0, 4);
-        }
-        loading = false;
-      })
-      .catch(error => {
-        console.error('Erreur chargement événements:', error);
-        loading = false;
-      })
-  "
->
-  <!-- Indicateur de chargement -->
-  <div x-show="loading" class="loading-indicator">
+<section id="next-events-section" data-show-all={showAll}>
+  <div id="nextevents-loading" class="loading-indicator">
     <p>Chargement des événements...</p>
   </div>
-
-  <!-- Liste des événements -->
-  <div x-show="!loading" class="derniersEvenementsGridAll">
-    <template x-for="event in events" :key="event.uniqueId">
-      <div class="derniersEvenementsGrid1">
-        <!-- Bannière de l'événement -->
-        <a :href="event.url" target="_blank">
-          <img class="imgEvent" :src="event.logoUrl" :alt="event.title"/>
-        </a>
-        <!-- Détails de la date -->
-        <div class="dateEvent">
-          <p
-            class="jourLEvent"
-            x-text="new Date(event.startDate).toLocaleDateString('fr-FR', { weekday: 'long' })"
-          >
-          </p>
-          <p class="jourNEvent" x-text="new Date(event.startDate).getDate()">
-          </p>
-          <p
-            class="moiEvent"
-            x-text="new Date(event.startDate).toLocaleDateString('fr-FR', { month: 'long' })"
-          >
-          </p>
-        </div>
-
-        <div class="traitEvent">
-          <div class="flexible-line"></div>
-        </div>
-
-        <!-- Titre et horaires -->
-        <div>
-          <p class="infosEvent">
-            <span class="titreEvent" x-text="event.title"></span>
-            <br />
-            <span
-              class="horaireEvent"
-              x-text="`${new Date(event.startDate).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })} - ${new Date(event.endDate).toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`"
-            ></span>
-          </p>
-        </div>
-        <div class="traitEvent traiFin">
-          <div class="flexible-line"></div>
-        </div>
-
-        <!-- Lien vers plus d'infos -->
-        <div>
-          <a class="plusInfos" :href="event.url" target="_blank">
-            <span class="plusplus">+</span> d'infos
-          </a>
-        </div>
-      </div>
-    </template>
-
-    <!-- Message si aucun événement -->
-    <div x-show="events.length === 0" class="no-events">
-      <p>Aucun événement à venir pour le moment.</p>
-    </div>
+  <div id="nextevents-list" class="derniersEvenementsGridAll" hidden></div>
+  <div id="nextevents-empty" class="no-events" hidden>
+    <p>Aucun événement à venir pour le moment.</p>
   </div>
 </section>
 
-<style>
+<script>
+  function escHtml(str: string) {
+    return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const section = document.getElementById("next-events-section");
+    if (!section) return;
+
+    const showAll = section.dataset.showAll === "true";
+    const loading = document.getElementById("nextevents-loading")!;
+    const list = document.getElementById("nextevents-list")!;
+    const empty = document.getElementById("nextevents-empty")!;
+
+    fetch("/events.json")
+      .then(r => r.json())
+      .then((data: any[]) => {
+        const today = new Date();
+        let events = data
+          .filter(e => new Date(e.startDate) > today)
+          .sort((a, b) => +new Date(a.startDate) - +new Date(b.startDate));
+
+        if (!showAll) events = events.slice(0, 4);
+
+        loading.hidden = true;
+
+        if (events.length === 0) {
+          empty.hidden = false;
+          return;
+        }
+
+        list.innerHTML = events.map(event => {
+          const start = new Date(event.startDate);
+          const end = new Date(event.endDate);
+          const fr = "fr-FR";
+          const jour = start.toLocaleDateString(fr, { weekday: "long" });
+          const date = start.getDate();
+          const mois = start.toLocaleDateString(fr, { month: "long" });
+          const fmt = { hour: "2-digit" as const, minute: "2-digit" as const };
+          const heureDebut = start.toLocaleTimeString(fr, fmt);
+          const heureFin = end.toLocaleTimeString(fr, fmt);
+          const url = escHtml(event.url ?? "#");
+          const logo = escHtml(event.logoUrl ?? "");
+          const titre = escHtml(event.title ?? "");
+
+          return `
+            <div class="derniersEvenementsGrid1">
+              <a href="${url}" target="_blank" rel="noopener">
+                <img class="imgEvent" src="${logo}" alt="${titre}" loading="lazy" />
+              </a>
+              <div class="dateEvent">
+                <p class="jourLEvent">${jour}</p>
+                <p class="jourNEvent">${date}</p>
+                <p class="moiEvent">${mois}</p>
+              </div>
+              <div class="traitEvent"><div class="flexible-line"></div></div>
+              <div>
+                <p class="infosEvent">
+                  <span class="titreEvent">${titre}</span><br />
+                  <span class="horaireEvent">${heureDebut} - ${heureFin}</span>
+                </p>
+              </div>
+              <div class="traitEvent traiFin"><div class="flexible-line"></div></div>
+              <div>
+                <a class="plusInfos" href="${url}" target="_blank" rel="noopener">
+                  <span class="plusplus">+</span> d'infos
+                </a>
+              </div>
+            </div>`;
+        }).join("");
+
+        list.hidden = false;
+      })
+      .catch(() => {
+        loading.hidden = true;
+        empty.hidden = false;
+      });
+  });
+</script>
+
+<style is:global>
   .loading-indicator {
     text-align: center;
     padding: 2rem;
