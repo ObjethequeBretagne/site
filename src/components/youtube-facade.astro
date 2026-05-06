@@ -1,0 +1,122 @@
+---
+interface Props {
+  videoId: string;
+  title: string;
+}
+
+const { videoId, title } = Astro.props;
+const thumbnail = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+---
+
+<div class="yt-facade" data-video-id={videoId} data-title={title}>
+  <div class="yt-inner">
+    <img
+      src={thumbnail}
+      alt={`Aperçu vidéo : ${title}`}
+      loading="lazy"
+      decoding="async"
+      width="480"
+      height="360"
+    />
+    <button class="yt-play" aria-label={`Lire la vidéo : ${title}`}>
+      <svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true">
+        <path class="yt-play-bg" d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"/>
+        <path class="yt-play-btn" d="M45 24 27 14v20z"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    document.querySelectorAll<HTMLElement>(".yt-facade").forEach(facade => {
+      facade.addEventListener("click", () => {
+        const videoId = facade.dataset.videoId;
+        const title = facade.dataset.title ?? "YouTube video";
+        const inner = facade.querySelector(".yt-inner") as HTMLElement;
+        if (!inner) return;
+
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        iframe.title = title;
+        iframe.width = "600";
+        iframe.height = "338";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.setAttribute("frameborder", "0");
+        iframe.style.cssText = "border-radius:20px;width:100%;aspect-ratio:16/9;border:0;display:block;";
+
+        inner.replaceWith(iframe);
+      }, { once: true });
+    });
+  });
+</script>
+
+<style>
+  .yt-facade {
+    cursor: pointer;
+    max-width: 600px;
+    width: 100%;
+    margin-inline: auto;
+    margin-block: var(--marginBlock);
+    display: block;
+  }
+
+  .yt-inner {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .yt-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.2s ease;
+  }
+
+  .yt-facade:hover .yt-inner img {
+    filter: brightness(0.75);
+  }
+
+  .yt-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .yt-play svg {
+    transition: transform 0.2s ease;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  }
+
+  .yt-facade:hover .yt-play svg {
+    transform: scale(1.12);
+  }
+
+  .yt-play-bg {
+    fill: #212121;
+    fill-opacity: 0.85;
+    transition: fill 0.2s ease, fill-opacity 0.2s ease;
+  }
+
+  .yt-facade:hover .yt-play-bg {
+    fill: #ff0000;
+    fill-opacity: 1;
+  }
+
+  .yt-play-btn {
+    fill: #fff;
+  }
+</style>
