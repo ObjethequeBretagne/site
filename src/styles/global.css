@@ -1,31 +1,33 @@
 @font-face {
   font-family: "Muli";
-  src: url("assets/polices/Muli-SemiBold.ttf") format("truetype");
+  src: url("../assets/polices/Muli-SemiBold.woff") format("woff");
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Muli";
-  src: url("assets/polices/Muli-Italic/muli/Muli-SemiBoldItalic.ttf")
-    format("truetype");
+  src: url("../assets/polices/Muli-SemiBoldItalic.woff") format("woff");
   font-style: italic;
+  font-display: swap;
 }
-
 @font-face {
   font-family: "Muli";
-  src: url("assets/polices/Muli-Bold/muli/Muli-ExtraBold.ttf")
-    format("truetype");
+  src: url("../assets/polices/Muli-ExtraBold.woff") format("woff");
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "Ebrima";
-  src: url("assets/polices/Ebrima/ebrima.ttf");
+  src: url("../assets/polices/ebrima.woff") format("woff");
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "EbrimaB";
-  src: url("assets/polices/Ebrima/ebrima-bold.ttf");
+  src: url("../assets/polices/ebrima-bold.woff") format("woff");
   font-style: bold;
+  font-display: swap;
 }
 
 @keyframes fade-inX {
@@ -92,7 +94,6 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Mode sombre */
     --secondary-color: #ff9900;
     --grey-background: #2a1f44;
     --dark-text-color: #00caca;
@@ -168,20 +169,15 @@ form {
 }
 
 dialog {
-  /* Exit Stage To */
-
   &,
   &::backdrop {
     transition:
       display 0.3s allow-discrete,
       overlay 0.3s allow-discrete,
       opacity 0.3s ease;
-
-    /* Exit Stage To */
     opacity: 0;
   }
 
-  /* On Stage */
   &[open] {
     opacity: 1;
 
@@ -195,7 +191,6 @@ dialog {
     scrollbar-gutter: stable;
   }
 
-  /* Enter Stage From */
   @starting-style {
     &[open],
     &[open]::backdrop {
@@ -211,40 +206,40 @@ dialog {
 
 details {
   --_duration: .2s;
-  
+
   @media (prefers-reduced-motion: no-preference) {
     interpolate-size: allow-keywords;
   }
-  
+
   summary {
     cursor: pointer;
     list-style: none;
-    
+
     &::before {
       content: '▶';
       display: inline-block;
       margin-inline-end: 1ch;
       transition: rotate var(--_duration);
     }
-    
+
     &::-webkit-details-marker {
       display: none;
     }
   }
-  
+
   &[open] summary::before {
     rotate: 90deg;
   }
-  
+
   &::details-content {
     opacity: 0;
     block-size: 0;
-    overflow-y: clip; 
+    overflow-y: clip;
     transition: content-visibility var(--_duration) allow-discrete,
                 opacity var(--_duration),
                 block-size var(--_duration);
   }
-  
+
   &[open]::details-content {
     opacity: 1;
     block-size: auto;
@@ -257,7 +252,6 @@ details {
   color: var(--secondary-color);
 }
 
-/* Soulignement animé avec linear-gradient et background-size */
 .soulignementOrange {
   color: var(--dark-text-color);
   background: linear-gradient(
@@ -274,7 +268,6 @@ details {
   background-size: 100% 100%;
 }
 
-/* Soulignement animé avec pseudo-élément */
 .soulignementOrange2 {
   color: var(--dark-text-color);
   position: relative;
@@ -329,7 +322,6 @@ details {
   background-color: var(--background-color);
 }
 
-/* Styles pour assurer que les images dans les composants Picture s'affichent correctement */
 picture {
   display: inline-block;
   max-width: 100%;
@@ -340,29 +332,27 @@ picture img {
   height: auto;
 }
 
-/* Pour les images centrées */
 .imgCentre {
   display: flex;
-  justify-content: center; /* Centre le contenu horizontalement */
+  justify-content: center;
   max-width: min(100%, 900px);
   margin: 0 auto;
 }
 
 .imgCentre picture {
-  width: 100%; /* Prend toute la largeur du conteneur */
+  width: 100%;
   display: flex;
   margin: 0 auto;
 }
 
 .imgCentre picture img {
-  max-width: 100%; /* Empêche de dépasser la taille originale */
-  height: auto; /* Maintient les proportions */
+  max-width: 100%;
+  height: auto;
   display: flex;
   object-fit: contain;
   margin-inline: auto;
 }
 
-/* comportement des sous-menus en mode mobile */
 details summary {
   padding-left: 0.5rem;
   cursor: pointer;
@@ -395,7 +385,6 @@ header a {
 }
 @media (prefers-color-scheme: dark) {
   #logo-site {
-    /* Mode sombre */
     margin-top: 5px;
   }
 }
@@ -418,20 +407,19 @@ header a {
     )
     no-repeat;
   background-size: 0 100%;
-  transition: background-size 0.2s ease; /* Définissez la durée et la fonction d'interpolation de l'animation */
+  transition: background-size 0.2s ease;
 }
 #menuWeb li a:hover {
   background-size: 100% 100%;
 }
-/* 🔥 Afficher le sous-menu uniquement si on survole le LI parent */
 #menuWeb li:hover > .submenu {
   opacity: 1;
   visibility: visible;
-  pointer-events: auto; /* 🔹 Active les événements seulement quand visible */
+  pointer-events: auto;
 }
 .submenu {
   pointer-events: none;
-  opacity: 0; /* Caché par défaut */
+  opacity: 0;
   position: absolute;
   background-color: var(--background-color);
   padding-left: 10px;
@@ -453,7 +441,7 @@ header a {
 .boutonOrange {
   display: flex;
   justify-content: center;
-  transition: scale 0.13s ease-out; /* Définissez la durée et la fonction d'interpolation de l'animation */
+  transition: scale 0.13s ease-out;
 }
 .boutonOrange:hover {
   scale: 1.1;
@@ -490,7 +478,7 @@ header a {
 }
 .widgetReseau {
   height: 25px;
-  transition: scale 0.1s ease-out; /* Définissez la durée et la fonction d'interpolation de l'animation */
+  transition: scale 0.1s ease-out;
 }
 
 .widgetReseau:hover {
@@ -517,7 +505,8 @@ header a {
     display: none;
   }
 }
-/* Menu "hamburger" */
+
+/* Menu hamburger */
 .navMobile {
   display: none;
   vertical-align: middle;
@@ -623,7 +612,6 @@ header a {
 #hamburgerMenuToggle:checked + .hamburgerMenuContainer .js-show-mobile-submenu {
   display: block;
 }
-/* fin Menu hamburger */
 
 @media screen and (max-width: 816px) {
   .navMobile {
@@ -638,7 +626,6 @@ header a {
     display: none;
   }
 }
-
 /*FIN HEADER*/
 
 /*DEBUT BANDEAU PRESENTATION*/
@@ -702,12 +689,10 @@ header a {
 }
 
 .presentation-image {
-  /* Ces styles s'appliquent à l'img à l'intérieur du picture */
   width: 100%;
   height: auto;
 }
 
-/* Créez un conteneur pour le Picture */
 .presentation-image-container {
   width: 34%;
   min-width: 300px;
@@ -718,7 +703,7 @@ header a {
   margin-top: 1rem;
   animation: translateUp 0.32s ease-in-out;
 }
-/*FIN bandeau d'acceuil*/
+/*FIN bandeau d'accueil*/
 
 #gmap {
   display: flex;
@@ -783,7 +768,6 @@ header a {
     padding-inline: 5%;
   }
 }
-/* fin aperçu catalogue */
 
 /*Nous retrouver*/
 .iconeGPSOrange-container {
@@ -809,11 +793,9 @@ header a {
   padding-block: 20px;
   gap: 10px;
 }
-/*fin Nous retrouver*/
 
 /*DEBUT page "à propos"*/
 
-/*__horizontal slider__*/
 .media-scroller {
   --_spacer: 0.8rem;
   display: grid;
@@ -858,10 +840,6 @@ header a {
   color: var(--light-text-color);
 }
 
-/* fin horizontal slider */
-
-/* FIN A PROPOS */
-
 /* DEBUT page DEVENIR BENEVOLE */
 .missionsBenev {
   margin-block: var(--marginBlock);
@@ -879,12 +857,11 @@ header a {
   padding-block: var(--_spaceBlock);
   border-radius: 20px 20px 0 0;
   box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.1);
-  overflow-x: hidden; /* Changé de auto à hidden pour empêcher le défilement du details entier */
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
   .missionBenev {
-    /* Mode sombre */
     background: var(--FAQcolor);
   }
 }
@@ -903,33 +880,28 @@ header a {
   margin-block: var(--_spaceBlock);
 }
 
-/* Nouveau conteneur pour l'image avec défilement horizontal */
 .image-container {
   overflow-x: auto;
-  padding-left: 0; /* Retiré car le padding sera sur l'image */
-  margin-block: 0; /* Retiré car la marge sera sur l'image */
+  padding-left: 0;
+  margin-block: 0;
 }
 
-/* Styles pour les balises picture */
 .missionBenev picture {
   display: inline-block;
   padding-left: 8%;
   margin-block: var(--_spaceBlock);
 }
 
-/* Styles pour les images à l'intérieur des picture */
 .missionBenev picture img {
   max-width: 878px;
   width: auto;
 }
 
-/* Pour les grands écrans, assurons-nous que l'image s'adapte */
 @media (min-width: 900px) {
   .missionBenev picture img {
     max-width: 100%;
   }
 }
-/* FIN page DEVENIR BENEVOLE */
 
 /* DEBUT page Comment ça marche ? */
 .imgCommentCaMarche {
