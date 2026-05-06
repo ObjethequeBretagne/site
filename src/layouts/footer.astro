@@ -1,6 +1,8 @@
 ---
 import CatalogueFooter from "../components/catalogue-footer.astro";
 import Contact from "../components/contact.astro";
+import { Picture } from "astro:assets";
+import logo from "../assets/webp/logo.webp";
 ---
 
 <CatalogueFooter />
@@ -20,7 +22,12 @@ import Contact from "../components/contact.astro";
 
   <div class="footer-section centre">
     <div class="logoFooter">
-      <img alt="logo de l'objetheque de Cornouaille" src="assets/img/logo.png" />
+      <Picture
+        src={logo}
+        formats={["avif", "webp"]}
+        alt="logo de l'objetheque de Cornouaille"
+        loading="lazy"
+      />
     </div>
 
     <div class="widgetFooter">
@@ -83,6 +90,7 @@ import Contact from "../components/contact.astro";
 
 .logoFooter img {
   height: max(100px, 8vw);
+  width: auto;
   margin-bottom: 0.5rem;
 }
 

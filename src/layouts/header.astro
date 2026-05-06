@@ -1,13 +1,21 @@
+---
+import { Picture } from "astro:assets";
+import logo from "../assets/webp/logo.webp";
+---
+
 <header>
   <div class="logo">
-    <a href="index.html"
-      ><img
-        id="logo-site"
+    <a href="index.html">
+      <Picture
+        src={logo}
+        formats={["avif", "webp"]}
         alt="logo de l'objetheque de Cornouaille"
-        src="assets/img/logo.png"
+        id="logo-site"
+        loading="eager"
+        fetchpriority="high"
         transition:persist
-      /></a
-    >
+      />
+    </a>
   </div>
   <!--DEBUT Menu pour le format écran ordinateur-->
   <nav class="navWeb">

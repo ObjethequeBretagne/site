@@ -379,6 +379,7 @@ header a {
 #logo-site {
   height: 117px;
   max-height: 117px;
+  width: auto;
   margin-left: 1vw;
   margin-top: 3px;
   border: 3 px solid #fffefe;
@@ -490,6 +491,7 @@ header a {
   }
   #logo-site {
     height: 22vw;
+    width: auto;
   }
   .boutonOrange p {
     width: 30vw;
