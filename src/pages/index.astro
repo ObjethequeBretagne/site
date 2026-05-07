@@ -5,24 +5,24 @@ import Catalogue from "../components/myturncatalog.astro";
 // import Videomp4 from "../components/videomp4.astro";
 import NextEvents from "../components/nextevents.astro";
 import Facebook from "../components/facebook.astro";
-import { Picture } from "astro:assets";
+import { Picture, getImage } from "astro:assets";
 
 // Import des images
 import illuPresa from "../assets/img/illuPresa.png";
 import bullePanneau from "../assets/img/BullePanneau.png";
 import bulleBenjamin from "../assets/img/BulleBenjamin.png";
 import iconGps from "../assets/img/icon gps orange.png";
+import boisClairHorizontal from "../assets/img/boisClairHorizontal.webp";
 import BandeauAnnonce from "../components/bandeau-annonce.astro";
 import YoutubeFacade from "../components/youtube-facade.astro";
 import MapsFacade from "../components/maps-facade.astro";
+
+const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width: 1920 });
 ---
 
 <Layout title="Objetheque de Cornouaille">
   <main>
-    <section
-      class="presentation"
-      style="background-image: url('assets/webp/background/boisClairHorizontal.webp');"
-    >
+    <section class="presentation" style={`background-image: url('${bgImage.src}');`}>
       <h1>
         <div class="cadreBlancArrondi">
           <p class="presaTitre">

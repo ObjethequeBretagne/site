@@ -1,31 +1,25 @@
 @font-face {
   font-family: "Muli";
-  src: url("../assets/polices/Muli-SemiBold.woff") format("woff");
+  src: url("../assets/polices/muli-semibold-webfont.woff2") format("woff2");
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Muli";
-  src: url("../assets/polices/Muli-SemiBoldItalic.woff") format("woff");
+  src: url("../assets/polices/muli-semibolditalic-webfont.woff2") format("woff2");
   font-style: italic;
   font-display: swap;
 }
 @font-face {
   font-family: "Muli";
-  src: url("../assets/polices/Muli-ExtraBold.woff") format("woff");
+  src: url("../assets/polices/muli-extrabold-webfont.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "Ebrima";
-  src: url("../assets/polices/ebrima.woff") format("woff");
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "EbrimaB";
-  src: url("../assets/polices/ebrima-bold.woff") format("woff");
+  src: url("../assets/polices/ebrima-bold-webfont.woff2") format("woff2");
   font-style: bold;
   font-display: swap;
 }
@@ -636,12 +630,17 @@ header a {
 
 /*DEBUT BANDEAU PRESENTATION*/
 .presentation {
-  background-size: cover;
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   box-shadow: 0 8px 20px var(--gold-shadow-color);
   margin-bottom: 4rem;
+  min-height: 300px;
+  padding-bottom: 2rem;
+  background-size: cover;
+  background-position: center;
 }
 @media (prefers-color-scheme: dark) {
   .presentation {
