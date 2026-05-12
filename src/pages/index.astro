@@ -1,19 +1,19 @@
 ---
 import Layout from "../layouts/layout.astro";
+import Facebook from "../components/facebook.astro";
+import NextEvents from "../components/nextevents.astro";
 import Counter from "../components/counter.astro";
 import Catalogue from "../components/myturncatalog.astro";
 // import Videomp4 from "../components/videomp4.astro";
-import NextEvents from "../components/nextevents.astro";
-import Facebook from "../components/facebook.astro";
-import { Picture, getImage } from "astro:assets";
+// import BandeauAnnonce from "../components/bandeau-annonce.astro";
 
 // Import des images
+import { Picture, getImage } from "astro:assets";
 import illuPresa from "../assets/img/illuPresa.png";
 import bullePanneau from "../assets/img/BullePanneau.png";
-import bulleBenjamin from "../assets/img/BulleBenjamin.png";
+import bulleBenjamin from "../assets/img/BulleBenjamin.webp";
 import iconGps from "../assets/img/icon gps orange.png";
-import boisClairHorizontal from "../assets/tinywow_boisClairHorizontal_89650772.webp";
-import BandeauAnnonce from "../components/bandeau-annonce.astro";
+import boisClairHorizontal from "../assets/boiscrop.webp";
 import YoutubeFacade from "../components/youtube-facade.astro";
 import MapsFacade from "../components/maps-facade.astro";
 
@@ -37,7 +37,7 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
       <div class="presentation-image-container">
         <Picture
           src={illuPresa}
-          formats={["avif", "webp", "png"]}
+          formats={["avif", "webp"]}
           widths={[400, 800, 1200]}
           sizes="(max-width: 767px) 100vw, 50vw"
           alt="dessin d'une planète entourée d'objets et de personnes pour les réparer/entretenir"
@@ -71,7 +71,7 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
     <section class="photoTexte wrapReverse">
       <Picture
         src={bullePanneau}
-        formats={["avif", "webp", "png"]}
+        formats={["avif", "webp"]}
         widths={[300, 500, 700]}
         sizes="(max-width: 767px) 80vw, 40vw"
         alt="photo en forme de bulle de l'intérieur du local de l'objetheque"
@@ -130,10 +130,10 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
       </div>
       <Picture
         src={bulleBenjamin}
-        formats={["avif", "webp", "png"]}
+        formats={["avif", "webp"]}
         widths={[300, 500, 700]}
         sizes="(max-width: 767px) 80vw, 40vw"
-        alt="photo en forme de bulle de Benjamin qui pose avec des objets de l'objetheque"
+        alt="photo en forme de bulle d'une personne qui pose avec des objets de l'objetheque"
       />
     </section>
     <Catalogue />
@@ -142,7 +142,7 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
       <span class="iconeGPSOrange-container">
         <Picture
           src={iconGps}
-          formats={["avif", "webp", "png"]}
+          formats={["avif", "webp"]}
           widths={[24, 48]}
           alt="icône de localisation orange"
           class="iconeGPSOrange"
