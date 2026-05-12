@@ -443,10 +443,11 @@ header a {
 }
 .boutonOrange p {
   justify-content: space-between;
+  align-items: center;
   display: flex;
   width: 150px;
   background-color: var(--primary-color);
-  border-radius: 30px;
+  border-radius: 50px;
   color: var(--light-text-color);
   font-size: 1.1em;
   text-wrap: nowrap;
@@ -457,8 +458,7 @@ header a {
   padding-top: 10px;
 }
 .iconeBouton {
-  max-height: 20px;
-  transform: translateY(2px);
+  max-height: 26px;
 }
 
 #widgetReseaux {
@@ -750,6 +750,7 @@ header a {
 }
 .photoTexte p {
   width: 60vw;
+  font-size: 1.1rem;
 }
 
 /* aperçu catalogue */
@@ -777,19 +778,6 @@ header a {
 /*Nous retrouver*/
 .iconeGPSOrange-container {
   display: inline-block;
-  transform: translate(10px, 5px);
-}
-
-.iconeGPSOrange-container picture,
-.iconeGPSOrange {
-  display: inline-block;
-  height: max(2.4vw, 22px);
-  width: auto;
-}
-
-.iconeGPSOrange-container img {
-  height: 100%;
-  width: auto;
 }
 
 #planAdresse {

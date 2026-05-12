@@ -12,7 +12,6 @@ import { Picture, getImage } from "astro:assets";
 import illuPresa from "../assets/img/illuPresa.png";
 import bullePanneau from "../assets/img/BullePanneau.png";
 import bulleBenjamin from "../assets/img/BulleBenjamin.webp";
-import iconGps from "../assets/img/icon gps orange.png";
 import boisClairHorizontal from "../assets/boiscrop.webp";
 import YoutubeFacade from "../components/youtube-facade.astro";
 import MapsFacade from "../components/maps-facade.astro";
@@ -140,13 +139,9 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
     <h2>
       Retrouvez-nous
       <span class="iconeGPSOrange-container">
-        <Picture
-          src={iconGps}
-          formats={["avif", "webp"]}
-          widths={[24, 48]}
-          alt="icône de localisation orange"
-          class="iconeGPSOrange"
-        />
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="var(--primary-color)" width="38" height="38">
+      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+      </svg>
       </span>
       <p class="sousTexteH2">Adkavit ac'hanomp</p>
     </h2>
