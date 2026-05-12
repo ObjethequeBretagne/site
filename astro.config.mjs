@@ -2,9 +2,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://objethequebretagne.github.io",
+  site: "https://objethequecornouaille.fr",
   build: {
-    format: 'file',
     inlineStylesheets: 'always',
   },
 });
