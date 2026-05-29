@@ -171,7 +171,7 @@ interface Event {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data: Event[] = await response.json();
-        this.events = data;
+        this.events = data.filter(e => !e.title?.toLowerCase().startsWith("espace bricolage"));
         console.log("Événements chargés :", this.events.length);
       } catch (error) {
         console.error("Erreur de chargement des événements :", error);

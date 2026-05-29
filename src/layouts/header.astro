@@ -84,6 +84,10 @@ import logo from "../assets/webp/logo.webp";
           <li><a href="/agenda/">Agenda</a></li>
         </ul>
       </li>
+      <!-- Caché tant qu'il n'y a pas de créneaux à venir — retirer le id+style une fois l'espace bricolage lancé -->
+      <li id="nav-espace-bricolage" style="display:none">
+        <a href="/espace-bricolage/">Espace bricolage</a>
+      </li>
     </ul>
   </nav>
   <!--FIN Menu pour le format écran ordinateur-->
@@ -164,6 +168,8 @@ import logo from "../assets/webp/logo.webp";
             <li><a href="/agenda/">Agenda</a></li>
           </ul>
         </details>
+        <!-- Idem mobile — retirer le id+style une fois l'espace bricolage lancé -->
+        <li id="nav-espace-bricolage-mobile" style="display:none"><a href="/espace-bricolage/">Espace bricolage</a></li>
       </ul>
     </nav>
   </nav>
@@ -226,3 +232,23 @@ import logo from "../assets/webp/logo.webp";
   </div>
 </header>
 <div class="headerFix"></div>
+
+<script>
+  function checkEspaceBricolage() {
+    fetch("/events.json")
+      .then(r => r.json())
+      .then((data: any[]) => {
+        const today = new Date();
+        const hasCreneaux = data.some(
+          e => e.title?.toLowerCase().startsWith("espace bricolage") && new Date(e.startDate) > today
+        );
+        if (hasCreneaux) {
+          document.getElementById("nav-espace-bricolage")?.style.setProperty("display", "");
+          document.getElementById("nav-espace-bricolage-mobile")?.style.setProperty("display", "");
+        }
+      })
+      .catch(() => {});
+  }
+
+  document.addEventListener("astro:page-load", checkEspaceBricolage);
+</script>
