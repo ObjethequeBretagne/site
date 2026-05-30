@@ -10,5 +10,7 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
 
-  adapter: cloudflare()
+  adapter: cloudflare({
+    imageService: 'compile'
+  })
 });
