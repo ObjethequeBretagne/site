@@ -77,8 +77,8 @@
     "startDate": "2026-07-04T14:00:00+02:00",
     "endDate": "2026-07-04T17:30:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation",
-    "bannerUrl": "assets/img/logo.png",
-    "logoUrl": "assets/img/logo.png"
+    "bannerUrl": null,
+    "logoUrl": null
   },
   {
     "title": "Atelier couture - cible grenouille ! 06/06",

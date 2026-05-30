@@ -980,6 +980,10 @@ header a {
   border: 3px solid var(--primary-color);
 }
 
+.imgEvent--fallback {
+  object-fit: contain;
+}
+
 .dateEvent {
   text-align: center;
 }

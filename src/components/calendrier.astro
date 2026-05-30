@@ -341,8 +341,10 @@ interface Event {
       }
 
       if (this.modalImage) {
-        this.modalImage.src = event.logoUrl || "assets/img/logo.png";
+        this.modalImage.src = event.logoUrl || '/assets/img/logo.png';
         this.modalImage.alt = event.title;
+        this.modalImage.hidden = false;
+        this.modalImage.classList.toggle('modal-image--fallback', !event.logoUrl);
       }
 
       if (this.modalLink) {
@@ -502,8 +504,12 @@ interface Event {
 
   .modal-image {
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     margin-block: 1.5rem;
+  }
+
+  .modal-image--fallback {
+    object-fit: contain;
   }
 
   .close-btn {

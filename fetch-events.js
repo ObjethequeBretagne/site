@@ -100,17 +100,16 @@ function processEvents(data) {
       .replace(/'/g, "\\'") // Échapper les apostrophes
       .replace(/\n/g, '<br>'); // Remplacer les sauts de ligne par <br>
     // Définir des URLs par défaut si elles ne sont pas fournies
-    const defaultLogoUrl = 'assets/img/logo.png';
     return {
       id: event.id,
-      title: event.title,  // Titre de l'événement
-      description: sanitizedDescription,  // Description
-      startDate: event.startDate,  // Date de début
-      endDate: event.endDate,  // Date de fin
-      location: event.location,  // Localisation (si disponible)
-      url: event.url,  // URL de l'événement
-      bannerUrl: event.banner?.publicUrl || defaultLogoUrl,  // URL de la bannière
-      logoUrl: event.logo?.publicUrl || defaultLogoUrl,  // URL du logo
+      title: event.title,
+      description: sanitizedDescription,
+      startDate: event.startDate,
+      endDate: event.endDate,
+      location: event.location,
+      url: event.url,
+      bannerUrl: event.banner?.publicUrl || null,
+      logoUrl: event.logo?.publicUrl || null,
     };
   });
 

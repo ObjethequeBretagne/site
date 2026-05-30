@@ -55,13 +55,14 @@ const { showAll = false } = Astro.props;
           const heureDebut = start.toLocaleTimeString(fr, fmt);
           const heureFin = end.toLocaleTimeString(fr, fmt);
           const url = escHtml(event.url ?? "#");
-          const logo = escHtml(event.logoUrl ?? "");
+          const hasCover = !!event.logoUrl;
+          const logo = escHtml(event.logoUrl ?? "/assets/img/logo.png");
           const titre = escHtml(event.title ?? "");
 
           return `
             <div class="derniersEvenementsGrid1">
               <a href="${url}" target="_blank" rel="noopener">
-                <img class="imgEvent" src="${logo}" alt="${titre}" loading="lazy" />
+                <img class="imgEvent${hasCover ? '' : ' imgEvent--fallback'}" src="${logo}" alt="${titre}" loading="lazy" />
               </a>
               <div class="dateEvent">
                 <p class="jourLEvent">${jour}</p>
