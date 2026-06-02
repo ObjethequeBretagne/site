@@ -1,10 +1,422 @@
 ---
 import Layout from "../layouts/layout.astro";
 import BricolageContent from "../components/espace-bricolage.astro";
+import { Picture } from "astro:assets";
+import atelier1 from "../assets/img/ateliertest01.webp";
+import atelier2 from "../assets/img/ateliertest02.webp";
 ---
 
 <Layout title="Espace bricolage">
   <main>
     <BricolageContent />
+
+    <section class="eb-pres">
+
+      <!-- Intro -->
+      <div class="eb-intro">
+        <div class="eb-intro-text">
+          <h2 class="eb-titre">Espace bricolage partagé</h2>
+          <p class="eb-accroche">Un espace outillé pour bricoler soi-même, apprendre, réparer et fabriquer avec un accompagnement sur place.</p>
+          <p>Vous avez un petit projet à réaliser, une réparation à faire, une planche à découper, un meuble à ajuster ou une idée à concrétiser&nbsp;? L'Objethèque ouvre son espace bricolage partagé&nbsp;: un lieu équipé où vous pouvez <strong>utiliser des outils et des machines</strong>, avec une personne présente pour vous accueillir, vous conseiller et vous aider à <strong>travailler en sécurité</strong>.</p>
+        </div>
+        <div class="eb-intro-img">
+          <Picture
+            src={atelier2}
+            formats={["avif", "webp"]}
+            widths={[400, 800, 1100]}
+            sizes="(max-width: 767px) 95vw, 50vw"
+            alt="Vue d'ensemble de l'espace bricolage"
+          />
+        </div>
+      </div>
+
+      <!-- Pourquoi + Accessible côte à côte -->
+      <div class="eb-deux-colonnes">
+        <div class="eb-bloc">
+          <h3>Pourquoi un atelier partagé&nbsp;?</h3>
+          <p>On n'a pas toujours besoin de posséder tous les outils pour bricoler. Certaines machines coûtent cher, prennent de la place, servent peu souvent, ou demandent simplement un peu d'aide pour être utilisées correctement.</p>
+          <p>L'idée est de <strong>mutualiser du matériel</strong> et de permettre à chacun de bricoler, réparer ou fabriquer dans de bonnes conditions. C'est aussi un <strong>lieu d'apprentissage et d'échange</strong>&nbsp;: on vient avec son projet, on avance à son rythme, on découvre des outils, on apprend les bons gestes et on partage des conseils.</p>
+          <p>L'objectif est simple&nbsp;: <strong>rendre le bricolage plus accessible</strong>, encourager la réparation et le <strong>faire soi-même</strong>, tout en évitant l'achat d'outils qui dorment ensuite au fond du garage.</p>
+        </div>
+
+        <div class="eb-encart">
+          <h3>Accessible même quand on débute</h3>
+          <p>Pas besoin d'être un pro du bricolage pour venir. L'espace est justement pensé pour <strong>les personnes qui n'osent pas toujours se lancer seules</strong>, qui ne savent pas quel outil utiliser, ou qui veulent <strong>apprendre les bons gestes</strong> dans un cadre rassurant. On peut venir avec une idée simple, une petite réparation, une question, et avancer <strong>pas à pas avec l'accompagnement sur place</strong>.</p>
+        </div>
+      </div>
+
+      <!-- Photo ambiance -->
+      <div class="eb-photo imgCentre">
+        <Picture
+          src={atelier1}
+          formats={["avif", "webp"]}
+          widths={[400, 800, 1100]}
+          sizes="(max-width: 767px) 95vw, 80vw"
+          alt="Partage de savoir-faire dans l'espace bricolage"
+        />
+      </div>
+
+      <!-- Comment ça marche -->
+      <div class="eb-bloc">
+        <h3>Comment ça marche&nbsp;?</h3>
+        <ol class="eb-etapes">
+          <li><strong>1 - Je réserve</strong><span>Je choisis un créneau dans l'agenda de réservation.</span></li>
+          <li><strong>2 - Je viens avec mon projet</strong><span>J'apporte mon objet, mes pièces ou mes matériaux si besoin.</span></li>
+          <li><strong>3 - Je suis accueilli et conseillé</strong><span>Une personne de l'Objethèque m'aide à choisir les bons outils et à utiliser les machines en sécurité.</span></li>
+          <li><strong>4 - Je fais moi-même</strong><span>L'espace n'est pas une prestation où l'on fabrique à votre place&nbsp;: l'idée est d'apprendre et d'avancer soi-même, avec un coup de main si besoin.</span></li>
+          <li><strong>5 - Je donne mon retour</strong><span>Pendant la phase de test, vos retours nous aideront à ajuster l'organisation, les horaires et le fonctionnement.</span></li>
+        </ol>
+      </div>
+
+      <!-- Pour quels projets -->
+      <div class="eb-bloc">
+        <h3>Pour quels projets&nbsp;?</h3>
+        <p>L'espace bricolage peut servir à réparer ou renforcer un meuble, découper une planche, poncer, percer, visser, assembler, fabriquer un petit aménagement ou restaurer un objet. Pour les projets plus complexes, contactez-nous avant de réserver pour vérifier ce qui est possible.</p>
+      </div>
+
+      <!-- Machines et outils -->
+      <div class="eb-bloc">
+        <h3>Machines et outils disponibles</h3>
+        <div class="eb-table-wrap">
+          <table class="eb-table">
+            <thead>
+              <tr>
+                <th>Catégorie</th>
+                <th>Machines :outils</th>
+                <th>Exemples d'usages</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Électroportatif</td>
+                <td>Perceuses, visseuses, ponceuses, scie sauteuse, scie circulaire, meuleuse</td>
+                <td>Percer, visser, poncer, découper, ajuster</td>
+              </tr>
+              <tr>
+                <td>Travail du bois</td>
+                <td>Scie à onglet, scie sur table, défonceuse, rabot, serre-joints</td>
+                <td>Découpe, assemblage, petits meubles, réparations bois</td>
+              </tr>
+              <tr>
+                <td>Ponçage/finition</td>
+                <td>Ponceuses, cales à poncer, matériel de finition</td>
+                <td>Préparer une surface, restaurer, lisser</td>
+              </tr>
+              <tr>
+                <td>Assemblage</td>
+                <td>Visseuses, serre-joints, colles, petits outils à main</td>
+                <td>Monter, réparer, renforcer</td>
+              </tr>
+              <tr>
+                <td>Outillage manuel</td>
+                <td>Marteaux, tournevis, clés, pinces, cutters, limes, râpes</td>
+                <td>Petites réparations, démontage, ajustements</td>
+              </tr>
+              <tr>
+                <td>Mesure/traçage</td>
+                <td>Mètres, équerres, niveaux, règles, crayons de traçage</td>
+                <td>Mesurer, tracer, aligner</td>
+              </tr>
+              <tr>
+                <td>Sécurité</td>
+                <td>Lunettes, casques antibruit, gants adaptés selon les usages</td>
+                <td>Utiliser les machines dans de bonnes conditions</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="eb-note">Le matériel disponible peut évoluer au fil du temps. Certaines machines nécessitent une validation préalable ou un accompagnement spécifique avant utilisation.</p>
+      </div>
+
+      <!-- À prévoir + Infos pratiques -->
+      <div class="eb-pratique">
+        <div class="eb-pratique-bloc">
+          <h3>À prévoir avant de venir</h3>
+          <p>Venez avec votre idée, vos matériaux ou objets à modifier, des vêtements adaptés, des chaussures fermées, et vos consommables spécifiques si besoin&nbsp;: visserie particulière, peinture, colle spéciale, abrasifs, etc.</p>
+        </div>
+        <div class="eb-pratique-bloc">
+          <h3>Infos pratiques</h3>
+          <ul class="eb-infos-liste">
+            <li><strong>Lieu&nbsp;:</strong> L'Objethèque de Cornouaille, 69 vieille route de Rosporden, 29000 Quimper</li>
+            <li><strong>Tarif&nbsp;:</strong> gratuit pendant la phase de test</li>
+            <li><strong>Accès&nbsp;:</strong> uniquement sur réservation</li>
+          </ul>
+          <p class="eb-contact">Une question avant de réserver&nbsp;? Contactez-nous pour vérifier que votre projet est adapté à l'espace bricolage.</p>
+        </div>
+      </div>
+
+    </section>
   </main>
 </Layout>
+
+<style>
+  .eb-pres {
+    --eb-gap: 2.5rem;
+    --eb-mx: var(--marginLeft);
+    font-size: 1.1rem;
+    padding-bottom: var(--marginBlock);
+  }
+
+  /* ---- Intro ---- */
+  .eb-intro {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-inline: var(--eb-mx);
+    padding-top: 2rem;
+    margin-bottom: var(--eb-gap);
+  }
+
+  .eb-intro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .eb-titre {
+    font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2rem);
+    color: var(--dark-text-color);
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .eb-accroche {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-inline: 0;
+  }
+
+  .eb-intro-text p:last-child {
+    margin-inline: 0;
+    line-height: 1.7;
+  }
+
+  .eb-intro-img {
+    flex: 1.3;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--dark-shadow-color);
+    align-self: stretch;
+  }
+
+  .eb-intro-img picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .eb-intro-img picture img {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ---- Deux colonnes ---- */
+  .eb-deux-colonnes {
+    display: flex;
+    align-items: stretch;
+    gap: 2rem;
+    margin-inline: var(--eb-mx);
+    margin-bottom: var(--eb-gap);
+  }
+
+  .eb-deux-colonnes .eb-bloc,
+  .eb-deux-colonnes .eb-encart {
+    flex: 1;
+    margin-inline: 0;
+    margin-bottom: 0;
+  }
+
+  .eb-deux-colonnes .eb-encart {
+    align-self: flex-start;
+  }
+
+  /* ---- Blocs texte ---- */
+  .eb-bloc {
+    margin-inline: var(--eb-mx);
+    margin-bottom: var(--eb-gap);
+  }
+
+  .eb-bloc h3 {
+    margin-inline: 0;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+  }
+
+  .eb-bloc p {
+    margin-inline: 0;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---- Encart débutants ---- */
+  .eb-encart {
+    margin-inline: var(--eb-mx);
+    margin-bottom: var(--eb-gap);
+    background: var(--grey-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .eb-encart h3 {
+    margin-inline: 0;
+    margin-bottom: 0.6rem;
+    color: var(--primary-color);
+  }
+
+  .eb-encart p {
+    margin-inline: 0;
+    line-height: 1.7;
+  }
+
+  /* ---- Photo ---- */
+  .eb-photo {
+    margin-bottom: var(--eb-gap);
+  }
+
+  .eb-photo picture img {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--dark-shadow-color);
+    max-height: 460px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  /* ---- Étapes ---- */
+  .eb-etapes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.75rem;
+    padding-left: 1rem;
+  }
+
+  .eb-etapes li {
+    list-style: none;
+    color: var(--dark-text-color);
+    line-height: 1.6;
+  }
+
+  .eb-etapes li strong {
+    display: block;
+    font-size: 1.15rem;
+  }
+
+  .eb-etapes li span {
+    display: block;
+    margin-left: 2.2rem;
+  }
+
+  /* ---- Tableau outils ---- */
+  .eb-table-wrap {
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 8px var(--dark-shadow-color);
+  }
+
+  .eb-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .eb-table th {
+    background: var(--secondary-color);
+    color: var(--light-text-color);
+    text-align: left;
+    padding: 0.65rem 1rem;
+    font-weight: bold;
+  }
+
+  .eb-table td {
+    padding: 0.6rem 1rem;
+    color: var(--dark-text-color);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .eb-table tr:nth-child(even) td {
+    background: var(--grey-background);
+  }
+
+  .eb-note {
+    font-size: 1.15rem;
+    color: var(--grey-text-color);
+    font-style: italic;
+    margin-inline: 0;
+  }
+
+  /* ---- Pratique ---- */
+  .eb-pratique {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-inline: var(--eb-mx);
+    margin-bottom: 0;
+  }
+
+  .eb-pratique-bloc h3 {
+    margin-inline: 0;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+  }
+
+  .eb-pratique-bloc p {
+    margin-inline: 0;
+    line-height: 1.7;
+  }
+
+  .eb-infos-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .eb-infos-liste li {
+    color: var(--dark-text-color);
+    line-height: 1.5;
+  }
+
+  .eb-contact {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-weight: bold;
+    margin-inline: 0;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 900px) {
+    .eb-pres {
+      --eb-mx: 4%;
+    }
+
+    .eb-intro {
+      flex-direction: column;
+    }
+
+    .eb-intro-img picture img {
+      min-height: 220px;
+      height: 220px;
+    }
+
+    .eb-deux-colonnes {
+      flex-direction: column;
+    }
+
+    .eb-pratique {
+      grid-template-columns: 1fr;
+    }
+
+    .eb-table {
+      font-size: 1rem;
+    }
+  }
+</style>
