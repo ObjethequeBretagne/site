@@ -19,7 +19,7 @@ import MapsFacade from "../components/maps-facade.astro";
 const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width: 1920 });
 ---
 
-<Layout title="Objetheque de Cornouaille">
+<Layout title="Objetheque de Cornouaille" preloadImage={bgImage.src}>
   <main>
     <section class="presentation" style={`background-image: url('${bgImage.src}');`}>
       <h1>
@@ -41,6 +41,8 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
           sizes="(max-width: 767px) 100vw, 50vw"
           alt="dessin d'une planète entourée d'objets et de personnes pour les réparer/entretenir"
           class="presentation-image"
+          loading="eager"
+          fetchpriority="high"
         />
       </div>
     </section>

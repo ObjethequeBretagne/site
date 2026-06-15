@@ -1,9 +1,11 @@
 <!-- Composant de formulaire de contact -->
-<details
-  class="contact-details"
-  id="contact-form-details"
->
-  <summary>Contactez-nous</summary>
+<button id="contact-open-btn" class="contact-trigger">Contactez-nous</button>
+
+<dialog id="contact-modal" aria-labelledby="contact-modal-title">
+  <div class="modal-header">
+    <h2 id="contact-modal-title">Contactez-nous</h2>
+    <button id="contact-close-btn" class="modal-close" aria-label="Fermer le formulaire">✕</button>
+  </div>
 
   <form class="contact-form">
     <!-- Clé d'accès Web3Forms -->
@@ -80,82 +82,77 @@
       <p>Une erreur s'est produite. Veuillez réessayer ou nous contacter directement.</p>
     </div>
   </form>
-</details>
+</dialog>
 
 <style>
-  .contact-details {
-    color: var(--dark-text-color);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-inline: 1%;
-    transition: all 0.3s ease;
-  }
-
-  .contact-details summary {
+  .contact-trigger {
     display: flex;
     justify-content: center;
     cursor: pointer;
-    padding: 0.8em;
-    padding-inline: 1.2em;
+    padding: 0.8em 1.8em;
     font-weight: bold;
     border-radius: 4px;
-    transition: all 0.2s ease;
     font-size: larger;
-    background-color: var(--grey-background);
-    &::before {
-      content: '';
-      display: none;
-      margin-inline-end: 0ch;
-      transition: none;
-    }
+    background-color: rgba(231, 231, 231, 0.25);
+    color: var(--light-text-color);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    width: fit-content;
+    transition: background-color 0.2s ease;
+    font-family: Muli, system-ui, sans-serif;
   }
-  
-  .contact-details summary:hover {
+
+  .contact-trigger:hover {
+    background-color: rgba(231, 231, 231, 0.4);
+  }
+
+  #contact-modal {
+    background-color: var(--background-color);
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: min(560px, 92vw);
+    max-height: 90dvh;
+    overflow-y: auto;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    color: var(--dark-text-color);
+    margin: auto;
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem 0.8rem;
+    border-bottom: 1px solid var(--grey-background);
+  }
+
+  .modal-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--dark-text-color);
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--dark-text-color);
+    line-height: 1;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .modal-close:hover {
     color: var(--primary-color);
-  }
-
-  .contact-details[open] summary {
-    margin-bottom: 1rem;
-  }
-
-  /* Pour l'animation d'ouverture */
-  .contact-details summary ~ * {
-    animation: slideDown 0.3s ease-out;
-  }
-
-  /* Animation de fermeture */
-  .contact-details.closing > form {
-    animation: slideUp 0.3s ease-in forwards;
-  }
-
-  @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    to {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
+    background-color: var(--grey-background);
   }
 
   .contact-form {
     display: grid;
-    width: fit-content;
-    max-width: 100%;
-    margin-inline: auto;
-    padding-inline: 2%;
+    width: 100%;
+    padding: 1.2rem 1.5rem 1.5rem;
   }
 
   .form-item {
@@ -184,25 +181,13 @@
     font-family: Muli, system-ui, sans-serif;
   }
 
-  /* Style pour le select et les options */
-  .form-item select {
-    color: var(--dark-text-color);
-    border: 1px solid var(--dark-text-color);
-  }
-
-  /* Styles pour les options du menu déroulant */
   .form-item select option {
-    background-color: var(--grey-background);
-  }
-
-  /* Pour Webkit (Chrome, Safari) */
-  .form-item select::selection {
     background-color: var(--grey-background);
   }
 
   /* Fix pour autofill sur Chrome/Safari */
   input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
@@ -216,10 +201,6 @@
     outline: none;
     border-color: var(--primary-color);
     background-color: rgba(255, 255, 255, 0.15);
-  }
-
-  .rgpd-container {
-    margin-bottom: 1rem;
   }
 
   .rgpd-label {
@@ -242,7 +223,6 @@
     margin-bottom: 1rem;
   }
 
-  /* Adaptation du bouton pour le footer */
   .contact-form .boutonOrange button {
     background: none;
     border: none;
@@ -262,7 +242,6 @@
     cursor: not-allowed;
   }
 
-  /* Messages de statut */
   .form-status {
     margin-top: 1rem;
     padding: 0.75rem;
@@ -289,37 +268,32 @@
 
 <script>
   document.addEventListener('astro:page-load', () => {
-    const details = document.getElementById('contact-form-details');
-    if (!details) return;
+    const modal = document.getElementById('contact-modal') as HTMLDialogElement | null;
+    if (!modal) return;
 
-    // Animation fermeture du details
-    const summary = details.querySelector('summary');
-    if (summary) {
-      let isAnimating = false;
-      summary.addEventListener('click', (event) => {
-        if (isAnimating) { event.preventDefault(); return; }
-        if (details.hasAttribute('open')) {
-          event.preventDefault();
-          isAnimating = true;
-          details.classList.add('closing');
-          setTimeout(() => {
-            details.removeAttribute('open');
-            details.classList.remove('closing');
-            isAnimating = false;
-          }, 300);
-        } else {
-          setTimeout(() => {
-            const rect = details.getBoundingClientRect();
-            if (rect.bottom > window.innerHeight) {
-              window.scrollTo({ top: window.scrollY + rect.top - 50, behavior: 'smooth' });
-            }
-          }, 50);
-        }
-      });
-    }
+    const openBtn = document.getElementById('contact-open-btn');
+    const closeBtn = document.getElementById('contact-close-btn');
+
+    openBtn?.addEventListener('click', () => modal.showModal());
+    closeBtn?.addEventListener('click', () => modal.close());
+
+    // Fermer en cliquant sur le backdrop
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.close();
+    });
+
+    // Réinitialiser le formulaire à la fermeture
+    modal.addEventListener('close', () => {
+      const form = modal.querySelector('form');
+      form?.reset();
+      const successMsg = document.getElementById('form-success')!;
+      const errorMsg = document.getElementById('form-error')!;
+      successMsg.hidden = true;
+      errorMsg.hidden = true;
+    });
 
     // Soumission du formulaire
-    const form = details.querySelector('form');
+    const form = modal.querySelector('form');
     if (!form) return;
 
     const btn = document.getElementById('submit-btn') as HTMLButtonElement;
