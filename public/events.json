@@ -1,5 +1,32 @@
 [
   {
+    "title": "Espace Bricolage - Réservation 18/07",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "startDate": "2026-07-18T14:00:00+02:00",
+    "endDate": "2026-07-18T17:30:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation-18-07",
+    "bannerUrl": null,
+    "logoUrl": null
+  },
+  {
+    "title": "Espace Bricolage - Réservation 24/07 ",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "startDate": "2026-07-24T13:30:00+02:00",
+    "endDate": "2026-07-24T19:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation-10-07-2",
+    "bannerUrl": null,
+    "logoUrl": null
+  },
+  {
+    "title": "Espace Bricolage - Réservation 10/07",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "startDate": "2026-07-10T13:30:00+02:00",
+    "endDate": "2026-07-10T19:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation-2",
+    "bannerUrl": null,
+    "logoUrl": null
+  },
+  {
     "title": "Atelier Co-réparation Electronique journée et Couture après-midi",
     "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition.<br>Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets.<br>Une initiative conviviale et durable pour un mode de consommation plus responsable.<br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer!",
     "startDate": "2026-06-27T10:00:00+02:00",
@@ -43,15 +70,6 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-10",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
-  },
-  {
-    "title": "Atelier couture Kermoysan - pochette de téléphone 24/06",
-    "description": "🧵 Atelier couture à Kermoysan!<br>Lors de cet atelier couture, nous fabriquerons des pochettes en tissu pour téléphone.<br>Entrée libre et gratuite, convient aux débutants :)<br>✂️ Tissus et machines sont fournis, à vos aiguilles ! 😊<br>",
-    "startDate": "2026-06-24T14:00:00+02:00",
-    "endDate": "2026-06-24T17:00:00+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-kermoysan-pochette-de-telephone-24-06",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-e91db1d812a84ea1b5888e0723c04706.jpeg"
   },
   {
     "title": "24/06 Projet low-tech avec les petits débrouillards !!",
@@ -118,7 +136,7 @@
   },
   {
     "title": "Espace Bricolage - Réservation",
-    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 14h à 19h et le samedi de 14h à 17h30, venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
     "startDate": "2026-07-04T14:00:00+02:00",
     "endDate": "2026-07-04T17:30:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation",
@@ -700,23 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-plogonnec-19-11",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-120d4f722ba04ee5a88e722b2576e075.png"
-  },
-  {
-    "title": "Répar' Tour à Guengat 15/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-15T09:30:00+01:00",
-    "endDate": "2025-11-15T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-guengat-15-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-94dd9fd5e65b488ca817b10894211a35.png"
-  },
-  {
-    "title": "Répar' Tour à Plonéis 12/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-12T14:00:00+01:00",
-    "endDate": "2025-11-12T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-ploneis-12-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8f1a29b581ee457da96a7eda4c0fbff4.png"
   }
 ]
