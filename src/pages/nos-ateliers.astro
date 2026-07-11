@@ -82,7 +82,7 @@ const groups = [
                   <div class="activiteImgWrap">
                     <Picture
                       src={image.src}
-                      formats={["avif", "webp", "jpeg"]}
+                      formats={["avif", "webp"]}
                       widths={[400, 800, 1080]}
                       sizes="(max-width: 640px) 90vw, (max-width: 900px) 44vw, 30vw"
                       alt={image.alt}
@@ -105,7 +105,7 @@ const groups = [
               <div class="activiteImgWrap">
                 <Picture
                   src={image.src}
-                  formats={["avif", "webp", "jpeg"]}
+                  formats={["avif", "webp"]}
                   widths={[400, 800, 1080]}
                   sizes="(max-width: 640px) 90vw, (max-width: 900px) 44vw, 30vw"
                   alt={image.alt}
@@ -149,6 +149,8 @@ const groups = [
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+    max-width: 1600px;
+    margin-inline: auto;
   }
 
   .heroBlock {
