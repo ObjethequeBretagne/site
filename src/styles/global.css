@@ -1031,6 +1031,11 @@ header a {
 }
 
 .plusplus {
-  font-size: 1.5em;
+  font: bold normal normal 1.5em/1 Muli;
+  color: var(--secondary-color);
+  margin-left: 0.2em;
   transition: color 0.3s ease;
+}
+.plusplus:hover {
+  color: #f1d13fe3;
 }
