@@ -3,9 +3,10 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  preloadImage?: string;
 }
 
-const { title } = Astro.props;
+const { title, preloadImage } = Astro.props;
 import Header from "../layouts/header.astro";
 import Footer from "../layouts/footer.astro";
 import { ClientRouter } from 'astro:transitions';
@@ -18,6 +19,7 @@ import { ClientRouter } from 'astro:transitions';
     <meta name="description" content="Bibliothèque d'objets à Quimper" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preload" href="/menuscript.js" as="script" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} />}
     <link rel="icon" type="image/png" href="/assets/img/illuPresa2.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>

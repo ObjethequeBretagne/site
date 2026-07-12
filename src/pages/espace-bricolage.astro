@@ -12,6 +12,14 @@ import atelier2 from "../assets/img/ateliertest02.webp";
 
     <section class="eb-pres">
 
+      <!-- Questionnaire -->
+      <div class="eb-questionnaire">
+        <p>Aidez-nous à construire <strong>un espace bricolage qui vous ressemble&nbsp;:</strong> 3&nbsp;minutes suffisent pour nous partager vos envies !</p>
+        <nav class="boutonOrange scaleUpHover eb-questionnaire-btn">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer"><p>Remplir le questionnaire</p></a>
+        </nav>
+      </div>
+
       <!-- Intro -->
       <div class="eb-intro">
         <div class="eb-intro-text">
@@ -64,7 +72,7 @@ import atelier2 from "../assets/img/ateliertest02.webp";
           <li><strong>2 - Je viens avec mon projet</strong><span>J'apporte mon objet, mes pièces ou mes matériaux si besoin.</span></li>
           <li><strong>3 - Je suis accueilli et conseillé</strong><span>Une personne de l'Objethèque m'aide à choisir les bons outils et à utiliser les machines en sécurité.</span></li>
           <li><strong>4 - Je fais moi-même</strong><span>L'espace n'est pas une prestation où l'on fabrique à votre place&nbsp;: l'idée est d'apprendre et d'avancer soi-même, avec un coup de main si besoin.</span></li>
-          <li><strong>5 - Je donne mon retour</strong><span>Pendant la phase de test, vos retours nous aideront à ajuster l'organisation, les horaires et le fonctionnement.</span></li>
+          <li><strong>5 - Je donne mon retour</strong><span>Pendant la phase de test, vos retours nous aideront à ajuster l'organisation, les horaires et le fonctionnement. <a class="eb-lien" href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer">Remplir le questionnaire</a>.</span></li>
         </ol>
       </div>
 
@@ -315,7 +323,7 @@ import atelier2 from "../assets/img/ateliertest02.webp";
 
   /* ---- Tableau outils ---- */
   .eb-table-wrap {
-    overflow: hidden;
+    overflow-x: auto;
     border-radius: 12px;
     margin-bottom: 0.75rem;
     box-shadow: 0 2px 8px var(--dark-shadow-color);
@@ -390,6 +398,40 @@ import atelier2 from "../assets/img/ateliertest02.webp";
     color: var(--secondary-color);
     font-weight: bold;
     margin-inline: 0;
+  }
+
+  /* ---- Lien inline ---- */
+  .eb-lien {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+
+  /* ---- Questionnaire ---- */
+  .eb-questionnaire {
+    margin-inline: var(--eb-mx);
+    margin-top: var(--eb-gap);
+    padding: 1.5rem 2rem;
+    background: var(--grey-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .eb-questionnaire > p {
+    margin: 0;
+    flex: 1;
+    min-width: 200px;
+    line-height: 1.6;
+  }
+
+  .eb-questionnaire-btn p {
+    width: auto;
+    padding-inline: 1.4rem;
+    text-wrap: wrap;
+    text-align: center;
   }
 
   /* ---- Responsive ---- */

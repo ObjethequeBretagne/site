@@ -3,44 +3,219 @@ import Layout from "../layouts/layout.astro";
 import { Picture } from "astro:assets";
 
 // Import des images
-import repa1 from "../assets/img/repa1.png";
-import repa2 from "../assets/img/repa2.png";
-import repa3 from "../assets/img/repa3.png";
-import repalast from "../assets/img/repalast.png";
-import couture1 from "../assets/img/couture1.png";
-import couture2 from "../assets/img/couture2.png";
-import couture3 from "../assets/img/couture3.png";
-import oiseau1 from "../assets/img/oiseau1.png";
-import oiseau2 from "../assets/img/oiseau2.png";
+import coreparation1 from "../assets/img/atelier-coreparation-1.jpg";
+import creationCouture from "../assets/img/atelier-creation-couture.jpg";
+import espaceBricolage from "../assets/img/atelier-espace-bricolage.jpg";
+import vaisseauRecup from "../assets/img/atelier-vaisseau-recup.jpg";
+import robotBois from "../assets/img/atelier-robot-bois.jpg";
+import conservesSemis from "../assets/img/atelier-conserves-semis.jpg";
+import horsLesMurs from "../assets/img/atelier-hors-les-murs.jpg";
+import marmiteNorvegienne from "../assets/img/atelier-marmite-norvegienne.jpg";
+import lowtechBarbecue from "../assets/img/atelier-lowtech-barbecue.jpg";
+import lowtechCharretteVelo from "../assets/img/atelier-lowtech-charrette-velo.jpg";
+import lowtechJeuxBois from "../assets/img/atelier-lowtech-jeux-bois.jpg";
+import semaineReductionDechets from "../assets/img/atelier-semaine-reduction-dechets.jpg";
+import accueilPublic from "../assets/img/atelier-accueil-public.jpg";
 
-// Définition d'un tableau pour faciliter le rendu
-const workshopImages = [
-  { src: repa1, alt: "atelier réparation" },
-  { src: repa3, alt: "atelier réparation" },
-  { src: repa2, alt: "atelier réparation" },
-  { src: repalast, alt: "atelier réparation" },
-  { src: couture1, alt: "atelier couture" },
-  { src: couture2, alt: "atelier couture" },
-  { src: couture3, alt: "atelier couture" },
-  { src: oiseau1, alt: "atelier nichoir à oiseaux" },
-  { src: oiseau2, alt: "atelier nichoir à oiseaux" },
+// Structure de données centralisée, groupée par thème (base pour un futur admin :
+// chaque groupe = une "catégorie", chaque item = une activité éditable indépendamment).
+// Les deux activités les plus fréquentes du programme (co-réparation et espace bricolage)
+// sont mises en avant côte à côte tout en haut de la page.
+const featuredGroups = [
+  {
+    label: "Co-réparation : électronique & couture",
+    items: [
+      { src: coreparation1, alt: "Ateliers de co-réparation : électronique et couture" },
+    ],
+  },
+  {
+    label: "Espace bricolage",
+    items: [{ src: espaceBricolage, alt: "Espace bricolage" }],
+  },
+];
+
+const groups = [
+  {
+    label: "Ateliers réguliers",
+    items: [
+      { src: creationCouture, alt: "Atelier création couture" },
+      { src: vaisseauRecup, alt: "Ateliers vaisseau en récup'" },
+      { src: robotBois, alt: "Atelier robot en bois" },
+      { src: conservesSemis, alt: "Conserves, semis... les rendez-vous du faire soi-même" },
+      { src: marmiteNorvegienne, alt: "Atelier marmite norvégienne en médiathèque" },
+    ],
+  },
+  {
+    label: "Projets low-tech",
+    items: [
+      { src: lowtechBarbecue, alt: "Projets low-tech : barbecue" },
+      { src: lowtechCharretteVelo, alt: "Projets low-tech : charrette à vélo" },
+      { src: lowtechJeuxBois, alt: "Projets low-tech : jeux en bois" },
+    ],
+  },
+  {
+    label: "Hors les murs",
+    items: [
+      { src: horsLesMurs, alt: "Animations hors les murs : molky, nichoir" },
+      { src: semaineReductionDechets, alt: "Semaine Européenne de Réduction des Déchets" },
+      { src: accueilPublic, alt: "Accueil de public" },
+    ],
+  },
 ];
 ---
 
 <Layout title="Nos ateliers">
   <main>
-    <h2 class="h2PaddingTopSmall">Nos ateliers</h2>
+    <h2 class="h2PaddingTopSmall pageTitle">
+      <span>Nos activités</span>
+      <a class="plusplus" href="/agenda"> + </a>
+    </h2>
 
-    {workshopImages.map((image) => (
-      <div class="imgCentre">
-        <Picture
-          src={image.src}
-          formats={["avif", "webp", "png"]}
-          widths={[400, 800, 1200]}
-          sizes="(max-width: 767px) 95vw, (max-width: 1200px) 80vw, 900px"
-          alt={image.alt}
-        />
+    <section class="activiteGroup">
+      <div class="heroRow">
+        {featuredGroups.map((group) => (
+          <div class="heroBlock">
+            <span class="activiteGroupLabel">{group.label}</span>
+            <div class="heroImages">
+              {group.items.map((image) => (
+                <div class="activiteCard">
+                  <div class="activiteImgWrap">
+                    <Picture
+                      src={image.src}
+                      formats={["avif", "webp"]}
+                      widths={[400, 800, 1080]}
+                      sizes="(max-width: 640px) 90vw, (max-width: 900px) 44vw, 30vw"
+                      alt={image.alt}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
+    </section>
+
+    {groups.map((group) => (
+      <section class="activiteGroup">
+        <span class="activiteGroupLabel">{group.label}</span>
+        <div class="activiteGrid">
+          {group.items.map((image) => (
+            <div class="activiteCard">
+              <div class="activiteImgWrap">
+                <Picture
+                  src={image.src}
+                  formats={["avif", "webp"]}
+                  widths={[400, 800, 1080]}
+                  sizes="(max-width: 640px) 90vw, (max-width: 900px) 44vw, 30vw"
+                  alt={image.alt}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     ))}
   </main>
 </Layout>
+
+<style>
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .pageTitle {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+  }
+
+  .activiteGroup {
+    margin: 0 0 3.5rem;
+    padding-inline: 2.5rem;
+  }
+
+  .activiteGroupLabel {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--light-text-color);
+    font-size: 1.1em;
+    padding: 7px 16px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+  }
+
+  .heroRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1600px;
+    margin-inline: auto;
+  }
+
+  .heroBlock {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroImages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+  }
+
+  .activiteGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+  }
+
+  @media screen and (min-width: 1100px) {
+    .activiteGrid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .heroRow {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width: 640px) {
+    .activiteGroup {
+      padding-inline: 4%;
+    }
+    .activiteGrid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .activiteCard {
+    background: var(--grey-background);
+    border-radius: 20px;
+    box-shadow: 2px 4px 10px var(--dark-shadow-color);
+    overflow: hidden;
+  }
+
+  .activiteCard:has(a) {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .activiteCard:has(a):hover {
+    transform: translateY(-4px);
+    box-shadow: 4px 10px 18px var(--dark-shadow-color);
+  }
+
+  .activiteImgWrap {
+    aspect-ratio: 1 / 1;
+    display: flex;
+  }
+
+  .activiteImgWrap :global(picture),
+  .activiteImgWrap :global(picture img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

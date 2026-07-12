@@ -201,10 +201,6 @@ dialog {
 details {
   --_duration: .2s;
 
-  @media (prefers-reduced-motion: no-preference) {
-    interpolate-size: allow-keywords;
-  }
-
   summary {
     cursor: pointer;
     list-style: none;
@@ -223,20 +219,6 @@ details {
 
   &[open] summary::before {
     rotate: 90deg;
-  }
-
-  &::details-content {
-    opacity: 0;
-    block-size: 0;
-    overflow-y: clip;
-    transition: content-visibility var(--_duration) allow-discrete,
-                opacity var(--_duration),
-                block-size var(--_duration);
-  }
-
-  &[open]::details-content {
-    opacity: 1;
-    block-size: auto;
   }
 }
 
@@ -1049,6 +1031,11 @@ header a {
 }
 
 .plusplus {
-  font-size: 1.5em;
+  font: bold normal normal 1.5em/1 Muli;
+  color: var(--secondary-color);
+  margin-left: 0.2em;
   transition: color 0.3s ease;
+}
+.plusplus:hover {
+  color: #f1d13fe3;
 }

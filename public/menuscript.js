@@ -11,7 +11,7 @@ document.addEventListener("astro:page-load", () => {
   navWrapper?.classList.remove("active");
 
   // Fermer automatiquement le menu après avoir cliqué sur un lien
-  document.querySelectorAll("#navigationWrapper ul li").forEach((item) => {
+  document.querySelectorAll("#navigationWrapper .submenuMobile li, #nav-espace-bricolage-mobile").forEach((item) => {
     item.addEventListener("click", () => {
       checkbox.checked = false;
       navWrapper?.classList.remove("active");

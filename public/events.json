@@ -1,30 +1,237 @@
 [
   {
-    "title": "Atelier couture Kermoysan - pochette de téléphone 24/06",
-    "description": "🧵 Atelier couture à Kermoysan!<br>Lors de cet atelier couture, nous fabriquerons des pochettes en tissu pour téléphone.<br>Entrée libre et gratuite, convient aux débutants :)<br>✂️ Tissus et machines sont fournis, à vos aiguilles ! 😊<br>",
-    "startDate": "2026-06-24T14:00:00+02:00",
-    "endDate": "2026-06-24T17:00:00+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-kermoysan-pochette-de-telephone-24-06",
+    "title": "Atout Sport : Atelier bricolage !",
+    "description": "Lors de cet atelier, les enfants découvrent le travail du bois grâce à l’utilisation de machines spécialement adaptées à leur âge et chacun repartira avec sa création du jour!<br><br>Inscriptions sur Quimper+ via le lien suivant :<br>https://www.quimperplus.bzh/atout-sport-partenaire/suivi-detail-activite/1182/",
+    "startDate": "2026-07-28T14:00:00+02:00",
+    "endDate": "2026-07-28T16:30:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-atelier-bricolage",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-06ed4a7308e04280b006c0e8f9055169.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-86617d8d7bad4b28822da92f47a46bd7.png"
+  },
+  {
+    "title": "Atout Sport : Parcours de billes !",
+    "description": "Les enfants imaginent et construisent un parcours de billes vertical à partir d’objets de récupération. À la fin de l’atelier, tous les parcours sont assemblés pour créer une immense descente collective… avec surprises garanties ! 😄🎉<br><br>Inscriptions sur Quimper+ via le lien suivant :<br>https://www.quimperplus.bzh/atout-sport-partenaire/suivi-detail-activite/1183/",
+    "startDate": "2026-08-27T09:30:00+02:00",
+    "endDate": "2026-08-27T12:15:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-parcours-de-billes",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-06ed4a7308e04280b006c0e8f9055169.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-86617d8d7bad4b28822da92f47a46bd7.png"
+  },
+  {
+    "title": "Atout Sport : Fabrique ton jeu du Toc !",
+    "description": "Lors de cet atelier, les enfants fabriquent leur propre jeu du Toc, entièrement personnalisé 🎨 en découvrant différentes techniques et outils de bricolage et en laissant libre cours à leur créativité.<br><br>Inscriptions sur Quimper+ via le lien suivant :<br>https://www.quimperplus.bzh/atout-sport-partenaire/suivi-detail-activite/1184/?idseance=3928",
+    "startDate": "2026-08-28T09:30:00+02:00",
+    "endDate": "2026-08-28T12:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-fabrique-ton-jeu-du-toc-2",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-06ed4a7308e04280b006c0e8f9055169.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-86617d8d7bad4b28822da92f47a46bd7.png"
+  },
+  {
+    "title": "Atout Sport : Fabrique ton jeu du Toc !",
+    "description": "Lors de cet atelier, les enfants fabriquent leur propre jeu du Toc, entièrement personnalisé 🎨 en découvrant différentes techniques et outils de bricolage et en laissant libre cours à leur créativité.<br><br>Inscriptions sur Quimper+ via le lien suivant :<br>https://www.quimperplus.bzh/atout-sport-partenaire/suivi-detail-activite/1184/?idseance=3928",
+    "startDate": "2026-07-31T09:30:00+02:00",
+    "endDate": "2026-07-31T12:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-fabrique-ton-jeu-du-toc-1",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-06ed4a7308e04280b006c0e8f9055169.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-86617d8d7bad4b28822da92f47a46bd7.png"
+  },
+  {
+    "title": "Atout Sport : Fabrique ton jeu du Toc !",
+    "description": "Lors de cet atelier, les enfants fabriquent leur propre jeu du Toc, entièrement personnalisé 🎨 en découvrant différentes techniques et outils de bricolage et en laissant libre cours à leur créativité.<br><br>Inscriptions sur Quimper+ via le lien suivant :<br>https://www.quimperplus.bzh/atout-sport-partenaire/suivi-detail-activite/1184/?idseance=3928",
+    "startDate": "2026-07-17T09:30:00+02:00",
+    "endDate": "2026-07-17T12:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-fabrique-ton-jeu-du-toc",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-06ed4a7308e04280b006c0e8f9055169.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-86617d8d7bad4b28822da92f47a46bd7.png"
+  },
+  {
+    "title": "Atelier Co-réparation Electronique journée et Couture après-midi",
+    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition.<br>Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets.<br>Une initiative conviviale et durable pour un mode de consommation plus responsable.<br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer!",
+    "startDate": "2026-07-25T10:00:00+02:00",
+    "endDate": "2026-07-25T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-electronique-journee-et-couture-apres-midi-1",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-25ac955b6d374ae9a130010d72c62ac4.png"
+  },
+  {
+    "title": " À Kermoysan, on répare, on repart ! 23/07",
+    "description": "🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble ! <br><br>Venez apprendre à raccommoder et remettre en état vos objets & textiles !",
+    "startDate": "2026-07-23T15:30:00+02:00",
+    "endDate": "2026-07-23T18:30:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/a-kermoysan-on-repare-on-repart-23-07",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c78595454f354f23a3479569a813015d.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-eca6ae36c1dc4f07ab32d54ea1c92afd.png"
+  },
+  {
+    "title": " À Kermoysan, on répare, on repart ! 09/07",
+    "description": "🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble ! <br><br>Venez apprendre à raccommoder et remettre en état vos objets & textiles !",
+    "startDate": "2026-07-09T15:30:00+02:00",
+    "endDate": "2026-07-09T18:30:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/a-kermoysan-on-repare-on-repart-09-07",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c78595454f354f23a3479569a813015d.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-eca6ae36c1dc4f07ab32d54ea1c92afd.png"
+  },
+  {
+    "title": "Ateliers Atout Sport à l'Objethèque !",
+    "description": "Les ateliers Atout Sport de L\\'Objethèque reprennent pendant  les grandes vacances !!<br><br>Fabrication de leur propre jeu du Toc, Parcours de billes, Bricolage de bois, Fabrication de vaisseaux spatiaux ou de robots en bois, les enfants n\\'ont jamais autant crée ! <br>Le + ? Ils seront initiés au bricolage avec des matériaux de récupération ! Leur apprenant la notion de réemploi créatif 🔨🌟<br><br>Inscriptions sur Quimper+ via le lien suivant :<br>https://www.quimperplus.bzh/catalogue-dactivites/?partenaire=146",
+    "startDate": "2026-07-07T00:00:00+02:00",
+    "endDate": "2026-08-31T23:59:59+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-06ed4a7308e04280b006c0e8f9055169.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-86617d8d7bad4b28822da92f47a46bd7.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-07-29T14:00:00+02:00",
+    "endDate": "2026-07-29T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-18",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-07-22T14:00:00+02:00",
+    "endDate": "2026-07-22T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-17",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-07-15T14:00:00+02:00",
+    "endDate": "2026-07-15T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-16",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-07-08T14:00:00+02:00",
+    "endDate": "2026-07-08T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-15",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-07-01T14:00:00+02:00",
+    "endDate": "2026-07-01T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-14",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier couture 11/07 - Libre",
+    "description": "🧵 Atelier couture – thème libre<br>Que vous soyez grand·e débutant·e ou déjà à l’aise derrière la machine, cet atelier est ouvert à toutes et tous !<br>Venez apprendre les bases, vous perfectionner ou avancer sur vos projets personnels, dans un esprit convivial et d’entraide.<br>✂️ Tissus et machines sont fournis, mais vous pouvez bien sûr venir avec votre propre machine si vous le souhaitez.<br>À vos aiguilles ! 😊",
+    "startDate": "2026-07-11T13:00:00+02:00",
+    "endDate": "2026-07-11T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-11-07-libre",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
   },
   {
-    "title": "24/06 Projet low-tech avec les petits débrouillards !!  (2) (2)",
+    "title": "Atelier couture 08/07 - Doudou baleine",
+    "description": "🧵 Atelier couture pour les enfants –  Doudou baleine 🐋<br>Fabrique ta propre peluche !!<br>Lors de cet atelier, les enfants seront initiés à la couture et apprendront à coudre un doudou avec lequel ils repartiront !<br>✂️ Tissus et machines sont fournis 😊<br>",
+    "startDate": "2026-07-08T10:00:00+02:00",
+    "endDate": "2026-07-08T13:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-08-07-doudou-baleine",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
+  },
+  {
+    "title": "Espace Bricolage - Réservation 18/07",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "startDate": "2026-07-18T14:00:00+02:00",
+    "endDate": "2026-07-18T17:30:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation-18-07",
+    "bannerUrl": null,
+    "logoUrl": null
+  },
+  {
+    "title": "Espace Bricolage - Réservation 24/07 ",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "startDate": "2026-07-24T13:30:00+02:00",
+    "endDate": "2026-07-24T19:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation-10-07-2",
+    "bannerUrl": null,
+    "logoUrl": null
+  },
+  {
+    "title": "Espace Bricolage - Réservation 10/07",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "startDate": "2026-07-10T13:30:00+02:00",
+    "endDate": "2026-07-10T19:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation-2",
+    "bannerUrl": null,
+    "logoUrl": null
+  },
+  {
+    "title": "Atelier Co-réparation Electronique journée et Couture après-midi",
+    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition.<br>Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets.<br>Une initiative conviviale et durable pour un mode de consommation plus responsable.<br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer!",
+    "startDate": "2026-06-27T10:00:00+02:00",
+    "endDate": "2026-06-27T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-electronique-journee-et-couture-apres-midi",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-25ac955b6d374ae9a130010d72c62ac4.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-06-24T14:00:00+02:00",
+    "endDate": "2026-06-24T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-13",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-06-17T14:00:00+02:00",
+    "endDate": "2026-06-17T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-12",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-06-10T14:00:00+02:00",
+    "endDate": "2026-06-10T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-11",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "Atelier de co-réparation",
+    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
+    "startDate": "2026-06-03T00:00:00+02:00",
+    "endDate": "2026-06-03T17:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-de-co-reparation-10",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
+  },
+  {
+    "title": "24/06 Projet low-tech avec les petits débrouillards !!",
     "description": "Projet Low Tech avec Les petits débrouillards !!⭐<br><br>Tous les mercredis matins du mois de Juin, rejoignez nous au jardin partagé pour un atelier participatif :<br>Fabrication de tables de jardinage adaptées aux personnes en situation de handicap!<br>",
-    "startDate": "2026-06-24T00:00:00+02:00",
+    "startDate": "2026-06-24T10:00:00+02:00",
     "endDate": "2026-06-24T13:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/24-06-projet-low-tech-avec-les-petits-debrouillards-2-2",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7a3e18a688dd47edb995cfe461d45a1f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-98c1237876a946089599071d4339a150.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-1f0e74f4b15241faabca62149cd81d3f.jpeg"
   },
   {
-    "title": "17/06 Projet low-tech avec les petits débrouillards !!  (2)",
+    "title": "17/06 Projet low-tech avec les petits débrouillards !!",
     "description": "Projet Low Tech avec Les petits débrouillards !!⭐<br><br>Tous les mercredis matins du mois de Juin, rejoignez nous au jardin partagé pour un atelier participatif :<br>Fabrication de tables de jardinage adaptées aux personnes en situation de handicap!<br>",
     "startDate": "2026-06-17T10:00:00+02:00",
     "endDate": "2026-06-17T13:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/17-06-projet-low-tech-avec-les-petits-debrouillards-2",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7a3e18a688dd47edb995cfe461d45a1f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-98c1237876a946089599071d4339a150.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-1c11abf3f6f34492ab67e9291c3a88ad.jpeg"
   },
   {
     "title": "10/06 Projet low-tech avec les petits débrouillards !! ",
@@ -33,7 +240,7 @@
     "endDate": "2026-06-10T13:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/projet-low-tech-avec-les-petits-debrouillards-1",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7a3e18a688dd47edb995cfe461d45a1f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-98c1237876a946089599071d4339a150.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-0fac9691f414405b8d604dab127b78dc.jpeg"
   },
   {
     "title": "03/06 Projet low-tech avec les petits débrouillards !!",
@@ -42,19 +249,19 @@
     "endDate": "2026-06-03T13:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/projet-low-tech-avec-les-petits-debrouillards",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-7a3e18a688dd47edb995cfe461d45a1f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-98c1237876a946089599071d4339a150.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-38309a72659e489da893cfdc30b3f8d3.jpeg"
   },
   {
     "title": "Atelier couture 13/06 - Grand sac de linge",
     "description": "🧵 Atelier couture – Grand sac de linge<br>Fabrique ton propre sac à linge en patchwork !<br>Que vous soyez grand·e débutant·e ou déjà à l’aise derrière la machine, cet atelier est ouvert à toutes et tous !<br>Recyclage de coupons de tissus mais aussi (plot twist) de sacs de croquettes et/ou de café !<br>Une belle manière de sauver du matériel :)<br>✂️ Tissus et machines sont fournis, mais vous pouvez bien sûr venir avec votre propre machine si vous le souhaitez.<br>À vos aiguilles ! 😊<br>",
-    "startDate": "2026-06-13T00:00:00+02:00",
+    "startDate": "2026-06-13T14:00:00+02:00",
     "endDate": "2026-06-13T17:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-13-06-grand-sac-de-linge",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
   },
   {
-    "title": " À Kermoysan, on répare, on repart ! 25/06   (2) (2)",
+    "title": " À Kermoysan, on répare, on repart ! 25/06",
     "description": "🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble ! <br><br>Venez apprendre à raccommoder et remettre en état vos objets & textiles !",
     "startDate": "2026-06-25T15:30:00+02:00",
     "endDate": "2026-06-25T18:30:00+02:00",
@@ -63,7 +270,7 @@
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-eca6ae36c1dc4f07ab32d54ea1c92afd.png"
   },
   {
-    "title": " À Kermoysan, on répare, on repart ! 11/06   (2)",
+    "title": " À Kermoysan, on répare, on repart ! 11/06 ",
     "description": "🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble ! <br><br>Venez apprendre à raccommoder et remettre en état vos objets & textiles !",
     "startDate": "2026-06-11T15:30:00+02:00",
     "endDate": "2026-06-11T18:30:00+02:00",
@@ -73,7 +280,7 @@
   },
   {
     "title": "Espace Bricolage - Réservation",
-    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 14h à 19h et le samedi de 14h à 17h30, venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
+    "description": "En juillet, l’Objethèque lance l’accès découverte à son Espace Bricolage. Le vendredi de 13h30 à 19h et le samedi de 14h à 17h30 (une fois sur 2) , venez avancer sur vos projets de réparation, fabrication ou adaptation dans un espace outillé, avec l’accompagnement d’un professionnel. Gratuit pendant la phase de lancement : vos retours nous aideront à améliorer le fonctionnement. Réservation obligatoire.",
     "startDate": "2026-07-04T14:00:00+02:00",
     "endDate": "2026-07-04T17:30:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/espace-bricolage-reservation",
@@ -82,12 +289,12 @@
   },
   {
     "title": "Atelier couture - cible grenouille ! 06/06",
-    "description": "🧵 Atelier couture – Cape de plage<br>Initiation à la couture pour les enfants lors de la création d’une cible grenouille en velcro et feutrine !<br>✂️ Tissus et machines sont fournis, à vos aiguilles ! 😊<br>Atelier gratuit<br>",
+    "description": "🧵 Atelier couture – Cible grenouille 🐸<br>Initiation à la couture pour les enfants lors de la création d’une cible grenouille en velcro et feutrine !<br>✂️ Tissus et machines sont fournis, à vos aiguilles ! 😊<br>Atelier gratuit<br>",
     "startDate": "2026-06-06T10:00:00+02:00",
     "endDate": "2026-06-06T13:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-cible-grenouille-06-06",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-04bcfc0b7129417a8f8b0852876f8330.jpeg"
   },
   {
     "title": "Atelier Affûtage -  vendredi 15 mai",
@@ -511,212 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-marmite-norvegienne-14-02",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-5ca5b1111c2f4b76bfc56364c12da4a1.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
-  },
-  {
-    "title": "Atelier couture 17/01 - Libre",
-    "description": "🧵 Atelier couture – thème libre<br>Que vous soyez grand·e débutant·e ou déjà à l’aise derrière la machine, cet atelier est ouvert à toutes et tous !<br>Venez apprendre les bases, vous perfectionner ou avancer sur vos projets personnels, dans un esprit convivial et d’entraide.<br>✂️ Tissus et machines sont fournis, mais vous pouvez bien sûr venir avec votre propre machine si vous le souhaitez.<br>À vos aiguilles ! 😊",
-    "startDate": "2026-01-17T14:00:00+01:00",
-    "endDate": "2026-01-17T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-17-01-libre",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
-  },
-  {
-    "title": "Atelier Co-réparation journée 31/01",
-    "description": "L\\'atelier co-réparation de l\\'Objethèque de Cornouaille est un espace collaboratif où les habitants peuvent venir réparer leurs objets du quotidien avec l\\'aide de bénévoles et d\\'outils mis à disposition. Cet atelier favorise le partage de savoir-faire, la réduction des déchets et la prolongation de la durée de vie des objets. Une initiative conviviale et durable pour un mode de consommation plus responsable.<br><br>Vous pouvez venir avec vos vêtements et/ou votre matériel petit électroménager à réparer",
-    "startDate": "2026-01-31T10:00:00+01:00",
-    "endDate": "2026-01-31T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-journee-31-01",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-f2d3214de51e40c5afdf79a509f7ec4f.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-25ac955b6d374ae9a130010d72c62ac4.png"
-  },
-  {
-    "title": "Mercredi co-réparation 28/01 ",
-    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2026-01-28T14:00:00+01:00",
-    "endDate": "2026-01-28T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-28-01",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
-  },
-  {
-    "title": "Mercredi co-réparation 21/01 ",
-    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2026-01-21T14:00:00+01:00",
-    "endDate": "2026-01-21T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-21-01",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
-  },
-  {
-    "title": "Mercredi co-réparation 14/01 ",
-    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2026-01-14T14:00:00+01:00",
-    "endDate": "2026-01-14T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-14-01",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
-  },
-  {
-    "title": "Mercredi co-réparation 07/01",
-    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2026-01-07T14:00:00+01:00",
-    "endDate": "2026-01-07T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-2-2",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-210cf24569eb4ea2b0c4ea1746b33fdf.png"
-  },
-  {
-    "title": "Atelier cuisine - Petit biscuits de Noël",
-    "description": "Plongez dans la magie de Noël en découvrant les véritables Bredele, ces biscuits traditionnels alsaciens qui embaument les maisons pendant les fêtes de fin d\\'année. 🎄🍪<br>Rejoignez-nous pour un moment gourmand et chaleureux, parfait pour préparer les fêtes en famille ou entre amis ! ✨",
-    "startDate": "2025-12-20T14:00:00+01:00",
-    "endDate": "2025-12-20T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-cuisine-petit-biscuits-de-noel",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-3f9e6d8e85d14e10897340a3c2b99c5c.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c563e0992aa94f0aa53b663f641fc366.png"
-  },
-  {
-    "title": "Carterie et goûter de Noël",
-    "description": "Viens créer ta carte illustrée pour le Père Noël ou réaliser une jolie carte de vœux ! L’atelier sera suivi d’un goûter chaleureux : jus de pommes et pain d’épices.<br>Les enfants doivent être accompagnés d’un adulte.",
-    "startDate": "2025-12-10T15:00:00+01:00",
-    "endDate": "2025-12-10T16:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/carterie-et-gouter-de-noel",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e9ea06b6ae4b456db0910ac67055d79a.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-28f1e80e5ebc4d568536fb96134f28f7.png"
-  },
-  {
-    "title": "Journée spéciale 29 novembre",
-    "description": "Journée spéciale à l’Objethèque : <br>Participez à une journée dédiée au partage de savoir-faire et à la réparation. Au programme : rempaillage de chaise (10h–13h, sur inscription), initiation au crochet (10h–12h30, sur inscription), co-réparation couture et petites créations (14h–17h), création de protège-selle en tissu (14h–17h), réparation de vélo (14h–17h) et co-réparation d’appareils électro toute la journée (10h–17h).",
-    "startDate": "2025-11-29T10:00:00+01:00",
-    "endDate": "2025-11-29T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/journee-speciale-29-novembre",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8ea14fe9d6614b34829826151a8ee66a.png"
-  },
-  {
-    "title": "Initiation au crochet 29/11",
-    "description": "Envie de découvrir un loisir créatif accessible à tous ? Rejoignez notre atelier d’initiation au crochet !<br>Dans une ambiance conviviale, vous apprendrez les bases essentielles : comment tenir le crochet, réaliser les points fondamentaux (maille en l’air, maille serrée, bride…), et commencer votre tout premier petit projet.<br>Pas besoin de matériel ni d’expérience, juste l’envie de passer un bon moment et de découvrir une nouvelle passion<br>",
-    "startDate": "2025-11-29T10:30:00+01:00",
-    "endDate": "2025-11-29T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/initiation-au-crochet-29-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-42246af5f9844d6398827be840428745.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8f4adf6f7d3e40c2bf400bec155cb710.png"
-  },
-  {
-    "title": "Laisser son empreinte, un geste vers soi",
-    "description": "Au programme, 2 ateliers de 1h30 pour vivre un moment de découverte de soi, entre jeu et exploration intérieure<br>Le premier atelier, ludique et interactif, invite à réfléchir à l’empreinte que nous laissons, à questionner ce qui nous anime et à mieux comprendre notre manière de communiquer.<br>Le second atelier, propose d’utiliser un simple objet comme miroir de vos forces. Une exploration sensible pour reconnaître vos atouts, besoins et élans, et repartir avec plus de clarté et et de confiance.",
-    "startDate": "2025-12-06T10:00:00+01:00",
-    "endDate": "2025-12-06T17:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/laissez-votre-empreinte-un-geste-vers-soi",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-5559897c3f9c48878eb175f06514a7b3.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-1308b02052ab4c2893ca6041a597405e.png"
-  },
-  {
-    "title": "Atelier co-réparation couture et électro",
-    "description": "Rejoignez-nous à la Coopérative Le Kœur pour un moment convivial autour de la réparation et du partage !<br>Nous vous proposons de réparer ensemble vos vêtements et petits appareils électroménagers.<br>Apportez ce que vous souhaitez réparer, vos outils si vous en avez, et surtout votre bonne humeur.",
-    "startDate": "2025-11-08T09:30:00+01:00",
-    "endDate": "2025-11-08T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-co-reparation-couture-et-electro",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-fc4176184acb496c82c98c66f6a2aa4a.png"
-  },
-  {
-    "title": "Répar' Tour à Ergué-Gabéric 28/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-28T14:00:00+01:00",
-    "endDate": "2025-11-28T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-ergue-gaberic-28-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-14786e96471c407ba2a875438c79156c.png"
-  },
-  {
-    "title": "Répar' Tour à Pluguffan 26/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-26T14:00:00+01:00",
-    "endDate": "2025-11-26T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-pluguffan-26-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-72830aa0dece43749bd8f94a745a2dc6.png"
-  },
-  {
-    "title": "Répar' Tour à Quéménéven 22/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-22T09:30:00+01:00",
-    "endDate": "2025-11-22T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-quemeneven-22-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e13a6dbb40984527b8e3af617100bf63.png"
-  },
-  {
-    "title": "Répar' Tour à Plogonnec 19/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-19T14:00:00+01:00",
-    "endDate": "2025-11-19T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-plogonnec-19-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-120d4f722ba04ee5a88e722b2576e075.png"
-  },
-  {
-    "title": "Répar' Tour à Guengat 15/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-15T09:30:00+01:00",
-    "endDate": "2025-11-15T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-guengat-15-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-94dd9fd5e65b488ca817b10894211a35.png"
-  },
-  {
-    "title": "Répar' Tour à Plonéis 12/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-12T14:00:00+01:00",
-    "endDate": "2025-11-12T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-ploneis-12-11",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-8f1a29b581ee457da96a7eda4c0fbff4.png"
-  },
-  {
-    "title": "Répar' Tour à Briec 8/11",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-08T14:00:00+01:00",
-    "endDate": "2025-11-08T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/repar-tour-a-briec",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-3478d6b24cd34034ad9887589acb9a2b.png"
-  },
-  {
-    "title": "Répar' Tour à Plomelin",
-    "description": "Ces ateliers sont consacrés à la réparation de petits appareils électroménagers, bricolage et jardinage. Ils permettent à chacun de bénéficier d\\'un accompagnement personnalisé et d\\'apprendre les bons geste aux côtés des bénévoles de l\\'association L\\'Objethèque de Cornouaille.",
-    "startDate": "2025-11-05T09:30:00+01:00",
-    "endDate": "2025-11-05T12:30:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-reparation",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-2a4796eba3354de9a2690551ce3b9e92.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-fc3ebe6d55ea4556b8b3907b68f45d62.png"
-  },
-  {
-    "title": "Atelier couture 13/12 - Couture d'emballage cadeau",
-    "description": "Rejoignez-nous pour un moment créatif et convivial lors de notre atelier couture à l\\'Objethèque de Cornouaille ! <br>Le thème: Emballages cadeaux<br>Apprenez à confectionner de jolis emballages en tissu, une alternative durable et élégante au papier cadeau jetable. Vous découvrirez différentes techniques de couture simples pour créer pochons, sacs et furoshikis personnalisés. Un atelier créatif et écoresponsable, idéal pour préparer de belles attentions tout en réduisant ses déchets.",
-    "startDate": "2025-12-13T14:00:00+01:00",
-    "endDate": "2025-12-13T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-13-12-couture-d-emballage-cadeau",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-718c1a86164145558cbc50ed45a49183.png"
-  },
-  {
-    "title": "Atelier couture 08/11 - Patchwork ",
-    "description": "Envie de créer, d’assembler et de donner une seconde vie à vos tissus ?<br>Rejoignez-nous pour un atelier convivial autour du patchwork, une technique de couture qui consiste à assembler des morceaux de tissus pour former de jolis motifs colorés et uniques 🎨.<br>Que vous soyez débutant·e ou déjà à l’aise avec la couture, cet atelier est fait pour vous ! Vous apprendrez les bases du patchwork : choix des tissus, découpe, assemblage et finitions, le tout dans une ambiance détendue et bienveillante ✂️",
-    "startDate": "2025-11-08T14:00:00+01:00",
-    "endDate": "2025-11-08T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-11-10-patchwork-set-et-chemin-de-table",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-718c1a86164145558cbc50ed45a49183.png"
-  },
-  {
-    "title": "Mercredi co-réparation",
-    "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
-    "startDate": "2025-12-17T14:00:00+01:00",
-    "endDate": "2025-12-17T17:00:59+01:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/mercredi-co-reparation-21",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-d30969a2c7c647d388f8a8bde8c6c428.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-ced178ffcf4b4fecb19306f71d7a6552.png"
   }
 ]
