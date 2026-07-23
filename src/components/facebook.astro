@@ -2,7 +2,7 @@
 const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
 ---
 
-<section style="display: flex; justify-content: center;">
+<section class="fb-wrapper">
   <details class="missionBenev" id="fb-details" data-url={pageUrl}>
     <summary>📢 Voir les dernières actualités</summary>
     <div id="fb-content">
@@ -99,10 +99,17 @@ const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
     }
   }
 
+  .fb-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
   /* 🔥 Conteneur principal du détail */
   #fb-details {
     display: flex;
     flex-direction: column;
+    width: fit-content;
     margin: 1em 0;
     border-radius: 5px;
     padding: 5px;
@@ -115,6 +122,7 @@ const pageUrl = "https://www.facebook.com/ObjethequeCornouaille/";
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s ease-in-out;
+    white-space: nowrap;
   }
 
   #fb-container {

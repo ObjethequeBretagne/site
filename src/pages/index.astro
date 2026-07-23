@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Facebook from "../components/facebook.astro";
+import DonateButton from "../components/donate-button.astro";
 import NextEvents from "../components/nextevents.astro";
 import Counter from "../components/counter.astro";
 import Catalogue from "../components/myturncatalog.astro";
@@ -46,7 +47,10 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
         />
       </div>
     </section>
-    <Facebook />
+    <div class="homeCtaRow">
+      <Facebook />
+      <DonateButton />
+    </div>
     <h2>
       <span class="moon">Nos dates à venir !</span>
       <a class="plusplus star" href="agenda"> + </a>
@@ -143,3 +147,17 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
     />
   </main>
 </Layout>
+
+<style>
+  .homeCtaRow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-block: 1em;
+  }
+
+  .homeCtaRow :global(#fb-details) {
+    margin: 0;
+  }
+</style>
