@@ -4,7 +4,7 @@ import Layout from "../layouts/layout.astro";
 
 <Layout title="Faire un don">
   <main>
-    <h2 class="h2PaddingTopBig">Faire un don</h2>
+    <h2 class="h2PaddingTopBig">Faire un don financier</h2>
     <section id="faireUnDon">
       <p>
         Pour faire fonctionner le système de prêt d’objet nous comptons sur vos
@@ -36,16 +36,52 @@ import Layout from "../layouts/layout.astro";
         <br /><br />
         Suivez-nous sur les réseaux pour plus d’informations!
       </p>
+      <div id="haWidgetContainer">
+        <iframe
+          id="haWidget"
+          title="Formulaire de don HelloAsso"
+          allowtransparency="true"
+          scrolling="auto"
+          src="https://www.helloasso.com/associations/l-objetheque-de-cornouaille/formulaires/1/widget"
+        ></iframe>
+      </div>
     </section>
   </main>
 </Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const haWidget = document.getElementById("haWidget") as HTMLIFrameElement | null;
+    if (!haWidget) return;
+
+    window.addEventListener("message", (e) => {
+      if (e.source !== haWidget.contentWindow) return;
+      const dataHeight = e.data?.height;
+      if (dataHeight > parseFloat(haWidget.style.height || "0")) {
+        haWidget.style.height = dataHeight + "px";
+      }
+    });
+  });
+</script>
+
 <style>
-  #faireUnDon { 
-    margin-inline: clamp(5%, 2rem, 60%); 
+  #faireUnDon {
+    margin-inline: clamp(5%, 2rem, 60%);
     padding-left: 1rem;
-    color: var(--dark-text-color); 
+    color: var(--dark-text-color);
     margin-top: calc(var(--marginBlock) / 2);
     margin-bottom: calc(var(--marginBlock) / 2 + 150px);
-  } 
+  }
+
+  #haWidgetContainer {
+    margin-top: 2rem;
+    padding-right: 1rem;
+  }
+
+  #haWidget {
+    width: 100%;
+    height: 750px;
+    border: none;
+  }
 </style>
  
