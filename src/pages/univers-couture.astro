@@ -3,6 +3,7 @@ import Layout from "../layouts/layout.astro";
 import Creneaux from "../components/creneaux.astro";
 import { Picture } from "astro:assets";
 import couture from "../assets/img/atelier-creation-couture.jpg";
+import illuCouture from "../assets/img/illuPresa2.png";
 
 // Dates annoncées pour les créneaux couture accompagnés (2e semestre 2026).
 const datesCreneaux = [
@@ -48,7 +49,7 @@ const datesCreneaux = [
           <li>l'utilisation en autonomie de l'espace couture pendant certaines permanences&nbsp;;</li>
           <li>une réduction sur les ateliers couture thématiques organisés au cours de l'année.</li>
         </ul>
-        <nav class="boutonOrange boutonOrangeLarge">
+        <nav class="boutonOrange boutonOrangeLarge boutonCentre">
           <a
             href="https://www.helloasso.com/beta/associations/l-objetheque-de-cornouaille/adhesions/adhesion-couture"
             target="_blank"
@@ -57,31 +58,24 @@ const datesCreneaux = [
         </nav>
       </div>
 
-      <!-- 2. Créneaux couture accompagnés -->
-      <div class="uc-bloc">
-        <h3>Les créneaux couture accompagnés</h3>
-        <p>Tous les quinze jours, un <strong>créneau convivial en petit groupe</strong> permet d'avancer sur ses projets avec l'accompagnement d'une couturière. On peut venir avec une idée, un vêtement à transformer ou une réalisation déjà commencée. Les créneaux sont adaptés aux personnes débutantes comme à celles qui souhaitent progresser.</p>
-      </div>
+      <!-- 2. Créneaux accompagnés + infos pratiques, côte à côte -->
+      <div class="uc-duo">
+        <div class="uc-bloc">
+          <h3>Les créneaux couture accompagnés</h3>
+          <p>Tous les quinze jours, un <strong>créneau convivial en petit groupe</strong> permet d'avancer sur ses projets avec l'accompagnement d'une couturière. On peut venir avec une idée, un vêtement à transformer ou une réalisation déjà commencée. Les créneaux sont adaptés aux personnes débutantes comme à celles qui souhaitent progresser.</p>
+        </div>
 
-      <div class="uc-pratique">
-        <div class="uc-pratique-bloc">
+        <div class="uc-encart">
           <h3>Informations pratiques</h3>
           <ul class="uc-infos-liste">
             <li><strong>Horaires&nbsp;:</strong> de 17h30 à 20h</li>
             <li><strong>Groupe&nbsp;:</strong> 6 personnes maximum</li>
             <li><strong>Accès&nbsp;:</strong> inscription obligatoire pour chaque créneau</li>
+            <li><strong>Dates&nbsp;:</strong> {datesCreneaux.map((c) => c.date).join(" ; ")} 2026</li>
           </ul>
-        </div>
-        <div class="uc-pratique-bloc">
-          <h3>Les dates</h3>
-          <ul class="uc-dates">
-            {datesCreneaux.map((creneau) => (
-              <li>
-                {creneau.date}
-                {creneau.mention && <span class="uc-mention">{creneau.mention}</span>}
-              </li>
-            ))}
-          </ul>
+          {datesCreneaux.filter((c) => c.mention).map((c) => (
+            <p class="uc-note">Le {c.date}&nbsp;: {c.mention}.</p>
+          ))}
         </div>
       </div>
 
@@ -98,13 +92,13 @@ const datesCreneaux = [
         <h3>Les ateliers couture thématiques</h3>
         <p>Le <strong>deuxième samedi de chaque mois</strong>, un atelier est consacré à une technique ou à une réalisation particulière&nbsp;: transformation et personnalisation de vêtements, créations à partir de tissus de récupération, fabrication d'accessoires, découverte de nouvelles techniques ou initiation à l'upcycling textile.</p>
         <p>Les thèmes, horaires et tarifs sont annoncés au fil de l'année. Les personnes disposant de l'adhésion couture bénéficient d'un <strong>tarif réduit</strong>.</p>
-        <nav class="boutonOrange boutonOrangeLarge">
+        <nav class="boutonOrange boutonOrangeLarge boutonCentre">
           <a href="/agenda/"><p>Découvrir les prochains ateliers</p></a>
         </nav>
       </div>
 
       <!-- 4 & 5. Autonomie + co-réparation -->
-      <div class="uc-deux-colonnes">
+      <div class="uc-duo">
         <div class="uc-bloc">
           <h3>L'espace couture en autonomie</h3>
           <p>Les personnes disposant de l'adhésion couture peuvent utiliser le matériel pour avancer sur leurs projets en autonomie&nbsp;: une machine à coudre, une surjeteuse et une machine destinée au travail du cuir.</p>
@@ -120,9 +114,22 @@ const datesCreneaux = [
       </div>
 
       <!-- Une couture créative et durable -->
-      <div class="uc-bloc">
-        <h3>Une couture créative et durable</h3>
-        <p>Réparer une couture, transformer un vêtement devenu trop grand, réutiliser une chute de tissu ou créer un nouvel objet&nbsp;: la couture permet de prolonger la vie des textiles tout en développant sa créativité. À l'Objethèque, nous privilégions l'apprentissage, l'entraide et la réutilisation des matières déjà disponibles.</p>
+      <div class="uc-duo">
+        <div class="uc-bloc">
+          <h3>Une couture créative et durable</h3>
+          <p>Réparer une couture, transformer un vêtement devenu trop grand, réutiliser une chute de tissu ou créer un nouvel objet&nbsp;: la couture permet de prolonger la vie des textiles tout en développant sa créativité.</p>
+          <p>À l'Objethèque, nous privilégions l'apprentissage, l'entraide et la réutilisation des matières déjà disponibles.</p>
+        </div>
+
+        <div class="uc-illu">
+          <Picture
+            src={illuCouture}
+            formats={["avif", "webp"]}
+            widths={[400, 800]}
+            sizes="(max-width: 1200px) 80vw, 40vw"
+            alt="Illustration : une personne devant une machine à coudre, à côté d'un sac réalisé en patchwork de tissus récupérés"
+          />
+        </div>
       </div>
 
       <!--
@@ -205,6 +212,7 @@ const datesCreneaux = [
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 16px;
   }
 
   /* ---- Blocs texte ---- */
@@ -247,22 +255,6 @@ const datesCreneaux = [
     margin-bottom: 0.5rem;
   }
 
-  /* ---- Deux colonnes ---- */
-  .uc-deux-colonnes {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    margin-inline: var(--uc-mx);
-    margin-bottom: var(--uc-gap);
-  }
-
-  .uc-deux-colonnes .uc-bloc,
-  .uc-deux-colonnes .uc-encart {
-    flex: 1;
-    margin-inline: 0;
-    margin-bottom: 0;
-  }
-
   .uc-encart--colonne {
     border-left-color: var(--secondary-color);
   }
@@ -271,71 +263,69 @@ const datesCreneaux = [
     color: var(--secondary-color);
   }
 
-  /* ---- Listes ---- */
-  .uc-liste {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    margin: 0.75rem 0 1.25rem;
-    padding-left: 1.25rem;
-  }
-
-  .uc-liste li {
-    color: var(--dark-text-color);
-    line-height: 1.6;
-  }
-
-  /* ---- Infos pratiques ---- */
-  .uc-pratique {
+  /* ---- Rangées deux colonnes ---- */
+  /* Même principe que la page ateliers : côte à côte tant que chacun tient
+     dans 28rem, l'un sous l'autre sinon. Pas de breakpoint. */
+  .uc-duo {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
+    align-items: start;
     gap: 2rem;
     margin-inline: var(--uc-mx);
     margin-bottom: var(--uc-gap);
   }
 
-  .uc-pratique-bloc h3 {
+  .uc-duo > * {
     margin-inline: 0;
-    margin-bottom: 0.75rem;
-    color: var(--secondary-color);
+    margin-bottom: 0;
+  }
+
+  /* ---- Illustration ---- */
+  .uc-illu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .uc-illu :global(img) {
+    width: 100%;
+    max-width: 19rem;
+    height: auto;
+  }
+
+  /* ---- Listes ---- */
+  .uc-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.75rem 0 0;
+    padding-left: 1.25rem;
   }
 
   .uc-infos-liste {
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+    margin-top: 0.75rem;
   }
 
+  .uc-liste li,
   .uc-infos-liste li {
     color: var(--dark-text-color);
     line-height: 1.6;
   }
 
-  .uc-dates {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    list-style: none;
-    padding-left: 0;
-  }
-
-  .uc-dates li {
-    background: var(--grey-background);
-    border-radius: 20px;
-    padding: 0.35rem 1rem;
-    color: var(--dark-text-color);
-    font-size: 0.95em;
-  }
-
-  .uc-mention {
-    display: block;
+  .uc-note {
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    color: var(--grey-text-color);
     font-style: italic;
-    color: var(--secondary-color);
-    font-size: 0.9em;
   }
 
-  .boutonOrangeLarge {
-    margin-top: 0.5rem;
+  /* Même écart au-dessus des boutons que sur la page ateliers. */
+  .uc-encart .boutonCentre,
+  .uc-bloc .boutonCentre {
+    margin-top: 1.25rem;
   }
 
   /* ---- Une question ? ---- */
@@ -379,14 +369,6 @@ const datesCreneaux = [
 
     .uc-intro-img {
       width: 100%;
-    }
-
-    .uc-deux-colonnes {
-      flex-direction: column;
-    }
-
-    .uc-pratique {
-      grid-template-columns: 1fr;
     }
   }
 </style>

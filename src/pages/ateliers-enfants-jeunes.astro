@@ -50,29 +50,31 @@ const seancesDecouverte = [
         </div>
       </div>
 
-      <!-- La Fabrique du mercredi -->
-      <div class="aj-bloc">
-        <h3>La Fabrique du mercredi</h3>
-        <p>La Fabrique du mercredi est un <strong>atelier régulier destiné aux jeunes de 8 à 14 ans</strong> qui aiment construire, démonter, imaginer et créer de leurs mains.</p>
-        <p>Tout au long de l'année, les participants explorent le bricolage, le travail du bois, la fabrication et la réparation d'objets, l'électronique, les constructions low-tech, la création artistique, la réutilisation de matériaux et la fabrication numérique. Les activités évoluent afin de permettre aux jeunes de <strong>découvrir de nouvelles techniques et de gagner progressivement en autonomie</strong>.</p>
-      </div>
+      <!-- La Fabrique du mercredi + infos pratiques, côte à côte -->
+      <div class="aj-duo">
+        <div class="aj-bloc">
+          <h3>La Fabrique du mercredi</h3>
+          <p>La Fabrique du mercredi est un <strong>atelier régulier destiné aux jeunes de 8 à 14 ans</strong> qui aiment construire, démonter, imaginer et créer de leurs mains.</p>
+          <p>Tout au long de l'année, les participants explorent le bricolage, le travail du bois, la fabrication et la réparation d'objets, l'électronique, les constructions low-tech, la création artistique, la réutilisation de matériaux et la fabrication numérique. Les activités évoluent afin de permettre aux jeunes de <strong>découvrir de nouvelles techniques et de gagner progressivement en autonomie</strong>.</p>
+        </div>
 
-      <div class="aj-encart">
-        <h3>Informations pratiques</h3>
-        <ul class="aj-infos-liste">
-          <li><strong>Période&nbsp;:</strong> du 7 octobre 2026 au 30 juin 2027 - 30 séances hors vacances scolaires et jours fériés</li>
-          <li><strong>Horaires&nbsp;:</strong> deux groupes de 12 enfants - 9h-10h30 et 10h30-12h</li>
-          <li><strong>Public&nbsp;:</strong> 8-14 ans</li>
-          <li><strong>Tarif&nbsp;:</strong> 280 € pour l'année - matériel fourni</li>
-          <li><strong>À prévoir&nbsp;:</strong> des vêtements adaptés aux activités manuelles et pouvant être salis</li>
-        </ul>
-        <nav class="boutonOrange boutonOrangeLarge">
-          <a
-            href="https://www.helloasso.com/beta/associations/l-objetheque-de-cornouaille/adhesions/la-fabrique-du-mercredi"
-            target="_blank"
-            rel="noopener noreferrer"><p>Inscrire mon enfant à La Fabrique du mercredi</p></a
-          >
-        </nav>
+        <div class="aj-encart">
+          <h3>Informations pratiques</h3>
+          <ul class="aj-infos-liste">
+            <li><strong>Période&nbsp;:</strong> du 7 octobre 2026 au 30 juin 2027 - 30 séances hors vacances scolaires et jours fériés</li>
+            <li><strong>Horaires&nbsp;:</strong> deux groupes de 12 enfants - 9h-10h30 et 10h30-12h</li>
+            <li><strong>Public&nbsp;:</strong> 8-14 ans</li>
+            <li><strong>Tarif&nbsp;:</strong> 280 € pour l'année - matériel fourni</li>
+            <li><strong>À prévoir&nbsp;:</strong> des vêtements adaptés aux activités manuelles et pouvant être salis</li>
+          </ul>
+          <nav class="boutonOrange boutonOrangeLarge boutonCentre">
+            <a
+              href="https://www.helloasso.com/beta/associations/l-objetheque-de-cornouaille/adhesions/la-fabrique-du-mercredi"
+              target="_blank"
+              rel="noopener noreferrer"><p>Inscrire mon enfant à La Fabrique du mercredi</p></a
+            >
+          </nav>
+        </div>
       </div>
 
       <!-- Séances découvertes -->
@@ -168,7 +170,7 @@ const seancesDecouverte = [
         <p>Accessibles aux enfants et aux jeunes de 6 à 14 ans, ces activités permettent de découvrir le bricolage et la fabrication à travers des projets courts et ludiques&nbsp;: parcours de billes, vaisseau spatial, défis de construction, découverte des outils ou création à partir de matériaux récupérés.</p>
         <p><strong>Formats proposés&nbsp;:</strong> ateliers d'une durée comprise entre 1h15 et 2h30. Certains projets peuvent également être proposés sous la forme d'un stage de deux jours.</p>
         <p>Les programmes et les inscriptions sont publiés avant chaque période de vacances sur la plateforme Atout Sport.</p>
-        <nav class="boutonOrange boutonOrangeLarge">
+        <nav class="boutonOrange boutonOrangeLarge boutonCentre">
           <a
             href="https://www.quimperplus.bzh/catalogue-dactivites/?partenaire=146"
             target="_blank"
@@ -282,6 +284,23 @@ const seancesDecouverte = [
     margin-bottom: 0.5rem;
   }
 
+  /* ---- La Fabrique + infos pratiques ---- */
+  /* Côte à côte tant que chacun tient dans 28rem, l'un sous l'autre sinon.
+     Le wrap se déclenche sur la place disponible, pas sur un breakpoint. */
+  .aj-duo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
+    align-items: start;
+    gap: 2rem;
+    margin-inline: var(--aj-mx);
+    margin-bottom: var(--aj-gap);
+  }
+
+  .aj-duo > * {
+    margin-inline: 0;
+    margin-bottom: 0;
+  }
+
   /* ---- Encart infos pratiques ---- */
   .aj-encart {
     margin-inline: var(--aj-mx);
@@ -318,6 +337,13 @@ const seancesDecouverte = [
     padding: 1.25rem 1.5rem;
   }
 
+  /* L'écart au-dessus de ces deux boutons dépendait de l'élément précédent
+     (liste : 1.25rem, paragraphe : 0.5rem). On le fixe sur les boutons. */
+  .aj-encart .boutonCentre,
+  .aj-atout-sport .boutonCentre {
+    margin-top: 1.25rem;
+  }
+
   /* ---- Listes ---- */
   .aj-liste {
     display: flex;
@@ -342,7 +368,8 @@ const seancesDecouverte = [
   .aj-decouvertes {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center;
+    gap: 1.7rem;
     margin-block: 1rem;
   }
 
