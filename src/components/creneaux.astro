@@ -1,0 +1,186 @@
+---
+// Agenda de réservation de créneaux.
+// Affiche les événements HelloAsso dont le titre commence par `prefixe`
+// (espace bricolage, créneaux couture accompagnés, etc.).
+interface Props {
+  titre: string;
+  prefixe: string;
+  id: string;
+  /** Nombre de mois affichés à partir d'aujourd'hui */
+  mois?: number;
+  /** Jour de la semaine mis en avant en orange (0 = dimanche ... 6 = samedi) */
+  jourAccent?: number;
+  texteBouton?: string;
+}
+
+const {
+  titre,
+  prefixe,
+  id,
+  mois = 2,
+  jourAccent,
+  texteBouton = "réserver",
+} = Astro.props;
+---
+
+<section
+  class="creneaux-section"
+  id={id}
+  data-prefixe={prefixe}
+  data-mois={mois}
+  data-jour-accent={jourAccent ?? ""}
+  data-bouton={texteBouton}
+>
+  <h2>{titre}</h2>
+  <div class="loading-indicator" data-role="loading">
+    <p>Chargement des créneaux...</p>
+  </div>
+  <div class="no-events" data-role="empty" hidden>
+    <p>Aucun créneau n’est actuellement ouvert à la réservation.</p>
+    <p>De nouvelles dates seront proposées prochainement.</p>
+  </div>
+  <div class="derniersEvenementsGridAll" data-role="list" hidden></div>
+</section>
+
+<script>
+  function escHtml(str: string) {
+    return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  // Les titres saisis sur HelloAsso varient (accents, majuscules, espaces) :
+  // on compare sur une version normalisée.
+  function normalise(str: string) {
+    return str.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim();
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll<HTMLElement>(".creneaux-section");
+    if (sections.length === 0) return;
+
+    sections.forEach(section => {
+      const loading = section.querySelector<HTMLElement>('[data-role="loading"]')!;
+      const empty   = section.querySelector<HTMLElement>('[data-role="empty"]')!;
+      const list    = section.querySelector<HTMLElement>('[data-role="list"]')!;
+
+      const prefixe    = normalise(section.dataset.prefixe ?? "");
+      const nbMois     = Number(section.dataset.mois ?? 2);
+      const jourAccent = section.dataset.jourAccent ? Number(section.dataset.jourAccent) : null;
+      const bouton     = escHtml(section.dataset.bouton ?? "réserver");
+
+      fetch("/events.json")
+        .then(r => r.json())
+        .then((data: any[]) => {
+          const today  = new Date();
+          const limite = new Date(today);
+          limite.setMonth(limite.getMonth() + nbMois);
+          const fr  = "fr-FR";
+          const fmt = { hour: "2-digit" as const, minute: "2-digit" as const };
+
+          const events = data
+            .filter(e => {
+              const start = new Date(e.startDate);
+              return normalise(e.title ?? "").startsWith(prefixe) && start > today && start <= limite;
+            })
+            .sort((a, b) => +new Date(a.startDate) - +new Date(b.startDate));
+
+          loading.hidden = true;
+
+          if (events.length === 0) {
+            empty.hidden = false;
+            return;
+          }
+
+          list.innerHTML = events.map(event => {
+            const start      = new Date(event.startDate);
+            const end        = new Date(event.endDate);
+            const jour       = start.toLocaleDateString(fr, { weekday: "long" });
+            const date       = start.getDate();
+            const moisLabel  = start.toLocaleDateString(fr, { month: "long" });
+            const heureDebut = start.toLocaleTimeString(fr, fmt);
+            const heureFin   = end.toLocaleTimeString(fr, fmt);
+            const url        = escHtml(event.url ?? "#");
+            const hasCover   = !!event.logoUrl;
+            const logo       = escHtml(event.logoUrl ?? "/assets/img/logo.png");
+            const titre      = escHtml(event.title ?? "");
+            const accent     = jourAccent !== null && start.getDay() === jourAccent;
+
+            return `
+              <div class="derniersEvenementsGrid1">
+                <a href="${url}" target="_blank" rel="noopener">
+                  <img class="imgEvent${hasCover ? '' : ' imgEvent--fallback'}" src="${logo}" alt="${titre}" loading="lazy" />
+                </a>
+                <div class="dateEvent">
+                  <p class="jourLEvent">${jour}</p>
+                  <p class="jourNEvent">${date}</p>
+                  <p class="moiEvent">${moisLabel}</p>
+                </div>
+                <div class="traitEvent"><div class="flexible-line"></div></div>
+                <div class="eb-infos">
+                  <span class="eb-badge ${accent ? "eb-badge--accent" : "eb-badge--principal"}">${jour}</span>
+                  <span class="eb-horaires">${heureDebut} – ${heureFin}</span>
+                </div>
+                <div class="traitEvent traiFin"><div class="flexible-line"></div></div>
+                <div>
+                  <a class="plusInfos" href="${url}" target="_blank" rel="noopener">
+                    <span class="plusplus">+</span> ${bouton}
+                  </a>
+                </div>
+              </div>`;
+          }).join("");
+
+          list.hidden = false;
+        })
+        .catch(() => {
+          loading.hidden = true;
+          empty.hidden = false;
+        });
+    });
+  });
+</script>
+
+<style is:global>
+  .creneaux-section h2 {
+    font-size: clamp(1.2rem, 2vw + 0.5rem, 1.8rem);
+    color: var(--secondary-color);
+    margin-inline: 0;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .eb-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.95em;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+
+  .eb-badge--accent {
+    background: var(--primary-color);
+    color: var(--light-text-color);
+  }
+
+  .eb-badge--principal {
+    background: var(--secondary-color);
+    color: var(--light-text-color);
+  }
+
+  .eb-infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .eb-horaires {
+    color: var(--grey-text-color);
+    white-space: nowrap;
+  }
+
+  .creneaux-section .derniersEvenementsGridAll {
+    margin-top: 0;
+  }
+</style>
