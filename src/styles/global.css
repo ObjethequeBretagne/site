@@ -451,6 +451,11 @@ header a {
   text-wrap: wrap;
   text-align: center;
 }
+/* À combiner avec .boutonOrangeLarge, qui donne au nav la largeur du bouton. */
+.boutonCentre {
+  margin-inline: auto;
+}
+
 /* Certains de ces boutons ouvrent une modale : <button> au lieu de <a>. */
 .boutonOrangeLarge button {
   background: none;
