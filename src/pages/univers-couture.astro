@@ -1,0 +1,392 @@
+---
+import Layout from "../layouts/layout.astro";
+import Creneaux from "../components/creneaux.astro";
+import { Picture } from "astro:assets";
+import couture from "../assets/img/atelier-creation-couture.jpg";
+
+// Dates annoncées pour les créneaux couture accompagnés (2e semestre 2026).
+const datesCreneaux = [
+  { date: "23 septembre" },
+  { date: "7 octobre" },
+  { date: "21 octobre", mention: "séance spéciale parent-enfant" },
+  { date: "4 novembre" },
+  { date: "18 novembre" },
+  { date: "2 décembre" },
+  { date: "16 décembre" },
+];
+---
+
+<Layout title="L'univers couture">
+  <main>
+    <section class="uc-page">
+
+      <!-- Intro -->
+      <div class="uc-intro">
+        <div class="uc-intro-text">
+          <h2 class="uc-titre">L'univers couture</h2>
+          <p class="uc-accroche">Envie d'apprendre à coudre, de progresser, de réaliser vos propres projets ou de donner une seconde vie à vos vêtements&nbsp;?</p>
+          <p>L'Objethèque propose des <strong>créneaux accompagnés</strong>, des <strong>ateliers thématiques</strong>, un <strong>accès autonome au matériel</strong> et des temps de <strong>co-réparation textile</strong>.</p>
+        </div>
+        <div class="uc-intro-img">
+          <Picture
+            src={couture}
+            formats={["avif", "webp"]}
+            widths={[400, 800, 1100]}
+            sizes="(max-width: 1200px) 95vw, 50vw"
+            alt="Atelier de création couture à l'Objethèque"
+            loading="eager"
+          />
+        </div>
+      </div>
+
+      <!-- 1. Adhésion couture -->
+      <div class="uc-encart">
+        <h3>L'adhésion couture</h3>
+        <p>L'adhésion couture coûte <strong>50 € pour 12 mois</strong>. Elle est valable de date à date, à compter du jour de l'adhésion. Elle comprend&nbsp;:</p>
+        <ul class="uc-liste">
+          <li>l'accès aux créneaux couture accompagnés organisés tous les quinze jours&nbsp;;</li>
+          <li>l'utilisation en autonomie de l'espace couture pendant certaines permanences&nbsp;;</li>
+          <li>une réduction sur les ateliers couture thématiques organisés au cours de l'année.</li>
+        </ul>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <a
+            href="https://www.helloasso.com/beta/associations/l-objetheque-de-cornouaille/adhesions/adhesion-couture"
+            target="_blank"
+            rel="noopener noreferrer"><p>Adhérer à l'univers couture</p></a
+          >
+        </nav>
+      </div>
+
+      <!-- 2. Créneaux couture accompagnés -->
+      <div class="uc-bloc">
+        <h3>Les créneaux couture accompagnés</h3>
+        <p>Tous les quinze jours, un <strong>créneau convivial en petit groupe</strong> permet d'avancer sur ses projets avec l'accompagnement d'une couturière. On peut venir avec une idée, un vêtement à transformer ou une réalisation déjà commencée. Les créneaux sont adaptés aux personnes débutantes comme à celles qui souhaitent progresser.</p>
+      </div>
+
+      <div class="uc-pratique">
+        <div class="uc-pratique-bloc">
+          <h3>Informations pratiques</h3>
+          <ul class="uc-infos-liste">
+            <li><strong>Horaires&nbsp;:</strong> de 17h30 à 20h</li>
+            <li><strong>Groupe&nbsp;:</strong> 6 personnes maximum</li>
+            <li><strong>Accès&nbsp;:</strong> inscription obligatoire pour chaque créneau</li>
+          </ul>
+        </div>
+        <div class="uc-pratique-bloc">
+          <h3>Les dates</h3>
+          <ul class="uc-dates">
+            {datesCreneaux.map((creneau) => (
+              <li>
+                {creneau.date}
+                {creneau.mention && <span class="uc-mention">{creneau.mention}</span>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Agenda de réservation des créneaux couture -->
+      <Creneaux
+        id="creneaux-couture"
+        titre="Réserver un créneau couture accompagné"
+        prefixe="creneau couture"
+        mois={4}
+      />
+
+      <!-- 3. Ateliers couture thématiques -->
+      <div class="uc-bloc">
+        <h3>Les ateliers couture thématiques</h3>
+        <p>Le <strong>deuxième samedi de chaque mois</strong>, un atelier est consacré à une technique ou à une réalisation particulière&nbsp;: transformation et personnalisation de vêtements, créations à partir de tissus de récupération, fabrication d'accessoires, découverte de nouvelles techniques ou initiation à l'upcycling textile.</p>
+        <p>Les thèmes, horaires et tarifs sont annoncés au fil de l'année. Les personnes disposant de l'adhésion couture bénéficient d'un <strong>tarif réduit</strong>.</p>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <a href="/agenda/"><p>Découvrir les prochains ateliers</p></a>
+        </nav>
+      </div>
+
+      <!-- 4 & 5. Autonomie + co-réparation -->
+      <div class="uc-deux-colonnes">
+        <div class="uc-bloc">
+          <h3>L'espace couture en autonomie</h3>
+          <p>Les personnes disposant de l'adhésion couture peuvent utiliser le matériel pour avancer sur leurs projets en autonomie&nbsp;: une machine à coudre, une surjeteuse et une machine destinée au travail du cuir.</p>
+          <p><strong>Horaires&nbsp;:</strong> mardi et vendredi de 17h à 19h30&nbsp;; samedi de 10h à 13h.</p>
+          <p>Cet accès s'adresse aux personnes sachant déjà utiliser le matériel. Il n'y a pas d'accompagnement individuel pendant ces créneaux.</p>
+        </div>
+
+        <div class="uc-encart uc-encart--colonne">
+          <h3>La co-réparation textile</h3>
+          <p>Un vêtement décousu, troué ou abîmé&nbsp;? Avant de le jeter, venez essayer de le réparer avec l'aide de nos bénévoles. La co-réparation textile permet d'apprendre des gestes utiles&nbsp;: couture à la main, reprise, pose d'une pièce, réparation d'une fermeture ou utilisation d'une machine à coudre.</p>
+          <p><strong>Le dernier samedi du mois, de 14h à 17h</strong> - participation à prix libre - sans inscription, dans la limite des places disponibles.</p>
+        </div>
+      </div>
+
+      <!-- Une couture créative et durable -->
+      <div class="uc-bloc">
+        <h3>Une couture créative et durable</h3>
+        <p>Réparer une couture, transformer un vêtement devenu trop grand, réutiliser une chute de tissu ou créer un nouvel objet&nbsp;: la couture permet de prolonger la vie des textiles tout en développant sa créativité. À l'Objethèque, nous privilégions l'apprentissage, l'entraide et la réutilisation des matières déjà disponibles.</p>
+      </div>
+
+      <!--
+        Nos réalisations : ajouter ici les galeries « Avant / après »
+        (vêtements réparés ou transformés) et « Créations des ateliers »
+        (accessoires, upcycling et réalisations).
+      -->
+
+      <!-- Contact -->
+      <div class="uc-question">
+        <div>
+          <h3>Une question&nbsp;?</h3>
+          <p>Vous souhaitez en savoir plus sur l'adhésion couture, les créneaux accompagnés ou les ateliers thématiques&nbsp;?</p>
+        </div>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <button type="button" data-contact-open><p>Nous contacter</p></button>
+        </nav>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .uc-page {
+    --uc-gap: 2.5rem;
+    --uc-mx: var(--marginLeft);
+    font-size: 1.1rem;
+    padding-top: 2rem;
+    padding-bottom: var(--marginBlock);
+  }
+
+  /* ---- Intro ---- */
+  .uc-intro {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-inline: var(--uc-mx);
+    margin-bottom: var(--uc-gap);
+  }
+
+  .uc-intro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .uc-intro-text p {
+    margin-inline: 0;
+    line-height: 1.7;
+  }
+
+  .uc-titre {
+    font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2rem);
+    color: var(--dark-text-color);
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .uc-accroche {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  /* Visuel « Création couture » : image déjà mise en page, on l'affiche
+     entièrement plutôt que de la recadrer. */
+  .uc-intro-img {
+    flex: 1.2;
+  }
+
+  .uc-intro-img picture {
+    display: block;
+    width: 100%;
+  }
+
+  .uc-intro-img picture img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ---- Blocs texte ---- */
+  .uc-bloc {
+    margin-inline: var(--uc-mx);
+    margin-bottom: var(--uc-gap);
+  }
+
+  .uc-bloc h3 {
+    margin-inline: 0;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+  }
+
+  .uc-bloc p {
+    margin-inline: 0;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---- Encarts ---- */
+  .uc-encart {
+    margin-inline: var(--uc-mx);
+    margin-bottom: var(--uc-gap);
+    background: var(--grey-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .uc-encart h3 {
+    margin-inline: 0;
+    margin-bottom: 0.6rem;
+    color: var(--primary-color);
+  }
+
+  .uc-encart p {
+    margin-inline: 0;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---- Deux colonnes ---- */
+  .uc-deux-colonnes {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-inline: var(--uc-mx);
+    margin-bottom: var(--uc-gap);
+  }
+
+  .uc-deux-colonnes .uc-bloc,
+  .uc-deux-colonnes .uc-encart {
+    flex: 1;
+    margin-inline: 0;
+    margin-bottom: 0;
+  }
+
+  .uc-encart--colonne {
+    border-left-color: var(--secondary-color);
+  }
+
+  .uc-encart--colonne h3 {
+    color: var(--secondary-color);
+  }
+
+  /* ---- Listes ---- */
+  .uc-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0.75rem 0 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .uc-liste li {
+    color: var(--dark-text-color);
+    line-height: 1.6;
+  }
+
+  /* ---- Infos pratiques ---- */
+  .uc-pratique {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-inline: var(--uc-mx);
+    margin-bottom: var(--uc-gap);
+  }
+
+  .uc-pratique-bloc h3 {
+    margin-inline: 0;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+  }
+
+  .uc-infos-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .uc-infos-liste li {
+    color: var(--dark-text-color);
+    line-height: 1.6;
+  }
+
+  .uc-dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .uc-dates li {
+    background: var(--grey-background);
+    border-radius: 20px;
+    padding: 0.35rem 1rem;
+    color: var(--dark-text-color);
+    font-size: 0.95em;
+  }
+
+  .uc-mention {
+    display: block;
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 0.9em;
+  }
+
+  .boutonOrangeLarge {
+    margin-top: 0.5rem;
+  }
+
+  /* ---- Une question ? ---- */
+  .uc-question {
+    margin-inline: var(--uc-mx);
+    padding: 1.5rem 2rem;
+    background: var(--grey-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .uc-question h3 {
+    margin-inline: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .uc-question p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .uc-question > div {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .uc-page {
+      --uc-mx: 4%;
+    }
+
+    .uc-intro {
+      flex-direction: column;
+    }
+
+    .uc-intro-img {
+      width: 100%;
+    }
+
+    .uc-deux-colonnes {
+      flex-direction: column;
+    }
+
+    .uc-pratique {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

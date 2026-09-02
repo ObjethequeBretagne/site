@@ -1,5 +1,5 @@
 <!-- Composant de formulaire de contact -->
-<button id="contact-open-btn" class="contact-trigger">Contactez-nous</button>
+<button id="contact-open-btn" class="contact-trigger" data-contact-open>Contactez-nous</button>
 
 <dialog id="contact-modal" aria-labelledby="contact-modal-title">
   <div class="modal-header">
@@ -271,10 +271,16 @@
     const modal = document.getElementById('contact-modal') as HTMLDialogElement | null;
     if (!modal) return;
 
-    const openBtn = document.getElementById('contact-open-btn');
+    // Tout élément marqué [data-contact-open] ouvre le formulaire : le bouton du
+    // footer, mais aussi les boutons « Nous contacter » placés dans les pages.
+    const openBtns = document.querySelectorAll('[data-contact-open]');
     const closeBtn = document.getElementById('contact-close-btn');
 
-    openBtn?.addEventListener('click', () => modal.showModal());
+    openBtns.forEach(btn =>
+      btn.addEventListener('click', () => {
+        if (!modal.open) modal.showModal();
+      })
+    );
     closeBtn?.addEventListener('click', () => modal.close());
 
     // Fermer en cliquant sur le backdrop

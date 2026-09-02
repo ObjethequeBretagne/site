@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/layout.astro";
-import BricolageContent from "../components/espace-bricolage.astro";
+import Creneaux from "../components/creneaux.astro";
 import { Picture } from "astro:assets";
 import atelier1 from "../assets/img/ateliertest01.webp";
 import atelier2 from "../assets/img/ateliertest02.webp";
@@ -8,14 +8,19 @@ import atelier2 from "../assets/img/ateliertest02.webp";
 
 <Layout title="Espace bricolage">
   <main>
-    <BricolageContent />
+    <Creneaux
+      id="espace-bricolage-section"
+      titre="Réserver un créneau espace bricolage"
+      prefixe="espace bricolage"
+      jourAccent={5}
+    />
 
     <section class="eb-pres">
 
       <!-- Questionnaire -->
       <div class="eb-questionnaire">
         <p>Aidez-nous à construire <strong>un espace bricolage qui vous ressemble&nbsp;:</strong> 3&nbsp;minutes suffisent pour nous partager vos envies !</p>
-        <nav class="boutonOrange scaleUpHover eb-questionnaire-btn">
+        <nav class="boutonOrange boutonOrangeLarge">
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer"><p>Remplir le questionnaire</p></a>
         </nav>
       </div>
@@ -493,13 +498,6 @@ import atelier2 from "../assets/img/ateliertest02.webp";
     flex: 1;
     min-width: 200px;
     line-height: 1.6;
-  }
-
-  .eb-questionnaire-btn p {
-    width: auto;
-    padding-inline: 1.4rem;
-    text-wrap: wrap;
-    text-align: center;
   }
 
   /* ---- Responsive ---- */

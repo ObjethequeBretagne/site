@@ -1,0 +1,453 @@
+---
+import Layout from "../layouts/layout.astro";
+import { Picture } from "astro:assets";
+import etabli from "../assets/img/atelier-jeunes-etabli.webp";
+import outils from "../assets/img/atelier-jeunes-outils.webp";
+
+// Programme de La Fabrique du mercredi : à compléter au fil de l'année.
+const programme = [
+  { date: "23 septembre", horaire: "10h30-12h", theme: "Séance découverte - thème à venir", techniques: "À venir" },
+  { date: "30 septembre", horaire: "10h30-12h", theme: "Séance découverte - thème à venir", techniques: "À venir" },
+  { date: "Octobre", horaire: "", theme: "Programme à venir", techniques: "À venir" },
+  { date: "Novembre", horaire: "", theme: "Programme à venir", techniques: "À venir" },
+  { date: "Décembre", horaire: "", theme: "Programme à venir", techniques: "À venir" },
+  { date: "Janvier à juin", horaire: "", theme: "Programme à compléter", techniques: "À venir" },
+];
+
+const seancesDecouverte = [
+  {
+    label: "Mercredi 23 septembre - 10h30 à 12h",
+    url: "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-fabrique-du-mercredi-decouverte",
+  },
+  {
+    label: "Mercredi 30 septembre - 10h30 à 12h",
+    url: "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-fabrique-du-mercredi-decouverte-2",
+  },
+];
+---
+
+<Layout title="Ateliers enfants et jeunes">
+  <main>
+    <section class="aj-page">
+
+      <!-- Intro -->
+      <div class="aj-intro">
+        <div class="aj-intro-img">
+          <Picture
+            src={etabli}
+            formats={["avif", "webp"]}
+            widths={[400, 800, 1100]}
+            sizes="(max-width: 1200px) 95vw, 45vw"
+            alt="Une jeune participante travaille le bois à l'établi"
+            loading="eager"
+          />
+        </div>
+        <div class="aj-intro-text">
+          <h2 class="aj-titre">Ateliers pour les enfants et les jeunes</h2>
+          <p class="aj-accroche">Bricoler, expérimenter, fabriquer, réparer et comprendre comment fonctionnent les objets.</p>
+          <p>L'Objethèque propose toute l'année des activités manuelles destinées aux enfants et aux jeunes.</p>
+          <p>Les participants découvrent différents outils, matériaux et techniques à travers des projets concrets. Ici, on apprend en faisant, en testant et parfois en recommençant&nbsp;!</p>
+        </div>
+      </div>
+
+      <!-- La Fabrique du mercredi -->
+      <div class="aj-bloc">
+        <h3>La Fabrique du mercredi</h3>
+        <p>La Fabrique du mercredi est un <strong>atelier régulier destiné aux jeunes de 8 à 14 ans</strong> qui aiment construire, démonter, imaginer et créer de leurs mains.</p>
+        <p>Tout au long de l'année, les participants explorent le bricolage, le travail du bois, la fabrication et la réparation d'objets, l'électronique, les constructions low-tech, la création artistique, la réutilisation de matériaux et la fabrication numérique. Les activités évoluent afin de permettre aux jeunes de <strong>découvrir de nouvelles techniques et de gagner progressivement en autonomie</strong>.</p>
+      </div>
+
+      <div class="aj-encart">
+        <h3>Informations pratiques</h3>
+        <ul class="aj-infos-liste">
+          <li><strong>Période&nbsp;:</strong> du 7 octobre 2026 au 30 juin 2027 - 30 séances hors vacances scolaires et jours fériés</li>
+          <li><strong>Horaires&nbsp;:</strong> deux groupes de 12 enfants - 9h-10h30 et 10h30-12h</li>
+          <li><strong>Public&nbsp;:</strong> 8-14 ans</li>
+          <li><strong>Tarif&nbsp;:</strong> 280 € pour l'année - matériel fourni</li>
+          <li><strong>À prévoir&nbsp;:</strong> des vêtements adaptés aux activités manuelles et pouvant être salis</li>
+        </ul>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <a
+            href="https://www.helloasso.com/beta/associations/l-objetheque-de-cornouaille/adhesions/la-fabrique-du-mercredi"
+            target="_blank"
+            rel="noopener noreferrer"><p>Inscrire mon enfant à La Fabrique du mercredi</p></a
+          >
+        </nav>
+      </div>
+
+      <!-- Séances découvertes -->
+      <div class="aj-bloc">
+        <h3>Deux séances gratuites pour découvrir</h3>
+        <p>Avant de s'engager pour l'année, les jeunes peuvent découvrir le lieu, rencontrer l'animateur et participer à une première activité lors de deux séances gratuites&nbsp;:</p>
+        <div class="aj-decouvertes">
+          {seancesDecouverte.map((seance) => (
+            <nav class="boutonOrange boutonOrangeLarge">
+              <a href={seance.url} target="_blank" rel="noopener noreferrer"><p>{seance.label}</p></a>
+            </nav>
+          ))}
+        </div>
+        <p class="aj-note">Inscription obligatoire, dans la limite des places disponibles.</p>
+      </div>
+
+      <!-- Ce que nous allons fabriquer -->
+      <div class="aj-bloc">
+        <h3>Ce que nous allons pouvoir fabriquer</h3>
+        <p>Le programme alternera des projets courts, des réalisations plus ambitieuses et des temps de découverte&nbsp;:</p>
+        <ul class="aj-liste">
+          <li><strong>Fabrication d'objets&nbsp;:</strong> toupies, flipper, flûte de Pan et bien d'autres créations à imaginer&nbsp;;</li>
+          <li><strong>Chantiers collectifs&nbsp;:</strong> le groupe travaille ensemble, pendant plusieurs séances, à la conception et à la fabrication d'un objet conséquent&nbsp;;</li>
+          <li><strong>Découverte du travail du bois et de la fabrication numérique&nbsp;:</strong> outils manuels, machines d'atelier, impression 3D, CNC, thermoformeuse…&nbsp;;</li>
+          <li><strong>Ateliers manuels et artistiques&nbsp;:</strong> découverte d'autres matières, gestes et techniques pour développer la créativité&nbsp;;</li>
+          <li><strong>Apprentissage de la réparation&nbsp;:</strong> observer, démonter, diagnostiquer une panne simple et chercher comment prolonger la vie d'un objet.</li>
+        </ul>
+        <p class="aj-note">Les projets évolueront selon les envies du groupe, les matériaux disponibles et les idées proposées par les enfants.</p>
+      </div>
+
+      <!-- Photo d'ambiance -->
+      <div class="aj-photo imgCentre">
+        <Picture
+          src={outils}
+          formats={["avif", "webp"]}
+          widths={[400, 800, 1100]}
+          sizes="(max-width: 767px) 95vw, 80vw"
+          alt="Le mur d'outils de l'atelier : serre-joints, marteaux, tournevis et limes"
+        />
+      </div>
+
+      <!--
+        Galerie « Quelques réalisations » : ajouter ici les photos des projets
+        des enfants, avec les autorisations nécessaires.
+      -->
+
+      <!-- Agenda de La Fabrique -->
+      <div class="aj-bloc">
+        <h3>L'agenda de La Fabrique</h3>
+        <p>Cet espace est actualisé régulièrement avec les thèmes et projets prévus. Certaines réalisations pourront nécessiter plusieurs séances.</p>
+        <div class="aj-table-wrap">
+          <table class="aj-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Thème ou réalisation</th>
+                <th>Techniques découvertes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {programme.map((ligne) => (
+                <tr>
+                  <td>
+                    {ligne.date}
+                    {ligne.horaire && <><br /><span class="aj-horaire">{ligne.horaire}</span></>}
+                  </td>
+                  <td>{ligne.theme}</td>
+                  <td>{ligne.techniques}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Apprendre en faisant -->
+      <div class="aj-bloc">
+        <h3>Apprendre en faisant</h3>
+        <p>Au fil de l'année, les enfants apprendront à construire des objets et à travailler ensemble dans un processus ludique, de l'idée jusqu'à la réalisation.</p>
+        <p>Chacun constituera progressivement <strong>son propre établi de compétences</strong>. Les enfants commenceront avec quelques outils et gestes de base, puis enrichiront leur caisse personnelle au fur et à mesure qu'ils apprendront à utiliser les outils en sécurité et à maîtriser de nouvelles techniques.</p>
+        <ul class="aj-liste">
+          <li>Ils apprendront à évoluer dans un atelier partagé et à travailler avec les autres&nbsp;;</li>
+          <li>ils gagneront en autonomie&nbsp;: préparer leur espace, trouver le matériel nécessaire, ranger et nettoyer&nbsp;;</li>
+          <li>ils développeront leur capacité à imaginer, essayer, se tromper, recommencer et trouver des solutions&nbsp;;</li>
+          <li>ils apprendront à prendre soin des outils, des matériaux et des réalisations du groupe.</li>
+        </ul>
+      </div>
+
+      <!-- Atout Sport -->
+      <div class="aj-bloc aj-atout-sport">
+        <h3>Les ateliers Atout Sport pendant les vacances</h3>
+        <p>Pendant les vacances scolaires, l'Objethèque propose également des ateliers ponctuels dans le cadre du <strong>dispositif Atout Sport de la Ville de Quimper</strong>.</p>
+        <p>Accessibles aux enfants et aux jeunes de 6 à 14 ans, ces activités permettent de découvrir le bricolage et la fabrication à travers des projets courts et ludiques&nbsp;: parcours de billes, vaisseau spatial, défis de construction, découverte des outils ou création à partir de matériaux récupérés.</p>
+        <p><strong>Formats proposés&nbsp;:</strong> ateliers d'une durée comprise entre 1h15 et 2h30. Certains projets peuvent également être proposés sous la forme d'un stage de deux jours.</p>
+        <p>Les programmes et les inscriptions sont publiés avant chaque période de vacances sur la plateforme Atout Sport.</p>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <a
+            href="https://www.quimperplus.bzh/catalogue-dactivites/?partenaire=146"
+            target="_blank"
+            rel="noopener noreferrer"><p>Découvrir les ateliers Atout Sport</p></a
+          >
+        </nav>
+      </div>
+
+      <!--
+        Galerie des ateliers jeunes : ajouter ici des photos des réalisations,
+        des outils utilisés et des jeunes en activité, avec les autorisations nécessaires.
+      -->
+
+      <!-- Contact -->
+      <div class="aj-question">
+        <div>
+          <h3>Une question&nbsp;?</h3>
+          <p>Vous souhaitez en savoir plus sur La Fabrique du mercredi, les séances découvertes ou les ateliers proposés pendant les vacances&nbsp;?</p>
+        </div>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <button type="button" data-contact-open><p>Nous contacter</p></button>
+        </nav>
+      </div>
+
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .aj-page {
+    --aj-gap: 2.5rem;
+    --aj-mx: var(--marginLeft);
+    font-size: 1.1rem;
+    padding-top: 2rem;
+    padding-bottom: var(--marginBlock);
+  }
+
+  /* ---- Intro ---- */
+  .aj-intro {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-inline: var(--aj-mx);
+    margin-bottom: var(--aj-gap);
+  }
+
+  .aj-intro-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .aj-intro-text p {
+    margin-inline: 0;
+    line-height: 1.7;
+  }
+
+  .aj-titre {
+    font-size: clamp(1.3rem, 2.5vw + 0.5rem, 2rem);
+    color: var(--dark-text-color);
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .aj-accroche {
+    font-style: italic;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .aj-intro-img {
+    flex: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--dark-shadow-color);
+    align-self: stretch;
+  }
+
+  .aj-intro-img picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .aj-intro-img picture img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+
+  /* ---- Blocs texte ---- */
+  .aj-bloc {
+    margin-inline: var(--aj-mx);
+    margin-bottom: var(--aj-gap);
+  }
+
+  .aj-bloc h3 {
+    margin-inline: 0;
+    margin-bottom: 0.75rem;
+    color: var(--secondary-color);
+  }
+
+  .aj-bloc p {
+    margin-inline: 0;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ---- Encart infos pratiques ---- */
+  .aj-encart {
+    margin-inline: var(--aj-mx);
+    margin-bottom: var(--aj-gap);
+    background: var(--grey-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .aj-encart h3 {
+    margin-inline: 0;
+    margin-bottom: 0.6rem;
+    color: var(--primary-color);
+  }
+
+  .aj-infos-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .aj-infos-liste li {
+    color: var(--dark-text-color);
+    line-height: 1.6;
+  }
+
+  /* ---- Atout Sport ---- */
+  .aj-atout-sport {
+    background: var(--grey-background);
+    border-left: 4px solid var(--secondary-color);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+  }
+
+  /* ---- Listes ---- */
+  .aj-liste {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.75rem 0 1rem;
+    padding-left: 1.25rem;
+  }
+
+  .aj-liste li {
+    color: var(--dark-text-color);
+    line-height: 1.6;
+  }
+
+  .aj-note {
+    font-size: 1rem;
+    color: var(--grey-text-color);
+    font-style: italic;
+    margin-inline: 0;
+  }
+
+  .aj-decouvertes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-block: 1rem;
+  }
+
+  /* ---- Photo ---- */
+  .aj-photo {
+    margin-bottom: var(--aj-gap);
+  }
+
+  .aj-photo picture img {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--dark-shadow-color);
+    max-height: 460px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  /* ---- Tableau programme ---- */
+  .aj-table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    margin-top: 1rem;
+    box-shadow: 0 2px 8px var(--dark-shadow-color);
+  }
+
+  .aj-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .aj-table th {
+    background: var(--secondary-color);
+    color: var(--light-text-color);
+    text-align: left;
+    padding: 0.65rem 1rem;
+    font-weight: bold;
+  }
+
+  .aj-table td {
+    padding: 0.6rem 1rem;
+    color: var(--dark-text-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .aj-table tr:nth-child(even) td {
+    background: var(--grey-background);
+  }
+
+  .aj-horaire {
+    color: var(--grey-text-color);
+    font-size: 0.95em;
+    white-space: nowrap;
+  }
+
+  /* ---- Une question ? ---- */
+  .aj-question {
+    margin-inline: var(--aj-mx);
+    padding: 1.5rem 2rem;
+    background: var(--grey-background);
+    border-left: 4px solid var(--primary-color);
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .aj-question h3 {
+    margin-inline: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .aj-question p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .aj-question > div {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 1200px) {
+    .aj-page {
+      --aj-mx: 4%;
+    }
+
+    .aj-intro {
+      flex-direction: column-reverse;
+    }
+
+    .aj-intro-img {
+      width: 100%;
+    }
+
+    .aj-intro-img picture img {
+      min-height: 240px;
+      height: 240px;
+    }
+
+    .aj-table {
+      font-size: 1rem;
+    }
+  }
+</style>

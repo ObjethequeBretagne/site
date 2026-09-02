@@ -438,6 +438,28 @@ header a {
   padding: 10px;
   border: 3px solid #fffefe;
 }
+/* Variante pour les boutons en pleine page (libellés longs) : la largeur fixe
+   de 150px convient au header, pas à "Adhérer à l'univers couture" & co.
+   Le sélecteur double passe devant la media query 816px plus bas. */
+.boutonOrangeLarge {
+  width: fit-content;
+}
+.boutonOrange.boutonOrangeLarge p {
+  width: auto;
+  max-width: none;
+  padding-inline: 1.4rem;
+  text-wrap: wrap;
+  text-align: center;
+}
+/* Certains de ces boutons ouvrent une modale : <button> au lieu de <a>. */
+.boutonOrangeLarge button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
 #boutonCatalogue {
   padding-top: 10px;
 }
