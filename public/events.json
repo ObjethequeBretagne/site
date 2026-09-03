@@ -1,5 +1,23 @@
 [
   {
+    "title": "La fabrique du mercredi-découverte (2)",
+    "description": "Votre enfant aime bricoler, fabriquer, expérimenter et comprendre comment fonctionnent les objets ?<br><br>Venez découvrir gratuitement La Fabrique du mercredi, l’atelier annuel de L’Objethèque destiné aux jeunes de 8 à 14 ans.<br><br>Deux séances découvertes sont proposées :<br><br>mercredi 23 septembre 2026, de 10h30 à 12h ;<br>mercredi 30 septembre 2026, de 10h30 à 12h.<br><br>Vous souhaitez inscrire votre enfant à l\\'année dès maintenant? Rendez-vous sur le site dans \"animations\" puis \"Ateliers enfants et jeunes\"",
+    "startDate": "2026-09-30T10:30:00+02:00",
+    "endDate": "2026-09-30T12:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-fabrique-du-mercredi-decouverte-2",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-f84578cf6ba94bbe879c4b6849aad34c.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-c7d0831f393d4d239ef26203db4b0e80.png"
+  },
+  {
+    "title": "La fabrique du mercredi-découverte",
+    "description": "Votre enfant aime bricoler, fabriquer, expérimenter et comprendre comment fonctionnent les objets ?<br><br>Venez découvrir gratuitement La Fabrique du mercredi, l’atelier annuel de L’Objethèque destiné aux jeunes de 8 à 14 ans.<br><br>Deux séances découvertes sont proposées :<br><br>mercredi 23 septembre 2026, de 10h30 à 12h ;<br>mercredi 30 septembre 2026, de 10h30 à 12h.<br><br>Vous souhaitez inscrire votre enfant à l\\'année dès maintenant? Rendez-vous sur le site dans \"animations\" puis \"Ateliers enfants et jeunes\"",
+    "startDate": "2026-09-23T10:30:00+02:00",
+    "endDate": "2026-09-23T12:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-fabrique-du-mercredi-decouverte",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-f84578cf6ba94bbe879c4b6849aad34c.png",
+    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-c7d0831f393d4d239ef26203db4b0e80.png"
+  },
+  {
     "title": "Atelier de co-réparation",
     "description": "LObjethèque de Cornouaille propose un atelier de co-réparation ouvert à toutes et à tous. L’objectif : apprendre à réparer ensemble les objets du quotidien, éviter le gaspillage, et partager des savoir-faire dans une ambiance conviviale.<br>Vous pouvez venir avec vos petits appareils électriques, électroportatifs, écrans plats, etc. Pas besoin de s’y connaître en bricolage, juste l’envie de comprendre, d’essayer, et de faire durer ses objets !",
     "startDate": "2026-09-30T14:00:00+02:00",
@@ -699,24 +717,6 @@
     "endDate": "2026-04-16T16:30:59+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-construit-ton-vaisseau-spatial-8-10ans-16-04",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-e4af00ce20784c1c8e4916f535f291a7.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-da90478f4fe448bd9a5baae291d86ae6.png"
-  },
-  {
-    "title": "Atout Sport - Atelier robot en bois 10-14 ans 21/04",
-    "description": "INSCRIPTION SUR SITE ATOUT SPORT : https://www.quimperplus.bzh/atout-sport-usager/catalogue-dactivites/<br><br>🤖 Atelier Robot en bois<br>Construire, assembler, inventer… à partir de bois de récupération<br>Dans cet atelier, les enfants deviennent constructeurs de robots. À partir de bois de palettes récupérées et de quincaillerie, ils imaginent et fabriquent leur propre robot : drôle, futuriste, bancal, expressif ou complètement loufoque.<br>Chaque robot est unique, reflet de l’imagination de son créateur.",
-    "startDate": "2026-04-21T14:00:00+02:00",
-    "endDate": "2026-04-21T16:30:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atout-sport-atelier-robot-en-bois-10-14-ans-21-04",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-55f6e363d1b64426ba8c1c3eb6965d3a.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-da90478f4fe448bd9a5baae291d86ae6.png"
-  },
-  {
-    "title": "Atout Sport - Atelier robot en bois 8-10 ans 14/04",
-    "description": "INSCRIPTION SUR SITE ATOUT SPORT : https://www.quimperplus.bzh/atout-sport-usager/catalogue-dactivites/<br><br>🤖 Atelier Robot en bois<br>Construire, assembler, inventer… à partir de bois de récupération<br>Dans cet atelier, les enfants deviennent constructeurs de robots. À partir de bois de palettes récupérées et de quincaillerie, ils imaginent et fabriquent leur propre robot : drôle, futuriste, bancal, expressif ou complètement loufoque.<br>Chaque robot est unique, reflet de l’imagination de son créateur.",
-    "startDate": "2026-04-14T09:30:00+02:00",
-    "endDate": "2026-04-14T12:00:59+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atoutsport-atelier-robot-en-bois-8-10-ans-14-04",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-55f6e363d1b64426ba8c1c3eb6965d3a.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-da90478f4fe448bd9a5baae291d86ae6.png"
   }
 ]
