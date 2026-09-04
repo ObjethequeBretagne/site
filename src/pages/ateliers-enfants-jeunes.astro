@@ -438,13 +438,18 @@ const realisations = [
      étale les trois photos sur la ligne ; à l'étroit, le plancher de 14rem force le
      débordement et le défilement se déclenche tout seul. */
   .aj-galerie {
+    /* La boîte qui défile rogne ce qui dépasse, donc l'ombre des photos. On lui
+       donne une marge intérieure de la taille de l'ombre, et on élargit d'autant
+       le plafond pour que les photos restent posées exactement où elles étaient. */
+    --_ombre: 0.75rem;
+
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: minmax(14rem, 1fr);
     gap: 1.2rem;
-    max-width: min(100%, 900px);
-    margin: 1.25rem auto 0;
-    padding-bottom: 0.6rem;
+    max-width: min(100%, calc(900px + var(--_ombre) * 2));
+    margin: calc(1.25rem - var(--_ombre)) auto 0;
+    padding: var(--_ombre);
     overflow-x: auto;
     overscroll-behavior-inline: contain;
   }
