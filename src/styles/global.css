@@ -200,10 +200,12 @@ dialog {
 
 details {
   --_duration: .2s;
+  background-color: var(--background-color);
 
   summary {
     cursor: pointer;
     list-style: none;
+    padding-left: 0.5rem;
 
     &::before {
       content: '▶';
@@ -219,6 +221,47 @@ details {
 
   &[open] summary::before {
     rotate: 90deg;
+  }
+
+  /* Ouverture/fermeture animées, portées depuis 142 Shop. `::details-content` n'est
+     pas supporté partout : là où il manque, le bloc s'ouvre d'un coup, comme avant.
+     Même --_duration que le chevron, pour que les deux bougent ensemble. */
+  &::details-content {
+    max-height: 0;
+    overflow: clip;
+    transition:
+      max-height var(--_duration) ease-in-out,
+      content-visibility var(--_duration) allow-discrete;
+  }
+
+  &[open]::details-content {
+    max-height: 100vh;
+  }
+}
+
+/* Le `max-height: 100vh` ci-dessus n'anime pas la hauteur réelle du contenu : un bloc
+   court est révélé dans les premiers pourcents de la durée puis la boîte continue de
+   grandir à vide, et un bloc plus haut que la fenêtre est tronqué. Là où
+   `interpolate-size` existe, on anime donc `height: 0 → auto` : la durée correspond au
+   mouvement visible, quelle que soit la taille du bloc. */
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+
+  details {
+    &::details-content {
+      max-height: none;
+      height: 0;
+      transition:
+        height var(--_duration) ease,
+        content-visibility var(--_duration) allow-discrete;
+    }
+
+    &[open]::details-content {
+      max-height: none;
+      height: auto;
+    }
   }
 }
 
@@ -294,10 +337,6 @@ details {
   scroll-margin-top: 175px;
 }
 
-details {
-  background-color: var(--background-color);
-}
-
 picture {
   display: inline-block;
   max-width: 100%;
@@ -327,11 +366,6 @@ picture img {
   display: flex;
   object-fit: contain;
   margin-inline: auto;
-}
-
-details summary {
-  padding-left: 0.5rem;
-  cursor: pointer;
 }
 
 /*HEADER*/
