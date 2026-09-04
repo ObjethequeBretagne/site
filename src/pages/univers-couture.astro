@@ -5,15 +5,17 @@ import { Picture } from "astro:assets";
 import couture from "../assets/img/atelier-creation-couture.jpg";
 import illuCouture from "../assets/img/illuPresa2.png";
 
-// Dates annoncées pour les créneaux couture accompagnés (2e semestre 2026).
+// Dates annoncées pour les créneaux couture accompagnée (2e semestre 2026).
+// Ce sont les dates communiquées à l'avance ; les dates réellement ouvertes à
+// la réservation viennent de HelloAsso, via l'agenda plus bas.
 const datesCreneaux = [
-  { date: "23 septembre" },
-  { date: "7 octobre" },
-  { date: "21 octobre", mention: "séance spéciale parent-enfant" },
-  { date: "4 novembre" },
-  { date: "18 novembre" },
-  { date: "2 décembre" },
-  { date: "16 décembre" },
+  "23 septembre",
+  "7 octobre",
+  "21 octobre",
+  "4 novembre",
+  "18 novembre",
+  "2 décembre",
+  "16 décembre",
 ];
 ---
 
@@ -63,6 +65,7 @@ const datesCreneaux = [
         <div class="uc-bloc">
           <h3>Les créneaux couture accompagnés</h3>
           <p>Tous les quinze jours, un <strong>créneau convivial en petit groupe</strong> permet d'avancer sur ses projets avec l'accompagnement d'une couturière. On peut venir avec une idée, un vêtement à transformer ou une réalisation déjà commencée. Les créneaux sont adaptés aux personnes débutantes comme à celles qui souhaitent progresser.</p>
+          <p>Les dates ouvertes à la réservation sont listées juste en dessous.</p>
         </div>
 
         <div class="uc-encart">
@@ -71,19 +74,16 @@ const datesCreneaux = [
             <li><strong>Horaires&nbsp;:</strong> de 17h30 à 20h</li>
             <li><strong>Groupe&nbsp;:</strong> 6 personnes maximum</li>
             <li><strong>Accès&nbsp;:</strong> inscription obligatoire pour chaque créneau</li>
-            <li><strong>Dates&nbsp;:</strong> {datesCreneaux.map((c) => c.date).join(" ; ")} 2026</li>
+            <li><strong>Dates annoncées&nbsp;:</strong> {datesCreneaux.join(" ; ")} 2026</li>
           </ul>
-          {datesCreneaux.filter((c) => c.mention).map((c) => (
-            <p class="uc-note">Le {c.date}&nbsp;: {c.mention}.</p>
-          ))}
         </div>
       </div>
 
-      <!-- Agenda de réservation des créneaux couture -->
+      <!-- Agenda de réservation des créneaux couture accompagnée -->
       <Creneaux
-        id="creneaux-couture"
-        titre="Réserver un créneau couture accompagné"
-        prefixe="creneau couture"
+        id="creneaux-couture-accompagnee"
+        titre="Réserver un créneau couture accompagnée"
+        prefixe="couture accompagnée"
         mois={4}
       />
 
@@ -97,20 +97,28 @@ const datesCreneaux = [
         </nav>
       </div>
 
-      <!-- 4 & 5. Autonomie + co-réparation -->
-      <div class="uc-duo">
-        <div class="uc-bloc">
-          <h3>L'espace couture en autonomie</h3>
-          <p>Les personnes disposant de l'adhésion couture peuvent utiliser le matériel pour avancer sur leurs projets en autonomie&nbsp;: une machine à coudre, une surjeteuse et une machine destinée au travail du cuir.</p>
-          <p><strong>Horaires&nbsp;:</strong> mardi et vendredi de 17h à 19h30&nbsp;; samedi de 10h à 13h.</p>
-          <p>Cet accès s'adresse aux personnes sachant déjà utiliser le matériel. Il n'y a pas d'accompagnement individuel pendant ces créneaux.</p>
-        </div>
+      <!-- 4. L'espace couture en autonomie -->
+      <div class="uc-bloc">
+        <h3>L'espace couture en autonomie</h3>
+        <p>Les personnes disposant de l'adhésion couture peuvent utiliser le matériel pour avancer sur leurs projets en autonomie&nbsp;: une machine à coudre, une surjeteuse et une machine destinée au travail du cuir.</p>
+        <p><strong>Horaires&nbsp;:</strong> mardi et vendredi de 17h à 19h30&nbsp;; samedi de 10h à 13h.</p>
+        <p>Cet accès s'adresse aux personnes sachant déjà utiliser le matériel. Il n'y a pas d'accompagnement individuel pendant ces créneaux.</p>
+        <p>Les dates ouvertes à la réservation sont listées juste en dessous.</p>
+      </div>
 
-        <div class="uc-encart uc-encart--colonne">
-          <h3>La co-réparation textile</h3>
-          <p>Un vêtement décousu, troué ou abîmé&nbsp;? Avant de le jeter, venez essayer de le réparer avec l'aide de nos bénévoles. La co-réparation textile permet d'apprendre des gestes utiles&nbsp;: couture à la main, reprise, pose d'une pièce, réparation d'une fermeture ou utilisation d'une machine à coudre.</p>
-          <p><strong>Le dernier samedi du mois, de 14h à 17h</strong> - participation à prix libre - sans inscription, dans la limite des places disponibles.</p>
-        </div>
+      <!-- Agenda de réservation des créneaux couture autonomie -->
+      <Creneaux
+        id="creneaux-couture-autonomie"
+        titre="Réserver un créneau couture en autonomie"
+        prefixe="couture autonomie"
+        mois={4}
+      />
+
+      <!-- 5. Co-réparation textile : sans inscription, donc sans agenda. -->
+      <div class="uc-encart uc-encart--colonne">
+        <h3>La co-réparation textile</h3>
+        <p>Un vêtement décousu, troué ou abîmé&nbsp;? Avant de le jeter, venez essayer de le réparer avec l'aide de nos bénévoles. La co-réparation textile permet d'apprendre des gestes utiles&nbsp;: couture à la main, reprise, pose d'une pièce, réparation d'une fermeture ou utilisation d'une machine à coudre.</p>
+        <p><strong>Le dernier samedi du mois, de 14h à 17h</strong> - participation à prix libre - sans inscription, dans la limite des places disponibles.</p>
       </div>
 
       <!-- Une couture créative et durable -->
@@ -313,13 +321,6 @@ const datesCreneaux = [
   .uc-infos-liste li {
     color: var(--dark-text-color);
     line-height: 1.6;
-  }
-
-  .uc-note {
-    margin-top: 0.6rem;
-    font-size: 1rem;
-    color: var(--grey-text-color);
-    font-style: italic;
   }
 
   /* Même écart au-dessus des boutons que sur la page ateliers. */

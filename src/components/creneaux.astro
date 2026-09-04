@@ -1,9 +1,10 @@
 ---
 // Agenda de réservation de créneaux.
 // Affiche les événements HelloAsso dont le titre commence par `prefixe`
-// (espace bricolage, créneaux couture accompagnés, etc.).
+// (espace bricolage, couture accompagnée, couture autonomie, etc.).
 interface Props {
   titre: string;
+  /** Début du titre HelloAsso ; la suite du titre est libre (date, mention). */
   prefixe: string;
   id: string;
   /** Nombre de mois affichés à partir d'aujourd'hui */
@@ -43,14 +44,10 @@ const {
 </section>
 
 <script>
+  import { commencePar } from "../lib/evenements";
+
   function escHtml(str: string) {
     return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-  }
-
-  // Les titres saisis sur HelloAsso varient (accents, majuscules, espaces) :
-  // on compare sur une version normalisée.
-  function normalise(str: string) {
-    return str.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim();
   }
 
   document.addEventListener("astro:page-load", () => {
@@ -62,7 +59,7 @@ const {
       const empty   = section.querySelector<HTMLElement>('[data-role="empty"]')!;
       const list    = section.querySelector<HTMLElement>('[data-role="list"]')!;
 
-      const prefixe    = normalise(section.dataset.prefixe ?? "");
+      const prefixe    = section.dataset.prefixe ?? "";
       const nbMois     = Number(section.dataset.mois ?? 2);
       const jourAccent = section.dataset.jourAccent ? Number(section.dataset.jourAccent) : null;
       const bouton     = escHtml(section.dataset.bouton ?? "réserver");
@@ -79,7 +76,7 @@ const {
           const events = data
             .filter(e => {
               const start = new Date(e.startDate);
-              return normalise(e.title ?? "").startsWith(prefixe) && start > today && start <= limite;
+              return commencePar(e.title ?? "", prefixe) && start > today && start <= limite;
             })
             .sort((a, b) => +new Date(a.startDate) - +new Date(b.startDate));
 
@@ -100,7 +97,7 @@ const {
             const heureFin   = end.toLocaleTimeString(fr, fmt);
             const url        = escHtml(event.url ?? "#");
             const hasCover   = !!event.logoUrl;
-            const logo       = escHtml(event.logoUrl ?? "/assets/img/logo.png");
+            const logo       = escHtml(event.logoUrl || "/assets/img/logo.png");
             const titre      = escHtml(event.title ?? "");
             const accent     = jourAccent !== null && start.getDay() === jourAccent;
 
