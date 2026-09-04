@@ -3,6 +3,9 @@ import Layout from "../layouts/layout.astro";
 import { Picture } from "astro:assets";
 import etabli from "../assets/img/atelier-jeunes-etabli.webp";
 import outils from "../assets/img/atelier-jeunes-outils.webp";
+import realisationRobot from "../assets/img/realisation-robot-bois.webp";
+import realisationBonhomme from "../assets/img/realisation-bonhomme-bois.webp";
+import realisationStringArt from "../assets/img/realisation-string-art.webp";
 
 // Programme de La Fabrique du mercredi : à compléter au fil de l'année.
 const programme = [
@@ -23,6 +26,13 @@ const seancesDecouverte = [
     label: "Mercredi 30 septembre - 10h30 à 12h",
     url: "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/la-fabrique-du-mercredi-decouverte-2",
   },
+];
+
+// Quelques réalisations des ateliers, en photo.
+const realisations = [
+  { src: realisationRobot, alt: "Petit robot porte-clés fabriqué en chutes de bois peintes" },
+  { src: realisationBonhomme, alt: "Bonhomme articulé assemblé en tourillons de bois et fil de cuivre" },
+  { src: realisationStringArt, alt: "Motif circulaire en fils de couleur tendus sur des clous plantés dans une planche" },
 ];
 ---
 
@@ -103,23 +113,19 @@ const seancesDecouverte = [
           <li><strong>Apprentissage de la réparation&nbsp;:</strong> observer, démonter, diagnostiquer une panne simple et chercher comment prolonger la vie d'un objet.</li>
         </ul>
         <p class="aj-note">Les projets évolueront selon les envies du groupe, les matériaux disponibles et les idées proposées par les enfants.</p>
-      </div>
 
-      <!-- Photo d'ambiance -->
-      <div class="aj-photo imgCentre">
-        <Picture
-          src={outils}
-          formats={["avif", "webp"]}
-          widths={[400, 800, 1100]}
-          sizes="(max-width: 767px) 95vw, 80vw"
-          alt="Le mur d'outils de l'atelier : serre-joints, marteaux, tournevis et limes"
-        />
+        <div class="aj-galerie">
+          {realisations.map((realisation) => (
+            <Picture
+              src={realisation.src}
+              formats={["avif", "webp"]}
+              widths={[300, 600]}
+              sizes="(max-width: 700px) 90vw, 300px"
+              alt={realisation.alt}
+            />
+          ))}
+        </div>
       </div>
-
-      <!--
-        Galerie « Quelques réalisations » : ajouter ici les photos des projets
-        des enfants, avec les autorisations nécessaires.
-      -->
 
       <!-- Agenda de La Fabrique -->
       <div class="aj-bloc">
@@ -148,6 +154,17 @@ const seancesDecouverte = [
             </tbody>
           </table>
         </div>
+      </div>
+
+      <!-- Photo d'ambiance -->
+      <div class="aj-photo imgCentre">
+        <Picture
+          src={outils}
+          formats={["avif", "webp"]}
+          widths={[400, 800, 1100]}
+          sizes="(max-width: 767px) 95vw, 80vw"
+          alt="Le mur d'outils de l'atelier : serre-joints, marteaux, tournevis et limes"
+        />
       </div>
 
       <!-- Apprendre en faisant -->
@@ -384,6 +401,29 @@ const seancesDecouverte = [
     max-height: 460px;
     object-fit: cover;
     width: 100%;
+  }
+
+  /* ---- Galerie des réalisations ---- */
+  /* Même motif que .aj-duo : autant de colonnes que la place le permet. */
+  .aj-galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+    gap: 1.2rem;
+    max-width: min(100%, 900px);
+    margin: 1.25rem auto 0;
+  }
+
+  .aj-galerie picture {
+    display: block;
+    width: 100%;
+  }
+
+  .aj-galerie picture img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px var(--dark-shadow-color);
   }
 
   /* ---- Tableau programme ---- */
