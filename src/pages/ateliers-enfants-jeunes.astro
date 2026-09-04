@@ -126,7 +126,7 @@ const realisations = [
                 src={realisation.src}
                 formats={["avif", "webp"]}
                 widths={[300, 600]}
-                sizes="(max-width: 700px) 90vw, 300px"
+                sizes="300px"
                 alt=""
               />
             </button>
@@ -429,12 +429,24 @@ const realisations = [
 
   /* ---- Galerie des réalisations ---- */
   /* Même motif que .aj-duo : autant de colonnes que la place le permet. */
+  /* Même mécanique que `.media-scroller` (global.css, page « à propos ») : une
+     rangée en grille qui déborde et défile, plutôt que des photos empilées qui
+     mangent l'écran sur mobile. La classe n'est pas réutilisée telle quelle, elle
+     porte ses propres marges et des colonnes figées à 260px.
+
+     `minmax(14rem, 1fr)` fait tout le travail, sans breakpoint : au large, le `1fr`
+     étale les trois photos sur la ligne ; à l'étroit, le plancher de 14rem force le
+     débordement et le défilement se déclenche tout seul. */
   .aj-galerie {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(14rem, 1fr);
     gap: 1.2rem;
     max-width: min(100%, 900px);
     margin: 1.25rem auto 0;
+    padding-bottom: 0.6rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
   }
 
   .aj-galerie picture {
