@@ -4,27 +4,22 @@ import Creneaux from "../components/creneaux.astro";
 import { Picture } from "astro:assets";
 import atelier1 from "../assets/img/ateliertest01.webp";
 import atelier2 from "../assets/img/ateliertest02.webp";
+
+// Formules vendues sur HelloAsso. Source unique : le bloc « Choisir ma formule »
+// et la ligne Tarif des infos pratiques sont générés à partir de ce tableau.
+const formules = [
+  { nom: "1 créneau", prix: "15 €" },
+  { nom: "3 créneaux", prix: "30 €" },
+  { nom: "9 créneaux", prix: "75 €" },
+];
+const lienFormules =
+  "https://www.helloasso.com/beta/associations/l-objetheque-de-cornouaille/adhesions/espace-bricolage-partage";
 ---
 
 <Layout title="Espace bricolage">
   <main>
-    <Creneaux
-      id="espace-bricolage-section"
-      titre="Réserver un créneau espace bricolage"
-      prefixe="espace bricolage"
-      jourAccent={5}
-    />
-
     <section class="eb-pres">
 
-      <!-- Questionnaire -->
-      <div class="eb-questionnaire">
-        <p>Aidez-nous à construire <strong>un espace bricolage qui vous ressemble&nbsp;:</strong> 3&nbsp;minutes suffisent pour nous partager vos envies !</p>
-        <nav class="boutonOrange boutonOrangeLarge">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer"><p>Remplir le questionnaire</p></a>
-        </nav>
-      </div>
-      
       <!-- Intro -->
       <div class="eb-intro">
         <div class="eb-intro-text">
@@ -48,6 +43,48 @@ import atelier2 from "../assets/img/ateliertest02.webp";
         <p><strong>À retenir&nbsp;:</strong> l'espace bricolage n'est pas un atelier de réparation d'appareils en panne. Pour la réparation d'électroménager, d'outillage, de matériel électronique ou d'autres objets nécessitant un diagnostic, rendez-vous à nos ateliers de co-réparation du mercredi après-midi et du dernier samedi du mois.</p>
       </div>
 
+      <!-- 1 et 2. Choisir sa formule puis réserver -->
+      <div class="eb-participer">
+        <div class="eb-participer-bloc">
+          <h3><span class="eb-participer-num">1</span>Choisir ma formule</h3>
+          <p>Choisissez la formule qui correspond à vos besoins&nbsp;:</p>
+          <ul class="eb-formules">
+            {formules.map((f) => (
+              <li>
+                <span>{f.nom}</span>
+                <span class="eb-formule-prix">{f.prix}</span>
+              </li>
+            ))}
+          </ul>
+          <p>Les créneaux achetés peuvent être utilisés au fil de vos projets.</p>
+          <nav class="boutonOrange boutonOrangeLarge boutonCentre">
+            <a href={lienFormules} target="_blank" rel="noopener noreferrer"><p>Choisir ma formule</p></a>
+          </nav>
+        </div>
+
+        <div class="eb-participer-bloc">
+          <h3><span class="eb-participer-num">2</span>Réserver mon créneau</h3>
+          <p>Vous avez déjà choisi votre formule&nbsp;? Il ne vous reste plus qu'à réserver la date qui vous convient pour venir bricoler.</p>
+          <p><strong>La réservation est possible uniquement si vous disposez d'un créneau acheté au préalable.</strong></p>
+          <p>Les dates ouvertes à la réservation sont listées juste en dessous.</p>
+        </div>
+      </div>
+
+      <Creneaux
+        id="espace-bricolage-section"
+        titre="Réserver un créneau espace bricolage"
+        prefixe="espace bricolage"
+        jourAccent={5}
+      />
+
+      <!-- Questionnaire -->
+      <div class="eb-questionnaire">
+        <p>Aidez-nous à construire <strong>un espace bricolage qui vous ressemble&nbsp;:</strong> 3&nbsp;minutes suffisent pour nous partager vos envies !</p>
+        <nav class="boutonOrange boutonOrangeLarge">
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer"><p>Remplir le questionnaire</p></a>
+        </nav>
+      </div>
+
       <!-- Pourquoi + Accessible côte à côte -->
       <div class="eb-deux-colonnes">
         <div class="eb-bloc">
@@ -59,9 +96,9 @@ import atelier2 from "../assets/img/ateliertest02.webp";
 
         <div class="eb-encart">
           <h3>Accessible même quand on débute</h3>
-          <p>Pas besoin d'être un pro du bricolage pour venir. L'espace est justement pensé pour <strong>les personnes qui n'osent pas toujours se lancer seules</strong>, qui ne savent pas quel outil utiliser ou qui souhaitent apprendre à utiliser une machine dans de bonnes conditions.</p>
-          <p>Vous pouvez venir avec une idée simple, un meuble à modifier, une pièce à fabriquer, un objet à restaurer ou un petit projet personnel et avancer <strong>pas à pas avec l'accompagnement sur place</strong>.</p>
-          <p>L'accompagnateur est là pour vous conseiller et vous aider à utiliser les outils&nbsp;: il ne réalise pas le projet à votre place.</p>
+          <p>Pas besoin d'être un pro du bricolage pour venir. L'espace bricolage est <strong>ouvert à toutes et tous</strong>, même aux grandes débutantes et grands débutants&nbsp;: il est justement pensé pour les personnes qui n'osent pas toujours se lancer seules, qui ne savent pas quel outil utiliser ou qui souhaitent apprendre à utiliser une machine dans de bonnes conditions.</p>
+          <p>Vous pouvez venir avec une idée précise, un meuble à modifier, une pièce à fabriquer, un objet à restaurer&nbsp;— ou <strong>sans projet particulier</strong>, simplement pour découvrir les outils et apprendre à les utiliser.</p>
+          <p>Un salarié est présent pour vous accompagner, vous conseiller et vous aider à avancer <strong>à votre rythme</strong>, dans la limite de ses compétences et du matériel disponible. Il ne réalise pas le projet à votre place.</p>
         </div>
       </div>
 
@@ -80,11 +117,12 @@ import atelier2 from "../assets/img/ateliertest02.webp";
       <div class="eb-bloc">
         <h3>Comment ça marche&nbsp;?</h3>
         <ol class="eb-etapes">
-          <li><strong>1 - Je réserve</strong><span>Je choisis un créneau dans l'agenda de réservation.</span></li>
-          <li><strong>2 - Je viens avec mon projet</strong><span>J'apporte mon objet, mes pièces, mon bois ou mes matériaux si besoin.</span></li>
-          <li><strong>3 - Je suis accueilli et conseillé</strong><span>Une personne de l'Objethèque m'aide à choisir les bons outils et à utiliser les machines en sécurité.</span></li>
-          <li><strong>4 - Je fais moi-même</strong><span>L'espace bricolage n'est pas une prestation de fabrication ou de réparation. L'idée est de réaliser soi-même son projet, d'apprendre et de gagner en autonomie, avec un coup de main ou un conseil si besoin.</span></li>
-          <li><strong>5 - Je donne mon retour</strong><span>Pendant la phase de test, vos retours nous aideront à ajuster l'organisation, les horaires et le fonctionnement. <a class="eb-lien" href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer">Remplir le questionnaire</a>.</span></li>
+          <li><strong>1 - Je choisis ma formule</strong><span>J'achète en ligne 1, 3 ou 9 créneaux, à utiliser au fil de mes projets.</span></li>
+          <li><strong>2 - Je réserve</strong><span>Je choisis une date dans l'agenda de réservation.</span></li>
+          <li><strong>3 - Je viens avec mon projet</strong><span>J'apporte mon objet, mes pièces, mon bois ou mes matériaux si besoin.</span></li>
+          <li><strong>4 - Je suis accueilli et conseillé</strong><span>Une personne de l'Objethèque m'aide à choisir les bons outils et à utiliser les machines en sécurité.</span></li>
+          <li><strong>5 - Je fais moi-même</strong><span>L'espace bricolage n'est pas une prestation de fabrication ou de réparation. L'idée est de réaliser soi-même son projet, d'apprendre et de gagner en autonomie, avec un coup de main ou un conseil si besoin.</span></li>
+          <li><strong>6 - Je donne mon retour</strong><span>Pendant la phase de test, vos retours nous aideront à ajuster l'organisation, les horaires et le fonctionnement. <a class="eb-lien" href="https://docs.google.com/forms/d/e/1FAIpQLSe1St05rkU1-UBpwUOBakY-MYRjXtWEnooYpW3oqllW-HRMeg/viewform" target="_blank" rel="noopener noreferrer">Remplir le questionnaire</a>.</span></li>
         </ol>
       </div>
 
@@ -182,8 +220,8 @@ import atelier2 from "../assets/img/ateliertest02.webp";
           <h3>Infos pratiques</h3>
           <ul class="eb-infos-liste">
             <li><strong>Lieu&nbsp;:</strong> L'Objethèque de Cornouaille, 69 vieille route de Rosporden, 29000 Quimper</li>
-            <li><strong>Tarif&nbsp;:</strong> voir inscription créneaux</li>
-            <li><strong>Accès&nbsp;:</strong> uniquement sur réservation</li>
+            <li><strong>Tarif&nbsp;:</strong> {formules.map((f) => `${f.nom} : ${f.prix}`).join(" · ")}</li>
+            <li><strong>Accès&nbsp;:</strong> uniquement sur réservation, avec un créneau acheté au préalable</li>
           </ul>
           <p class="eb-contact">Une question avant de réserver&nbsp;? Contactez-nous pour vérifier que votre projet correspond bien à l'espace bricolage.</p>
         </div>
@@ -280,6 +318,72 @@ import atelier2 from "../assets/img/ateliertest02.webp";
     align-self: flex-start;
   }
 
+  /* ---- Les deux étapes : formule puis réservation ---- */
+  .eb-participer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
+    gap: 2rem;
+    margin-inline: var(--eb-mx);
+    margin-bottom: var(--eb-gap);
+  }
+
+  .eb-participer-bloc {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .eb-participer-bloc h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-inline: 0;
+    color: var(--primary-color);
+  }
+
+  .eb-participer-num {
+    display: grid;
+    place-items: center;
+    flex: 0 0 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--light-text-color);
+  }
+
+  .eb-participer-bloc p {
+    margin-inline: 0;
+    line-height: 1.7;
+  }
+
+  .eb-participer-bloc nav {
+    margin-top: 0.5rem;
+  }
+
+  .eb-formules {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .eb-formules li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    list-style: none;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    background: var(--background-color);
+    color: var(--dark-text-color);
+  }
+
+  .eb-formule-prix {
+    font-weight: bold;
+    white-space: nowrap;
+    color: var(--secondary-color);
+  }
+
   /* ---- Blocs texte ---- */
   .eb-bloc {
     margin-inline: var(--eb-mx);
@@ -298,14 +402,20 @@ import atelier2 from "../assets/img/ateliertest02.webp";
     margin-bottom: 0.5rem;
   }
 
-  /* ---- Encart débutants ---- */
-  .eb-encart {
-    margin-inline: var(--eb-mx);
-    margin-bottom: var(--eb-gap);
+  /* ---- Encarts sur fond gris ---- */
+  .eb-encart,
+  .eb-avertissement,
+  .eb-participer-bloc,
+  .eb-panne {
     background: var(--grey-background);
     border-left: 4px solid var(--primary-color);
     border-radius: 0 12px 12px 0;
     padding: 1.25rem 1.5rem;
+  }
+
+  .eb-encart {
+    margin-inline: var(--eb-mx);
+    margin-bottom: var(--eb-gap);
   }
 
   .eb-encart h3 {
@@ -319,14 +429,16 @@ import atelier2 from "../assets/img/ateliertest02.webp";
     line-height: 1.7;
   }
 
+  /* Les encarts enchaînent plusieurs paragraphes sans respiration. */
+  .eb-encart p + p,
+  .eb-avertissement p + p {
+    margin-top: 0.5rem;
+  }
+
   /* ---- À retenir ---- */
   .eb-avertissement {
     margin-inline: var(--eb-mx);
     margin-bottom: var(--eb-gap);
-    background: var(--grey-background);
-    border-left: 4px solid var(--primary-color);
-    border-radius: 0 12px 12px 0;
-    padding: 1.25rem 1.5rem;
   }
 
   .eb-avertissement p {
@@ -336,10 +448,7 @@ import atelier2 from "../assets/img/ateliertest02.webp";
 
   /* ---- Appareil en panne ---- */
   .eb-panne {
-    background: var(--grey-background);
-    border-left: 4px solid var(--secondary-color);
-    border-radius: 0 12px 12px 0;
-    padding: 1.25rem 1.5rem;
+    border-left-color: var(--secondary-color);
   }
 
   /* ---- Listes à puces ---- */
@@ -483,6 +592,7 @@ import atelier2 from "../assets/img/ateliertest02.webp";
   .eb-questionnaire {
     margin-inline: var(--eb-mx);
     margin-top: var(--eb-gap);
+    margin-bottom: var(--eb-gap);
     padding: 1.5rem 2rem;
     background: var(--grey-background);
     border-left: 4px solid var(--primary-color);
