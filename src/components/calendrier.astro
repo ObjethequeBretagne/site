@@ -60,6 +60,8 @@ interface Event {
 </div>
 
 <script>
+  import { estCreneauRecurrent } from "../lib/evenements";
+
   interface Event {
     id: string;
     title: string;
@@ -171,7 +173,9 @@ interface Event {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
         const data: Event[] = await response.json();
-        this.events = data.filter(e => !e.title?.toLowerCase().startsWith("espace bricolage"));
+        // Les créneaux de réservation récurrents ont leur propre agenda sur
+        // leur page : ils n'encombrent pas le calendrier général.
+        this.events = data.filter(e => !estCreneauRecurrent(e.title ?? ""));
         console.log("Événements chargés :", this.events.length);
       } catch (error) {
         console.error("Erreur de chargement des événements :", error);

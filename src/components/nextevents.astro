@@ -13,17 +13,11 @@ const { showAll = false } = Astro.props;
 </section>
 
 <script>
+  import { estCreneauRecurrent } from "../lib/evenements";
+
   function escHtml(str: string) {
     return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
   }
-
-  function normalise(str: string) {
-    return str.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().trim();
-  }
-
-  // Créneaux de réservation récurrents : ils ont leur propre agenda sur la page
-  // concernée et n'apparaissent pas dans la liste générale des événements.
-  const CRENEAUX_RECURRENTS = ["espace bricolage", "creneau couture"];
 
   document.addEventListener("astro:page-load", () => {
     const section = document.getElementById("next-events-section");
@@ -38,10 +32,8 @@ const { showAll = false } = Astro.props;
       .then(r => r.json())
       .then((data: any[]) => {
         const today = new Date();
-        const estCreneauRecurrent = (e: any) =>
-          CRENEAUX_RECURRENTS.some(prefixe => normalise(e.title ?? "").startsWith(prefixe));
         let events = data
-          .filter(e => new Date(e.startDate) > today && !estCreneauRecurrent(e))
+          .filter(e => new Date(e.startDate) > today && !estCreneauRecurrent(e.title ?? ""))
           .sort((a, b) => +new Date(a.startDate) - +new Date(b.startDate));
 
         if (!showAll) events = events.slice(0, 4);
@@ -65,7 +57,7 @@ const { showAll = false } = Astro.props;
           const heureFin = end.toLocaleTimeString(fr, fmt);
           const url = escHtml(event.url ?? "#");
           const hasCover = !!event.logoUrl;
-          const logo = escHtml(event.logoUrl ?? "/assets/img/logo.png");
+          const logo = escHtml(event.logoUrl || "/assets/img/logo.png");
           const titre = escHtml(event.title ?? "");
 
           return `
