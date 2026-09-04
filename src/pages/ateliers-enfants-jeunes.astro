@@ -115,16 +115,40 @@ const realisations = [
         <p class="aj-note">Les projets évolueront selon les envies du groupe, les matériaux disponibles et les idées proposées par les enfants.</p>
 
         <div class="aj-galerie">
-          {realisations.map((realisation) => (
-            <Picture
-              src={realisation.src}
-              formats={["avif", "webp"]}
-              widths={[300, 600]}
-              sizes="(max-width: 700px) 90vw, 300px"
-              alt={realisation.alt}
-            />
+          {realisations.map((realisation, i) => (
+            <button
+              type="button"
+              class="aj-vignette"
+              data-lightbox-index={i}
+              aria-label={`Agrandir la photo : ${realisation.alt}`}
+            >
+              <Picture
+                src={realisation.src}
+                formats={["avif", "webp"]}
+                widths={[300, 600]}
+                sizes="(max-width: 700px) 90vw, 300px"
+                alt=""
+              />
+            </button>
           ))}
         </div>
+
+        <dialog id="aj-lightbox" class="aj-lightbox" aria-label="Photos des réalisations" tabindex="-1">
+          <div class="aj-lightbox-pile">
+            {realisations.map((realisation, i) => (
+              <div class:list={["aj-lightbox-slide", { "est-courante": i === 0 }]} data-slide={i}>
+                <Picture
+                  src={realisation.src}
+                  formats={["avif", "webp"]}
+                  widths={[600, 1200]}
+                  sizes="92vw"
+                  alt={realisation.alt}
+                />
+              </div>
+            ))}
+          </div>
+          <p class="aj-sr" aria-live="polite" data-lightbox-annonce></p>
+        </dialog>
       </div>
 
       <!-- Agenda de La Fabrique -->
@@ -426,6 +450,97 @@ const realisations = [
     box-shadow: 0 4px 20px var(--dark-shadow-color);
   }
 
+  /* La vignette est un bouton : on lui retire tout son habillage natif. */
+  .aj-vignette {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: zoom-in;
+  }
+
+  /* ---- Lightbox ----
+     Le fondu d'ouverture/fermeture vient de la règle `dialog` de global.css
+     (display/overlay en allow-discrete + @starting-style). Ici on ne fait que
+     déshabiller la boîte : l'image, du noir, rien d'autre. */
+  .aj-lightbox {
+    max-width: 92vw;
+    max-height: 92vh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    background: none;
+    overflow: hidden;
+    cursor: zoom-out;
+  }
+
+  .aj-lightbox::backdrop {
+    background: #000;
+    backdrop-filter: none;
+  }
+
+  .aj-lightbox[open]::backdrop {
+    opacity: 0.94;
+  }
+
+  .aj-lightbox picture,
+  .aj-lightbox picture img {
+    display: block;
+    max-width: 92vw;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+  }
+
+  /* Les trois photos sont superposées dans la même cellule de grille. Les deux qui
+     ne sont pas affichées restent en `visibility: hidden` plutôt qu'en `display:
+     none` : elles occupent leur place, donc le navigateur les télécharge pendant
+     qu'on regarde la première, et la navigation est instantanée. */
+  .aj-lightbox-pile {
+    display: grid;
+  }
+
+  .aj-lightbox-slide {
+    grid-area: 1 / 1;
+    visibility: hidden;
+  }
+
+  .aj-lightbox-slide.est-courante {
+    visibility: visible;
+  }
+
+  /* Annonce du changement de photo pour les lecteurs d'écran, sans rien afficher. */
+  .aj-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Le fondu suffit à qui a demandé moins d'animations ; le zoom, non.
+     La transition elle-même est celle de la règle `dialog` de global.css : la
+     redéclarer ici écraserait son raccourci, et avec lui le fondu de fermeture. */
+  @media (prefers-reduced-motion: no-preference) {
+    .aj-lightbox {
+      scale: 0.96;
+    }
+
+    .aj-lightbox[open] {
+      scale: 1;
+    }
+
+    @starting-style {
+      .aj-lightbox[open] {
+        scale: 0.96;
+      }
+    }
+  }
+
   /* ---- Tableau programme ---- */
   .aj-table-wrap {
     overflow-x: auto;
@@ -518,3 +633,74 @@ const realisations = [
     }
   }
 </style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const modal = document.getElementById("aj-lightbox") as HTMLDialogElement | null;
+    // Garde-fou repris de la galerie de briec2000 : on n'accroche les écouteurs
+    // qu'une fois par élément, quel que soit le nombre d'astro:page-load.
+    if (!modal || modal.dataset.initialized) return;
+    modal.dataset.initialized = "true";
+
+    const diapos = Array.from(modal.querySelectorAll<HTMLElement>(".aj-lightbox-slide"));
+    const annonce = modal.querySelector<HTMLElement>("[data-lightbox-annonce]");
+    if (!diapos.length) return;
+
+    let courante = 0;
+
+    // Les extrémités bouclent : sans flèches à l'écran, un bout de série muet
+    // ressemblerait à une panne.
+    const afficher = (index: number) => {
+      courante = (index + diapos.length) % diapos.length;
+      diapos.forEach((diapo, i) => diapo.classList.toggle("est-courante", i === courante));
+      if (annonce) {
+        const image = diapos[courante].querySelector("img");
+        annonce.textContent = `Photo ${courante + 1} sur ${diapos.length} : ${image?.alt ?? ""}`;
+      }
+    };
+
+    document.querySelectorAll<HTMLElement>("[data-lightbox-index]").forEach((vignette) => {
+      vignette.addEventListener("click", () => {
+        afficher(Number(vignette.dataset.lightboxIndex));
+        if (!modal.open) modal.showModal();
+      });
+    });
+
+    modal.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        afficher(courante - 1);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        afficher(courante + 1);
+      }
+    });
+
+    let departX = 0;
+    let balayage = false;
+
+    modal.addEventListener("touchstart", (e) => {
+      departX = e.touches[0].clientX;
+      balayage = false;
+    }, { passive: true });
+
+    modal.addEventListener("touchend", (e) => {
+      const delta = e.changedTouches[0].clientX - departX;
+      if (Math.abs(delta) > 50) {
+        balayage = true;
+        afficher(delta > 0 ? courante - 1 : courante + 1);
+      }
+    }, { passive: true });
+
+    // Sobre : un clic n'importe où referme, comme la touche Échap. Mais le clic
+    // qu'un navigateur tactile émet après un balayage ne doit pas fermer la photo
+    // qu'on vient d'atteindre.
+    modal.addEventListener("click", () => {
+      if (balayage) {
+        balayage = false;
+        return;
+      }
+      modal.close();
+    });
+  });
+</script>
