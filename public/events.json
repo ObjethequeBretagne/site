@@ -1,11 +1,20 @@
 [
   {
-    "title": "Bricol'heure-Prise en main de la visseuse-perceuse",
+    "title": "Bricol’heur.euse - Embouts et forets ",
+    "description": "Embouts de vissage, forets à bois, à métal, à béton… comment s’y retrouver et choisir le bon accessoire ?<br><br>Cette Bricol’heure vous permettra de découvrir les principaux types d’embouts et de forets, leurs différences et leurs usages selon les vis et les matériaux.<br><br>Une initiation simple et accessible pour mieux comprendre son matériel et éviter les mauvais choix. Aucun niveau requis.<br>",
+    "startDate": "2026-09-19T14:00:00+02:00",
+    "endDate": "2026-09-19T15:00:00+02:00",
+    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/bricol-heureuse-embouts-forets-bien-choisir",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-972a4388886d45c283c27f70268ae9f7.png",
+    "logoUrl": null
+  },
+  {
+    "title": "Bricol'heur.euse - Prise en main de la visseuse-perceuse",
     "description": "Découvrez comment fonctionne une visseuse-perceuse et apprenez à mieux comprendre ses différents réglages : couple, sens de rotation, vitesses, modes vissage et perçage, bonnes pratiques et sécurité.<br><br>Cette Bricol’heure prend la forme d’une initiation guidée, avec des explications et quelques démonstrations. La manipulation reste limitée : l’objectif est avant tout de comprendre l’outil avant de se lancer. Aucun niveau requis.",
     "startDate": "2026-09-12T14:00:00+02:00",
     "endDate": "2026-09-12T15:00:00+02:00",
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/bricol-heure-prise-en-main-de-la-visseuse-perceuse",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-3aa4145c5b364ebe9a955ed4362e7755.png",
+    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/cropped-image-8ab9552f3d514fbbb089ac2e1fc7f553.png",
     "logoUrl": null
   },
   {
@@ -709,14 +718,5 @@
     "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/atelier-couture-13-06-grand-sac-de-linge",
     "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c3a15d41ac8942ad84154a780473c352.png",
     "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-9b9445c36c7a400db0d6dfc687b66a02.png"
-  },
-  {
-    "title": " À Kermoysan, on répare, on repart ! 25/06",
-    "description": "🔧 Le principe ?<br>Vous venez avec votre objet (petit électroménager, vêtements, petits bricolages…). Des bénévoles vous accompagnent pour diagnostiquer, apprendre et réparer vous-même. On partage des astuces, des savoir-faire et un bon moment ensemble ! <br><br>Venez apprendre à raccommoder et remettre en état vos objets & textiles !",
-    "startDate": "2026-06-25T15:30:00+02:00",
-    "endDate": "2026-06-25T18:30:00+02:00",
-    "url": "https://www.helloasso.com/associations/l-objetheque-de-cornouaille/evenements/a-kermoysan-on-repare-on-repart-25-06-2-2",
-    "bannerUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-c78595454f354f23a3479569a813015d.png",
-    "logoUrl": "https://cdn.helloasso.com/img/photos/evenements/croppedimage-eca6ae36c1dc4f07ab32d54ea1c92afd.png"
   }
 ]
