@@ -40,7 +40,7 @@ const {
     <p>Aucun créneau n’est actuellement ouvert à la réservation.</p>
     <p>De nouvelles dates seront proposées prochainement.</p>
   </div>
-  <div class="derniersEvenementsGridAll" data-role="list" hidden></div>
+  <div class="creneaux-liste" data-role="list" hidden></div>
 </section>
 
 <script>
@@ -62,7 +62,8 @@ const {
       const prefixe    = section.dataset.prefixe ?? "";
       const nbMois     = Number(section.dataset.mois ?? 2);
       const jourAccent = section.dataset.jourAccent ? Number(section.dataset.jourAccent) : null;
-      const bouton     = escHtml(section.dataset.bouton ?? "réserver");
+      const boutonBrut = section.dataset.bouton ?? "réserver";
+      const bouton     = escHtml(boutonBrut);
 
       fetch("/events.json")
         .then(r => r.json())
@@ -96,33 +97,18 @@ const {
             const heureDebut = start.toLocaleTimeString(fr, fmt);
             const heureFin   = end.toLocaleTimeString(fr, fmt);
             const url        = escHtml(event.url ?? "#");
-            const hasCover   = !!event.logoUrl;
-            const logo       = escHtml(event.logoUrl || "/assets/img/logo.png");
-            const titre      = escHtml(event.title ?? "");
             const accent     = jourAccent !== null && start.getDay() === jourAccent;
+            const libelle    = escHtml(`${boutonBrut} : ${jour} ${date} ${moisLabel}, de ${heureDebut} à ${heureFin}`);
 
             return `
-              <div class="derniersEvenementsGrid1">
-                <a href="${url}" target="_blank" rel="noopener">
-                  <img class="imgEvent${hasCover ? '' : ' imgEvent--fallback'}" src="${logo}" alt="${titre}" loading="lazy" />
-                </a>
-                <div class="dateEvent">
-                  <p class="jourLEvent">${jour}</p>
-                  <p class="jourNEvent">${date}</p>
-                  <p class="moiEvent">${moisLabel}</p>
-                </div>
-                <div class="traitEvent"><div class="flexible-line"></div></div>
-                <div class="eb-infos">
-                  <span class="eb-badge ${accent ? "eb-badge--accent" : "eb-badge--principal"}">${jour}</span>
-                  <span class="eb-horaires">${heureDebut} – ${heureFin}</span>
-                </div>
-                <div class="traitEvent traiFin"><div class="flexible-line"></div></div>
-                <div>
-                  <a class="plusInfos" href="${url}" target="_blank" rel="noopener">
-                    <span class="plusplus">+</span> ${bouton}
-                  </a>
-                </div>
-              </div>`;
+              <a class="creneau-carte${accent ? " creneau-carte--accent" : ""}"
+                 href="${url}" target="_blank" rel="noopener" aria-label="${libelle}">
+                <span class="creneau-jour">${jour}</span>
+                <span class="creneau-date">${date}</span>
+                <span class="creneau-mois">${moisLabel}</span>
+                <span class="creneau-horaires">${heureDebut} – ${heureFin}</span>
+                <span class="creneau-action">${bouton}</span>
+              </a>`;
           }).join("");
 
           list.hidden = false;
@@ -145,39 +131,90 @@ const {
     text-align: center;
   }
 
-  .eb-badge {
-    display: inline-block;
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-size: 0.95em;
-    font-weight: 700;
-    text-transform: capitalize;
+  /* Une pastille par créneau, sur une seule rangée. Elle occupe toute la
+     largeur disponible et ne défile que si les cartes ne tiennent pas : le
+     padding reste minimal pour ne pas déclencher un défilement inutile, il
+     sert juste à ne pas rogner l'ombre des cartes. */
+  .creneaux-liste {
+    display: flex;
+    justify-content: safe center;
+    gap: 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-inline: 1rem;
+    padding-block: 0.6rem;
+    margin-bottom: 60px;
+    scrollbar-width: thin;
   }
 
-  .eb-badge--accent {
-    background: var(--primary-color);
-    color: var(--light-text-color);
-  }
-
-  .eb-badge--principal {
-    background: var(--secondary-color);
-    color: var(--light-text-color);
-  }
-
-  .eb-infos {
+  .creneau-carte {
+    flex: 0 0 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.15rem;
+    padding: 1.1rem 0.75rem 1rem;
+    border: 2px solid var(--grey-background);
+    border-radius: 16px;
+    background: var(--background-color);
+    box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.08);
+    color: var(--dark-text-color);
     text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .eb-horaires {
+  .creneau-carte:hover,
+  .creneau-carte:focus-visible {
+    transform: translateY(-3px);
+    border-color: var(--secondary-color);
+  }
+
+  .creneau-carte--accent:hover,
+  .creneau-carte--accent:focus-visible {
+    border-color: var(--primary-color);
+  }
+
+  .creneau-jour {
+    font-size: 0.95rem;
+    text-transform: capitalize;
+    color: var(--grey-text-color);
+  }
+
+  .creneau-date {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    font-weight: 600;
+    color: var(--secondary-color);
+  }
+
+  .creneau-carte--accent .creneau-date {
+    color: var(--primary-color);
+  }
+
+  .creneau-mois {
+    font-size: 1.05rem;
+  }
+
+  .creneau-horaires {
+    margin-top: 0.2rem;
+    font-size: 0.95rem;
     color: var(--grey-text-color);
     white-space: nowrap;
   }
 
-  .creneaux-section .derniersEvenementsGridAll {
-    margin-top: 0;
+  .creneau-action {
+    margin-top: 0.8rem;
+    padding: 0.35rem 1.1rem;
+    border-radius: 20px;
+    background: var(--secondary-color);
+    color: var(--light-text-color);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    white-space: nowrap;
+  }
+
+  .creneau-carte--accent .creneau-action {
+    background: var(--primary-color);
   }
 </style>
