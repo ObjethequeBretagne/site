@@ -4,6 +4,10 @@ dist/
 # generated types
 .astro/
 
+# cache local de wrangler (inutile ici : le site est construit en statique
+# pour GitHub Pages, sans adaptateur Cloudflare)
+.wrangler/
+
 # dependencies
 node_modules/
 
