@@ -1,0 +1,169 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const enregistre = Astro.url.searchParams.has("enregistre");
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" type="image/png" href="/assets/img/illuPresa2.png" />
+    <title>{title} · Admin Objethèque</title>
+  </head>
+  <body>
+    <header>
+      <a href="/admin">Admin Objethèque</a>
+      <a href="/" target="_blank">Voir le site</a>
+    </header>
+    <main>
+      <h1>{title}</h1>
+      {enregistre && (
+        <p class="message ok">
+          Enregistré. Le site sera à jour d'ici quelques minutes, le temps du redéploiement.
+        </p>
+      )}
+      <slot />
+    </main>
+  </body>
+</html>
+
+<script>
+  // Listes éditables : chaque <li class="ligne"> est une entrée, dans l'ordre du
+  // formulaire. Ajouter clone le <template> de la liste, les boutons déplacent ou
+  // retirent la ligne. Rien n'est enregistré avant l'envoi du formulaire.
+  document.addEventListener("click", (e) => {
+    const bouton = (e.target as HTMLElement).closest<HTMLButtonElement>("button[data-action]");
+    if (!bouton) return;
+
+    if (bouton.dataset.action === "ajouter") {
+      const liste = document.getElementById(bouton.dataset.liste!)!;
+      const modele = document.getElementById(`${bouton.dataset.liste}-modele`) as HTMLTemplateElement;
+      liste.append(modele.content.cloneNode(true));
+      liste.lastElementChild?.querySelector("input")?.focus();
+      return;
+    }
+
+    const ligne = bouton.closest("li")!;
+    if (bouton.dataset.action === "monter") ligne.previousElementSibling?.before(ligne);
+    if (bouton.dataset.action === "descendre") ligne.nextElementSibling?.after(ligne);
+    if (bouton.dataset.action === "retirer" && confirm("Retirer cette entrée ?")) ligne.remove();
+  });
+</script>
+
+<style is:global>
+  :root {
+    --teal: #108a9d;
+    --orange: #ff9900;
+    --fond: #fffefe;
+    --carte: #f1f1f1;
+    --texte: #1d2b2b;
+    --discret: #616161;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fond: #1c1227;
+      --carte: #2a1f44;
+      --texte: #ececec;
+      --discret: #afafaf;
+    }
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background: var(--fond);
+    color: var(--texte);
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: var(--teal);
+  }
+  header a {
+    color: #fff;
+    font-weight: 600;
+  }
+  main {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .message {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+  }
+  .message.ok {
+    background: #d7f2e3;
+    color: #145c36;
+  }
+  .message.erreur {
+    background: #fbdada;
+    color: #7a1616;
+  }
+  ol.liste {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .ligne {
+    display: grid;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: var(--carte);
+  }
+  .ligne label {
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--discret);
+  }
+  .ligne input,
+  .ligne select {
+    font: inherit;
+    padding: 0.4rem;
+    color: var(--texte);
+    background: var(--fond);
+    border: 1px solid var(--discret);
+    border-radius: 0.3rem;
+  }
+  .ligne .boutons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+  button {
+    font: inherit;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    border: 1px solid var(--teal);
+    background: transparent;
+    color: inherit;
+  }
+  button[type="submit"] {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: #000;
+    font-weight: 600;
+  }
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    position: sticky;
+    bottom: 0;
+    padding-block: 0.75rem;
+    background: var(--fond);
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+export const prerender = false;
+import AdminLayout from "../../layouts/admin.astro";
+import { commiter, jsonEnOctets, lireJson, listerDossier, nomLibre, type FichierACommiter } from "../../lib/github";
+
+type Document = { title: string; href: string };
+const CHEMIN = "src/data/documents.json";
+const TAILLE_MAX = 20 * 1024 * 1024; // les comptes rendus d'AG pèsent jusqu'à 7 Mo
+
+let erreur = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    const form = await Astro.request.formData();
+    const actuel = await lireJson<Document[]>(CHEMIN);
+    if (form.get("sha") !== actuel.sha) {
+      throw new Error("La liste a été modifiée ailleurs entre-temps. Recharge la page et recommence.");
+    }
+
+    // Les champs arrivent dans l'ordre des lignes : l'entrée i est title[i], href[i], fichier[i].
+    const titres = form.getAll("title").map(String);
+    const hrefs = form.getAll("href").map(String);
+    const pdfs = form.getAll("fichier") as File[];
+    const pris = new Set(await listerDossier("public"));
+    const fichiers: FichierACommiter[] = [];
+
+    const documents: Document[] = [];
+    for (const [i, brut] of titres.entries()) {
+      const title = brut.trim();
+      let href = hrefs[i];
+      const pdf = pdfs[i];
+      if (!title) throw new Error(`Ligne ${i + 1} : le titre est vide.`);
+      // Un href ne peut venir que de la liste existante : c'est lui qui décide où on écrit.
+      if (href && !actuel.donnees.some((d) => d.href === href)) throw new Error(`Ligne ${i + 1} : lien inconnu.`);
+
+      if (pdf?.size) {
+        if (!pdf.name.toLowerCase().endsWith(".pdf")) throw new Error(`« ${title} » : le fichier n'est pas un PDF.`);
+        if (pdf.size > TAILLE_MAX) throw new Error(`« ${title} » : le PDF dépasse 20 Mo.`);
+        href ||= `/${nomLibre(title, ".pdf", pris)}`;
+        fichiers.push({ chemin: `public${href}`, contenu: new Uint8Array(await pdf.arrayBuffer()) });
+      } else if (!href) {
+        throw new Error(`« ${title} » : il manque le PDF.`);
+      }
+      documents.push({ title, href });
+    }
+
+    // Une entrée retirée emporte son PDF.
+    for (const ancien of actuel.donnees) {
+      if (!documents.some((d) => d.href === ancien.href)) fichiers.push({ chemin: `public${ancien.href}`, contenu: null });
+    }
+
+    fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(documents) });
+    await commiter(fichiers, "Admin : documents utiles");
+    return Astro.redirect("/admin/documents?enregistre");
+  } catch (e) {
+    erreur = e instanceof Error ? e.message : String(e);
+  }
+}
+
+let documents: Document[] = [];
+let sha = "";
+try {
+  ({ donnees: documents, sha } = await lireJson<Document[]>(CHEMIN));
+} catch (e) {
+  erreur ||= e instanceof Error ? e.message : String(e);
+}
+---
+
+<AdminLayout title="Documents utiles">
+  {erreur && <p class="message erreur">{erreur}</p>}
+  <p>Dans l'ordre d'affichage sur la page À propos. Rien n'est publié avant « Enregistrer ».</p>
+
+  <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="sha" value={sha} />
+    <ol class="liste" id="documents">
+      {documents.map((doc) => (
+        <li class="ligne">
+          <input type="hidden" name="href" value={doc.href} />
+          <label>Titre <input name="title" value={doc.title} required /></label>
+          <label>
+            <span>Remplacer le PDF (<a href={doc.href} target="_blank">{doc.href}</a>)</span>
+            <input type="file" name="fichier" accept=".pdf,application/pdf" />
+          </label>
+          <div class="boutons">
+            <button type="button" data-action="monter" aria-label="Monter">↑</button>
+            <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
+            <button type="button" data-action="retirer">Retirer</button>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <template id="documents-modele">
+      <li class="ligne">
+        <input type="hidden" name="href" value="" />
+        <label>Titre <input name="title" required /></label>
+        <label>PDF <input type="file" name="fichier" accept=".pdf,application/pdf" required /></label>
+        <div class="boutons">
+          <button type="button" data-action="monter" aria-label="Monter">↑</button>
+          <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
+          <button type="button" data-action="retirer">Retirer</button>
+        </div>
+      </li>
+    </template>
+
+    <div class="actions">
+      <button type="button" data-action="ajouter" data-liste="documents">Ajouter un document</button>
+      <button type="submit">Enregistrer</button>
+    </div>
+  </form>
+</AdminLayout>

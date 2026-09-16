@@ -4,3 +4,10 @@ compatibility_flags = ["nodejs_compat"]
 
 [assets]
 directory = "./dist"
+
+# Admin (/admin) : dépôt et branche où il écrit les contenus.
+# Secrets à poser à part : wrangler secret put ADMIN_PASSWORD / GITHUB_TOKEN
+[vars]
+GITHUB_OWNER = "ObjethequeBretagne"
+GITHUB_REPO = "site"
+GITHUB_BRANCH = "cloudflare/workers-autoconfig"

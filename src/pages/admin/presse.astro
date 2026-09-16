@@ -1,0 +1,132 @@
+---
+export const prerender = false;
+import AdminLayout from "../../layouts/admin.astro";
+import { commiter, jsonEnOctets, lireJson, listerDossier, nomLibre, type FichierACommiter } from "../../lib/github";
+
+type Article = { title: string; href: string; type: string; media: string; logo: string };
+const CHEMIN = "src/data/presse.json";
+const TYPES = ["presse", "radio", "TV", "web"];
+const EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg", ".svg"];
+
+let erreur = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    const form = await Astro.request.formData();
+    const actuel = await lireJson<Article[]>(CHEMIN);
+    if (form.get("sha") !== actuel.sha) {
+      throw new Error("La liste a été modifiée ailleurs entre-temps. Recharge la page et recommence.");
+    }
+
+    // Les champs arrivent dans l'ordre des lignes : l'article i est title[i], href[i]…
+    const champ = (nom: string) => form.getAll(nom).map((v) => String(v).trim());
+    const [titres, hrefs, types, medias, logos] = ["title", "href", "type", "media", "logo"].map(champ);
+    const nouveauxLogos = form.getAll("nouveauLogo") as File[];
+    const logosConnus = new Set(actuel.donnees.map((a) => a.logo));
+    const pris = new Set(await listerDossier("public/assets/presse"));
+    const fichiers: FichierACommiter[] = [];
+
+    const presse: Article[] = [];
+    for (const [i, title] of titres.entries()) {
+      const nom = title || `Ligne ${i + 1}`;
+      const [href, type, media] = [hrefs[i], types[i], medias[i]];
+      let logo = logos[i];
+      if (!title || !media) throw new Error(`${nom} : le titre et le média sont obligatoires.`);
+      if (!/^https?:\/\//.test(href)) throw new Error(`${nom} : le lien doit commencer par https://`);
+      if (!TYPES.includes(type)) throw new Error(`${nom} : type inconnu.`);
+
+      const fichier = nouveauxLogos[i];
+      if (fichier?.size) {
+        const extension = EXTENSIONS.find((ext) => fichier.name.toLowerCase().endsWith(ext));
+        if (!extension) throw new Error(`${nom} : le logo doit être en ${EXTENSIONS.join(", ")}.`);
+        if (fichier.size > 1024 * 1024) throw new Error(`${nom} : le logo dépasse 1 Mo.`);
+        logo = `/assets/presse/${nomLibre(media, extension, pris)}`;
+        fichiers.push({ chemin: `public${logo}`, contenu: new Uint8Array(await fichier.arrayBuffer()) });
+      } else if (!logosConnus.has(logo)) {
+        throw new Error(`${nom} : choisis un logo ou envoie-en un.`);
+      }
+      presse.push({ title, href, type, media, logo });
+    }
+
+    // Les logos ne sont jamais supprimés : plusieurs articles partagent le même.
+    fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(presse) });
+    await commiter(fichiers, "Admin : revue de presse");
+    return Astro.redirect("/admin/presse?enregistre");
+  } catch (e) {
+    erreur = e instanceof Error ? e.message : String(e);
+  }
+}
+
+let presse: Article[] = [];
+let sha = "";
+try {
+  ({ donnees: presse, sha } = await lireJson<Article[]>(CHEMIN));
+} catch (e) {
+  erreur ||= e instanceof Error ? e.message : String(e);
+}
+const logos = [...new Set(presse.map((a) => a.logo))];
+---
+
+<AdminLayout title="Revue de presse">
+  {erreur && <p class="message erreur">{erreur}</p>}
+  <p>Dans l'ordre d'affichage sur la page À propos. Rien n'est publié avant « Enregistrer ».</p>
+
+  <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="sha" value={sha} />
+    <ol class="liste" id="presse">
+      {presse.map((article) => (
+        <li class="ligne">
+          <label>Titre <input name="title" value={article.title} required /></label>
+          <label>Lien <input name="href" type="url" value={article.href} required /></label>
+          <label>Média <input name="media" value={article.media} required /></label>
+          <label>Type
+            <select name="type">
+              {TYPES.map((t) => <option selected={t === article.type}>{t}</option>)}
+            </select>
+          </label>
+          <label>Logo
+            <select name="logo">
+              {logos.map((l) => <option selected={l === article.logo}>{l}</option>)}
+            </select>
+          </label>
+          <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} /></label>
+          <div class="boutons">
+            <button type="button" data-action="monter" aria-label="Monter">↑</button>
+            <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
+            <button type="button" data-action="retirer">Retirer</button>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <template id="presse-modele">
+      <li class="ligne">
+        <label>Titre <input name="title" required /></label>
+        <label>Lien <input name="href" type="url" required /></label>
+        <label>Média <input name="media" required /></label>
+        <label>Type
+          <select name="type">
+            {TYPES.map((t) => <option>{t}</option>)}
+          </select>
+        </label>
+        <label>Logo
+          <select name="logo">
+            <option value="">— nouveau logo ci-dessous —</option>
+            {logos.map((l) => <option>{l}</option>)}
+          </select>
+        </label>
+        <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} /></label>
+        <div class="boutons">
+          <button type="button" data-action="monter" aria-label="Monter">↑</button>
+          <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
+          <button type="button" data-action="retirer">Retirer</button>
+        </div>
+      </li>
+    </template>
+
+    <div class="actions">
+      <button type="button" data-action="ajouter" data-liste="presse">Ajouter un article</button>
+      <button type="submit">Enregistrer</button>
+    </div>
+  </form>
+</AdminLayout>
