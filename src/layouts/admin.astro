@@ -98,7 +98,7 @@ const { title } = Astro.props;
     } else if (etat.echec) {
       bandeau.textContent = `Mise en ligne échouée : l'enregistrement de ${heure} n'est toujours pas en ligne après 10 minutes. Regarde le build sur Cloudflare.`;
     } else if (enCours) {
-      bandeau.textContent = `Mise en ligne en cours depuis ${heure} (« ${etat.message} »). Le site et l'admin montrent encore l'ancienne version, compter deux minutes environ.`;
+      bandeau.textContent = `Mise en ligne en cours depuis ${heure} (« ${etat.message} »). Le site et l'admin montrent encore l'ancienne version, environ une minute. Ce bandeau passera au vert quand ce sera en ligne, inutile d'actualiser d'ici là.`;
     }
   }
 
