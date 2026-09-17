@@ -53,7 +53,7 @@ if (Astro.request.method === "POST") {
     await commiter(fichiers, "Admin : documents utiles");
     return Astro.redirect("/admin/documents");
   } catch (e) {
-    erreur = e instanceof Error ? e.message : String(e);
+    erreur = `Pas enregistré : ${e instanceof Error ? e.message : String(e)}`;
   }
 }
 

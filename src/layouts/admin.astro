@@ -49,6 +49,24 @@ const { title } = Astro.props;
     if (bouton.dataset.action === "retirer" && confirm("Retirer cette entrée ?")) ligne.remove();
   });
 
+  // Enregistrer : l'envoi et le commit prennent quelques secondes. L'événement submit
+  // n'arrive qu'une fois les champs obligatoires remplis, donc le bouton ne se bloque
+  // jamais sur un formulaire refusé par le navigateur.
+  document.addEventListener("submit", (e) => {
+    const bouton = (e.target as HTMLFormElement).querySelector<HTMLButtonElement>("button[type=submit]");
+    if (!bouton) return;
+    bouton.disabled = true;
+    bouton.textContent = "Enregistrement…";
+  });
+  // Retour arrière vers une page gardée en cache : le bouton doit être utilisable.
+  addEventListener("pageshow", (e) => {
+    if (!e.persisted) return;
+    for (const bouton of document.querySelectorAll<HTMLButtonElement>("button[type=submit]")) {
+      bouton.disabled = false;
+      bouton.textContent = "Enregistrer";
+    }
+  });
+
   // Images : converties en WebP dans le navigateur dès qu'on les choisit, le Worker
   // ne sachant pas le faire. data-webp donne la plus grande dimension en pixels.
   // Les SVG restent tels quels ; si le navigateur n'exporte pas en WebP, on garde
@@ -198,6 +216,9 @@ const { title } = Astro.props;
     border: 1px solid var(--discret);
     border-radius: 0.3rem;
   }
+  .ligne input:disabled {
+    opacity: 0.5;
+  }
   .ligne .boutons {
     display: flex;
     gap: 0.5rem;
@@ -211,6 +232,10 @@ const { title } = Astro.props;
     border: 1px solid var(--teal);
     background: transparent;
     color: inherit;
+  }
+  button[type="submit"]:disabled {
+    cursor: wait;
+    opacity: 0.7;
   }
   button[type="submit"] {
     background: var(--orange);

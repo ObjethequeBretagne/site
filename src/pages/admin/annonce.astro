@@ -69,7 +69,7 @@ if (Astro.request.method === "POST") {
     await commiter(fichiers, "Admin : bandeau d'annonce");
     return Astro.redirect("/admin/annonce");
   } catch (e) {
-    erreur = e instanceof Error ? e.message : String(e);
+    erreur = `Pas enregistré : ${e instanceof Error ? e.message : String(e)}`;
   }
 }
 
@@ -99,10 +99,10 @@ const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé pa
           <legend>Bouton</legend>
           <label class="case"><input type="radio" name="bouton" value="aucun" checked={!annonce.lienHref} /> Pas de bouton</label>
           <label class="case"><input type="radio" name="bouton" value="lien" checked={!!annonce.lienHref && !pdfActuel} /> Lien</label>
-          <label>Adresse <input name="lienHref" value={pdfActuel ? "" : annonce.lienHref} placeholder="https://… ou /page-du-site" /></label>
+          <label>Adresse <input name="lienHref" value={pdfActuel ? "" : annonce.lienHref} placeholder="https://… ou /page-du-site" pattern="(https?://|/).*" title="Commence par https:// ou par / pour une page du site" /></label>
           <label class="case"><input type="radio" name="bouton" value="pdf" checked={pdfActuel} /> PDF</label>
           {pdfActuel && <p class="actuel">PDF actuel : <a href={annonce.lienHref} target="_blank">{annonce.lienHref}</a></p>}
-          <label>{pdfActuel ? "Remplacer le PDF (facultatif)" : "PDF à envoyer"} <input type="file" name="pdf" accept=".pdf,application/pdf" /></label>
+          <label>{pdfActuel ? "Remplacer le PDF (facultatif)" : "PDF à envoyer"} <input type="file" name="pdf" accept=".pdf,application/pdf" data-pdf-actuel={pdfActuel ? "" : undefined} /></label>
           <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
         </fieldset>
       </div>
@@ -113,6 +113,29 @@ const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé pa
     </form>
   )}
 </AdminLayout>
+
+<script>
+  // Les champs obligatoires dépendent de ce qui est coché : on les marque `required`
+  // pour que le navigateur bloque l'envoi et montre le champ, au lieu de laisser
+  // partir le formulaire et d'afficher le refus du serveur après rechargement.
+  const form = document.querySelector<HTMLFormElement>("form");
+  if (form) {
+    const champ = (nom: string) => form.elements.namedItem(nom) as HTMLInputElement;
+    const majObligatoires = () => {
+      const bouton = form.querySelector<HTMLInputElement>("[name=bouton]:checked")?.value;
+      champ("titre").required = champ("afficher").checked;
+      // Les champs d'un autre choix sont désactivés : ni vérifiés, ni envoyés.
+      champ("lienHref").disabled = bouton !== "lien";
+      champ("pdf").disabled = bouton !== "pdf";
+      champ("lienLibelle").disabled = bouton === "aucun";
+      champ("lienHref").required = true;
+      champ("pdf").required = !("pdfActuel" in champ("pdf").dataset);
+      champ("lienLibelle").required = true;
+    };
+    form.addEventListener("change", majObligatoires);
+    majObligatoires();
+  }
+</script>
 
 <style>
   fieldset {

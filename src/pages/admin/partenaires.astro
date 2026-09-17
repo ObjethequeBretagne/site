@@ -61,7 +61,7 @@ if (Astro.request.method === "POST") {
     await commiter(fichiers, "Admin : partenaires");
     return Astro.redirect("/admin/partenaires");
   } catch (e) {
-    erreur = e instanceof Error ? e.message : String(e);
+    erreur = `Pas enregistré : ${e instanceof Error ? e.message : String(e)}`;
   }
 }
 
