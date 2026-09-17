@@ -6,7 +6,7 @@ import NextEvents from "../components/nextevents.astro";
 import Counter from "../components/counter.astro";
 import Catalogue from "../components/myturncatalog.astro";
 // import Videomp4 from "../components/videomp4.astro";
-// import BandeauAnnonce from "../components/bandeau-annonce.astro";
+import BandeauAnnonce from "../components/bandeau-annonce.astro";
 
 // Import des images
 import { Picture, getImage } from "astro:assets";
@@ -47,6 +47,7 @@ const bgImage = await getImage({ src: boisClairHorizontal, format: "webp", width
         />
       </div>
     </section>
+    <BandeauAnnonce />
     <div class="homeCtaRow">
       <Facebook />
       <DonateButton />

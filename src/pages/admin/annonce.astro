@@ -1,0 +1,89 @@
+---
+export const prerender = false;
+import AdminLayout from "../../layouts/admin.astro";
+import { commiter, jsonEnOctets, lireJson } from "../../lib/github";
+
+type Annonce = {
+  afficher: boolean;
+  icone: string;
+  titre: string;
+  texte: string;
+  lienLibelle: string;
+  lienHref: string;
+};
+const CHEMIN = "src/data/annonce.json";
+
+let erreur = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    const form = await Astro.request.formData();
+    const actuel = await lireJson<Annonce>(CHEMIN);
+    if (form.get("sha") !== actuel.sha) {
+      throw new Error("Le bandeau a été modifié ailleurs entre-temps. Recharge la page et recommence.");
+    }
+
+    const champ = (nom: string) => String(form.get(nom) ?? "").trim();
+    const annonce: Annonce = {
+      afficher: form.has("afficher"),
+      icone: champ("icone"),
+      titre: champ("titre"),
+      texte: champ("texte"),
+      lienLibelle: champ("lienLibelle"),
+      lienHref: champ("lienHref"),
+    };
+    if (annonce.afficher && !annonce.titre) throw new Error("Le titre est obligatoire pour afficher le bandeau.");
+    // Lien du site (/…) ou lien externe complet.
+    if (annonce.lienHref && !/^(https?:\/\/|\/)/.test(annonce.lienHref)) {
+      throw new Error("Le lien doit commencer par https:// ou par / pour une page du site.");
+    }
+    if (annonce.lienHref && !annonce.lienLibelle) throw new Error("Le texte du bouton est obligatoire quand il y a un lien.");
+
+    await commiter([{ chemin: CHEMIN, contenu: jsonEnOctets(annonce) }], "Admin : bandeau d'annonce");
+    return Astro.redirect("/admin/annonce?enregistre");
+  } catch (e) {
+    erreur = e instanceof Error ? e.message : String(e);
+  }
+}
+
+let annonce: Annonce | undefined;
+let sha = "";
+try {
+  ({ donnees: annonce, sha } = await lireJson<Annonce>(CHEMIN));
+} catch (e) {
+  erreur ||= e instanceof Error ? e.message : String(e);
+}
+---
+
+<AdminLayout title="Bandeau d'annonce">
+  {erreur && <p class="message erreur">{erreur}</p>}
+  <p>Affiché sur l'accueil, sous la présentation. Rien n'est publié avant « Enregistrer ».</p>
+
+  {annonce && (
+    <form method="post">
+      <input type="hidden" name="sha" value={sha} />
+      <div class="ligne">
+        <label class="case"><input type="checkbox" name="afficher" checked={annonce.afficher} /> Afficher le bandeau sur l'accueil</label>
+        <label>Icône (un emoji, facultatif) <input name="icone" value={annonce.icone} /></label>
+        <label>Titre <input name="titre" value={annonce.titre} /></label>
+        <label>Texte (facultatif) <input name="texte" value={annonce.texte} /></label>
+        <label>Lien du bouton (facultatif, sans lien pas de bouton) <input name="lienHref" value={annonce.lienHref} placeholder="https://… ou /page-du-site" /></label>
+        <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
+      </div>
+      <div class="actions">
+        <span></span>
+        <button type="submit">Enregistrer</button>
+      </div>
+    </form>
+  )}
+</AdminLayout>
+
+<style>
+  .case {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: inherit;
+  }
+</style>

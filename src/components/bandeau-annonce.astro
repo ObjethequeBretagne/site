@@ -1,25 +1,30 @@
 ---
-// src/components/bandeau-annonce.astro
-// Bandeau d'annonce pour l'offre d'emploi réparateur
+import annonce from "../data/annonce.json";
+
+// Bandeau d'annonce de l'accueil, édité depuis /admin/annonce. Masqué tant que
+// « afficher » est faux ; le bouton n'apparaît que si un lien est renseigné.
+const externe = /^https?:\/\//.test(annonce.lienHref);
 ---
 
-<section class="bandeau-annonce">
-  <div class="bandeau-content">
-    <div class="bandeau-icon">
-      🔧
+{annonce.afficher && (
+  <section class="bandeau-annonce">
+    <div class="bandeau-content">
+      {annonce.icone && <div class="bandeau-icon">{annonce.icone}</div>}
+      <div class="bandeau-text">
+        <h3>{annonce.titre}</h3>
+        {annonce.texte && <p>{annonce.texte}</p>}
+      </div>
+      {annonce.lienHref && (
+        <div class="bandeau-action">
+          <a href={annonce.lienHref} class="bouton-annonce" target={externe || annonce.lienHref.endsWith(".pdf") ? "_blank" : undefined}>
+            <span>{annonce.lienLibelle}</span>
+            {annonce.lienHref.endsWith(".pdf") && <img src="/assets/img/pdf-logo.png" alt="PDF" class="pdf-icon" />}
+          </a>
+        </div>
+      )}
     </div>
-    <div class="bandeau-text">
-      <h3>Nous recrutons !</h3>
-      <p>CDD réparateur/trice du 1er au 26 juillet 2025</p>
-    </div>
-    <div class="bandeau-action">
-      <a href="/reparateur_1_26_juillet_2025.pdf" class="bouton-annonce" target="_blank">
-        <span>Voir l'annonce</span>
-        <img src="/assets/img/pdf-logo.png" alt="PDF" class="pdf-icon" />
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
+)}
 
 <style>
   .bandeau-annonce {
