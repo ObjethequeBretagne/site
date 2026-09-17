@@ -75,6 +75,8 @@ export async function commiter(fichiers: FichierACommiter[], message: string): P
     method: "POST",
     body: JSON.stringify({ base_tree: parent.tree.sha, tree }),
   });
+  if (nouvelArbre.sha === parent.tree.sha) return; // rien n'a changé : pas de commit vide
+
   const commit = await gh<{ sha: string }>("git/commits", {
     method: "POST",
     body: JSON.stringify({ message, tree: nouvelArbre.sha, parents: [ref.object.sha] }),

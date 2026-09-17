@@ -26,36 +26,44 @@ if (Astro.request.method === "POST") {
     }
 
     const champ = (nom: string) => String(form.get(nom) ?? "").trim();
+    const bouton = champ("bouton"); // "aucun", "lien" ou "pdf"
     const annonce: Annonce = {
       afficher: form.has("afficher"),
       icone: champ("icone"),
       titre: champ("titre"),
       texte: champ("texte"),
-      lienLibelle: champ("lienLibelle"),
-      lienHref: champ("lienHref"),
+      lienLibelle: bouton === "aucun" ? "" : champ("lienLibelle"),
+      lienHref: "",
     };
     const fichiers: FichierACommiter[] = [];
+    if (annonce.afficher && !annonce.titre) throw new Error("Le titre est obligatoire pour afficher le bandeau.");
 
-    // Un PDF envoyé devient le lien du bouton.
-    const pdf = form.get("pdf") as File | null;
-    if (pdf?.size) {
-      if (!pdf.name.toLowerCase().endsWith(".pdf")) throw new Error("Le fichier envoyé n'est pas un PDF.");
-      if (pdf.size > TAILLE_MAX) throw new Error("Le PDF dépasse 20 Mo.");
-      const pris = new Set(await listerDossier(`public${DOSSIER_PDF}`.slice(0, -1)));
-      annonce.lienHref = `${DOSSIER_PDF}${nomLibre(annonce.titre || pdf.name, ".pdf", pris)}`;
-      fichiers.push({ chemin: `public${annonce.lienHref}`, contenu: new Uint8Array(await pdf.arrayBuffer()) });
+    if (bouton === "lien") {
+      annonce.lienHref = champ("lienHref");
+      // Lien du site (/…) ou lien externe complet.
+      if (!/^(https?:\/\/|\/)/.test(annonce.lienHref)) {
+        throw new Error("Le lien doit commencer par https:// ou par / pour une page du site.");
+      }
+    } else if (bouton === "pdf") {
+      const pdf = form.get("pdf") as File | null;
+      if (pdf?.size) {
+        if (!pdf.name.toLowerCase().endsWith(".pdf")) throw new Error("Le fichier envoyé n'est pas un PDF.");
+        if (pdf.size > TAILLE_MAX) throw new Error("Le PDF dépasse 20 Mo.");
+        const pris = new Set(await listerDossier(`public${DOSSIER_PDF}`.slice(0, -1)));
+        annonce.lienHref = `${DOSSIER_PDF}${nomLibre(annonce.titre || pdf.name, ".pdf", pris)}`;
+        fichiers.push({ chemin: `public${annonce.lienHref}`, contenu: new Uint8Array(await pdf.arrayBuffer()) });
+      } else if (actuel.donnees.lienHref.startsWith(DOSSIER_PDF)) {
+        annonce.lienHref = actuel.donnees.lienHref; // on garde le PDF déjà en place
+      } else {
+        throw new Error("Choisis le PDF à envoyer.");
+      }
     }
+    if (annonce.lienHref && !annonce.lienLibelle) throw new Error("Le texte du bouton est obligatoire.");
+
     // L'ancien PDF d'annonce part quand le bouton ne pointe plus dessus.
     if (actuel.donnees.lienHref.startsWith(DOSSIER_PDF) && actuel.donnees.lienHref !== annonce.lienHref) {
       fichiers.push({ chemin: `public${actuel.donnees.lienHref}`, contenu: null });
     }
-
-    if (annonce.afficher && !annonce.titre) throw new Error("Le titre est obligatoire pour afficher le bandeau.");
-    // Lien du site (/…) ou lien externe complet.
-    if (annonce.lienHref && !/^(https?:\/\/|\/)/.test(annonce.lienHref)) {
-      throw new Error("Le lien doit commencer par https:// ou par / pour une page du site.");
-    }
-    if (annonce.lienHref && !annonce.lienLibelle) throw new Error("Le texte du bouton est obligatoire quand il y a un lien.");
 
     fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(annonce) });
     await commiter(fichiers, "Admin : bandeau d'annonce");
@@ -72,6 +80,7 @@ try {
 } catch (e) {
   erreur ||= e instanceof Error ? e.message : String(e);
 }
+const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé par l'admin
 ---
 
 <AdminLayout title="Bandeau d'annonce">
@@ -86,9 +95,16 @@ try {
         <label>Icône (un emoji, facultatif) <input name="icone" value={annonce.icone} /></label>
         <label>Titre <input name="titre" value={annonce.titre} /></label>
         <label>Texte (facultatif) <input name="texte" value={annonce.texte} /></label>
-        <label>Lien du bouton (facultatif, sans lien pas de bouton) <input name="lienHref" value={annonce.lienHref} placeholder="https://… ou /page-du-site" /></label>
-        <label>… ou envoyer un PDF (remplace le lien) <input type="file" name="pdf" accept=".pdf,application/pdf" /></label>
-        <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
+        <fieldset>
+          <legend>Bouton</legend>
+          <label class="case"><input type="radio" name="bouton" value="aucun" checked={!annonce.lienHref} /> Pas de bouton</label>
+          <label class="case"><input type="radio" name="bouton" value="lien" checked={!!annonce.lienHref && !pdfActuel} /> Lien</label>
+          <label>Adresse <input name="lienHref" value={pdfActuel ? "" : annonce.lienHref} placeholder="https://… ou /page-du-site" /></label>
+          <label class="case"><input type="radio" name="bouton" value="pdf" checked={pdfActuel} /> PDF</label>
+          {pdfActuel && <p class="actuel">PDF actuel : <a href={annonce.lienHref} target="_blank">{annonce.lienHref}</a></p>}
+          <label>{pdfActuel ? "Remplacer le PDF (facultatif)" : "PDF à envoyer"} <input type="file" name="pdf" accept=".pdf,application/pdf" /></label>
+          <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
+        </fieldset>
       </div>
       <div class="actions">
         <span></span>
@@ -99,6 +115,16 @@ try {
 </AdminLayout>
 
 <style>
+  fieldset {
+    display: grid;
+    gap: 0.5rem;
+    border: 1px solid var(--discret);
+    border-radius: 0.3rem;
+  }
+  .actuel {
+    margin: 0;
+    font-size: 0.85rem;
+  }
   .case {
     display: flex;
     align-items: center;
