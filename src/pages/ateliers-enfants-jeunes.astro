@@ -659,7 +659,7 @@ const realisations = [
 <script>
   document.addEventListener("astro:page-load", () => {
     const modal = document.getElementById("aj-lightbox") as HTMLDialogElement | null;
-    // Garde-fou repris de la galerie de briec2000 : on n'accroche les écouteurs
+    // Garde-fou : on n'accroche les écouteurs
     // qu'une fois par élément, quel que soit le nombre d'astro:page-load.
     if (!modal || modal.dataset.initialized) return;
     modal.dataset.initialized = "true";

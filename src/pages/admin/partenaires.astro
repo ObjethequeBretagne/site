@@ -48,7 +48,15 @@ if (Astro.request.method === "POST") {
       partenaires.push({ nom, href, categorie, logo });
     }
 
-    // Comme pour la presse, les logos ne sont jamais supprimés.
+    // Un logo que plus aucun partenaire n'utilise (partenaire retiré ou logo remplacé)
+    // est supprimé. Uniquement dans les dossiers des partenaires.
+    for (const ancien of logosConnus) {
+      const dossierPartenaires = ancien.startsWith("/assets/partenaires/") || ancien.startsWith("/assets/webp/partenaires/");
+      if (dossierPartenaires && !partenaires.some((p) => p.logo === ancien)) {
+        fichiers.push({ chemin: `public${ancien}`, contenu: null });
+      }
+    }
+
     fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(partenaires) });
     await commiter(fichiers, "Admin : partenaires");
     return Astro.redirect("/admin/partenaires?enregistre");

@@ -232,7 +232,7 @@ details {
     rotate: 90deg;
   }
 
-  /* Ouverture/fermeture animées, portées depuis 142 Shop. `::details-content` n'est
+  /* Ouverture/fermeture animées. `::details-content` n'est
      pas supporté partout : là où il manque, le bloc s'ouvre d'un coup, comme avant.
      Même --_duration que le chevron, pour que les deux bougent ensemble. */
   &::details-content {

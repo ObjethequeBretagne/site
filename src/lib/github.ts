@@ -1,7 +1,7 @@
 import { env } from "cloudflare:workers";
 
-// Écriture dans le dépôt via l'API GitHub, même principe que back142 et /hibou :
-// l'admin commit sur la branche, et le push relance le déploiement.
+// Écriture dans le dépôt via l'API GitHub : l'admin commit sur la branche, et le
+// push relance le déploiement.
 
 export interface FichierACommiter {
   chemin: string; // chemin dans le dépôt, ex. public/statuts.pdf
