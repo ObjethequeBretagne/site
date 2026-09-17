@@ -96,12 +96,5 @@
     "type": "radio",
     "media": "Océane FM",
     "logo": "/assets/webp/radio-oceane.webp"
-  },
-  {
-    "title": "L'Objethèque de Cornouaille",
-    "href": "https://hitwest.ouest-france.fr/l-objetheque-de-cornouaille",
-    "type": "radio",
-    "media": "Hit West",
-    "logo": "/assets/presse/hit-west.webp"
   }
 ]
