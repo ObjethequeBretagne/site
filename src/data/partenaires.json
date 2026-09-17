@@ -112,5 +112,11 @@
     "href": "https://www.canalbd.net/turbulences/",
     "categorie": "privé",
     "logo": "/assets/webp/partenaires/privé/turbulences.webp"
+  },
+  {
+    "nom": "test",
+    "href": "https://www.letelegramme.fr/bretagne/toutes-les-infos/objetheque-un-nouveau-concept-a-quimper-pour-louer-plutot-qu-acheter-video-243780.php",
+    "categorie": "privé",
+    "logo": "/assets/partenaires/test.webp"
   }
 ]
