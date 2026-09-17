@@ -1,8 +1,8 @@
 {
-  "afficher": false,
-  "icone": "🔧",
-  "titre": "Nous recrutons !",
+  "afficher": true,
+  "icone": "🧵",
+  "titre": "Découvrer nos ateliers couture ! En autonomie ou accompagné !",
   "texte": "CDD réparateur/trice du 1er au 26 juillet 2025",
-  "lienLibelle": "Voir l'annonce",
-  "lienHref": "/annonces/nous-recrutons.pdf"
+  "lienLibelle": "inscrivez-vous !",
+  "lienHref": "/univers-couture/"
 }
