@@ -120,6 +120,11 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
         </div>
         <label>Titre <input name="titre" value={annonce.titre} /></label>
         <label>Texte (facultatif) <input name="texte" value={annonce.texte} /></label>
+        <section class="apercu">
+          <h2>Aperçu</h2>
+          <p class="masque" hidden={annonce.afficher}>Masqué sur l'accueil : coche « Afficher le bandeau » pour le publier.</p>
+          <BandeauAnnonce annonce={annonce} apercu />
+        </section>
         <fieldset>
           <legend>Bouton</legend>
           <label class="case"><input type="radio" name="bouton" value="aucun" checked={!annonce.lienHref} /> Pas de bouton</label>
@@ -139,11 +144,6 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
           <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
         </fieldset>
       </div>
-      <section class="apercu">
-        <h2>Aperçu</h2>
-        <p class="masque" hidden={annonce.afficher}>Masqué sur l'accueil : coche « Afficher le bandeau » pour le publier.</p>
-        <BandeauAnnonce annonce={annonce} apercu />
-      </section>
       <div class="actions">
         <span></span>
         <button type="submit">Enregistrer</button>
@@ -213,7 +213,6 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
     --grey-background: rgba(231, 231, 231, 0.76);
     --dark-text-color: #095c5c;
     --light-text-color: #ffffff;
-    margin-top: 1rem;
     padding: 0.75rem;
     border-radius: 0.5rem;
     background: #fffefe;
@@ -237,7 +236,7 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
     color: var(--discret);
   }
   .apercu :global(.bandeau-annonce) {
-    margin-inline: 0;
+    margin: 0.5rem 0 0;
   }
   .apercu :global(a) {
     text-decoration: none;
