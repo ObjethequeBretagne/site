@@ -10,6 +10,11 @@ export default defineConfig({
     inlineStylesheets: 'always',
   },
 
+  // Heure du build, comparée à celle du dernier commit par /admin/deploiement.json.
+  vite: {
+    define: { __BUILD_TIME__: JSON.stringify(Date.now()) },
+  },
+
   adapter: cloudflare({
     imageService: 'compile'
   })

@@ -21,10 +21,11 @@ const enregistre = Astro.url.searchParams.has("enregistre");
       <a href="/" target="_blank">Voir le site</a>
     </header>
     <main>
+      <p id="deploiement" class="message" hidden></p>
       <h1>{title}</h1>
       {enregistre && (
         <p class="message ok">
-          Enregistré. Le site sera à jour d'ici quelques minutes, le temps du redéploiement.
+          Enregistré. Le site sera à jour une fois la mise en ligne terminée.
         </p>
       )}
       <slot />
@@ -78,6 +79,43 @@ const enregistre = Astro.url.searchParams.has("enregistre");
     transfert.items.add(new File([blob], nom, { type: "image/webp" }));
     champ.files = transfert.files;
   });
+
+  // Mise en ligne : chaque enregistrement relance le build, et le site (cette page
+  // comprise) sert l'ancienne version en attendant. Vérifié toutes les 15 s pendant
+  // un déploiement, toutes les 60 s sinon, jamais quand l'onglet est caché.
+  const bandeau = document.getElementById("deploiement")!;
+  let enCours = false;
+  let termine = false; // reste affiché jusqu'au rechargement ou au déploiement suivant
+  let verifieA = 0;
+
+  async function verifier() {
+    verifieA = Date.now();
+    const etat = await fetch("/admin/deploiement.json").then((r) => r.json()).catch(() => null);
+    if (!etat?.ok) return; // GitHub injoignable : on garde le dernier état connu
+    if (enCours && !etat.enCours) termine = true;
+    if (etat.enCours) termine = false;
+    enCours = etat.enCours;
+
+    const heure = new Date(etat.date).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    bandeau.hidden = !enCours && !termine;
+    bandeau.className = `message ${termine ? "ok" : etat.echec ? "erreur" : "attente"}`;
+    if (termine) {
+      bandeau.innerHTML = `<strong>Mise en ligne terminée.</strong> <button type="button" onclick="location.reload()">Actualiser</button>`;
+    } else if (etat.echec) {
+      bandeau.textContent = `Mise en ligne échouée : l'enregistrement de ${heure} n'est toujours pas en ligne après 10 minutes. Regarde le build sur Cloudflare.`;
+    } else if (enCours) {
+      bandeau.textContent = `Mise en ligne en cours depuis ${heure} (« ${etat.message} »). Le site et l'admin montrent encore l'ancienne version, compter deux minutes environ.`;
+    }
+  }
+
+  function tic() {
+    if (document.visibilityState !== "visible") return;
+    if (!enCours && Date.now() - verifieA < 60_000) return;
+    verifier();
+  }
+  setInterval(tic, 15_000);
+  document.addEventListener("visibilitychange", tic);
+  verifier();
 </script>
 
 <style is:global>
@@ -129,6 +167,10 @@ const enregistre = Astro.url.searchParams.has("enregistre");
   .message.ok {
     background: #d7f2e3;
     color: #145c36;
+  }
+  .message.attente {
+    background: #fdeccc;
+    color: #6b4300;
   }
   .message.erreur {
     background: #fbdada;

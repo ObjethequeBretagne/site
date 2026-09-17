@@ -85,6 +85,16 @@ export async function commiter(fichiers: FichierACommiter[], message: string): P
   });
 }
 
+// Dernier commit de la branche. `no-store` : un cache servirait un commit périmé,
+// exactement le décalage qu'on veut mesurer.
+export async function dernierCommit(): Promise<{ date: string; message: string }> {
+  const [dernier] = await gh<{ commit: { message: string; committer: { date: string } } }[]>(
+    `commits?sha=${encodeURIComponent(branche())}&per_page=1`,
+    { cache: "no-store" },
+  );
+  return { date: dernier.commit.committer.date, message: dernier.commit.message.split("\n")[0] };
+}
+
 export const jsonEnOctets = (donnees: unknown) =>
   new TextEncoder().encode(JSON.stringify(donnees, null, 2) + "\n");
 
