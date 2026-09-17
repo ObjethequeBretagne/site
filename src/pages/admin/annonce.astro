@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 import AdminLayout from "../../layouts/admin.astro";
-import { commiter, jsonEnOctets, lireJson } from "../../lib/github";
+import { commiter, jsonEnOctets, lireJson, listerDossier, nomLibre, type FichierACommiter } from "../../lib/github";
 
 type Annonce = {
   afficher: boolean;
@@ -12,6 +12,8 @@ type Annonce = {
   lienHref: string;
 };
 const CHEMIN = "src/data/annonce.json";
+const DOSSIER_PDF = "/annonces/"; // seuls les PDF de ce dossier peuvent être supprimés
+const TAILLE_MAX = 20 * 1024 * 1024;
 
 let erreur = "";
 
@@ -32,6 +34,22 @@ if (Astro.request.method === "POST") {
       lienLibelle: champ("lienLibelle"),
       lienHref: champ("lienHref"),
     };
+    const fichiers: FichierACommiter[] = [];
+
+    // Un PDF envoyé devient le lien du bouton.
+    const pdf = form.get("pdf") as File | null;
+    if (pdf?.size) {
+      if (!pdf.name.toLowerCase().endsWith(".pdf")) throw new Error("Le fichier envoyé n'est pas un PDF.");
+      if (pdf.size > TAILLE_MAX) throw new Error("Le PDF dépasse 20 Mo.");
+      const pris = new Set(await listerDossier(`public${DOSSIER_PDF}`.slice(0, -1)));
+      annonce.lienHref = `${DOSSIER_PDF}${nomLibre(annonce.titre || pdf.name, ".pdf", pris)}`;
+      fichiers.push({ chemin: `public${annonce.lienHref}`, contenu: new Uint8Array(await pdf.arrayBuffer()) });
+    }
+    // L'ancien PDF d'annonce part quand le bouton ne pointe plus dessus.
+    if (actuel.donnees.lienHref.startsWith(DOSSIER_PDF) && actuel.donnees.lienHref !== annonce.lienHref) {
+      fichiers.push({ chemin: `public${actuel.donnees.lienHref}`, contenu: null });
+    }
+
     if (annonce.afficher && !annonce.titre) throw new Error("Le titre est obligatoire pour afficher le bandeau.");
     // Lien du site (/…) ou lien externe complet.
     if (annonce.lienHref && !/^(https?:\/\/|\/)/.test(annonce.lienHref)) {
@@ -39,7 +57,8 @@ if (Astro.request.method === "POST") {
     }
     if (annonce.lienHref && !annonce.lienLibelle) throw new Error("Le texte du bouton est obligatoire quand il y a un lien.");
 
-    await commiter([{ chemin: CHEMIN, contenu: jsonEnOctets(annonce) }], "Admin : bandeau d'annonce");
+    fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(annonce) });
+    await commiter(fichiers, "Admin : bandeau d'annonce");
     return Astro.redirect("/admin/annonce");
   } catch (e) {
     erreur = e instanceof Error ? e.message : String(e);
@@ -60,7 +79,7 @@ try {
   <p>Affiché sur l'accueil, sous la présentation. Rien n'est publié avant « Enregistrer ».</p>
 
   {annonce && (
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
       <input type="hidden" name="sha" value={sha} />
       <div class="ligne">
         <label class="case"><input type="checkbox" name="afficher" checked={annonce.afficher} /> Afficher le bandeau sur l'accueil</label>
@@ -68,6 +87,7 @@ try {
         <label>Titre <input name="titre" value={annonce.titre} /></label>
         <label>Texte (facultatif) <input name="texte" value={annonce.texte} /></label>
         <label>Lien du bouton (facultatif, sans lien pas de bouton) <input name="lienHref" value={annonce.lienHref} placeholder="https://… ou /page-du-site" /></label>
+        <label>… ou envoyer un PDF (remplace le lien) <input type="file" name="pdf" accept=".pdf,application/pdf" /></label>
         <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
       </div>
       <div class="actions">
