@@ -103,5 +103,12 @@
     "type": "radio",
     "media": "Hit West",
     "logo": "/assets/webp/hitwest.webp"
+  },
+  {
+    "title": "waw waw waw",
+    "href": "https://hitwest.ouest-france.fr/l-objetheque-de-cornouaille",
+    "type": "presse",
+    "media": "ouesto franço",
+    "logo": "/assets/webp/eco_breton.webp"
   }
 ]
