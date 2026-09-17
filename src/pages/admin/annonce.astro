@@ -12,6 +12,7 @@ type Annonce = {
   lienHref: string;
 };
 const CHEMIN = "src/data/annonce.json";
+const DOCUMENTS = "src/data/documents.json";
 const DOSSIER_PDF = "/annonces/"; // seuls les PDF de ce dossier peuvent être supprimés
 const TAILLE_MAX = 20 * 1024 * 1024;
 
@@ -45,17 +46,21 @@ if (Astro.request.method === "POST") {
         throw new Error("Le lien doit commencer par https:// ou par / pour une page du site.");
       }
     } else if (bouton === "pdf") {
-      const pdf = form.get("pdf") as File | null;
-      if (pdf?.size) {
+      // Le PDF d'annonce déjà en place, un document utile, ou un nouveau PDF d'annonce.
+      const choix = champ("pdfChoix");
+      if (choix === "nouveau") {
+        const pdf = form.get("pdf") as File | null;
+        if (!pdf?.size) throw new Error("Choisis le PDF à envoyer.");
         if (!pdf.name.toLowerCase().endsWith(".pdf")) throw new Error("Le fichier envoyé n'est pas un PDF.");
         if (pdf.size > TAILLE_MAX) throw new Error("Le PDF dépasse 20 Mo.");
         const pris = new Set(await listerDossier(`public${DOSSIER_PDF}`.slice(0, -1)));
         annonce.lienHref = `${DOSSIER_PDF}${nomLibre(annonce.titre || pdf.name, ".pdf", pris)}`;
         fichiers.push({ chemin: `public${annonce.lienHref}`, contenu: new Uint8Array(await pdf.arrayBuffer()) });
-      } else if (actuel.donnees.lienHref.startsWith(DOSSIER_PDF)) {
-        annonce.lienHref = actuel.donnees.lienHref; // on garde le PDF déjà en place
       } else {
-        throw new Error("Choisis le PDF à envoyer.");
+        const { donnees: documents } = await lireJson<{ href: string }[]>(DOCUMENTS);
+        const connu = (choix.startsWith(DOSSIER_PDF) && choix === actuel.donnees.lienHref) || documents.some((d) => d.href === choix);
+        if (!connu) throw new Error("PDF inconnu : recharge la page et choisis-en un dans la liste.");
+        annonce.lienHref = choix;
       }
     }
     if (annonce.lienHref && !annonce.lienLibelle) throw new Error("Le texte du bouton est obligatoire.");
@@ -80,7 +85,15 @@ try {
 } catch (e) {
   erreur ||= e instanceof Error ? e.message : String(e);
 }
-const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé par l'admin
+let documents: { title: string; href: string }[] = [];
+try {
+  ({ donnees: documents } = await lireJson<typeof documents>(DOCUMENTS));
+} catch (e) {
+  erreur ||= e instanceof Error ? e.message : String(e);
+}
+// PDF d'annonce envoyé par l'admin, ou document utile. Un lien externe en .pdf reste un lien.
+const pdfAnnonce = annonce?.lienHref.startsWith(DOSSIER_PDF) ? annonce.lienHref : "";
+const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHref);
 ---
 
 <AdminLayout title="Bandeau d'annonce">
@@ -98,11 +111,19 @@ const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé pa
         <fieldset>
           <legend>Bouton</legend>
           <label class="case"><input type="radio" name="bouton" value="aucun" checked={!annonce.lienHref} /> Pas de bouton</label>
-          <label class="case"><input type="radio" name="bouton" value="lien" checked={!!annonce.lienHref && !pdfActuel} /> Lien</label>
-          <label>Adresse <input name="lienHref" value={pdfActuel ? "" : annonce.lienHref} placeholder="https://… ou /page-du-site" pattern="(https?://|/).*" title="Commence par https:// ou par / pour une page du site" /></label>
-          <label class="case"><input type="radio" name="bouton" value="pdf" checked={pdfActuel} /> PDF</label>
-          {pdfActuel && <p class="actuel">PDF actuel : <a href={annonce.lienHref} target="_blank">{annonce.lienHref}</a></p>}
-          <label>{pdfActuel ? "Remplacer le PDF (facultatif)" : "PDF à envoyer"} <input type="file" name="pdf" accept=".pdf,application/pdf" data-pdf-actuel={pdfActuel ? "" : undefined} /></label>
+          <label class="case"><input type="radio" name="bouton" value="lien" checked={!!annonce.lienHref && !modePdf} /> Lien</label>
+          <label>Adresse <input name="lienHref" value={modePdf ? "" : annonce.lienHref} placeholder="https://… ou /page-du-site" pattern="(https?://|/).*" title="Commence par https:// ou par / pour une page du site" /></label>
+          <label class="case"><input type="radio" name="bouton" value="pdf" checked={modePdf} /> PDF</label>
+          <label>PDF
+            <select name="pdfChoix">
+              {pdfAnnonce && <option value={pdfAnnonce} selected>PDF d'annonce actuel ({pdfAnnonce.slice(DOSSIER_PDF.length)})</option>}
+              <optgroup label="Documents utiles">
+                {documents.map((d) => <option value={d.href} selected={d.href === annonce.lienHref}>{d.title}</option>)}
+              </optgroup>
+              <option value="nouveau" selected={!modePdf}>Envoyer un nouveau PDF d'annonce…</option>
+            </select>
+          </label>
+          <label>Nouveau PDF d'annonce <input type="file" name="pdf" accept=".pdf,application/pdf" /></label>
           <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
         </fieldset>
       </div>
@@ -126,10 +147,11 @@ const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé pa
       champ("titre").required = champ("afficher").checked;
       // Les champs d'un autre choix sont désactivés : ni vérifiés, ni envoyés.
       champ("lienHref").disabled = bouton !== "lien";
-      champ("pdf").disabled = bouton !== "pdf";
+      champ("pdfChoix").disabled = bouton !== "pdf";
+      champ("pdf").disabled = bouton !== "pdf" || champ("pdfChoix").value !== "nouveau";
       champ("lienLibelle").disabled = bouton === "aucun";
       champ("lienHref").required = true;
-      champ("pdf").required = !("pdfActuel" in champ("pdf").dataset);
+      champ("pdf").required = true;
       champ("lienLibelle").required = true;
     };
     form.addEventListener("change", majObligatoires);
@@ -143,10 +165,6 @@ const pdfActuel = !!annonce?.lienHref.startsWith(DOSSIER_PDF); // PDF envoyé pa
     gap: 0.5rem;
     border: 1px solid var(--discret);
     border-radius: 0.3rem;
-  }
-  .actuel {
-    margin: 0;
-    font-size: 0.85rem;
   }
   .case {
     display: flex;

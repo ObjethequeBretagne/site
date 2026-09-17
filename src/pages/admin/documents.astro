@@ -44,9 +44,12 @@ if (Astro.request.method === "POST") {
       documents.push({ title, href });
     }
 
-    // Une entrée retirée emporte son PDF.
+    // Une entrée retirée emporte son PDF, sauf si le bandeau d'annonce pointe dessus.
+    const { donnees: annonce } = await lireJson<{ lienHref: string }>("src/data/annonce.json");
     for (const ancien of actuel.donnees) {
-      if (!documents.some((d) => d.href === ancien.href)) fichiers.push({ chemin: `public${ancien.href}`, contenu: null });
+      if (!documents.some((d) => d.href === ancien.href) && ancien.href !== annonce.lienHref) {
+        fichiers.push({ chemin: `public${ancien.href}`, contenu: null });
+      }
     }
 
     fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(documents) });
