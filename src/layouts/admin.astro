@@ -53,6 +53,31 @@ const enregistre = Astro.url.searchParams.has("enregistre");
     if (bouton.dataset.action === "descendre") ligne.nextElementSibling?.after(ligne);
     if (bouton.dataset.action === "retirer" && confirm("Retirer cette entrée ?")) ligne.remove();
   });
+
+  // Images : converties en WebP dans le navigateur dès qu'on les choisit (comme
+  // back142), le Worker ne sachant pas le faire. data-webp donne la plus grande
+  // dimension en pixels. Les SVG restent tels quels ; si le navigateur n'exporte
+  // pas en WebP, on garde le fichier d'origine.
+  document.addEventListener("change", async (e) => {
+    const champ = e.target as HTMLInputElement;
+    const fichier = champ.files?.[0];
+    if (!champ.dataset.webp || !fichier || fichier.type === "image/svg+xml") return;
+
+    const image = await createImageBitmap(fichier).catch(() => null);
+    if (!image) return;
+    const echelle = Math.min(1, Number(champ.dataset.webp) / Math.max(image.width, image.height));
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.round(image.width * echelle);
+    canvas.height = Math.round(image.height * echelle);
+    canvas.getContext("2d")!.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+    const blob = await new Promise<Blob | null>((ok) => canvas.toBlob(ok, "image/webp", 0.85));
+    if (blob?.type !== "image/webp") return;
+    const nom = fichier.name.replace(/\.[^.]*$/, "") + ".webp";
+    const transfert = new DataTransfer();
+    transfert.items.add(new File([blob], nom, { type: "image/webp" }));
+    champ.files = transfert.files;
+  });
 </script>
 
 <style is:global>

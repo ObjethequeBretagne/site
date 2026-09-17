@@ -89,7 +89,7 @@ const logos = [...new Set(presse.map((a) => a.logo))];
               {logos.map((l) => <option selected={l === article.logo}>{l}</option>)}
             </select>
           </label>
-          <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} /></label>
+          <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} data-webp="400" /></label>
           <div class="boutons">
             <button type="button" data-action="monter" aria-label="Monter">↑</button>
             <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
@@ -115,7 +115,7 @@ const logos = [...new Set(presse.map((a) => a.logo))];
             {logos.map((l) => <option>{l}</option>)}
           </select>
         </label>
-        <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} /></label>
+        <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} data-webp="400" /></label>
         <div class="boutons">
           <button type="button" data-action="monter" aria-label="Monter">↑</button>
           <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
