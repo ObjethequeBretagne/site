@@ -51,7 +51,7 @@ if (Astro.request.method === "POST") {
 
     fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(documents) });
     await commiter(fichiers, "Admin : documents utiles");
-    return Astro.redirect("/admin/documents?enregistre");
+    return Astro.redirect("/admin/documents");
   } catch (e) {
     erreur = e instanceof Error ? e.message : String(e);
   }

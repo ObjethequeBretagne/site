@@ -51,7 +51,7 @@ if (Astro.request.method === "POST") {
     // Les logos ne sont jamais supprimés : plusieurs articles partagent le même.
     fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(presse) });
     await commiter(fichiers, "Admin : revue de presse");
-    return Astro.redirect("/admin/presse?enregistre");
+    return Astro.redirect("/admin/presse");
   } catch (e) {
     erreur = e instanceof Error ? e.message : String(e);
   }

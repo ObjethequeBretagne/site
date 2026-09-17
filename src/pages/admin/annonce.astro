@@ -40,7 +40,7 @@ if (Astro.request.method === "POST") {
     if (annonce.lienHref && !annonce.lienLibelle) throw new Error("Le texte du bouton est obligatoire quand il y a un lien.");
 
     await commiter([{ chemin: CHEMIN, contenu: jsonEnOctets(annonce) }], "Admin : bandeau d'annonce");
-    return Astro.redirect("/admin/annonce?enregistre");
+    return Astro.redirect("/admin/annonce");
   } catch (e) {
     erreur = e instanceof Error ? e.message : String(e);
   }

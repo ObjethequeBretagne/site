@@ -3,7 +3,6 @@ interface Props {
   title: string;
 }
 const { title } = Astro.props;
-const enregistre = Astro.url.searchParams.has("enregistre");
 ---
 
 <!doctype html>
@@ -23,11 +22,6 @@ const enregistre = Astro.url.searchParams.has("enregistre");
     <main>
       <p id="deploiement" class="message" hidden></p>
       <h1>{title}</h1>
-      {enregistre && (
-        <p class="message ok">
-          Enregistré. Le site sera à jour une fois la mise en ligne terminée.
-        </p>
-      )}
       <slot />
     </main>
   </body>
