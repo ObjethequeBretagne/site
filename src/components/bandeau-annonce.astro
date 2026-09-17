@@ -1,24 +1,33 @@
 ---
-import annonce from "../data/annonce.json";
+import donnees from "../data/annonce.json";
 
 // Bandeau d'annonce de l'accueil, édité depuis /admin/annonce. Masqué tant que
 // « afficher » est faux ; le bouton n'apparaît que si un lien est renseigné.
+// En aperçu (admin), tout est rendu, les parties vides en `hidden`, et repéré par
+// data-apercu pour que le formulaire les mette à jour pendant la saisie.
+interface Props {
+  annonce?: typeof donnees;
+  apercu?: boolean;
+}
+const { annonce = donnees, apercu = false } = Astro.props;
 const externe = /^https?:\/\//.test(annonce.lienHref);
+const pdf = annonce.lienHref.endsWith(".pdf");
+const repere = (nom: string) => (apercu ? nom : undefined);
 ---
 
-{annonce.afficher && (
+{(annonce.afficher || apercu) && (
   <section class="bandeau-annonce">
     <div class="bandeau-content">
-      {annonce.icone && <div class="bandeau-icon">{annonce.icone}</div>}
+      {(annonce.icone || apercu) && <div class="bandeau-icon" hidden={!annonce.icone} data-apercu={repere("icone")}>{annonce.icone}</div>}
       <div class="bandeau-text">
-        <h3>{annonce.titre}</h3>
-        {annonce.texte && <p>{annonce.texte}</p>}
+        <h3 data-apercu={repere("titre")}>{annonce.titre}</h3>
+        {(annonce.texte || apercu) && <p hidden={!annonce.texte} data-apercu={repere("texte")}>{annonce.texte}</p>}
       </div>
-      {annonce.lienHref && (
-        <div class="bandeau-action">
-          <a href={annonce.lienHref} class="bouton-annonce" target={externe || annonce.lienHref.endsWith(".pdf") ? "_blank" : undefined}>
-            <span>{annonce.lienLibelle}</span>
-            {annonce.lienHref.endsWith(".pdf") && <img src="/assets/img/pdf-logo.png" alt="PDF" class="pdf-icon" />}
+      {(annonce.lienHref || apercu) && (
+        <div class="bandeau-action" hidden={!annonce.lienHref} data-apercu={repere("action")}>
+          <a href={annonce.lienHref} class="bouton-annonce" target={externe || pdf ? "_blank" : undefined}>
+            <span data-apercu={repere("libelle")}>{annonce.lienLibelle}</span>
+            {(pdf || apercu) && <img src="/assets/img/pdf-logo.png" alt="PDF" class="pdf-icon" hidden={!pdf} data-apercu={repere("pdf")} />}
           </a>
         </div>
       )}

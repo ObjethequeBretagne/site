@@ -1,6 +1,7 @@
 ---
 export const prerender = false;
 import AdminLayout from "../../layouts/admin.astro";
+import BandeauAnnonce from "../../components/bandeau-annonce.astro";
 import { commiter, jsonEnOctets, lireJson, listerDossier, nomLibre, type FichierACommiter } from "../../lib/github";
 
 type Annonce = {
@@ -15,6 +16,13 @@ const CHEMIN = "src/data/annonce.json";
 const DOCUMENTS = "src/data/documents.json";
 const DOSSIER_PDF = "/annonces/"; // seuls les PDF de ce dossier peuvent être supprimés
 const TAILLE_MAX = 20 * 1024 * 1024;
+// Suggestions d'icônes ; le champ accepte aussi n'importe quel autre emoji.
+const EMOJIS: [string, string][] = [
+  ["📢", "Annonce"], ["🔧", "Réparation"], ["🛠️", "Bricolage"], ["🧵", "Couture"],
+  ["♻️", "Réemploi"], ["🌱", "Écologie"], ["📅", "Date"], ["🎉", "Fête"],
+  ["🤝", "Bénévolat"], ["💼", "Recrutement"], ["🧸", "Enfants"], ["📦", "Collecte"],
+  ["❤️", "Don"], ["⚠️", "Important"],
+];
 
 let erreur = "";
 
@@ -106,6 +114,10 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
       <div class="ligne">
         <label class="case"><input type="checkbox" name="afficher" checked={annonce.afficher} /> Afficher le bandeau sur l'accueil</label>
         <label>Icône (un emoji, facultatif) <input name="icone" value={annonce.icone} /></label>
+        <div class="emojis">
+          {EMOJIS.map(([emoji, nom]) => <button type="button" data-emoji={emoji} title={nom} aria-label={nom}>{emoji}</button>)}
+          <button type="button" data-emoji="" title="Sans icône">Aucune</button>
+        </div>
         <label>Titre <input name="titre" value={annonce.titre} /></label>
         <label>Texte (facultatif) <input name="texte" value={annonce.texte} /></label>
         <fieldset>
@@ -127,6 +139,11 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
           <label>Texte du bouton <input name="lienLibelle" value={annonce.lienLibelle} /></label>
         </fieldset>
       </div>
+      <section class="apercu">
+        <h2>Aperçu</h2>
+        <p class="masque" hidden={annonce.afficher}>Masqué sur l'accueil : coche « Afficher le bandeau » pour le publier.</p>
+        <BandeauAnnonce annonce={annonce} apercu />
+      </section>
       <div class="actions">
         <span></span>
         <button type="submit">Enregistrer</button>
@@ -155,11 +172,89 @@ const modePdf = !!pdfAnnonce || documents.some((d) => d.href === annonce?.lienHr
       champ("lienLibelle").required = true;
     };
     form.addEventListener("change", majObligatoires);
+
+    // Aperçu : reflète la saisie en direct, sans rien enregistrer.
+    const apercu = (nom: string) => form.querySelector<HTMLElement>(`[data-apercu="${nom}"]`)!;
+    const majApercu = () => {
+      const bouton = form.querySelector<HTMLInputElement>("[name=bouton]:checked")?.value;
+      const icone = champ("icone").value.trim();
+      const texte = champ("texte").value.trim();
+      apercu("icone").textContent = icone;
+      apercu("icone").hidden = !icone;
+      apercu("titre").textContent = champ("titre").value.trim() || "Titre du bandeau";
+      apercu("texte").textContent = texte;
+      apercu("texte").hidden = !texte;
+      apercu("action").hidden = bouton === "aucun" || (bouton === "lien" && !champ("lienHref").value.trim());
+      apercu("libelle").textContent = champ("lienLibelle").value.trim() || "Texte du bouton";
+      apercu("pdf").hidden = bouton !== "pdf";
+      form.querySelector<HTMLElement>(".masque")!.hidden = champ("afficher").checked;
+    };
+    form.addEventListener("input", majApercu);
+    form.addEventListener("change", majApercu);
+    // Dans l'aperçu, le bouton ne mène nulle part.
+    apercu("action").addEventListener("click", (e) => e.preventDefault());
+
+    form.addEventListener("click", (e) => {
+      const emoji = (e.target as HTMLElement).closest<HTMLButtonElement>("[data-emoji]");
+      if (emoji) {
+        champ("icone").value = emoji.dataset.emoji!;
+        majApercu();
+      }
+    });
     majObligatoires();
   }
 </script>
 
 <style>
+  /* Variables et styles de base du site, dont dépend le bandeau (global.css n'est
+     pas chargé dans l'admin). */
+  .apercu {
+    --primary-color: #ff9900;
+    --grey-background: rgba(231, 231, 231, 0.76);
+    --dark-text-color: #095c5c;
+    --light-text-color: #ffffff;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background: #fffefe;
+    color: var(--dark-text-color);
+  }
+  @media (prefers-color-scheme: dark) {
+    .apercu {
+      --grey-background: #2a1f44;
+      --dark-text-color: #00caca;
+      background: #1c1227;
+    }
+  }
+  .apercu h2 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--discret);
+  }
+  .apercu .masque {
+    margin: 0.5rem 0 0;
+    font-size: 0.85rem;
+    color: var(--discret);
+  }
+  .apercu :global(.bandeau-annonce) {
+    margin-inline: 0;
+  }
+  .apercu :global(a) {
+    text-decoration: none;
+  }
+  .emojis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .emojis button {
+    padding: 0.2rem 0.45rem;
+    font-size: 1.3rem;
+    line-height: 1;
+  }
+  .emojis button:last-child {
+    font-size: 0.85rem;
+  }
   fieldset {
     display: grid;
     gap: 0.5rem;
