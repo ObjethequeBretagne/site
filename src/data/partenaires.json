@@ -1,0 +1,116 @@
+[
+  {
+    "nom": "France Bénévolat",
+    "href": "https://www.francebenevolat.org/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/franceb.webp"
+  },
+  {
+    "nom": "FDVA",
+    "href": "https://www.associations.gouv.fr/FDVA.html",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/fvda.webp"
+  },
+  {
+    "nom": "Région Bretagne",
+    "href": "https://www.bretagne.bzh/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/region-bretagne-fr.webp"
+  },
+  {
+    "nom": "Quimper Bretagne Occidentale",
+    "href": "https://www.quimper-bretagne-occidentale.bzh/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/quimperbretagne.webp"
+  },
+  {
+    "nom": "Région Bretagne (breton)",
+    "href": "https://www.bretagne.bzh/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/region-bretagne-vo.svg"
+  },
+  {
+    "nom": "Quartiers 2030",
+    "href": "https://entrepreneuriat-quartiers-2030.fr/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/quartiers2030.webp"
+  },
+  {
+    "nom": "Quartiers 2030 (ANCT)",
+    "href": "https://quartiers2030.anct.gouv.fr/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/cmjn.webp"
+  },
+  {
+    "nom": "CAF du Finistère",
+    "href": "https://www.caf.fr/allocataires/caf-du-finistere",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/caf.webp"
+  },
+  {
+    "nom": "Département du Finistère",
+    "href": "https://www.finistere.fr/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/finistere.webp"
+  },
+  {
+    "nom": "Ville de Quimper",
+    "href": "https://www.quimper.bzh/",
+    "categorie": "institutionnel",
+    "logo": "/assets/webp/partenaires/institutionelles/quimperlogo.webp"
+  },
+  {
+    "nom": "La 29ème Dimension",
+    "href": "https://www.la29emedimension.fr/",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/29D.webp"
+  },
+  {
+    "nom": "Ecologic",
+    "href": "https://www.ecologic-france.com/",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/EcoLogic.webp"
+  },
+  {
+    "nom": "TAG29",
+    "href": "https://tag.bzh/",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/tag29.webp"
+  },
+  {
+    "nom": "Treuzkemm",
+    "href": "https://treuzkemm.org/",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/Treuzkemm.webp"
+  },
+  {
+    "nom": "Recycle ton slip",
+    "href": "https://www.helloasso.com/associations/recycle-ton-slip",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/slip.webp"
+  },
+  {
+    "nom": "Espace associatif de Cornouaille",
+    "href": "https://espaceassociatif.bzh/",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/asso-cornouaille.webp"
+  },
+  {
+    "nom": "Arkéa",
+    "href": "https://www.cm-arkea.com/arkea/banque/assurances/j_6/fr/accueil",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/arkea.webp"
+  },
+  {
+    "nom": "Croix-Rouge Finistère",
+    "href": "https://www.croix-rouge.fr/delegation-territoriale-du-finistere",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/croix-rouge.webp"
+  },
+  {
+    "nom": "Librairie Turbulences",
+    "href": "https://www.canalbd.net/turbulences/",
+    "categorie": "privé",
+    "logo": "/assets/webp/partenaires/privé/turbulences.webp"
+  }
+]

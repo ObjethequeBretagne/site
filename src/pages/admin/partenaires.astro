@@ -1,0 +1,133 @@
+---
+export const prerender = false;
+import AdminLayout from "../../layouts/admin.astro";
+import { commiter, jsonEnOctets, lireJson, listerDossier, nomLibre, type FichierACommiter } from "../../lib/github";
+
+type Partenaire = { nom: string; href: string; categorie: string; logo: string };
+const CHEMIN = "src/data/partenaires.json";
+const CATEGORIES = ["institutionnel", "privé"];
+const EXTENSIONS = [".webp", ".png", ".jpg", ".jpeg", ".svg"];
+
+let erreur = "";
+
+if (Astro.request.method === "POST") {
+  try {
+    const form = await Astro.request.formData();
+    const actuel = await lireJson<Partenaire[]>(CHEMIN);
+    if (form.get("sha") !== actuel.sha) {
+      throw new Error("La liste a été modifiée ailleurs entre-temps. Recharge la page et recommence.");
+    }
+
+    // Les champs arrivent dans l'ordre des lignes : le partenaire i est nom[i], href[i]…
+    const champ = (nom: string) => form.getAll(nom).map((v) => String(v).trim());
+    const [noms, hrefs, categories, logos] = ["nom", "href", "categorie", "logo"].map(champ);
+    const nouveauxLogos = form.getAll("nouveauLogo") as File[];
+    const logosConnus = new Set(actuel.donnees.map((p) => p.logo));
+    const pris = new Set(await listerDossier("public/assets/partenaires"));
+    const fichiers: FichierACommiter[] = [];
+
+    const partenaires: Partenaire[] = [];
+    for (const [i, nom] of noms.entries()) {
+      const libelle = nom || `Ligne ${i + 1}`;
+      const [href, categorie] = [hrefs[i], categories[i]];
+      let logo = logos[i];
+      if (!nom) throw new Error(`${libelle} : le nom est obligatoire.`);
+      if (!/^https?:\/\//.test(href)) throw new Error(`${libelle} : le lien doit commencer par https://`);
+      if (!CATEGORIES.includes(categorie)) throw new Error(`${libelle} : catégorie inconnue.`);
+
+      const fichier = nouveauxLogos[i];
+      if (fichier?.size) {
+        const extension = EXTENSIONS.find((ext) => fichier.name.toLowerCase().endsWith(ext));
+        if (!extension) throw new Error(`${libelle} : le logo doit être en ${EXTENSIONS.join(", ")}.`);
+        if (fichier.size > 1024 * 1024) throw new Error(`${libelle} : le logo dépasse 1 Mo.`);
+        logo = `/assets/partenaires/${nomLibre(nom, extension, pris)}`;
+        fichiers.push({ chemin: `public${logo}`, contenu: new Uint8Array(await fichier.arrayBuffer()) });
+      } else if (!logosConnus.has(logo)) {
+        throw new Error(`${libelle} : choisis un logo ou envoie-en un.`);
+      }
+      partenaires.push({ nom, href, categorie, logo });
+    }
+
+    // Comme pour la presse, les logos ne sont jamais supprimés.
+    fichiers.push({ chemin: CHEMIN, contenu: jsonEnOctets(partenaires) });
+    await commiter(fichiers, "Admin : partenaires");
+    return Astro.redirect("/admin/partenaires?enregistre");
+  } catch (e) {
+    erreur = e instanceof Error ? e.message : String(e);
+  }
+}
+
+let partenaires: Partenaire[] = [];
+let sha = "";
+try {
+  ({ donnees: partenaires, sha } = await lireJson<Partenaire[]>(CHEMIN));
+} catch (e) {
+  erreur ||= e instanceof Error ? e.message : String(e);
+}
+const logos = [...new Set(partenaires.map((p) => p.logo))];
+---
+
+<AdminLayout title="Partenaires">
+  {erreur && <p class="message erreur">{erreur}</p>}
+  <p>
+    Deux bandeaux sur la page À propos : les institutionnels, puis les privés. Chacun défile dans
+    l'ordre de cette liste. Rien n'est publié avant « Enregistrer ».
+  </p>
+
+  <form method="post" enctype="multipart/form-data">
+    <input type="hidden" name="sha" value={sha} />
+    <ol class="liste" id="partenaires">
+      {partenaires.map((partenaire) => (
+        <li class="ligne">
+          <label>Nom <input name="nom" value={partenaire.nom} required /></label>
+          <label>Lien <input name="href" type="url" value={partenaire.href} required /></label>
+          <label>Catégorie
+            <select name="categorie">
+              {CATEGORIES.map((c) => <option selected={c === partenaire.categorie}>{c}</option>)}
+            </select>
+          </label>
+          <label>Logo
+            <select name="logo">
+              {logos.map((l) => <option selected={l === partenaire.logo}>{l}</option>)}
+            </select>
+          </label>
+          <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} data-webp="400" /></label>
+          <div class="boutons">
+            <button type="button" data-action="monter" aria-label="Monter">↑</button>
+            <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
+            <button type="button" data-action="retirer">Retirer</button>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <template id="partenaires-modele">
+      <li class="ligne">
+        <label>Nom <input name="nom" required /></label>
+        <label>Lien <input name="href" type="url" required /></label>
+        <label>Catégorie
+          <select name="categorie">
+            {CATEGORIES.map((c) => <option>{c}</option>)}
+          </select>
+        </label>
+        <label>Logo
+          <select name="logo">
+            <option value="">— nouveau logo ci-dessous —</option>
+            {logos.map((l) => <option>{l}</option>)}
+          </select>
+        </label>
+        <label>… ou nouveau logo <input type="file" name="nouveauLogo" accept={EXTENSIONS.join(",")} data-webp="400" /></label>
+        <div class="boutons">
+          <button type="button" data-action="monter" aria-label="Monter">↑</button>
+          <button type="button" data-action="descendre" aria-label="Descendre">↓</button>
+          <button type="button" data-action="retirer">Retirer</button>
+        </div>
+      </li>
+    </template>
+
+    <div class="actions">
+      <button type="button" data-action="ajouter" data-liste="partenaires">Ajouter un partenaire</button>
+      <button type="submit">Enregistrer</button>
+    </div>
+  </form>
+</AdminLayout>
